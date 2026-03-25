@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import SiteNavbar from "@/components/common/SiteNavbar";
 import {
   ArrowRight,
   BadgeCheck,
@@ -43,8 +42,6 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f4f8ff_0%,#ffffff_44%)] text-[var(--tl-ink)]">
-      <SiteNavbar />
-
       <main>
         <section className="mx-auto w-full max-w-[1220px] px-4 pb-14 pt-14 lg:px-6">
           <div className="grid items-center gap-10 lg:grid-cols-[1.04fr_0.96fr]">

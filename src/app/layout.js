@@ -1,5 +1,7 @@
 import { Manrope, Montserrat } from "next/font/google";
 import RouteScrollReset from "@/components/common/RouteScrollReset";
+import SiteNavbar from "@/components/common/SiteNavbar";
+import SiteFooter from "@/components/common/SiteFooter";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -28,7 +30,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full bg-[var(--tl-surface)] font-sans text-[var(--tl-ink)]">
         <RouteScrollReset />
+        <SiteNavbar />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

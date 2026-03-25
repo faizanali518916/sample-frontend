@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SiteNavbar from "@/components/common/SiteNavbar";
 import { ArrowRight, Clock3, Mail, MapPin, PhoneCall } from "lucide-react";
 
 export const metadata = {
@@ -11,8 +10,6 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f4faff_0%,#ffffff_45%)] text-slate-900">
-      <SiteNavbar />
-
       <main>
         <section className="mx-auto w-full max-w-[1220px] px-4 pb-12 pt-16 lg:px-6">
           <p className="text-sm font-bold uppercase tracking-[0.16em] text-[var(--tl-primary)]">
