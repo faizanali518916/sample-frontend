@@ -403,7 +403,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative isolate overflow-hidden bg-white text-slate-900">
+    <div className="relative isolate overflow-clip bg-white text-slate-900">
       {isBooting && (
         <div className="fixed inset-0 z-[120] grid place-items-center bg-[radial-gradient(circle_at_20%_20%,#eff8ff,#dcecff_45%,#cde3f9_100%)]">
           <div className="absolute inset-0 surface-noise opacity-40" />

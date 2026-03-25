@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Menu, Search, ShoppingCart, X } from "lucide-react";
 
 const menuItems = [
@@ -20,6 +20,16 @@ const menuItems = [
   { label: "Schedule Appointment", href: "/#appointment" },
   { label: "Contact", href: "/contact" },
 ];
+
+const tapeItems = [
+  "Open 24/7 in Tampa",
+  "CAP Accredited",
+  "CLIA Certified",
+  "HIPAA Compliant",
+  "Results in 24-48 hours",
+];
+
+const tapeItemsExtended = [...tapeItems, ...tapeItems];
 
 function isActiveRoute(pathname, href) {
   if (href === "/") {
@@ -62,24 +72,33 @@ export default function SiteNavbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-all duration-500 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-500 ${
         isScrolled
-          ? "border-[#b6ceef]/90 bg-[rgba(217,232,255,0.95)] shadow-[0_16px_34px_-28px_rgba(8,14,26,0.85)] backdrop-blur-xl"
-          : "border-white/60 bg-[rgba(217,232,255,0.88)]"
+          ? "bg-[rgba(217,232,255,0.4)] backdrop-blur-md border-b border-white/20 shadow-sm"
+          : "bg-[rgb(217,232,255)] border-b border-transparent"
       }`}
     >
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-white/50">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-[var(--tl-primary-soft)] via-[var(--tl-primary)] to-[var(--tl-primary-strong)] transition-[width] duration-300"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
-      <div className="hidden border-b border-white/45 bg-white/35 xl:block">
-        <div className="mx-auto flex w-full max-w-[1360px] items-center justify-between px-6 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600">
-          <span>Open 24/7 in Tampa</span>
-          <span>No referral required</span>
-          <span>Most results in 24-48 hours</span>
+      <div className="hidden overflow-hidden border-b border-white/45 bg-gradient-to-r from-[var(--tl-primary)] to-[var(--tl-primary-strong)] xl:block">
+        <div className="marquee-right">
+          <div className="marquee-track-right-tape">
+            {[0, 1].map((groupIndex) => (
+              <div
+                key={`marquee-group-${groupIndex}`}
+                className="marquee-group flex gap-12 items-center"
+              >
+                {tapeItemsExtended.map((item, itemIndex) => (
+                  <Fragment key={`marquee-item-${groupIndex}-${itemIndex}`}>
+                    <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-white">
+                      {item}
+                    </span>
+                    <span className="text-white/60 text-xs" aria-hidden="true">
+                      •
+                    </span>
+                  </Fragment>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -209,6 +228,13 @@ export default function SiteNavbar() {
             ))}
           </ul>
         </div>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 h-[2px] bg-white/50 overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-[var(--tl-primary-soft)] via-[var(--tl-primary)] to-[var(--tl-primary-strong)] transition-[width] duration-300"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
     </header>
   );

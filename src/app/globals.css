@@ -152,10 +152,10 @@ body {
 
 @keyframes marquee-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(-50%);
   }
 }
 
@@ -200,6 +200,15 @@ body {
   width: max-content;
   animation: marquee-right 10s linear infinite;
   will-change: transform;
+}
+
+.marquee-track-right-tape {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 22s linear infinite;
+  will-change: transform;
+  gap: 1rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .marquee-group {
