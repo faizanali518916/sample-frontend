@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${montserrat.variable} ${manrope.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-[var(--tl-surface)] font-sans text-[var(--tl-ink)]">

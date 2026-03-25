@@ -64,13 +64,13 @@ export default function SiteNavbar() {
     <header
       className={`sticky top-0 z-50 border-b transition-all duration-500 ${
         isScrolled
-          ? "border-sky-200/90 bg-[rgba(218,233,252,0.96)] shadow-[0_12px_30px_-26px_rgba(16,80,124,0.85)] backdrop-blur-xl"
-          : "border-white/60 bg-[rgba(218,233,252,0.9)]"
+          ? "border-[#b6ceef]/90 bg-[rgba(217,232,255,0.95)] shadow-[0_16px_34px_-28px_rgba(8,14,26,0.85)] backdrop-blur-xl"
+          : "border-white/60 bg-[rgba(217,232,255,0.88)]"
       }`}
     >
       <div className="absolute inset-x-0 top-0 h-[2px] bg-white/50">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[var(--tl-primary)] via-cyan-300 to-[var(--tl-primary-strong)] transition-[width] duration-300"
+          className="h-full rounded-full bg-gradient-to-r from-[var(--tl-primary-soft)] via-[var(--tl-primary)] to-[var(--tl-primary-strong)] transition-[width] duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -156,7 +156,7 @@ export default function SiteNavbar() {
 
             <a
               href="tel:8139323741"
-              className="nav-pill-glow hidden rounded-full bg-gradient-to-r from-[#2f89d0] to-[#1f77be] px-4 py-2 text-sm font-extrabold text-white shadow-[0_14px_28px_-18px_rgba(15,83,140,0.9)] 2xl:inline-flex"
+              className="nav-pill-glow hidden rounded-full bg-gradient-to-r from-[var(--tl-primary)] via-[var(--tl-primary-strong)] to-[var(--tl-metallic-black)] px-4 py-2 text-sm font-extrabold text-white shadow-[0_14px_28px_-18px_rgba(5,7,13,0.85)] 2xl:inline-flex"
             >
               +1 (813) 932-3741
             </a>

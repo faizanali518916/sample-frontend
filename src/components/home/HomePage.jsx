@@ -128,6 +128,15 @@ const whyChooseFeatures = [
   },
 ];
 
+const whyChooseLeftTape = [...whyChooseFeatures, ...whyChooseFeatures];
+
+const whyChooseRightBase = [
+  ...whyChooseFeatures.slice(3),
+  ...whyChooseFeatures.slice(0, 3),
+];
+
+const whyChooseRightTape = [...whyChooseRightBase, ...whyChooseRightBase];
+
 const processSteps = [
   {
     image: "/images/calender2.png",
@@ -154,6 +163,11 @@ const certificationLogos = [
   "/images/image4.png",
   "/images/image3.png",
   "/images/logo_cola.png",
+];
+
+const certificationMarqueeLogos = [
+  ...certificationLogos,
+  ...certificationLogos,
 ];
 
 const reviews = [
@@ -243,6 +257,50 @@ function SectionHeading({ title, subtitle }) {
       </p>
       <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-[var(--tl-primary)]" />
     </div>
+  );
+}
+
+function WhyChooseFeatureCard({ feature, iconLeft = false }) {
+  return (
+    <article className="group flex items-start justify-between gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
+      {iconLeft ? (
+        <>
+          <Image
+            src={feature.icon}
+            alt="Feature icon"
+            width={54}
+            height={54}
+            className="h-12 w-12"
+          />
+          <div>
+            <h3 className="font-display text-base font-extrabold text-slate-900">
+              {feature.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {feature.description}
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
+            <h3 className="font-display text-base font-extrabold text-slate-900">
+              {feature.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {feature.description}
+            </p>
+          </div>
+          <Image
+            src={feature.icon}
+            alt="Feature icon"
+            width={54}
+            height={54}
+            className="h-12 w-12"
+          />
+        </>
+      )}
+    </article>
   );
 }
 
@@ -574,29 +632,28 @@ export default function HomePage() {
             />
 
             <div className="mt-14 hidden items-center gap-10 xl:grid xl:grid-cols-[1fr_340px_1fr]">
-              <div className="space-y-7">
-                {whyChooseFeatures.slice(0, 3).map((feature) => (
-                  <article
-                    key={feature.title}
-                    className="group flex items-start justify-between gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm transition hover:shadow-lg"
+              <div className="marquee-vertical h-[430px]">
+                <div className="marquee-vertical-track-down">
+                  <div className="marquee-vertical-group gap-7">
+                    {whyChooseLeftTape.map((feature, index) => (
+                      <WhyChooseFeatureCard
+                        key={`why-left-${feature.title}-${index}`}
+                        feature={feature}
+                      />
+                    ))}
+                  </div>
+                  <div
+                    className="marquee-vertical-group gap-7"
+                    aria-hidden="true"
                   >
-                    <div>
-                      <h3 className="font-display text-base font-extrabold text-slate-900">
-                        {feature.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                        {feature.description}
-                      </p>
-                    </div>
-                    <Image
-                      src={feature.icon}
-                      alt="Feature icon"
-                      width={54}
-                      height={54}
-                      className="h-12 w-12"
-                    />
-                  </article>
-                ))}
+                    {whyChooseLeftTape.map((feature, index) => (
+                      <WhyChooseFeatureCard
+                        key={`why-left-dup-${feature.title}-${index}`}
+                        feature={feature}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="relative mx-auto h-[420px] w-full max-w-[320px]">
@@ -610,29 +667,30 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="space-y-7">
-                {whyChooseFeatures.slice(3).map((feature) => (
-                  <article
-                    key={feature.title}
-                    className="group flex items-start justify-between gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm transition hover:shadow-lg"
+              <div className="marquee-vertical h-[430px]">
+                <div className="marquee-vertical-track-up">
+                  <div className="marquee-vertical-group gap-7">
+                    {whyChooseRightTape.map((feature, index) => (
+                      <WhyChooseFeatureCard
+                        key={`why-right-${feature.title}-${index}`}
+                        feature={feature}
+                        iconLeft
+                      />
+                    ))}
+                  </div>
+                  <div
+                    className="marquee-vertical-group gap-7"
+                    aria-hidden="true"
                   >
-                    <Image
-                      src={feature.icon}
-                      alt="Feature icon"
-                      width={54}
-                      height={54}
-                      className="h-12 w-12"
-                    />
-                    <div>
-                      <h3 className="font-display text-base font-extrabold text-slate-900">
-                        {feature.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </article>
-                ))}
+                    {whyChooseRightTape.map((feature, index) => (
+                      <WhyChooseFeatureCard
+                        key={`why-right-dup-${feature.title}-${index}`}
+                        feature={feature}
+                        iconLeft
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -719,139 +777,203 @@ export default function HomePage() {
           data-reveal-delay="150"
           className="scroll-reveal bg-[#f8fbff] py-24"
         >
-          <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
-            <div className="flex flex-wrap items-center justify-center gap-6 border-b border-sky-100 pb-10">
-              {certificationLogos.map((logo) => (
-                <div
-                  key={logo}
-                  className="rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
-                >
-                  <Image
-                    src={logo}
-                    alt="Certification"
-                    width={160}
-                    height={70}
-                    className="h-[50px] w-auto"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 text-center">
-              <h2 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
-                Hear What Our Happy Patients Have to Say
-              </h2>
-              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[var(--tl-primary)]" />
-            </div>
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-[280px_1fr]">
-              <aside className="rounded-3xl border border-sky-100 bg-white p-6 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src="/images/DSC09527-Edit.jpg"
-                    alt="24-7 Labs Memorial Hwy"
-                    width={70}
-                    height={70}
-                    className="h-16 w-16 rounded-xl object-cover"
-                  />
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">
-                      24-7 Labs Memorial Hwy
-                    </p>
-                    <div className="mt-1 flex items-center gap-1 text-amber-500">
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                    </div>
-                    <p className="mt-1 text-xs text-slate-500">
-                      294 Google reviews
-                    </p>
+          <div className="mx-auto w-full max-w-[1400px] px-4 lg:px-6">
+            <div className="mx-auto w-full max-w-[1360px]">
+              <div className="marquee-right border-b border-sky-100 pb-10">
+                <div className="marquee-track-right-fast gap-6">
+                  <div className="marquee-group items-center gap-6">
+                    {certificationMarqueeLogos.map((logo, index) => (
+                      <div
+                        key={`primary-${logo}-${index}`}
+                        className="rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
+                      >
+                        <Image
+                          src={logo}
+                          alt="Certification"
+                          width={160}
+                          height={70}
+                          className="h-[50px] w-auto"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div
+                    className="marquee-group items-center gap-6"
+                    aria-hidden="true"
+                  >
+                    {certificationMarqueeLogos.map((logo, index) => (
+                      <div
+                        key={`duplicate-${logo}-${index}`}
+                        className="rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
+                      >
+                        <Image
+                          src={logo}
+                          alt=""
+                          width={160}
+                          height={70}
+                          className="h-[50px] w-auto"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="mt-5 w-full rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
-                >
-                  Write a review
-                </button>
-              </aside>
+              </div>
 
-              <div className="space-y-4">
-                <div className="hidden gap-4 md:grid md:grid-cols-3">
-                  {reviews.map((review) => (
-                    <article
-                      key={review.name}
-                      className="rounded-3xl border border-sky-100 bg-white p-5 shadow-sm"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500 text-sm font-bold text-white">
-                            {review.avatar}
-                          </div>
-                          <div>
-                            <h3 className="text-sm font-bold text-slate-900">
-                              {review.name}
-                            </h3>
-                            <p className="text-xs text-slate-500">
-                              {review.date}
+              <div className="mt-12 text-center">
+                <h2 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
+                  Hear What Our Happy Patients Have to Say
+                </h2>
+                <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[var(--tl-primary)]" />
+              </div>
+
+              <div className="mt-10 grid gap-6 lg:grid-cols-[280px_1fr]">
+                <aside className="rounded-3xl border border-sky-100 bg-white p-6 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src="/images/DSC09527-Edit.jpg"
+                      alt="24-7 Labs Memorial Hwy"
+                      width={70}
+                      height={70}
+                      className="h-16 w-16 rounded-xl object-cover"
+                    />
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">
+                        24-7 Labs Memorial Hwy
+                      </p>
+                      <div className="mt-1 flex items-center gap-1 text-amber-500">
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">
+                        294 Google reviews
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    className="mt-5 w-full rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+                  >
+                    Write a review
+                  </button>
+                </aside>
+
+                <div className="min-w-0 space-y-4">
+                  <div className="marquee-right hidden min-w-0 md:block">
+                    <div className="marquee-track-right gap-4">
+                      <div className="marquee-group gap-4">
+                        {reviews.map((review) => (
+                          <article
+                            key={`primary-${review.name}`}
+                            className="w-[340px] shrink-0 rounded-3xl border border-sky-100 bg-white p-5 shadow-sm"
+                          >
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-3">
+                                <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500 text-sm font-bold text-white">
+                                  {review.avatar}
+                                </div>
+                                <div>
+                                  <h3 className="text-sm font-bold text-slate-900">
+                                    {review.name}
+                                  </h3>
+                                  <p className="text-xs text-slate-500">
+                                    {review.date}
+                                  </p>
+                                </div>
+                              </div>
+                              <BadgeCheck className="h-4 w-4 text-emerald-500" />
+                            </div>
+                            <div className="mt-4 flex items-center gap-1 text-amber-500">
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                            </div>
+                            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                              {review.text}
                             </p>
-                          </div>
-                        </div>
-                        <BadgeCheck className="h-4 w-4 text-emerald-500" />
+                          </article>
+                        ))}
                       </div>
-                      <div className="mt-4 flex items-center gap-1 text-amber-500">
-                        <Star className="h-3.5 w-3.5 fill-current" />
-                        <Star className="h-3.5 w-3.5 fill-current" />
-                        <Star className="h-3.5 w-3.5 fill-current" />
-                        <Star className="h-3.5 w-3.5 fill-current" />
-                        <Star className="h-3.5 w-3.5 fill-current" />
+                      <div className="marquee-group gap-4" aria-hidden="true">
+                        {reviews.map((review) => (
+                          <article
+                            key={`duplicate-${review.name}`}
+                            className="w-[340px] shrink-0 rounded-3xl border border-sky-100 bg-white p-5 shadow-sm"
+                          >
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-3">
+                                <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-500 text-sm font-bold text-white">
+                                  {review.avatar}
+                                </div>
+                                <div>
+                                  <h3 className="text-sm font-bold text-slate-900">
+                                    {review.name}
+                                  </h3>
+                                  <p className="text-xs text-slate-500">
+                                    {review.date}
+                                  </p>
+                                </div>
+                              </div>
+                              <BadgeCheck className="h-4 w-4 text-emerald-500" />
+                            </div>
+                            <div className="mt-4 flex items-center gap-1 text-amber-500">
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                              <Star className="h-3.5 w-3.5 fill-current" />
+                            </div>
+                            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                              {review.text}
+                            </p>
+                          </article>
+                        ))}
                       </div>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                        {review.text}
-                      </p>
-                    </article>
-                  ))}
-                </div>
-
-                <div className="rounded-3xl border border-sky-100 bg-white p-5 shadow-sm md:hidden">
-                  <div className="flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={prevReview}
-                      aria-label="Previous review"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </button>
-                    <div className="text-center">
-                      <h3 className="text-sm font-bold text-slate-900">
-                        {reviews[activeReview].name}
-                      </h3>
-                      <p className="text-xs text-slate-500">
-                        {reviews[activeReview].date}
-                      </p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={nextReview}
-                      aria-label="Next review"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </button>
                   </div>
-                  <div className="mt-4 flex justify-center gap-1 text-amber-500">
-                    <Star className="h-3.5 w-3.5 fill-current" />
-                    <Star className="h-3.5 w-3.5 fill-current" />
-                    <Star className="h-3.5 w-3.5 fill-current" />
-                    <Star className="h-3.5 w-3.5 fill-current" />
-                    <Star className="h-3.5 w-3.5 fill-current" />
+
+                  <div className="rounded-3xl border border-sky-100 bg-white p-5 shadow-sm md:hidden">
+                    <div className="flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={prevReview}
+                        aria-label="Previous review"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <div className="text-center">
+                        <h3 className="text-sm font-bold text-slate-900">
+                          {reviews[activeReview].name}
+                        </h3>
+                        <p className="text-xs text-slate-500">
+                          {reviews[activeReview].date}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={nextReview}
+                        aria-label="Next review"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                    </div>
+                    <div className="mt-4 flex justify-center gap-1 text-amber-500">
+                      <Star className="h-3.5 w-3.5 fill-current" />
+                      <Star className="h-3.5 w-3.5 fill-current" />
+                      <Star className="h-3.5 w-3.5 fill-current" />
+                      <Star className="h-3.5 w-3.5 fill-current" />
+                      <Star className="h-3.5 w-3.5 fill-current" />
+                    </div>
+                    <p className="mt-3 text-center text-sm text-slate-600">
+                      {reviews[activeReview].text}
+                    </p>
                   </div>
-                  <p className="mt-3 text-center text-sm text-slate-600">
-                    {reviews[activeReview].text}
-                  </p>
                 </div>
               </div>
             </div>

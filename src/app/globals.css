@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --tl-primary: #267fc7;
-  --tl-primary-strong: #145790;
-  --tl-accent: #dae9fc;
-  --tl-ink: #0f2133;
+  --tl-primary: #0356c5;
+  --tl-primary-strong: #02060e;
+  --tl-accent: #d8e6ff;
+  --tl-ink: #02060e;
+  --tl-metallic-black: #02060e;
+  --tl-primary-soft: #4e88db;
   --tl-surface: #ffffff;
 }
 
@@ -22,19 +24,20 @@ body {
   min-height: 100%;
   color: var(--tl-ink);
   background:
-    radial-gradient(circle at 5% 2%, rgba(38, 127, 199, 0.12), transparent 32%),
-    radial-gradient(
-      circle at 95% 0%,
-      rgba(56, 189, 248, 0.14),
-      transparent 36%
-    ),
+    radial-gradient(circle at 6% 2%, rgba(3, 86, 197, 0.2), transparent 34%),
+    radial-gradient(circle at 95% 0%, rgba(3, 86, 197, 0.14), transparent 38%),
+    linear-gradient(165deg, rgba(2, 6, 14, 0.04), rgba(3, 86, 197, 0.02)),
     var(--tl-surface);
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
   color: #fff;
-  background: color-mix(in srgb, var(--tl-primary) 85%, #0f2133);
+  background: color-mix(
+    in srgb,
+    var(--tl-primary) 85%,
+    var(--tl-metallic-black)
+  );
 }
 
 .font-display {
@@ -43,7 +46,7 @@ body {
 
 .surface-noise {
   background-image: radial-gradient(
-    rgba(38, 127, 199, 0.08) 0.65px,
+    rgba(3, 86, 197, 0.08) 0.65px,
     transparent 0.65px
   );
   background-size: 20px 20px;
@@ -102,10 +105,10 @@ body {
 @keyframes nav-pill-glow {
   0%,
   100% {
-    box-shadow: 0 14px 28px -18px rgba(15, 83, 140, 0.9);
+    box-shadow: 0 14px 28px -18px rgba(2, 6, 14, 0.86);
   }
   50% {
-    box-shadow: 0 18px 34px -16px rgba(15, 83, 140, 0.95);
+    box-shadow: 0 18px 34px -16px rgba(3, 86, 197, 0.6);
   }
 }
 
@@ -145,4 +148,100 @@ body {
 
 .nav-pill-glow {
   animation: nav-pill-glow 2.6s ease-in-out infinite;
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marquee-vertical-down {
+  0% {
+    transform: translate3d(0, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0%, 0);
+  }
+}
+
+@keyframes marquee-vertical-up {
+  0% {
+    transform: translate3d(0, 0%, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.marquee-right {
+  overflow: hidden;
+}
+
+.marquee-track-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 18s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-right-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 24s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-right-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 10s linear infinite;
+  will-change: transform;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.marquee-vertical {
+  overflow: hidden;
+}
+
+.marquee-vertical-track-down,
+.marquee-vertical-track-up {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.marquee-vertical-track-down {
+  animation: marquee-vertical-down 24s linear infinite;
+}
+
+.marquee-vertical-track-up {
+  animation: marquee-vertical-up 24s linear infinite;
+}
+
+.marquee-vertical-group {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  flex-direction: column;
+  padding-bottom: 1.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track-right,
+  .marquee-track-right-slow,
+  .marquee-track-right-fast,
+  .marquee-vertical-track-down,
+  .marquee-vertical-track-up {
+    animation: none;
+  }
 }
