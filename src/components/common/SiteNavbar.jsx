@@ -9,6 +9,7 @@ import { Menu, Search, ShoppingCart, X } from "lucide-react";
 const menuItems = [
   { label: "Home", href: "/" },
   { label: "About 24-7 Labs", href: "/about" },
+  { label: "Trust & Standards", href: "/trust-standards" },
   { label: "Testing Services", href: "/#services" },
   { label: "COVID-19", href: "/#services" },
   {
@@ -22,11 +23,11 @@ const menuItems = [
 ];
 
 const tapeItems = [
-  "Open 24/7 in Tampa",
-  "CAP Accredited",
-  "CLIA Certified",
-  "HIPAA Compliant",
-  "Results in 24-48 hours",
+  { label: "Open 24/7 in Tampa", href: "/trust-standards" },
+  { label: "CLIA Certified", href: "/trust-standards#clia" },
+  { label: "CAP Accredited", href: "/trust-standards#cap" },
+  { label: "HIPAA Compliant", href: "/trust-standards#hipaa" },
+  { label: "Results in 24-48 hours", href: "/trust-standards" },
 ];
 
 const tapeItemsExtended = [...tapeItems, ...tapeItems];
@@ -42,6 +43,10 @@ function isActiveRoute(pathname, href) {
 
   if (href === "/contact") {
     return pathname === "/contact";
+  }
+
+  if (href === "/trust-standards") {
+    return pathname === "/trust-standards";
   }
 
   return false;
@@ -88,9 +93,12 @@ export default function SiteNavbar() {
               >
                 {tapeItemsExtended.map((item, itemIndex) => (
                   <Fragment key={`marquee-item-${groupIndex}-${itemIndex}`}>
-                    <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-white">
-                      {item}
-                    </span>
+                    <Link
+                      href={item.href}
+                      className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-white transition hover:text-sky-200"
+                    >
+                      {item.label}
+                    </Link>
                     <span className="text-white/60 text-xs" aria-hidden="true">
                       •
                     </span>
@@ -110,7 +118,7 @@ export default function SiteNavbar() {
               alt="24-7 Labs"
               width={214}
               height={52}
-              className="h-11 w-auto"
+              className="h-9 w-auto sm:h-11"
               priority
             />
           </Link>
@@ -156,10 +164,10 @@ export default function SiteNavbar() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+              className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:inline-flex"
               aria-label="Open cart"
             >
               <ShoppingCart className="h-4.5 w-4.5" />
@@ -167,7 +175,7 @@ export default function SiteNavbar() {
 
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+              className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:inline-flex"
               aria-label="Search"
             >
               <Search className="h-4.5 w-4.5" />
@@ -202,7 +210,7 @@ export default function SiteNavbar() {
               : "max-h-0 opacity-0"
           }`}
         >
-          <ul className="grid gap-1 rounded-2xl border border-white/75 bg-white/85 p-3">
+          <ul className="grid max-h-[70vh] gap-1 overflow-y-auto rounded-2xl border border-white/75 bg-white/85 p-3">
             {menuItems.map((item) => (
               <li key={`mobile-${item.label}`}>
                 {item.external ? (

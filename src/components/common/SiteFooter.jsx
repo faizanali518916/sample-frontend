@@ -2,14 +2,36 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Facebook,
+  FlaskConical,
+  Info,
   Instagram,
+  Microscope,
   Linkedin,
   Mail,
   MapPin,
   PhoneCall,
+  ShieldCheck,
   Twitter,
   Youtube,
 } from "lucide-react";
+
+const trustFooterItems = [
+  {
+    label: "CLIA Certified",
+    href: "/trust-standards#clia",
+    icon: FlaskConical,
+  },
+  {
+    label: "CAP Accredited",
+    href: "/trust-standards#cap",
+    icon: Microscope,
+  },
+  {
+    label: "HIPAA Compliant",
+    href: "/trust-standards#hipaa",
+    icon: ShieldCheck,
+  },
+];
 
 export default function SiteFooter() {
   return (
@@ -18,6 +40,27 @@ export default function SiteFooter() {
       className="relative overflow-hidden bg-[#082842] text-slate-100"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(38,127,199,0.35),transparent_45%)]" />
+      <div className="relative mx-auto w-full max-w-[1240px] px-4 pt-10 lg:px-6">
+        <div className="rounded-[30px] border border-sky-300/25 bg-[linear-gradient(135deg,#0d3761_0%,#0b3156_50%,#082842_100%)] p-5 shadow-[0_28px_60px_-45px_rgba(6,12,20,0.9)] md:p-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 text-center lg:gap-x-20">
+            {trustFooterItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group inline-flex items-center gap-2.5 px-1 text-[12px] font-extrabold uppercase tracking-[0.13em] text-sky-100 transition hover:text-white"
+                >
+                  <Icon className="h-4 w-4 text-cyan-300 transition group-hover:text-cyan-200" />
+                  <span>{item.label}</span>
+                  <Info className="h-3.5 w-3.5 text-cyan-300/85 transition group-hover:text-cyan-200" />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
       <div className="relative mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-6">
         <div>
           <Image
@@ -99,6 +142,14 @@ export default function SiteFooter() {
             Resources
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-sky-100/90">
+            <li>
+              <Link
+                href="/trust-standards"
+                className="transition hover:text-white"
+              >
+                Trust &amp; Standards
+              </Link>
+            </li>
             <li>
               <Link href="#" className="transition hover:text-white">
                 Business Opportunities

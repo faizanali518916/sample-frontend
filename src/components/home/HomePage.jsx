@@ -434,21 +434,21 @@ export default function HomePage() {
         <section
           id="home"
           data-reveal
-          className="scroll-reveal relative overflow-hidden bg-[linear-gradient(140deg,#d8ebff_0%,#f3f9ff_40%,#c5e0fb_100%)] pb-24 pt-12"
+          className="scroll-reveal relative overflow-hidden bg-[linear-gradient(140deg,#d8ebff_0%,#f3f9ff_40%,#c5e0fb_100%)] pb-16 pt-10 md:pb-24 md:pt-12"
         >
           <div className="pointer-events-none absolute inset-0">
             <div className="animate-drift absolute -left-24 top-12 h-72 w-72 rounded-full bg-[var(--tl-primary)]/20 blur-3xl" />
             <div className="animate-drift absolute -right-10 bottom-0 h-80 w-80 rounded-full bg-cyan-300/20 blur-3xl" />
           </div>
 
-          <div className="relative mx-auto grid w-full max-w-[1240px] gap-12 px-4 lg:grid-cols-[1.05fr_0.95fr] lg:px-6">
+          <div className="relative mx-auto grid w-full max-w-[1240px] gap-8 px-4 md:gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-6">
             <div className="space-y-7">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--tl-primary-strong)]">
                 <Clock3 className="h-4 w-4" />
                 Open 24/7 for priority diagnostics
               </span>
 
-              <h1 className="font-display text-4xl font-black leading-tight tracking-tight text-slate-900 md:text-5xl xl:text-6xl">
+              <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl">
                 24-7 Diagnostics Testing for
                 <span className="mt-1 block text-[var(--tl-primary)]">
                   STDs, Drugs, DNA, and COVID.
@@ -488,21 +488,21 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="#appointment"
-                  className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:bg-[var(--tl-primary-strong)]"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:bg-[var(--tl-primary-strong)] sm:w-auto"
                 >
                   Schedule Appointment
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
                   href="tel:8139323741"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--tl-primary)]/50 bg-white/90 px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:bg-white"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--tl-primary)]/50 bg-white/90 px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:bg-white sm:w-auto"
                 >
                   <PhoneCall className="h-4 w-4" />
                   Call Us 813 932 3741
                 </a>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-slate-50/80 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-slate-50/80 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white sm:w-auto"
                 >
                   Locations
                 </Link>
@@ -530,8 +530,8 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="mt-4 flex items-center justify-between rounded-xl bg-white/90 px-4 py-3">
-                  <p className="text-sm font-semibold text-slate-700">
+                <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-white/90 px-3 py-2.5 sm:mt-4 sm:px-4 sm:py-3">
+                  <p className="min-w-0 text-xs font-semibold text-slate-700 sm:text-sm">
                     Trusted by Tampa families and providers
                   </p>
                   <div className="flex items-center gap-2">
@@ -561,7 +561,7 @@ export default function HomePage() {
           id="services"
           data-reveal
           data-reveal-delay="70"
-          className="scroll-reveal relative bg-white py-24"
+          className="scroll-reveal relative bg-white py-16 md:py-24"
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
@@ -569,7 +569,7 @@ export default function HomePage() {
               subtitle="From wellness panels to targeted diagnostics, our broad test menu helps you move quickly from uncertainty to clarity with dependable turnaround and private care."
             />
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {serviceCards.map((service, index) => (
                 <Link
                   key={service.title}
@@ -614,7 +614,7 @@ export default function HomePage() {
           id="about"
           data-reveal
           data-reveal-delay="100"
-          className="scroll-reveal relative overflow-hidden bg-[#f0f7ff] py-24"
+          className="scroll-reveal relative overflow-hidden bg-[#f0f7ff] py-16 md:py-24"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(38,127,199,0.18),transparent_55%)]" />
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
@@ -728,7 +728,7 @@ export default function HomePage() {
         <section
           data-reveal
           data-reveal-delay="130"
-          className="scroll-reveal bg-white py-24"
+          className="scroll-reveal bg-white py-16 md:py-24"
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
@@ -736,7 +736,7 @@ export default function HomePage() {
               subtitle="We designed our appointment process to be fast, discreet, and straightforward. Use our online scheduling tool to book an appointment in minutes."
             />
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {processSteps.map((step) => (
                 <article
                   key={step.title}
@@ -767,7 +767,7 @@ export default function HomePage() {
         <section
           data-reveal
           data-reveal-delay="150"
-          className="scroll-reveal bg-[#f8fbff] py-24"
+          className="scroll-reveal bg-[#f8fbff] py-16 md:py-24"
         >
           <div className="mx-auto w-full max-w-[1400px] px-4 lg:px-6">
             <div className="mx-auto w-full max-w-[1360px]">
@@ -859,7 +859,7 @@ export default function HomePage() {
                         {reviews.map((review) => (
                           <article
                             key={`primary-${review.name}`}
-                            className="w-[340px] shrink-0 rounded-3xl border border-sky-100 bg-white p-5 shadow-sm"
+                            className="w-[300px] shrink-0 rounded-3xl border border-sky-100 bg-white p-5 shadow-sm lg:w-[340px]"
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
@@ -894,7 +894,7 @@ export default function HomePage() {
                         {reviews.map((review) => (
                           <article
                             key={`duplicate-${review.name}`}
-                            className="w-[340px] shrink-0 rounded-3xl border border-sky-100 bg-white p-5 shadow-sm"
+                            className="w-[300px] shrink-0 rounded-3xl border border-sky-100 bg-white p-5 shadow-sm lg:w-[340px]"
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
@@ -976,7 +976,7 @@ export default function HomePage() {
           id="appointment"
           data-reveal
           data-reveal-delay="170"
-          className="scroll-reveal relative isolate overflow-hidden py-24"
+          className="scroll-reveal relative isolate overflow-hidden py-16 md:py-24"
         >
           <Image
             src="/images/bannerimg-back.jpg"
@@ -989,7 +989,7 @@ export default function HomePage() {
 
           <div className="relative mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
-              <div className="rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur">
+              <div className="rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur sm:p-8">
                 <h2 className="font-display text-3xl font-extrabold text-white md:text-4xl">
                   Schedule an Appointment for Testing in Tampa Today
                 </h2>
@@ -1019,7 +1019,7 @@ export default function HomePage() {
               </div>
 
               <form
-                className="rounded-3xl border border-white/15 bg-white/95 p-6 shadow-2xl shadow-black/20"
+                className="rounded-3xl border border-white/15 bg-white/95 p-5 shadow-2xl shadow-black/20 sm:p-6"
                 onSubmit={(e) => e.preventDefault()}
               >
                 <div className="grid gap-4 md:grid-cols-2">
@@ -1072,7 +1072,7 @@ export default function HomePage() {
                   </label>
                 </div>
 
-                <div className="mt-5 text-right">
+                <div className="mt-5 text-center sm:text-right">
                   <button
                     type="submit"
                     className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-[var(--tl-primary-strong)]"
@@ -1089,7 +1089,7 @@ export default function HomePage() {
         <section
           data-reveal
           data-reveal-delay="190"
-          className="scroll-reveal h-[450px] w-full"
+          className="scroll-reveal h-[320px] w-full sm:h-[380px] md:h-[450px]"
         >
           <iframe
             title="24-7 Labs Memorial Hwy"
@@ -1105,7 +1105,7 @@ export default function HomePage() {
           id="forms"
           data-reveal
           data-reveal-delay="220"
-          className="scroll-reveal bg-white py-24"
+          className="scroll-reveal bg-white py-16 md:py-24"
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
@@ -1113,7 +1113,7 @@ export default function HomePage() {
               subtitle="Answers to common questions about appointments, privacy, testing process, and turnaround times."
             />
 
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div className="mt-10 grid gap-4 lg:grid-cols-2">
               {[faqLeft, faqRight].map((list, columnIndex) => (
                 <div key={columnIndex} className="space-y-3">
                   {list.map((item) => (
@@ -1123,7 +1123,7 @@ export default function HomePage() {
                     >
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-bold text-slate-800">
                         <span>{item.question}</span>
-                        <span className="grid h-6 w-6 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 transition group-open:rotate-45">
+                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 leading-none transition group-open:rotate-45">
                           +
                         </span>
                       </summary>

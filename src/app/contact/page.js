@@ -11,11 +11,11 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f4faff_0%,#ffffff_45%)] text-slate-900">
       <main>
-        <section className="mx-auto w-full max-w-[1220px] px-4 pb-12 pt-16 lg:px-6">
+        <section className="mx-auto w-full max-w-[1220px] px-4 pb-10 pt-12 sm:pt-16 lg:px-6">
           <p className="text-sm font-bold uppercase tracking-[0.16em] text-[var(--tl-primary)]">
             Contact 24-7 Labs
           </p>
-          <h1 className="mt-3 font-display text-4xl font-black leading-tight md:text-5xl">
+          <h1 className="mt-3 font-display text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
             We&apos;re here to help you book, test, and get answers fast.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 md:text-lg">
@@ -106,7 +106,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)]"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)] sm:w-auto"
             >
               Submit
               <ArrowRight className="h-4 w-4" />

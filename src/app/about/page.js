@@ -145,11 +145,11 @@ export default function AboutPage() {
 
         <section className="py-14">
           <div className="mx-auto w-full max-w-[1220px] px-4 lg:px-6">
-            <div className="mb-8 flex items-end justify-between gap-4">
+            <div className="mb-8 flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-end sm:gap-4">
               <h2 className="font-display text-3xl font-extrabold text-[var(--tl-metallic-black)] md:text-4xl">
                 Our Management Team
               </h2>
-              <p className="text-sm font-semibold text-[var(--tl-primary-strong)] md:text-base">
+              <p className="text-sm font-semibold text-[var(--tl-primary-strong)] md:text-base sm:text-right">
                 The best testing services, led by experienced professionals.
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function AboutPage() {
                     alt="Marley Roldan"
                     width={210}
                     height={210}
-                    className="h-48 w-48 rounded-2xl object-cover"
+                    className="h-44 w-44 rounded-2xl object-cover sm:h-48 sm:w-48"
                   />
                   <div>
                     <h3 className="font-display text-2xl font-extrabold text-[var(--tl-metallic-black)]">
@@ -189,7 +189,7 @@ export default function AboutPage() {
                     alt="Dr. Rey Linares"
                     width={210}
                     height={210}
-                    className="h-48 w-48 rounded-2xl object-cover"
+                    className="h-44 w-44 rounded-2xl object-cover sm:h-48 sm:w-48"
                   />
                   <div>
                     <h3 className="font-display text-2xl font-extrabold text-[var(--tl-metallic-black)]">
