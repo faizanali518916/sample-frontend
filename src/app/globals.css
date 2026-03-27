@@ -145,6 +145,28 @@ body {
   }
 }
 
+@keyframes gradient-border-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.how-it-works-gradient-border {
+  background-image: linear-gradient(120deg, #0f4e8a, #35b6ff, #8de1ff, #0f4e8a);
+  background-position: 0% 50%;
+  background-size: 220% 220%;
+}
+
+.how-it-works-gradient-border:hover {
+  animation: gradient-border-pan 1.8s linear infinite;
+}
+
 .scroll-reveal {
   opacity: 0;
   transform: translate3d(0, 26px, 0);
@@ -192,6 +214,15 @@ body {
   }
 }
 
+@keyframes marquee-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @keyframes marquee-vertical-down {
   0% {
     transform: translate3d(0, -50%, 0);
@@ -218,6 +249,13 @@ body {
   display: flex;
   width: max-content;
   animation: marquee-right 18s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-left-to-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-left-to-right 18s linear infinite;
   will-change: transform;
 }
 
@@ -279,7 +317,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .how-it-works-gradient-border:hover,
   .marquee-track-right,
+  .marquee-track-left-to-right,
   .marquee-track-right-slow,
   .marquee-track-right-fast,
   .marquee-vertical-track-down,

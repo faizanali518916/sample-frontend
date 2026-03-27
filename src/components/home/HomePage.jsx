@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   BadgeCheck,
@@ -13,232 +14,10 @@ import {
   Mail,
   MapPin,
   PhoneCall,
+  Sparkles,
   Star,
 } from "lucide-react";
-
-const heroSlides = [
-  { image: "/images/bannerSlider/heroimg1.png", alt: "Laboratory team" },
-  {
-    image: "/images/bannerSlider/heroimg2.png",
-    alt: "Healthcare consultation",
-  },
-  { image: "/images/bannerSlider/heroimg3.png", alt: "Testing service sample" },
-  {
-    image: "/images/bannerSlider/heroimg4.png",
-    alt: "24-7 Labs testing environment",
-  },
-];
-
-const serviceCards = [
-  {
-    icon: "/images/test-tube3.png",
-    title: "Drug Screening Tests",
-    description:
-      "At 24-7 Labs, we offer individual, five, and ten-panel drug screening tests. We also provide DOT and employer testing services. You can expect results within 24-48 hours.",
-    href: "#",
-  },
-  {
-    icon: "/images/biotechnology3.png",
-    title: "DNA Testing",
-    description:
-      "Our DNA tests test for maternity, paternity, grand-paternity, and siblingship. You can use the test results for legal, informational, and immigration purposes. Most lab results are provided within 72 hours.",
-    href: "#",
-  },
-  {
-    icon: "/images/sexual-transmitted-disease3.png",
-    title: "STD Testing",
-    description:
-      "We can test for all common STDs, including herpes, gonorrhea, and chlamydia. Protect yourself and your partners from STDs. Get peace of mind knowing you are taking care of your health by getting your STD test results.",
-    href: "#",
-  },
-  {
-    icon: "/images/test-tube3.png",
-    title: "Covid Tests",
-    description:
-      "We offer COVID-19 RT-PCR the same day and the next day. Our tests are the quickest way to get results before you need to travel. Protect yourself and your loved ones while keeping your travel plans intact.",
-    href: "#",
-  },
-  {
-    icon: "/images/test-tube3.png",
-    title: "Routine Health Testing",
-    description:
-      "We also provide routine health tests for your convenience. These tests include diabetes, cancer panels, thyroid checks, and heart health. 24-7 Labs also offers hormone and allergy testing.",
-    href: "#",
-  },
-  {
-    icon: "/images/diabetes3.png",
-    title: "Allergy Testing",
-    description:
-      "Did you know that more than 50 million people in the United States are affected by allergies? It is time to find out what is making you miserable every day, and get relief.",
-    href: "#",
-  },
-  {
-    icon: "/images/heart-rate3-1.png",
-    title: "Heart Testing",
-    description:
-      "Cardiovascular disease is known to be the leading cause of death in the United States. The best way to combat heart disease is by being proactive and opting for regular testing.",
-    href: "#",
-  },
-  {
-    icon: "/images/hormone-therapy3.png",
-    title: "Hormone Testing",
-    description:
-      "Could you be experiencing hormonal imbalances? Mood fluctuations, weight gain, lethargy, and reduced sexual desire can all be signals. Our hormone tests can help identify the root cause.",
-    href: "#",
-  },
-];
-
-const whyChooseFeatures = [
-  {
-    title: "AFFORDABLE & HSA ACCEPTED",
-    description: "Cost effective, quick and accurate results on every test.",
-    icon: "/images/Assetnew-2.png",
-  },
-  {
-    title: "ROUND THE CLOCK",
-    description: "Operate 24/7. Day appointments available.",
-    icon: "/images/Assetnew-1.png",
-  },
-  {
-    title: "DISCRETE",
-    description: "100% confidential. No insurance or doctor script required.",
-    icon: "/images/Assetnew-3.png",
-  },
-  {
-    title: "PRESCRIPTION FOR POSITIVE RESULTS",
-    description:
-      "Prescription for positive results from expert physicians and doctors.",
-    icon: "/images/Assetnew-4.png",
-  },
-  {
-    title: "QUICK RESULTS",
-    description: "Results in 24-48 hours for almost every test.",
-    icon: "/images/Assetnew-5.png",
-  },
-  {
-    title: "ONE STOP MARKETPLACE",
-    description: "One stop shop health testing marketplace.",
-    icon: "/images/Assetnew-6-1.png",
-  },
-];
-
-const whyChooseLeftTape = [...whyChooseFeatures, ...whyChooseFeatures];
-
-const whyChooseRightBase = [
-  ...whyChooseFeatures.slice(3),
-  ...whyChooseFeatures.slice(0, 3),
-];
-
-const whyChooseRightTape = [...whyChooseRightBase, ...whyChooseRightBase];
-
-const processSteps = [
-  {
-    image: "/images/calender2.png",
-    title: "Step One: Select Your Date and Time",
-    description: "Choose a date and time that fits your schedule.",
-  },
-  {
-    image: "/images/location-gredient-1.png",
-    title: "Step Two: Choose the Location",
-    description:
-      "Book an appointment at our Tampa, Temple Terrace, or New Port Richey locations.",
-  },
-  {
-    image: "/images/get-started.png",
-    title: "Step Three: Pick a Test",
-    description:
-      "List which test you want to schedule along with any observations or symptoms you are experiencing.",
-  },
-];
-
-const certificationLogos = [
-  "/images/image2.png",
-  "/images/image5.png",
-  "/images/image4.png",
-  "/images/image3.png",
-  "/images/logo_cola.png",
-];
-
-const certificationMarqueeLogos = [
-  ...certificationLogos,
-  ...certificationLogos,
-];
-
-const reviews = [
-  {
-    avatar: "N",
-    name: "Neraida Fernandez",
-    date: "2021-03-17",
-    text: "Personas muy amables y muy buenos precios... lugar fantastico.",
-  },
-  {
-    avatar: "S",
-    name: "Solanch Coca",
-    date: "2021-03-10",
-    text: "Recomiendo este lugar rapido y asequible, 100% buena atencion encantada.",
-  },
-  {
-    avatar: "C",
-    name: "Carlos Harrell",
-    date: "2021-03-08",
-    text: "I recommend this clinic, they take real good care of you.",
-  },
-];
-
-const faqLeft = [
-  {
-    question: "How to book an appointment with 24-7 Labs?",
-    answer:
-      "Fill the form at https://24-7labs.com/schedule-appointment/ and book your appointment easily. 24-7 Labs also welcomes walk-in testing.",
-  },
-  {
-    question: "Is there a consultancy facility available?",
-    answer:
-      "You can book consultation service from the Testing Services tab on the website or directly at https://24-7labs.com/product/booking-consultation/.",
-  },
-  {
-    question: "Which home kits are you providing?",
-    answer:
-      "At-home chlamydia, herpes, COVID, and HIV testing kits are available, plus additional options for pregnancy, hormones, diabetes, HIV, and thyroid issues.",
-  },
-  {
-    question: "Is my information kept confidential?",
-    answer:
-      "Your test results conducted, processed, and issued by 24-7 Labs are all 100% confidential.",
-  },
-  {
-    question: "What types of diagnostic tests are available at your labs?",
-    answer:
-      "24-7 Labs offers DNA, STD, drug, heart health, and COVID-19 testing, along with allergies, pregnancy, wellness, hormones, menopause, and thyroid panels.",
-  },
-];
-
-const faqRight = [
-  {
-    question: "What is the whole process of getting tested?",
-    answer:
-      "Schedule a test, visit a convenient location, get tested in-lab or via at-home kit, and receive results quickly through email notification.",
-  },
-  {
-    question: "Can I still get COVID-19 even if I am vaccinated?",
-    answer:
-      "Yes, COVID-19 remains a real risk. Learn more at https://24-7labs.com/covid-19/.",
-  },
-  {
-    question: "Is a doctor referral required?",
-    answer: "No referral or insurance is required for testing at 24-7 Labs.",
-  },
-  {
-    question: "Will I get my test results the same day?",
-    answer:
-      "Most results are delivered within 24-48 hours with fast processing.",
-  },
-  {
-    question: "How much time does it take to get COVID-19 test results?",
-    answer:
-      "Same-day and next-day options are available at 24-7 Labs testing locations.",
-  },
-];
+import AITestFinderModal from "@/components/common/AITestFinderModal";
 
 function SectionHeading({ title, subtitle }) {
   return (
@@ -254,14 +33,14 @@ function SectionHeading({ title, subtitle }) {
   );
 }
 
-function WhyChooseFeatureCard({ feature, iconLeft = false }) {
+function WhyChooseFeatureCard({ feature, iconLeft = false, iconAlt }) {
   return (
     <article className="group flex items-start justify-between gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
       {iconLeft ? (
         <>
           <Image
             src={feature.icon}
-            alt="Feature icon"
+            alt={iconAlt}
             width={54}
             height={54}
             className="h-12 w-12"
@@ -287,7 +66,7 @@ function WhyChooseFeatureCard({ feature, iconLeft = false }) {
           </div>
           <Image
             src={feature.icon}
-            alt="Feature icon"
+            alt={iconAlt}
             width={54}
             height={54}
             className="h-12 w-12"
@@ -298,15 +77,38 @@ function WhyChooseFeatureCard({ feature, iconLeft = false }) {
   );
 }
 
-export default function HomePage() {
+export default function HomePage({ locale = "en" }) {
+  const t = useTranslations("HomePage");
+  const isSpanish = locale?.toLowerCase().startsWith("es");
+  const heroSlides = t.raw("Hero.slides");
+  const serviceCards = t.raw("Services.items");
+  const whyChooseFeatures = t.raw("WhyChoose.items");
+  const whyChooseLeftTape = [...whyChooseFeatures, ...whyChooseFeatures];
+  const whyChooseRightBase = [
+    ...whyChooseFeatures.slice(3),
+    ...whyChooseFeatures.slice(0, 3),
+  ];
+  const whyChooseRightTape = [...whyChooseRightBase, ...whyChooseRightBase];
+  const processSteps = t.raw("Process.items");
+  const certificationLogos = t.raw("Reviews.certificationLogos");
+  const certificationMarqueeLogos = [
+    ...certificationLogos,
+    ...certificationLogos,
+  ];
+  const reviews = t.raw("Reviews.items");
+  const faqLeft = t.raw("FAQ.itemsLeft");
+  const faqRight = t.raw("FAQ.itemsRight");
+  const appointmentLocations = t.raw("Appointment.locations");
+  const breadcrumbItems = t.raw("Breadcrumb.items");
+
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeReview, setActiveReview] = useState(0);
   const [isBooting, setIsBooting] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
   const [activeServiceCard, setActiveServiceCard] = useState(0);
   const [activeWhyFeature, setActiveWhyFeature] = useState(0);
-  const [activeProcessStep, setActiveProcessStep] = useState(-1);
   const [activeFaqId, setActiveFaqId] = useState(null);
+  const [isAiFinderOpen, setIsAiFinderOpen] = useState(false);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -405,59 +207,6 @@ export default function HomePage() {
       return closestIndex;
     };
 
-    const getProcessStepIndex = (selector, currentIndex = -1) => {
-      if (window.innerWidth >= 640) {
-        return -1;
-      }
-
-      const steps = Array.from(document.querySelectorAll(selector));
-      if (steps.length === 0) {
-        return -1;
-      }
-
-      const processSection = document.querySelector(".process-section");
-      if (!processSection) {
-        return -1;
-      }
-
-      const sectionRect = processSection.getBoundingClientRect();
-      const activationLine = window.innerHeight * 0.56;
-
-      // Outside the section focus zone: all cards slide back to the right.
-      if (
-        sectionRect.top > window.innerHeight * 0.78 ||
-        sectionRect.bottom < window.innerHeight * 0.22
-      ) {
-        return -1;
-      }
-
-      const clampedCurrent =
-        currentIndex >= 0
-          ? Math.min(steps.length - 1, Math.max(0, currentIndex))
-          : -1;
-
-      if (clampedCurrent >= 0) {
-        const currentTop = steps[clampedCurrent].getBoundingClientRect().top;
-        if (Math.abs(currentTop - activationLine) <= 36) {
-          return clampedCurrent;
-        }
-      }
-
-      let closestIndex = 0;
-      let closestDistance = Number.POSITIVE_INFINITY;
-
-      steps.forEach((step, index) => {
-        const top = step.getBoundingClientRect().top;
-        const distance = Math.abs(top - activationLine);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
-
-      return closestIndex;
-    };
-
     const handleSectionScroll = () => {
       const sections = [
         { id: "home", element: document.getElementById("home") },
@@ -487,9 +236,6 @@ export default function HomePage() {
       );
       setActiveWhyFeature((prev) =>
         getCardIndexAtViewportLine("[data-mobile-why-card]", prev),
-      );
-      setActiveProcessStep((prev) =>
-        getProcessStepIndex("[data-process-step]", prev),
       );
     };
 
@@ -539,7 +285,7 @@ export default function HomePage() {
               <span className="absolute h-20 w-20 rounded-full border-2 border-transparent border-b-[var(--tl-primary)]/50 border-l-[var(--tl-primary)]/60 animate-[spin_2.4s_linear_infinite_reverse]" />
               <Image
                 src="/images/24x7-logo.png"
-                alt="24-7 Labs"
+                alt={t("Hero.logoAlt")}
                 width={90}
                 height={52}
                 className="h-11 w-auto"
@@ -549,10 +295,10 @@ export default function HomePage() {
 
             <div className="space-y-2">
               <p className="font-display text-sm font-extrabold uppercase tracking-[0.22em] text-[var(--tl-primary-strong)]">
-                Loading 24-7 Labs
+                {t("Hero.loadingTitle")}
               </p>
               <p className="text-sm text-slate-600">
-                Preparing your diagnostics experience
+                {t("Hero.loadingSubtitle")}
               </p>
             </div>
 
@@ -576,31 +322,27 @@ export default function HomePage() {
             <div className="space-y-7">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--tl-primary-strong)]">
                 <Clock3 className="h-4 w-4" />
-                Open 24/7 for priority diagnostics
+                {t("Hero.badge")}
               </span>
 
               <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl">
-                <span className="hero-line block">
-                  24-7 Diagnostics Testing for
-                </span>
+                <span className="hero-line block">{t("Hero.line1")}</span>
                 <span className="hero-line mt-1 block text-[var(--tl-primary)]">
-                  STDs, Drugs, DNA, and COVID.
+                  {t("Hero.line2")}
                 </span>
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-slate-700 md:text-lg">
-                We are a full-service medical lab providing 24-hour testing for
-                STDs, DNA, COVID-19, Drugs, Basic Wellness, Allergies, Heart
-                Health, Diabetes, and much more.
+                {t("Hero.body")}
               </p>
 
               <div className="grid max-w-xl gap-3 rounded-2xl border border-white/70 bg-white/85 p-4 shadow-lg shadow-sky-100 sm:grid-cols-2">
                 <div className="flex items-start gap-3">
                   <CalendarDays className="mt-0.5 h-5 w-5 text-[var(--tl-primary)]" />
                   <p className="text-sm text-slate-600">
-                    Monday - Friday: 9 AM - 7 PM
+                    {t("Hero.hoursWeekdays")}
                     <br />
-                    Saturday: 9 AM - 1 PM
+                    {t("Hero.hoursSaturday")}
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
@@ -614,8 +356,7 @@ export default function HomePage() {
               </div>
 
               <p className="max-w-lg text-sm font-semibold text-slate-700 md:text-base">
-                Book an appointment at 24-7 Labs, the only 24-hour full-service
-                testing lab in Tampa.
+                {t("Hero.subText")}
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -623,7 +364,7 @@ export default function HomePage() {
                   href="#appointment"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:bg-[var(--tl-primary-strong)] sm:w-auto"
                 >
-                  Schedule Appointment
+                  {t("Hero.scheduleButton")}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
@@ -631,20 +372,20 @@ export default function HomePage() {
                   className="phone-ring inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--tl-primary)]/50 bg-white/90 px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:bg-white sm:w-auto"
                 >
                   <PhoneCall className="h-4 w-4" />
-                  Call Us 813 932 3741
+                  {t("Hero.callButton")}
                 </a>
                 <Link
                   href="#contact"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-slate-50/80 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white sm:w-auto"
                 >
-                  Locations
+                  {t("Hero.locationsButton")}
                 </Link>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[var(--tl-primary)]/30 via-cyan-200/20 to-transparent blur-2xl" />
-              <div className="relative overflow-hidden rounded-[24px] border border-white/80 bg-white/70 p-3 shadow-[0_30px_80px_-40px_rgba(38,127,199,0.7)] backdrop-blur">
+              <div className="pointer-events-none absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[var(--tl-primary)]/30 via-cyan-200/20 to-transparent blur-2xl" />
+              <div className="relative z-10 overflow-hidden rounded-[24px] border border-white/80 bg-white/70 p-3 shadow-[0_30px_80px_-40px_rgba(38,127,199,0.7)] backdrop-blur">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[16px]">
                   {heroSlides.map((slide, index) => (
                     <Image
@@ -665,7 +406,7 @@ export default function HomePage() {
 
                 <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-white/90 px-3 py-2.5 sm:mt-4 sm:px-4 sm:py-3">
                   <p className="min-w-0 text-xs font-semibold text-slate-700 sm:text-sm">
-                    Trusted by Tampa families and providers
+                    {t("Hero.trustedBy")}
                   </p>
                   <div className="flex items-center gap-2">
                     {heroSlides.map((slide, index) => (
@@ -677,13 +418,26 @@ export default function HomePage() {
                             ? "w-8 bg-[var(--tl-primary)]"
                             : "w-2.5 bg-slate-300"
                         }`}
-                        aria-label={`Go to slide ${index + 1}`}
+                        aria-label={t("Hero.slideAria", { index: index + 1 })}
                         onClick={() => setActiveSlide(index)}
                       />
                     ))}
                   </div>
                 </div>
               </div>
+
+              <button
+                type="button"
+                onClick={() => setIsAiFinderOpen(true)}
+                className="relative z-10 mt-5 w-full rounded-[20px] border-2 border-[var(--tl-primary-strong)] bg-white/98 px-6 py-4 text-center font-display text-[1.45rem] font-bold text-[var(--tl-primary-strong)] shadow-[0_18px_38px_-28px_rgba(2,6,14,0.6)] transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <Sparkles className="h-5 w-5" />
+                  {isSpanish
+                    ? "Encuentra la prueba correcta con IA"
+                    : "Find the Right Test with AI"}
+                </div>
+              </button>
             </div>
           </div>
         </section>
@@ -696,11 +450,11 @@ export default function HomePage() {
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
-              title="24-Hour Full-Service Testing Available in Tampa"
-              subtitle="From wellness panels to targeted diagnostics, our broad test menu helps you move quickly from uncertainty to clarity with dependable turnaround and private care."
+              title={t("Services.title")}
+              subtitle={t("Services.subtitle")}
             />
 
-            <div className="mt-12 flex flex-col items-center gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="mt-12 flex flex-col items-center gap-6 sm:grid sm:auto-rows-fr sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {serviceCards.map((service, index) => {
                 const isActive = index === activeServiceCard;
 
@@ -709,10 +463,10 @@ export default function HomePage() {
                     key={service.title}
                     href={service.href}
                     data-mobile-service-card
-                    className={`service-card group relative mx-auto self-center w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-[#1f6db2] to-[#0d4f87] text-white shadow-lg transition-[padding,box-shadow,border-color] duration-[760ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(16,90,151,0.85)] ${
+                    className={`service-card group relative mx-auto self-center h-full w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-[#1f6db2] to-[#0d4f87] px-4 pb-5 pt-4 text-white shadow-lg transition-[padding,box-shadow,border-color] duration-[760ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(16,90,151,0.85)] sm:min-h-[300px] lg:min-h-[320px] ${
                       isActive
-                        ? "border-sky-200/70 px-4 pb-6 pt-4 shadow-[0_22px_52px_-34px_rgba(16,90,151,0.85)]"
-                        : "border-sky-100/65 px-4 pb-4 pt-4 shadow-sky-100 xl:border-sky-100"
+                        ? "border-sky-100/65 shadow-sky-100 max-[639px]:border-sky-200/70 max-[639px]:pb-6 max-[639px]:shadow-[0_22px_52px_-34px_rgba(16,90,151,0.85)]"
+                        : "border-sky-100/65 shadow-sky-100 xl:border-sky-100"
                     }`}
                   >
                     <span className="pointer-events-none absolute -right-16 -top-14 h-36 w-36 rounded-full bg-cyan-300/20 blur-xl transition group-hover:scale-125" />
@@ -721,12 +475,14 @@ export default function HomePage() {
                     <div className="relative">
                       <div
                         className={`flex items-center gap-3 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                          isActive ? "mb-5" : "mb-0"
+                          isActive ? "mb-0 max-[639px]:mb-5" : "mb-0"
                         }`}
                       >
                         <div
                           className={`inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 transition-[width,height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                            isActive ? "h-16 w-16" : "h-12 w-12"
+                            isActive
+                              ? "h-12 w-12 max-[639px]:h-16 max-[639px]:w-16"
+                              : "h-12 w-12"
                           }`}
                         >
                           <Image
@@ -735,13 +491,17 @@ export default function HomePage() {
                             width={38}
                             height={38}
                             className={`transition-[width,height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                              isActive ? "h-9 w-9" : "h-7 w-7"
+                              isActive
+                                ? "h-7 w-7 max-[639px]:h-9 max-[639px]:w-9"
+                                : "h-7 w-7"
                             }`}
                           />
                         </div>
                         <h3
                           className={`min-w-0 font-display font-bold leading-tight ${
-                            isActive ? "text-lg" : "text-[1.04rem] sm:text-lg"
+                            isActive
+                              ? "text-[1.04rem] sm:text-lg"
+                              : "text-[1.04rem] sm:text-lg"
                           }`}
                         >
                           {service.title}
@@ -751,7 +511,7 @@ export default function HomePage() {
                         className={`overflow-hidden text-sm leading-relaxed text-blue-50/90 transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                           isActive
                             ? "delay-[160ms] mt-3 max-h-44 opacity-100"
-                            : "delay-0 mt-0 max-h-0 opacity-0 xl:mt-3 xl:max-h-44 xl:opacity-100"
+                            : "delay-0 mt-0 max-h-0 opacity-0 sm:mt-3 sm:max-h-36 sm:opacity-100"
                         }`}
                       >
                         {service.description}
@@ -760,10 +520,10 @@ export default function HomePage() {
                         className={`overflow-hidden text-xs font-semibold uppercase tracking-wider text-cyan-100 transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                           isActive
                             ? "delay-[220ms] mt-5 inline-flex max-h-8 items-center gap-2 opacity-100"
-                            : "delay-0 mt-0 inline-flex max-h-0 items-center gap-2 opacity-0 xl:mt-5 xl:max-h-8 xl:opacity-100"
+                            : "delay-0 mt-0 inline-flex max-h-0 items-center gap-2 opacity-0 sm:mt-5 sm:max-h-8 sm:opacity-100"
                         }`}
                       >
-                        Learn More
+                        {t("Services.learnMore")}
                         <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
                       </span>
                     </div>
@@ -787,8 +547,8 @@ export default function HomePage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(38,127,199,0.18),transparent_55%)]" />
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
-              title="Why Choose 24-7 Labs for Testing"
-              subtitle="24-7 Labs is a 24-hour full-service testing facility in the Tampa area. Our goal is to provide patients with comprehensive medical care in one convenient location."
+              title={t("WhyChoose.title")}
+              subtitle={t("WhyChoose.subtitle")}
             />
 
             <div className="mt-14 hidden items-center gap-10 xl:grid xl:grid-cols-[1fr_340px_1fr]">
@@ -799,6 +559,7 @@ export default function HomePage() {
                       <WhyChooseFeatureCard
                         key={`why-left-${feature.title}-${index}`}
                         feature={feature}
+                        iconAlt={t("WhyChoose.featureIconAlt")}
                       />
                     ))}
                   </div>
@@ -810,6 +571,7 @@ export default function HomePage() {
                       <WhyChooseFeatureCard
                         key={`why-left-dup-${feature.title}-${index}`}
                         feature={feature}
+                        iconAlt={t("WhyChoose.featureIconAlt")}
                       />
                     ))}
                   </div>
@@ -820,7 +582,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-b from-[var(--tl-primary)]/25 to-transparent blur-3xl" />
                 <Image
                   src="/images/img-03.png"
-                  alt="Microscope"
+                  alt={t("WhyChoose.microscopeAlt")}
                   fill
                   sizes="320px"
                   className="object-contain drop-shadow-[0_24px_35px_rgba(18,67,112,0.28)]"
@@ -835,6 +597,7 @@ export default function HomePage() {
                         key={`why-right-${feature.title}-${index}`}
                         feature={feature}
                         iconLeft
+                        iconAlt={t("WhyChoose.featureIconAlt")}
                       />
                     ))}
                   </div>
@@ -847,6 +610,7 @@ export default function HomePage() {
                         key={`why-right-dup-${feature.title}-${index}`}
                         feature={feature}
                         iconLeft
+                        iconAlt={t("WhyChoose.featureIconAlt")}
                       />
                     ))}
                   </div>
@@ -871,7 +635,7 @@ export default function HomePage() {
                     <div className="flex items-start gap-4">
                       <Image
                         src={feature.icon}
-                        alt="Feature icon"
+                        alt={t("WhyChoose.featureIconAlt")}
                         width={46}
                         height={46}
                         className="h-11 w-11 shrink-0"
@@ -901,7 +665,7 @@ export default function HomePage() {
                 href="#appointment"
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-7 py-3 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-[var(--tl-primary-strong)]"
               >
-                Book Your Test
+                {t("WhyChoose.bookTestButton")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -915,26 +679,19 @@ export default function HomePage() {
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
-              title="How It Works"
-              subtitle="We designed our appointment process to be fast, discreet, and straightforward. Use our online scheduling tool to book an appointment in minutes."
+              title={t("Process.title")}
+              subtitle={t("Process.subtitle")}
             />
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {processSteps.map((step, index) => {
-                const isActive = index === activeProcessStep;
-
-                return (
-                  <article
-                    key={step.title}
-                    data-process-step
-                    className={`process-step group relative rounded-3xl border border-sky-100 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl max-[639px]:transform-gpu max-[639px]:transition-[transform,opacity,box-shadow] max-[639px]:duration-[1300ms] max-[639px]:ease-[cubic-bezier(0.16,1,0.3,1)] max-[639px]:will-change-transform ${
-                      isActive
-                        ? "max-[639px]:translate-x-0 max-[639px]:opacity-100 max-[639px]:shadow-xl"
-                        : "max-[639px]:translate-x-28 max-[639px]:opacity-72"
-                    }`}
-                  >
+              {processSteps.map((step) => (
+                <div
+                  key={step.title}
+                  className="how-it-works-gradient-border group rounded-[26px] p-[2.5px] shadow-[0_16px_40px_-30px_rgba(3,86,197,0.7)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_46px_-28px_rgba(3,86,197,0.75)]"
+                >
+                  <article className="relative h-full rounded-[24px] border border-white/70 bg-white p-7 transition-colors duration-300 group-hover:bg-[#f8fbff]">
                     <span className="absolute right-6 top-6 text-xs font-bold uppercase tracking-wider text-sky-200">
-                      24-7
+                      {t("Process.badge")}
                     </span>
                     <Image
                       src={step.image}
@@ -950,8 +707,8 @@ export default function HomePage() {
                       {step.description}
                     </p>
                   </article>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -973,7 +730,7 @@ export default function HomePage() {
                       >
                         <Image
                           src={logo}
-                          alt="Certification"
+                          alt={t("Reviews.certificationAlt")}
                           width={160}
                           height={70}
                           className="h-[50px] w-auto"
@@ -1005,7 +762,7 @@ export default function HomePage() {
 
               <div className="mt-12 text-center">
                 <h2 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
-                  Hear What Our Happy Patients Have to Say
+                  {t("Reviews.title")}
                 </h2>
                 <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[var(--tl-primary)]" />
               </div>
@@ -1015,14 +772,14 @@ export default function HomePage() {
                   <div className="flex items-center gap-3">
                     <Image
                       src="/images/DSC09527-Edit.jpg"
-                      alt="24-7 Labs Memorial Hwy"
+                      alt={t("Reviews.placeImageAlt")}
                       width={70}
                       height={70}
                       className="h-16 w-16 rounded-xl object-cover"
                     />
                     <div>
                       <p className="text-sm font-bold text-slate-900">
-                        24-7 Labs Memorial Hwy
+                        {t("Reviews.placeName")}
                       </p>
                       <div className="mt-1 flex items-center gap-1 text-amber-500">
                         <Star className="h-4 w-4 fill-current" />
@@ -1032,7 +789,7 @@ export default function HomePage() {
                         <Star className="h-4 w-4 fill-current" />
                       </div>
                       <p className="mt-1 text-xs text-slate-500">
-                        294 Google reviews
+                        {t("Reviews.googleReviews")}
                       </p>
                     </div>
                   </div>
@@ -1040,13 +797,13 @@ export default function HomePage() {
                     type="button"
                     className="mt-5 w-full rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
                   >
-                    Write a review
+                    {t("Reviews.writeReview")}
                   </button>
                 </aside>
 
                 <div className="min-w-0 space-y-4">
                   <div className="marquee-right hidden min-w-0 md:block">
-                    <div className="marquee-track-right gap-4">
+                    <div className="marquee-track-left-to-right gap-4">
                       <div className="marquee-group gap-4">
                         {reviews.map((review) => (
                           <article
@@ -1125,7 +882,7 @@ export default function HomePage() {
                       <button
                         type="button"
                         onClick={prevReview}
-                        aria-label="Previous review"
+                        aria-label={t("Reviews.previousAria")}
                         className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
                       >
                         <ChevronLeft className="h-4 w-4" />
@@ -1141,7 +898,7 @@ export default function HomePage() {
                       <button
                         type="button"
                         onClick={nextReview}
-                        aria-label="Next review"
+                        aria-label={t("Reviews.nextAria")}
                         className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-600"
                       >
                         <ChevronRight className="h-4 w-4" />
@@ -1174,29 +931,27 @@ export default function HomePage() {
             <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
               <div className="rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur sm:p-8">
                 <h2 className="font-display text-3xl font-extrabold text-white md:text-4xl">
-                  Schedule an Appointment for Testing in Tampa Today
+                  {t("Appointment.title")}
                 </h2>
                 <p className="mt-4 max-w-xl text-base leading-relaxed text-blue-100">
-                  Book a same-day appointment for diagnostics testing at a Tampa
-                  testing lab today. Our staff is available to help you schedule
-                  your appointment or answer your questions.
+                  {t("Appointment.body")}
                 </p>
                 <div className="mt-7 space-y-3 text-sm text-blue-50">
                   <p className="flex items-start gap-2">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                    6107 Memorial Hwy, Suite F Tampa, FL
+                    {t("Appointment.address")}
                   </p>
                   <p className="flex items-start gap-2">
                     <Clock3 className="mt-0.5 h-4 w-4 shrink-0" />
-                    We work every day, 24 hours a day.
+                    {t("Appointment.openAllDay")}
                   </p>
                   <p className="flex items-start gap-2">
                     <PhoneCall className="mt-0.5 h-4 w-4 shrink-0" />
-                    +1 (813) 932-3741
+                    {t("Appointment.phone")}
                   </p>
                   <p className="flex items-start gap-2">
                     <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                    anytimelab@24-7labs.com
+                    {t("Appointment.email")}
                   </p>
                 </div>
               </div>
@@ -1207,49 +962,49 @@ export default function HomePage() {
               >
                 <div className="grid gap-4 md:grid-cols-2">
                   <label className="text-sm font-semibold text-slate-700">
-                    Name
+                    {t("Appointment.fields.name.label")}
                     <input
                       type="text"
-                      placeholder="Your name"
+                      placeholder={t("Appointment.fields.name.placeholder")}
                       className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-[var(--tl-primary)] focus:ring-2 focus:ring-[var(--tl-primary)]/15"
                     />
                   </label>
                   <label className="text-sm font-semibold text-slate-700">
-                    Email
+                    {t("Appointment.fields.email.label")}
                     <input
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder={t("Appointment.fields.email.placeholder")}
                       className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-[var(--tl-primary)] focus:ring-2 focus:ring-[var(--tl-primary)]/15"
                     />
                   </label>
                   <label className="text-sm font-semibold text-slate-700">
-                    Phone Number
+                    {t("Appointment.fields.phone.label")}
                     <input
                       type="tel"
-                      placeholder="(813) 000-0000"
+                      placeholder={t("Appointment.fields.phone.placeholder")}
                       className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-[var(--tl-primary)] focus:ring-2 focus:ring-[var(--tl-primary)]/15"
                     />
                   </label>
                   <label className="text-sm font-semibold text-slate-700">
-                    Select Location
+                    {t("Appointment.fields.selectLocation.label")}
                     <select className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-[var(--tl-primary)] focus:ring-2 focus:ring-[var(--tl-primary)]/15">
-                      <option>Tampa - Memorial Hwy</option>
-                      <option>Temple Terrace</option>
-                      <option>New Port Richey</option>
+                      {appointmentLocations.map((location) => (
+                        <option key={location}>{location}</option>
+                      ))}
                     </select>
                   </label>
                   <label className="text-sm font-semibold text-slate-700 md:col-span-2">
-                    Choose Date
+                    {t("Appointment.fields.date.label")}
                     <input
                       type="date"
                       className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-[var(--tl-primary)] focus:ring-2 focus:ring-[var(--tl-primary)]/15"
                     />
                   </label>
                   <label className="text-sm font-semibold text-slate-700 md:col-span-2">
-                    Symptoms / Tests
+                    {t("Appointment.fields.symptoms.label")}
                     <textarea
                       rows={5}
-                      placeholder="Tell us what you need help with"
+                      placeholder={t("Appointment.fields.symptoms.placeholder")}
                       className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-[var(--tl-primary)] focus:ring-2 focus:ring-[var(--tl-primary)]/15"
                     />
                   </label>
@@ -1260,7 +1015,7 @@ export default function HomePage() {
                     type="submit"
                     className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-[var(--tl-primary-strong)]"
                   >
-                    Send Request
+                    {t("Appointment.sendRequest")}
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
@@ -1275,8 +1030,8 @@ export default function HomePage() {
           className="scroll-reveal h-[320px] w-full sm:h-[380px] md:h-[450px]"
         >
           <iframe
-            title="24-7 Labs Memorial Hwy"
-            aria-label="24-7 Labs Memorial Hwy"
+            title={t("Appointment.mapTitle")}
+            aria-label={t("Appointment.mapAria")}
             src="https://maps.google.com/maps?q=24-7%20Labs%20Memorial%20Hwy&t=m&z=13&output=embed&iwloc=near"
             className="h-full w-full border-0"
             loading="lazy"
@@ -1292,8 +1047,8 @@ export default function HomePage() {
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
-              title="Frequently Asked Questions"
-              subtitle="Answers to common questions about appointments, privacy, testing process, and turnaround times."
+              title={t("FAQ.title")}
+              subtitle={t("FAQ.subtitle")}
             />
 
             <div className="mt-10 grid gap-4 lg:grid-cols-2">
@@ -1354,13 +1109,7 @@ export default function HomePage() {
 
       {/* Breadcrumb dots indicator for scroll progress */}
       <div className="fixed bottom-6 left-6 z-40 hidden gap-2 sm:flex">
-        {[
-          { id: "home", label: "Home" },
-          { id: "services", label: "Services" },
-          { id: "about", label: "Why Us" },
-          { id: "appointment", label: "Book" },
-          { id: "forms", label: "FAQ" },
-        ].map((section) => (
+        {breadcrumbItems.map((section) => (
           <button
             key={section.id}
             type="button"
@@ -1370,7 +1119,7 @@ export default function HomePage() {
                 element.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            aria-label={`Go to ${section.label}`}
+            aria-label={t("Breadcrumb.goTo", { label: section.label })}
             className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
               activeSection === section.id
                 ? "w-8 bg-[var(--tl-primary)]"
@@ -1380,6 +1129,12 @@ export default function HomePage() {
           />
         ))}
       </div>
+
+      <AITestFinderModal
+        isOpen={isAiFinderOpen}
+        onClose={() => setIsAiFinderOpen(false)}
+        locale={locale}
+      />
     </div>
   );
 }

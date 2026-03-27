@@ -1,0 +1,352 @@
+{
+  "SiteNavbar": {
+    "brand": {
+      "logoAlt": "24-7 Labs"
+    },
+    "menu": {
+      "home": "Home",
+      "about": "About 24-7 Labs",
+      "trust": "Trust & Standards",
+      "testingServices": "Testing Services",
+      "covid": "COVID-19",
+      "homeKits": "At-Home Testing Kits",
+      "forms": "Forms",
+      "schedule": "Schedule Appointment",
+      "contact": "Contact"
+    },
+    "tape": {
+      "open24x7": "Open 24/7 in Tampa",
+      "clia": "CLIA Certified",
+      "cap": "CAP Accredited",
+      "hipaa": "HIPAA Compliant",
+      "results": "Results in 24-48 hours"
+    },
+    "locale": {
+      "enShort": "EN",
+      "esShort": "ES",
+      "english": "English",
+      "spanish": "Spanish"
+    },
+    "aria": {
+      "home": "24-7 Labs home",
+      "openCart": "Open cart",
+      "search": "Search",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "switchToEnglish": "Switch language to English",
+      "switchToSpanish": "Switch language to Spanish"
+    },
+    "contact": {
+      "phoneDisplay": "+1 (813) 932-3741"
+    }
+  },
+  "FloatingLocaleSwitcher": {
+    "englishShort": "EN",
+    "spanishShort": "ES",
+    "switchToEnglish": "Switch language to English",
+    "switchToSpanish": "Switch language to Spanish"
+  },
+  "HomePage": {
+    "Hero": {
+      "logoAlt": "24-7 Labs",
+      "loadingTitle": "Loading 24-7 Labs",
+      "loadingSubtitle": "Preparing your diagnostics experience",
+      "badge": "Open 24/7 for priority diagnostics",
+      "line1": "24-7 Diagnostics Testing for",
+      "line2": "STDs, Drugs, DNA, and COVID.",
+      "body": "We are a full-service medical lab providing 24-hour testing for STDs, DNA, COVID-19, Drugs, Basic Wellness, Allergies, Heart Health, Diabetes, and much more.",
+      "hoursWeekdays": "Monday - Friday: 9 AM - 7 PM",
+      "hoursSaturday": "Saturday: 9 AM - 1 PM",
+      "subText": "Book an appointment at 24-7 Labs, the only 24-hour full-service testing lab in Tampa.",
+      "scheduleButton": "Schedule Appointment",
+      "callButton": "Call Us 813 932 3741",
+      "locationsButton": "Locations",
+      "trustedBy": "Trusted by Tampa families and providers",
+      "slideAria": "Go to slide {index}",
+      "slides": [
+        {
+          "image": "/images/bannerSlider/heroimg1.png",
+          "alt": "Laboratory team"
+        },
+        {
+          "image": "/images/bannerSlider/heroimg2.png",
+          "alt": "Healthcare consultation"
+        },
+        {
+          "image": "/images/bannerSlider/heroimg3.png",
+          "alt": "Testing service sample"
+        },
+        {
+          "image": "/images/bannerSlider/heroimg4.png",
+          "alt": "24-7 Labs testing environment"
+        }
+      ]
+    },
+    "Services": {
+      "title": "24-Hour Full-Service Testing Available in Tampa",
+      "subtitle": "From wellness panels to targeted diagnostics, our broad test menu helps you move quickly from uncertainty to clarity with dependable turnaround and private care.",
+      "learnMore": "Learn More",
+      "items": [
+        {
+          "icon": "/images/test-tube3.png",
+          "title": "Drug Screening Tests",
+          "description": "At 24-7 Labs, we offer individual, five, and ten-panel drug screening tests. We also provide DOT and employer testing services. You can expect results within 24-48 hours.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/biotechnology3.png",
+          "title": "DNA Testing",
+          "description": "Our DNA tests test for maternity, paternity, grand-paternity, and siblingship. You can use the test results for legal, informational, and immigration purposes. Most lab results are provided within 72 hours.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/sexual-transmitted-disease3.png",
+          "title": "STD Testing",
+          "description": "We can test for all common STDs, including herpes, gonorrhea, and chlamydia. Protect yourself and your partners from STDs. Get peace of mind knowing you are taking care of your health by getting your STD test results.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/test-tube3.png",
+          "title": "Covid Tests",
+          "description": "We offer COVID-19 RT-PCR the same day and the next day. Our tests are the quickest way to get results before you need to travel. Protect yourself and your loved ones while keeping your travel plans intact.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/test-tube3.png",
+          "title": "Routine Health Testing",
+          "description": "We also provide routine health tests for your convenience. These tests include diabetes, cancer panels, thyroid checks, and heart health. 24-7 Labs also offers hormone and allergy testing.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/diabetes3.png",
+          "title": "Allergy Testing",
+          "description": "Did you know that more than 50 million people in the United States are affected by allergies? It is time to find out what is making you miserable every day, and get relief.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/heart-rate3-1.png",
+          "title": "Heart Testing",
+          "description": "Cardiovascular disease is known to be the leading cause of death in the United States. The best way to combat heart disease is by being proactive and opting for regular testing.",
+          "href": "#"
+        },
+        {
+          "icon": "/images/hormone-therapy3.png",
+          "title": "Hormone Testing",
+          "description": "Could you be experiencing hormonal imbalances? Mood fluctuations, weight gain, lethargy, and reduced sexual desire can all be signals. Our hormone tests can help identify the root cause.",
+          "href": "#"
+        }
+      ]
+    },
+    "WhyChoose": {
+      "title": "Why Choose 24-7 Labs for Testing",
+      "subtitle": "24-7 Labs is a 24-hour full-service testing facility in the Tampa area. Our goal is to provide patients with comprehensive medical care in one convenient location.",
+      "bookTestButton": "Book Your Test",
+      "featureIconAlt": "Feature icon",
+      "microscopeAlt": "Microscope",
+      "items": [
+        {
+          "title": "AFFORDABLE & HSA ACCEPTED",
+          "description": "Cost effective, quick and accurate results on every test.",
+          "icon": "/images/Assetnew-2.png"
+        },
+        {
+          "title": "ROUND THE CLOCK",
+          "description": "Operate 24/7. Day appointments available.",
+          "icon": "/images/Assetnew-1.png"
+        },
+        {
+          "title": "DISCRETE",
+          "description": "100% confidential. No insurance or doctor script required.",
+          "icon": "/images/Assetnew-3.png"
+        },
+        {
+          "title": "PRESCRIPTION FOR POSITIVE RESULTS",
+          "description": "Prescription for positive results from expert physicians and doctors.",
+          "icon": "/images/Assetnew-4.png"
+        },
+        {
+          "title": "QUICK RESULTS",
+          "description": "Results in 24-48 hours for almost every test.",
+          "icon": "/images/Assetnew-5.png"
+        },
+        {
+          "title": "ONE STOP MARKETPLACE",
+          "description": "One stop shop health testing marketplace.",
+          "icon": "/images/Assetnew-6-1.png"
+        }
+      ]
+    },
+    "Process": {
+      "title": "How It Works",
+      "subtitle": "We designed our appointment process to be fast, discreet, and straightforward. Use our online scheduling tool to book an appointment in minutes.",
+      "badge": "24-7",
+      "items": [
+        {
+          "image": "/images/calender2.png",
+          "title": "Step One: Select Your Date and Time",
+          "description": "Choose a date and time that fits your schedule."
+        },
+        {
+          "image": "/images/location-gredient-1.png",
+          "title": "Step Two: Choose the Location",
+          "description": "Book an appointment at our Tampa, Temple Terrace, or New Port Richey locations."
+        },
+        {
+          "image": "/images/get-started.png",
+          "title": "Step Three: Pick a Test",
+          "description": "List which test you want to schedule along with any observations or symptoms you are experiencing."
+        }
+      ]
+    },
+    "Reviews": {
+      "title": "Hear What Our Happy Patients Have to Say",
+      "googleReviews": "294 Google reviews",
+      "writeReview": "Write a review",
+      "previousAria": "Previous review",
+      "nextAria": "Next review",
+      "placeName": "24-7 Labs Memorial Hwy",
+      "placeImageAlt": "24-7 Labs Memorial Hwy",
+      "certificationAlt": "Certification",
+      "certificationLogos": [
+        "/images/image2.png",
+        "/images/image5.png",
+        "/images/image4.png",
+        "/images/image3.png",
+        "/images/logo_cola.png"
+      ],
+      "items": [
+        {
+          "avatar": "N",
+          "name": "Neraida Fernandez",
+          "date": "2021-03-17",
+          "text": "Personas muy amables y muy buenos precios... lugar fantastico."
+        },
+        {
+          "avatar": "S",
+          "name": "Solanch Coca",
+          "date": "2021-03-10",
+          "text": "Recomiendo este lugar rapido y asequible, 100% buena atencion encantada."
+        },
+        {
+          "avatar": "C",
+          "name": "Carlos Harrell",
+          "date": "2021-03-08",
+          "text": "I recommend this clinic, they take real good care of you."
+        }
+      ]
+    },
+    "Appointment": {
+      "title": "Schedule an Appointment for Testing in Tampa Today",
+      "body": "Book a same-day appointment for diagnostics testing at a Tampa testing lab today. Our staff is available to help you schedule your appointment or answer your questions.",
+      "address": "6107 Memorial Hwy, Suite F Tampa, FL",
+      "openAllDay": "We work every day, 24 hours a day.",
+      "phone": "+1 (813) 932-3741",
+      "email": "anytimelab@24-7labs.com",
+      "mapTitle": "24-7 Labs Memorial Hwy",
+      "mapAria": "24-7 Labs Memorial Hwy",
+      "sendRequest": "Send Request",
+      "locations": [
+        "Tampa - Memorial Hwy",
+        "Temple Terrace",
+        "New Port Richey"
+      ],
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "(813) 000-0000"
+        },
+        "selectLocation": {
+          "label": "Select Location"
+        },
+        "date": {
+          "label": "Choose Date"
+        },
+        "symptoms": {
+          "label": "Symptoms / Tests",
+          "placeholder": "Tell us what you need help with"
+        }
+      }
+    },
+    "FAQ": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Answers to common questions about appointments, privacy, testing process, and turnaround times.",
+      "itemsLeft": [
+        {
+          "question": "How to book an appointment with 24-7 Labs?",
+          "answer": "Fill the form at https://24-7labs.com/schedule-appointment/ and book your appointment easily. 24-7 Labs also welcomes walk-in testing."
+        },
+        {
+          "question": "Is there a consultancy facility available?",
+          "answer": "You can book consultation service from the Testing Services tab on the website or directly at https://24-7labs.com/product/booking-consultation/."
+        },
+        {
+          "question": "Which home kits are you providing?",
+          "answer": "At-home chlamydia, herpes, COVID, and HIV testing kits are available, plus additional options for pregnancy, hormones, diabetes, HIV, and thyroid issues."
+        },
+        {
+          "question": "Is my information kept confidential?",
+          "answer": "Your test results conducted, processed, and issued by 24-7 Labs are all 100% confidential."
+        },
+        {
+          "question": "What types of diagnostic tests are available at your labs?",
+          "answer": "24-7 Labs offers DNA, STD, drug, heart health, and COVID-19 testing, along with allergies, pregnancy, wellness, hormones, menopause, and thyroid panels."
+        }
+      ],
+      "itemsRight": [
+        {
+          "question": "What is the whole process of getting tested?",
+          "answer": "Schedule a test, visit a convenient location, get tested in-lab or via at-home kit, and receive results quickly through email notification."
+        },
+        {
+          "question": "Can I still get COVID-19 even if I am vaccinated?",
+          "answer": "Yes, COVID-19 remains a real risk. Learn more at https://24-7labs.com/covid-19/."
+        },
+        {
+          "question": "Is a doctor referral required?",
+          "answer": "No referral or insurance is required for testing at 24-7 Labs."
+        },
+        {
+          "question": "Will I get my test results the same day?",
+          "answer": "Most results are delivered within 24-48 hours with fast processing."
+        },
+        {
+          "question": "How much time does it take to get COVID-19 test results?",
+          "answer": "Same-day and next-day options are available at 24-7 Labs testing locations."
+        }
+      ]
+    },
+    "Breadcrumb": {
+      "goTo": "Go to {label}",
+      "items": [
+        {
+          "id": "home",
+          "label": "Home"
+        },
+        {
+          "id": "services",
+          "label": "Services"
+        },
+        {
+          "id": "about",
+          "label": "Why Us"
+        },
+        {
+          "id": "appointment",
+          "label": "Book"
+        },
+        {
+          "id": "forms",
+          "label": "FAQ"
+        }
+      ]
+    }
+  }
+}

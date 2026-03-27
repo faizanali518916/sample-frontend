@@ -3,34 +3,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Search, ShoppingCart, X } from "lucide-react";
 
 const menuItems = [
-  { label: "Home", href: "/" },
-  { label: "About 24-7 Labs", href: "/about" },
-  { label: "Trust & Standards", href: "/trust-standards" },
-  { label: "Testing Services", href: "/#services" },
-  { label: "COVID-19", href: "/#services" },
+  { key: "home", href: "/" },
+  { key: "about", href: "/about" },
+  { key: "trust", href: "/trust-standards" },
+  { key: "testingServices", href: "/#services" },
+  { key: "covid", href: "/#services" },
   {
-    label: "At-Home Testing Kits",
+    key: "homeKits",
     href: "https://247labkit.com/",
     external: true,
   },
-  { label: "Forms", href: "/#forms" },
-  { label: "Schedule Appointment", href: "/#appointment" },
-  { label: "Contact", href: "/contact" },
+  { key: "forms", href: "/#forms" },
+  { key: "schedule", href: "/#appointment" },
+  { key: "contact", href: "/contact" },
 ];
 
 const tapeItems = [
-  { label: "Open 24/7 in Tampa", href: "/trust-standards" },
-  { label: "CLIA Certified", href: "/trust-standards#clia" },
-  { label: "CAP Accredited", href: "/trust-standards#cap" },
-  { label: "HIPAA Compliant", href: "/trust-standards#hipaa" },
-  { label: "Results in 24-48 hours", href: "/trust-standards" },
+  { key: "open24x7", href: "/trust-standards" },
+  { key: "clia", href: "/trust-standards#clia" },
+  { key: "cap", href: "/trust-standards#cap" },
+  { key: "hipaa", href: "/trust-standards#hipaa" },
+  { key: "results", href: "/trust-standards" },
 ];
-
-const tapeItemsExtended = [...tapeItems, ...tapeItems];
 
 function isActiveRoute(pathname, href) {
   if (href === "/") {
@@ -53,6 +52,8 @@ function isActiveRoute(pathname, href) {
 }
 
 export default function SiteNavbar() {
+  const t = useTranslations("SiteNavbar");
+  const tapeItemsExtended = [...tapeItems, ...tapeItems];
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -103,7 +104,7 @@ export default function SiteNavbar() {
                       href={item.href}
                       className="whitespace-nowrap text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] leading-none text-white transition hover:text-sky-200"
                     >
-                      {item.label}
+                      {t(`tape.${item.key}`)}
                     </Link>
                     <span className="text-white/60 text-xs" aria-hidden="true">
                       •
@@ -118,10 +119,10 @@ export default function SiteNavbar() {
 
       <div className="mx-auto w-full max-w-[1360px] px-4 lg:px-6">
         <div className="flex h-[74px] items-center justify-between gap-3">
-          <Link href="/" className="shrink-0" aria-label="24-7 Labs home">
+          <Link href="/" className="shrink-0" aria-label={t("aria.home")}>
             <Image
               src="/images/24x7-logo.png"
-              alt="24-7 Labs"
+              alt={t("brand.logoAlt")}
               width={214}
               height={52}
               className="h-9 w-auto sm:h-11"
@@ -136,7 +137,7 @@ export default function SiteNavbar() {
                   !item.external && isActiveRoute(pathname, item.href);
 
                 return (
-                  <li key={item.label}>
+                  <li key={item.key}>
                     {item.external ? (
                       <a
                         href={item.href}
@@ -144,7 +145,7 @@ export default function SiteNavbar() {
                         rel="noreferrer"
                         className="group relative inline-flex h-10 items-center rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-white/75 hover:text-[var(--tl-primary-strong)]"
                       >
-                        <span>{item.label}</span>
+                        <span>{t(`menu.${item.key}`)}</span>
                         <span className="absolute bottom-[4px] left-3 h-[2px] w-0 rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8" />
                       </a>
                     ) : (
@@ -156,7 +157,7 @@ export default function SiteNavbar() {
                             : ""
                         }`}
                       >
-                        <span>{item.label}</span>
+                        <span>{t(`menu.${item.key}`)}</span>
                         <span
                           className={`absolute bottom-[4px] left-3 h-[2px] rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8 ${
                             isActive ? "w-8" : "w-0"
@@ -174,7 +175,7 @@ export default function SiteNavbar() {
             <button
               type="button"
               className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:inline-flex"
-              aria-label="Open cart"
+              aria-label={t("aria.openCart")}
             >
               <ShoppingCart className="h-4.5 w-4.5" />
             </button>
@@ -182,7 +183,7 @@ export default function SiteNavbar() {
             <button
               type="button"
               className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:inline-flex"
-              aria-label="Search"
+              aria-label={t("aria.search")}
             >
               <Search className="h-4.5 w-4.5" />
             </button>
@@ -191,13 +192,15 @@ export default function SiteNavbar() {
               href="tel:8139323741"
               className="nav-pill-glow hidden rounded-full bg-gradient-to-r from-[var(--tl-primary)] via-[var(--tl-primary-strong)] to-[var(--tl-metallic-black)] px-4 py-2 text-sm font-extrabold text-white shadow-[0_14px_28px_-18px_rgba(5,7,13,0.85)] 2xl:inline-flex"
             >
-              +1 (813) 932-3741
+              {t("contact.phoneDisplay")}
             </a>
 
             <button
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] xl:hidden"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={
+                mobileMenuOpen ? t("aria.closeMenu") : t("aria.openMenu")
+              }
               onClick={() => setMobileMenuOpen((prev) => !prev)}
             >
               {mobileMenuOpen ? (
@@ -218,7 +221,7 @@ export default function SiteNavbar() {
         >
           <ul className="grid max-h-[70vh] gap-1 overflow-y-auto rounded-2xl border border-white/75 bg-white/85 p-3">
             {menuItems.map((item) => (
-              <li key={`mobile-${item.label}`} className="menu-item">
+              <li key={`mobile-${item.key}`} className="menu-item">
                 {item.external ? (
                   <a
                     href={item.href}
@@ -227,7 +230,7 @@ export default function SiteNavbar() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]"
                   >
-                    {item.label}
+                    {t(`menu.${item.key}`)}
                   </a>
                 ) : (
                   <Link
@@ -235,7 +238,7 @@ export default function SiteNavbar() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="block rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]"
                   >
-                    {item.label}
+                    {t(`menu.${item.key}`)}
                   </Link>
                 )}
               </li>

@@ -33,7 +33,64 @@ const trustFooterItems = [
   },
 ];
 
-export default function SiteFooter() {
+const footerTranslations = {
+  en: {
+    trustItems: ["CLIA Certified", "CAP Accredited", "HIPAA Compliant"],
+    about:
+      "24-7Labs is the first of a new line of innovative health care services from 24-7laboratories. Our mission is to give people the power to control their health with convenient, affordable, and easy-to-understand options.",
+    productsTitle: "Products",
+    products: [
+      "At-Home Chlamydia Testing Kit",
+      "At-Home Herpes Testing Kit",
+      "At-Home HIV Testing Kit",
+      "At-Home COVID Testing Kit",
+    ],
+    resourcesTitle: "Resources",
+    resources: [
+      "Trust & Standards",
+      "Business Opportunities",
+      "Business Solutions",
+      "Telemedicine Service",
+      "Testing Locations",
+      "Blog",
+      "Privacy Policy",
+    ],
+    contactTitle: "Contact",
+    copyright: "All rights reserved.",
+  },
+  es: {
+    trustItems: [
+      "Certificacion CLIA",
+      "Acreditacion CAP",
+      "Cumplimiento HIPAA",
+    ],
+    about:
+      "24-7Labs es la primera de una nueva linea de servicios innovadores de salud de 24-7laboratories. Nuestra mision es dar a las personas el poder de controlar su salud con opciones convenientes, accesibles y faciles de entender.",
+    productsTitle: "Productos",
+    products: [
+      "Kit de prueba en casa para clamidia",
+      "Kit de prueba en casa para herpes",
+      "Kit de prueba en casa para VIH",
+      "Kit de prueba en casa para COVID",
+    ],
+    resourcesTitle: "Recursos",
+    resources: [
+      "Confianza y Estandares",
+      "Oportunidades de negocio",
+      "Soluciones para negocios",
+      "Servicio de telemedicina",
+      "Ubicaciones de pruebas",
+      "Blog",
+      "Politica de privacidad",
+    ],
+    contactTitle: "Contacto",
+    copyright: "Todos los derechos reservados.",
+  },
+};
+
+export default function SiteFooter({ locale = "en" }) {
+  const copy = footerTranslations[locale] || footerTranslations.en;
+
   return (
     <footer
       id="contact"
@@ -45,6 +102,10 @@ export default function SiteFooter() {
           <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 text-center lg:gap-x-20">
             {trustFooterItems.map((item) => {
               const Icon = item.icon;
+              const itemLabel =
+                copy.trustItems[
+                  trustFooterItems.findIndex((x) => x.href === item.href)
+                ] || item.label;
 
               return (
                 <Link
@@ -53,7 +114,7 @@ export default function SiteFooter() {
                   className="group inline-flex items-center gap-2.5 px-1 text-[12px] font-extrabold uppercase tracking-[0.13em] text-sky-100 transition hover:text-white"
                 >
                   <Icon className="h-4 w-4 text-cyan-300 transition group-hover:text-cyan-200" />
-                  <span>{item.label}</span>
+                  <span>{itemLabel}</span>
                   <Info className="h-3.5 w-3.5 text-cyan-300/85 transition group-hover:text-cyan-200" />
                 </Link>
               );
@@ -71,10 +132,7 @@ export default function SiteFooter() {
             className="h-12 w-auto"
           />
           <p className="mt-4 text-sm leading-relaxed text-sky-100/90">
-            24-7Labs is the first of a new line of innovative health care
-            services from 24-7laboratories. Our mission is to give people the
-            power to control their health with convenient, affordable, and
-            easy-to-understand options.
+            {copy.about}
           </p>
           <div className="mt-5 flex items-center gap-2 text-sky-200">
             <a
@@ -127,19 +185,18 @@ export default function SiteFooter() {
 
         <div>
           <h3 className="font-display text-lg font-bold text-white">
-            Products
+            {copy.productsTitle}
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-sky-100/90">
-            <li>At-Home Chlamydia Testing Kit</li>
-            <li>At-Home Herpes Testing Kit</li>
-            <li>At-Home HIV Testing Kit</li>
-            <li>At-Home COVID Testing Kit</li>
+            {copy.products.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
 
         <div>
           <h3 className="font-display text-lg font-bold text-white">
-            Resources
+            {copy.resourcesTitle}
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-sky-100/90">
             <li>
@@ -147,44 +204,46 @@ export default function SiteFooter() {
                 href="/trust-standards"
                 className="transition hover:text-white"
               >
-                Trust &amp; Standards
+                {copy.resources[0]}
               </Link>
             </li>
             <li>
               <Link href="#" className="transition hover:text-white">
-                Business Opportunities
+                {copy.resources[1]}
               </Link>
             </li>
             <li>
               <Link href="#" className="transition hover:text-white">
-                Business Solutions
+                {copy.resources[2]}
               </Link>
             </li>
             <li>
               <Link href="#" className="transition hover:text-white">
-                Telemedicine Service
+                {copy.resources[3]}
               </Link>
             </li>
             <li>
               <Link href="#" className="transition hover:text-white">
-                Testing Locations
+                {copy.resources[4]}
               </Link>
             </li>
             <li>
               <Link href="#" className="transition hover:text-white">
-                Blog
+                {copy.resources[5]}
               </Link>
             </li>
             <li>
               <Link href="#" className="transition hover:text-white">
-                Privacy Policy
+                {copy.resources[6]}
               </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="font-display text-lg font-bold text-white">Contact</h3>
+          <h3 className="font-display text-lg font-bold text-white">
+            {copy.contactTitle}
+          </h3>
           <ul className="mt-4 space-y-3 text-sm text-sky-100/90">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
@@ -203,7 +262,7 @@ export default function SiteFooter() {
       </div>
 
       <div className="relative border-t border-white/10 bg-[var(--tl-primary)] py-4 text-center text-xs font-semibold tracking-wide text-white sm:text-sm">
-        Copyright {new Date().getFullYear()} 24-7 Labs. All rights reserved.
+        Copyright {new Date().getFullYear()} 24-7 Labs. {copy.copyright}
       </div>
     </footer>
   );
