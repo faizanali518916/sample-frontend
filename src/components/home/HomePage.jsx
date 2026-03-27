@@ -298,39 +298,15 @@ function WhyChooseFeatureCard({ feature, iconLeft = false }) {
   );
 }
 
-function WaveDivider({ flip = false }) {
-  return (
-    <div
-      className={`pointer-events-none absolute inset-x-0 ${flip ? "top-0 rotate-180" : "bottom-0"}`}
-    >
-      <svg
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-        className="h-[56px] w-full text-white"
-      >
-        <path
-          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86C585.47-6.64,670.2,1.24,743.84,22.14c65.52,18.64,127.95,53.7,194.48,61.81,31.84,3.9,64.58-1.48,96.68-6.81V120H0V0C59.71,22.54,148.73,65.52,321.39,56.44Z"
-          fill="currentColor"
-          opacity="0.25"
-        />
-        <path
-          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34,30.13-10,59.74-18.3,92.5-17.31,31.77,1,62.34,12.5,90.65,26.31V0Z"
-          fill="currentColor"
-          opacity="0.5"
-        />
-        <path
-          d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,103.68,24.34,31.43,14.29,62.84,30.08,96.59,36.14,40.89,7.35,83.74-4.25,123.9-17.93,29.57-10.07,57.57-23.06,86.45-34.73,31.13-12.59,63.62-24.1,97.59-25.2,38.18-1.23,75.88,10.36,109.88,28.45V0Z"
-          fill="currentColor"
-        />
-      </svg>
-    </div>
-  );
-}
-
 export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeReview, setActiveReview] = useState(0);
   const [isBooting, setIsBooting] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
+  const [activeServiceCard, setActiveServiceCard] = useState(0);
+  const [activeWhyFeature, setActiveWhyFeature] = useState(0);
+  const [activeProcessStep, setActiveProcessStep] = useState(-1);
+  const [activeFaqId, setActiveFaqId] = useState(null);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -386,6 +362,161 @@ export default function HomePage() {
     revealElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const getCardIndexAtViewportLine = (selector, currentIndex = 0) => {
+      // Keep this interaction to true mobile single-column layout.
+      if (window.innerWidth >= 640) {
+        return currentIndex;
+      }
+
+      const cards = Array.from(document.querySelectorAll(selector));
+      if (cards.length === 0) {
+        return 0;
+      }
+
+      const activationLine = window.innerHeight * 0.5;
+      const clampedCurrentIndex = Math.min(
+        cards.length - 1,
+        Math.max(0, currentIndex),
+      );
+      const currentTop =
+        cards[clampedCurrentIndex]?.getBoundingClientRect().top ??
+        activationLine;
+
+      // Hysteresis: keep current card active while its top stays near center.
+      if (Math.abs(currentTop - activationLine) <= 34) {
+        return clampedCurrentIndex;
+      }
+
+      let closestIndex = clampedCurrentIndex;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const top = card.getBoundingClientRect().top;
+        const distance = Math.abs(top - activationLine);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    };
+
+    const getProcessStepIndex = (selector, currentIndex = -1) => {
+      if (window.innerWidth >= 640) {
+        return -1;
+      }
+
+      const steps = Array.from(document.querySelectorAll(selector));
+      if (steps.length === 0) {
+        return -1;
+      }
+
+      const processSection = document.querySelector(".process-section");
+      if (!processSection) {
+        return -1;
+      }
+
+      const sectionRect = processSection.getBoundingClientRect();
+      const activationLine = window.innerHeight * 0.56;
+
+      // Outside the section focus zone: all cards slide back to the right.
+      if (
+        sectionRect.top > window.innerHeight * 0.78 ||
+        sectionRect.bottom < window.innerHeight * 0.22
+      ) {
+        return -1;
+      }
+
+      const clampedCurrent =
+        currentIndex >= 0
+          ? Math.min(steps.length - 1, Math.max(0, currentIndex))
+          : -1;
+
+      if (clampedCurrent >= 0) {
+        const currentTop = steps[clampedCurrent].getBoundingClientRect().top;
+        if (Math.abs(currentTop - activationLine) <= 36) {
+          return clampedCurrent;
+        }
+      }
+
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      steps.forEach((step, index) => {
+        const top = step.getBoundingClientRect().top;
+        const distance = Math.abs(top - activationLine);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    };
+
+    const handleSectionScroll = () => {
+      const sections = [
+        { id: "home", element: document.getElementById("home") },
+        { id: "services", element: document.getElementById("services") },
+        { id: "about", element: document.getElementById("about") },
+        { id: "appointment", element: document.getElementById("appointment") },
+        { id: "forms", element: document.getElementById("forms") },
+      ];
+
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      for (const section of sections) {
+        if (section.element) {
+          const rect = section.element.getBoundingClientRect();
+          const elementTop = window.scrollY + rect.top;
+          const elementBottom = elementTop + rect.height;
+
+          if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+
+      setActiveServiceCard((prev) =>
+        getCardIndexAtViewportLine("[data-mobile-service-card]", prev),
+      );
+      setActiveWhyFeature((prev) =>
+        getCardIndexAtViewportLine("[data-mobile-why-card]", prev),
+      );
+      setActiveProcessStep((prev) =>
+        getProcessStepIndex("[data-process-step]", prev),
+      );
+    };
+
+    let rafId = null;
+    let isTicking = false;
+
+    const handleScroll = () => {
+      if (isTicking) {
+        return;
+      }
+
+      isTicking = true;
+      rafId = window.requestAnimationFrame(() => {
+        handleSectionScroll();
+        isTicking = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleSectionScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   const nextReview = () => {
@@ -449,8 +580,10 @@ export default function HomePage() {
               </span>
 
               <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl">
-                24-7 Diagnostics Testing for
-                <span className="mt-1 block text-[var(--tl-primary)]">
+                <span className="hero-line block">
+                  24-7 Diagnostics Testing for
+                </span>
+                <span className="hero-line mt-1 block text-[var(--tl-primary)]">
                   STDs, Drugs, DNA, and COVID.
                 </span>
               </h1>
@@ -495,7 +628,7 @@ export default function HomePage() {
                 </Link>
                 <a
                   href="tel:8139323741"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--tl-primary)]/50 bg-white/90 px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:bg-white sm:w-auto"
+                  className="phone-ring inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--tl-primary)]/50 bg-white/90 px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:bg-white sm:w-auto"
                 >
                   <PhoneCall className="h-4 w-4" />
                   Call Us 813 932 3741
@@ -553,15 +686,13 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          <WaveDivider />
         </section>
 
         <section
           id="services"
           data-reveal
           data-reveal-delay="70"
-          className="scroll-reveal relative bg-white py-16 md:py-24"
+          className="scroll-reveal relative bg-white py-16 md:py-24 services-section"
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
@@ -569,43 +700,80 @@ export default function HomePage() {
               subtitle="From wellness panels to targeted diagnostics, our broad test menu helps you move quickly from uncertainty to clarity with dependable turnaround and private care."
             />
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {serviceCards.map((service, index) => (
-                <Link
-                  key={service.title}
-                  href={service.href}
-                  className="group relative overflow-hidden rounded-3xl border border-sky-100 bg-gradient-to-b from-[#1f6db2] to-[#0d4f87] p-6 text-white shadow-lg shadow-sky-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(16,90,151,0.85)]"
-                >
-                  <span className="pointer-events-none absolute -right-16 -top-14 h-36 w-36 rounded-full bg-cyan-300/20 blur-xl transition group-hover:scale-125" />
-                  <span className="pointer-events-none absolute -bottom-14 -left-12 h-32 w-32 rounded-full bg-blue-900/20 blur-xl" />
+            <div className="mt-12 flex flex-col items-center gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {serviceCards.map((service, index) => {
+                const isActive = index === activeServiceCard;
 
-                  <div className="relative">
-                    <div className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10">
-                      <Image
-                        src={service.icon}
-                        alt={service.title}
-                        width={38}
-                        height={38}
-                        className="h-9 w-9"
-                      />
+                return (
+                  <Link
+                    key={service.title}
+                    href={service.href}
+                    data-mobile-service-card
+                    className={`service-card group relative mx-auto self-center w-full overflow-hidden rounded-3xl border bg-gradient-to-b from-[#1f6db2] to-[#0d4f87] text-white shadow-lg transition-[padding,box-shadow,border-color] duration-[760ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(16,90,151,0.85)] ${
+                      isActive
+                        ? "border-sky-200/70 px-4 pb-6 pt-4 shadow-[0_22px_52px_-34px_rgba(16,90,151,0.85)]"
+                        : "border-sky-100/65 px-4 pb-4 pt-4 shadow-sky-100 xl:border-sky-100"
+                    }`}
+                  >
+                    <span className="pointer-events-none absolute -right-16 -top-14 h-36 w-36 rounded-full bg-cyan-300/20 blur-xl transition group-hover:scale-125" />
+                    <span className="pointer-events-none absolute -bottom-14 -left-12 h-32 w-32 rounded-full bg-blue-900/20 blur-xl" />
+
+                    <div className="relative">
+                      <div
+                        className={`flex items-center gap-3 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                          isActive ? "mb-5" : "mb-0"
+                        }`}
+                      >
+                        <div
+                          className={`inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 transition-[width,height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                            isActive ? "h-16 w-16" : "h-12 w-12"
+                          }`}
+                        >
+                          <Image
+                            src={service.icon}
+                            alt={service.title}
+                            width={38}
+                            height={38}
+                            className={`transition-[width,height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                              isActive ? "h-9 w-9" : "h-7 w-7"
+                            }`}
+                          />
+                        </div>
+                        <h3
+                          className={`min-w-0 font-display font-bold leading-tight ${
+                            isActive ? "text-lg" : "text-[1.04rem] sm:text-lg"
+                          }`}
+                        >
+                          {service.title}
+                        </h3>
+                      </div>
+                      <p
+                        className={`overflow-hidden text-sm leading-relaxed text-blue-50/90 transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                          isActive
+                            ? "delay-[160ms] mt-3 max-h-44 opacity-100"
+                            : "delay-0 mt-0 max-h-0 opacity-0 xl:mt-3 xl:max-h-44 xl:opacity-100"
+                        }`}
+                      >
+                        {service.description}
+                      </p>
+                      <span
+                        className={`overflow-hidden text-xs font-semibold uppercase tracking-wider text-cyan-100 transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                          isActive
+                            ? "delay-[220ms] mt-5 inline-flex max-h-8 items-center gap-2 opacity-100"
+                            : "delay-0 mt-0 inline-flex max-h-0 items-center gap-2 opacity-0 xl:mt-5 xl:max-h-8 xl:opacity-100"
+                        }`}
+                      >
+                        Learn More
+                        <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                      </span>
                     </div>
-                    <h3 className="font-display text-lg font-bold leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-blue-50/90">
-                      {service.description}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-100">
-                      Learn More
-                      <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
-                    </span>
-                  </div>
 
-                  <span className="absolute right-4 top-3 text-xs font-bold text-white/45">
-                    0{index + 1}
-                  </span>
-                </Link>
-              ))}
+                    <span className="absolute right-4 top-3 text-xs font-bold text-white/45">
+                      0{index + 1}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -614,7 +782,7 @@ export default function HomePage() {
           id="about"
           data-reveal
           data-reveal-delay="100"
-          className="scroll-reveal relative overflow-hidden bg-[#f0f7ff] py-16 md:py-24"
+          className="scroll-reveal relative overflow-hidden bg-[#f0f7ff] py-16 md:py-24 why-choose-section"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(38,127,199,0.18),transparent_55%)]" />
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
@@ -686,29 +854,46 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:hidden">
-              {whyChooseFeatures.map((feature) => (
-                <article
-                  key={feature.title}
-                  className="flex items-start gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm"
-                >
-                  <Image
-                    src={feature.icon}
-                    alt="Feature icon"
-                    width={46}
-                    height={46}
-                    className="h-11 w-11"
-                  />
-                  <div>
-                    <h3 className="font-display text-base font-extrabold text-slate-900">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-600">
-                      {feature.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
+            <div className="mt-12 flex flex-col items-center gap-4 sm:grid sm:grid-cols-2 xl:hidden">
+              {whyChooseFeatures.map((feature, index) => {
+                const isActive = index === activeWhyFeature;
+
+                return (
+                  <article
+                    key={feature.title}
+                    data-mobile-why-card
+                    className={`feature-card mx-auto self-center w-full overflow-hidden rounded-2xl border shadow-sm transition-[padding,box-shadow,border-color,background-color] duration-[760ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isActive
+                        ? "border-sky-300 bg-[#f7fbff] px-4 pb-6 pt-4 shadow-[0_16px_38px_-24px_rgba(3,86,197,0.45)]"
+                        : "border-sky-100 bg-white px-4 pb-4 pt-4"
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <Image
+                        src={feature.icon}
+                        alt="Feature icon"
+                        width={46}
+                        height={46}
+                        className="h-11 w-11 shrink-0"
+                      />
+                      <div className="min-w-0 pr-1">
+                        <h3 className="font-display text-base font-extrabold leading-tight text-slate-900">
+                          {feature.title}
+                        </h3>
+                        <p
+                          className={`overflow-hidden text-sm text-slate-600 transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                            isActive
+                              ? "delay-[160ms] mt-2 max-h-24 opacity-100"
+                              : "delay-0 mt-0 max-h-0 opacity-0"
+                          }`}
+                        >
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
             <div className="mt-10 text-center">
@@ -721,14 +906,12 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-
-          <WaveDivider flip />
         </section>
 
         <section
           data-reveal
           data-reveal-delay="130"
-          className="scroll-reveal bg-white py-16 md:py-24"
+          className="scroll-reveal bg-white py-16 md:py-24 process-section"
         >
           <div className="mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <SectionHeading
@@ -737,29 +920,38 @@ export default function HomePage() {
             />
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {processSteps.map((step) => (
-                <article
-                  key={step.title}
-                  className="group relative rounded-3xl border border-sky-100 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <span className="absolute right-6 top-6 text-xs font-bold uppercase tracking-wider text-sky-200">
-                    24-7
-                  </span>
-                  <Image
-                    src={step.image}
-                    alt={step.title}
-                    width={70}
-                    height={70}
-                    className="h-[70px] w-[70px]"
-                  />
-                  <h3 className="mt-6 font-display text-xl font-extrabold text-[var(--tl-primary-strong)]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    {step.description}
-                  </p>
-                </article>
-              ))}
+              {processSteps.map((step, index) => {
+                const isActive = index === activeProcessStep;
+
+                return (
+                  <article
+                    key={step.title}
+                    data-process-step
+                    className={`process-step group relative rounded-3xl border border-sky-100 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl max-[639px]:transform-gpu max-[639px]:transition-[transform,opacity,box-shadow] max-[639px]:duration-[1300ms] max-[639px]:ease-[cubic-bezier(0.16,1,0.3,1)] max-[639px]:will-change-transform ${
+                      isActive
+                        ? "max-[639px]:translate-x-0 max-[639px]:opacity-100 max-[639px]:shadow-xl"
+                        : "max-[639px]:translate-x-28 max-[639px]:opacity-72"
+                    }`}
+                  >
+                    <span className="absolute right-6 top-6 text-xs font-bold uppercase tracking-wider text-sky-200">
+                      24-7
+                    </span>
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      width={70}
+                      height={70}
+                      className="h-[70px] w-[70px]"
+                    />
+                    <h3 className="mt-6 font-display text-xl font-extrabold text-[var(--tl-primary-strong)]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                      {step.description}
+                    </p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -767,7 +959,7 @@ export default function HomePage() {
         <section
           data-reveal
           data-reveal-delay="150"
-          className="scroll-reveal bg-[#f8fbff] py-16 md:py-24"
+          className="scroll-reveal bg-[#f8fbff] py-16 md:py-24 review-section"
         >
           <div className="mx-auto w-full max-w-[1400px] px-4 lg:px-6">
             <div className="mx-auto w-full max-w-[1360px]">
@@ -777,7 +969,7 @@ export default function HomePage() {
                     {certificationMarqueeLogos.map((logo, index) => (
                       <div
                         key={`primary-${logo}-${index}`}
-                        className="rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
+                        className="cert-logo-focus rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
                       >
                         <Image
                           src={logo}
@@ -796,7 +988,7 @@ export default function HomePage() {
                     {certificationMarqueeLogos.map((logo, index) => (
                       <div
                         key={`duplicate-${logo}-${index}`}
-                        className="rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
+                        className="cert-logo-focus rounded-2xl border border-sky-100 bg-white px-6 py-4 shadow-sm"
                       >
                         <Image
                           src={logo}
@@ -928,7 +1120,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-sky-100 bg-white p-5 shadow-sm md:hidden">
+                  <div className="review-card rounded-3xl border border-sky-100 bg-white p-5 shadow-sm md:hidden">
                     <div className="flex items-center justify-between">
                       <button
                         type="button"
@@ -955,7 +1147,7 @@ export default function HomePage() {
                         <ChevronRight className="h-4 w-4" />
                       </button>
                     </div>
-                    <div className="mt-4 flex justify-center gap-1 text-amber-500">
+                    <div className="review-stars mt-4 flex justify-center gap-1 text-amber-500">
                       <Star className="h-3.5 w-3.5 fill-current" />
                       <Star className="h-3.5 w-3.5 fill-current" />
                       <Star className="h-3.5 w-3.5 fill-current" />
@@ -976,17 +1168,8 @@ export default function HomePage() {
           id="appointment"
           data-reveal
           data-reveal-delay="170"
-          className="scroll-reveal relative isolate overflow-hidden py-16 md:py-24"
+          className="scroll-reveal relative isolate overflow-hidden bg-[linear-gradient(120deg,rgba(7,41,73,0.95),rgba(12,89,151,0.9))] py-16 md:py-24"
         >
-          <Image
-            src="/images/bannerimg-back.jpg"
-            alt="Laboratory interior"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(7,41,73,0.92),rgba(12,89,151,0.82))]" />
-
           <div className="relative mx-auto w-full max-w-[1240px] px-4 lg:px-6">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
               <div className="rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur sm:p-8">
@@ -1116,28 +1299,87 @@ export default function HomePage() {
             <div className="mt-10 grid gap-4 lg:grid-cols-2">
               {[faqLeft, faqRight].map((list, columnIndex) => (
                 <div key={columnIndex} className="space-y-3">
-                  {list.map((item) => (
-                    <details
-                      key={item.question}
-                      className="group overflow-hidden rounded-2xl border border-sky-100 bg-[#e5f3ff] open:bg-white"
-                    >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-bold text-slate-800">
-                        <span>{item.question}</span>
-                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 leading-none transition group-open:rotate-45">
-                          +
-                        </span>
-                      </summary>
-                      <div className="border-t border-sky-100 px-5 pb-5 pt-4 text-sm leading-relaxed text-slate-600">
-                        {item.answer}
-                      </div>
-                    </details>
-                  ))}
+                  {list.map((item, itemIndex) => {
+                    const faqId = `${columnIndex}-${itemIndex}`;
+                    const isActive = activeFaqId === faqId;
+
+                    return (
+                      <article
+                        key={item.question}
+                        onMouseEnter={() => setActiveFaqId(faqId)}
+                        onMouseLeave={() =>
+                          setActiveFaqId((current) =>
+                            current === faqId ? null : current,
+                          )
+                        }
+                        onClick={() =>
+                          setActiveFaqId((current) =>
+                            current === faqId ? null : faqId,
+                          )
+                        }
+                        className={`group overflow-hidden rounded-2xl border border-sky-100 transition-colors duration-300 ${
+                          isActive ? "bg-white" : "bg-[#e5f3ff]"
+                        }`}
+                      >
+                        <div className="faq-question flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-sm font-bold text-slate-800">
+                          <span>{item.question}</span>
+                          <span
+                            className={`faq-question-icon grid h-6 w-6 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 leading-none transition-transform duration-300 ${
+                              isActive ? "rotate-45" : "rotate-0"
+                            }`}
+                          >
+                            +
+                          </span>
+                        </div>
+                        <div
+                          className={`grid transition-[grid-template-rows,opacity] duration-300 ${
+                            isActive
+                              ? "grid-rows-[1fr] border-t border-sky-100 opacity-100"
+                              : "grid-rows-[0fr] opacity-0"
+                          }`}
+                        >
+                          <p className="overflow-hidden px-5 pb-5 pt-4 text-sm leading-relaxed text-slate-600">
+                            {item.answer}
+                          </p>
+                        </div>
+                      </article>
+                    );
+                  })}
                 </div>
               ))}
             </div>
           </div>
         </section>
       </main>
+
+      {/* Breadcrumb dots indicator for scroll progress */}
+      <div className="fixed bottom-6 left-6 z-40 hidden gap-2 sm:flex">
+        {[
+          { id: "home", label: "Home" },
+          { id: "services", label: "Services" },
+          { id: "about", label: "Why Us" },
+          { id: "appointment", label: "Book" },
+          { id: "forms", label: "FAQ" },
+        ].map((section) => (
+          <button
+            key={section.id}
+            type="button"
+            onClick={() => {
+              const element = document.getElementById(section.id);
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            aria-label={`Go to ${section.label}`}
+            className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+              activeSection === section.id
+                ? "w-8 bg-[var(--tl-primary)]"
+                : "bg-slate-300 hover:bg-slate-400"
+            }`}
+            title={section.label}
+          />
+        ))}
+      </div>
     </div>
   );
 }

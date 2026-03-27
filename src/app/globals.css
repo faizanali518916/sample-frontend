@@ -82,15 +82,48 @@ body {
   animation: pulse-soft 3.2s ease-in-out infinite;
 }
 
-@keyframes reveal-up {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
+/* Logo pulse animation */
+@keyframes logo-focus-pulse {
+  0%,
   100% {
+    transform: scale(1);
     opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.cert-logo-focus {
+  animation: logo-focus-pulse 2s ease-in-out infinite;
+}
+
+@keyframes phone-ring {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  20% {
+    transform: rotate(15deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: rotate(-15deg);
+  }
+  40%,
+  60%,
+  80% {
+    transform: rotate(15deg);
+  }
+}
+
+.phone-ring {
+  animation: phone-ring 0.6s ease-in-out;
+  transform-origin: top center;
 }
 
 @keyframes shimmer-slide {

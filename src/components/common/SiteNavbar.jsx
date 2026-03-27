@@ -61,7 +61,7 @@ export default function SiteNavbar() {
   useEffect(() => {
     const onScroll = () => {
       const offsetY = window.scrollY;
-      setIsScrolled(offsetY > 10);
+      setIsScrolled(offsetY > 0);
 
       const maxScroll =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -83,19 +83,25 @@ export default function SiteNavbar() {
           : "bg-[rgb(217,232,255)] border-b border-transparent"
       }`}
     >
-      <div className="hidden overflow-hidden border-b border-white/45 bg-gradient-to-r from-[var(--tl-primary)] to-[var(--tl-primary-strong)] xl:block">
-        <div className="marquee-right">
+      <div
+        className={`overflow-hidden bg-gradient-to-r from-[var(--tl-primary)] to-[var(--tl-primary-strong)] transition-[max-height,border-color] duration-100 ease-out ${
+          isScrolled
+            ? "max-h-0 border-b border-transparent"
+            : "max-h-6 border-b border-white/45"
+        }`}
+      >
+        <div className="marquee-right h-6">
           <div className="marquee-track-right-tape">
             {[0, 1].map((groupIndex) => (
               <div
                 key={`marquee-group-${groupIndex}`}
-                className="marquee-group flex gap-12 items-center"
+                className="marquee-group flex items-center gap-6 sm:gap-10"
               >
                 {tapeItemsExtended.map((item, itemIndex) => (
                   <Fragment key={`marquee-item-${groupIndex}-${itemIndex}`}>
                     <Link
                       href={item.href}
-                      className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.12em] text-white transition hover:text-sky-200"
+                      className="whitespace-nowrap text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] leading-none text-white transition hover:text-sky-200"
                     >
                       {item.label}
                     </Link>
@@ -212,7 +218,7 @@ export default function SiteNavbar() {
         >
           <ul className="grid max-h-[70vh] gap-1 overflow-y-auto rounded-2xl border border-white/75 bg-white/85 p-3">
             {menuItems.map((item) => (
-              <li key={`mobile-${item.label}`}>
+              <li key={`mobile-${item.label}`} className="menu-item">
                 {item.external ? (
                   <a
                     href={item.href}

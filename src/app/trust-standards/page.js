@@ -44,14 +44,6 @@ const standards = [
   },
 ];
 
-const phiHandlingPoints = [
-  "For a visual example of how results are presented in-product, review the synthetic sample report preview.",
-  "Checkout and status workflows are designed around minimum-necessary data use.",
-  "Status access uses secure, short-lived links instead of persistent patient logins in V1.",
-  "Marketing analytics are configured to avoid direct PHI payload fields.",
-  "Policy and legal language are available in HIPAA Notice and Privacy Policy pages.",
-];
-
 const relatedResources = [
   "Sample Report",
   "HIPAA Notice",
@@ -139,43 +131,6 @@ export default function TrustStandardsPage() {
               </div>
             </article>
           ))}
-        </section>
-
-        <section className="mx-auto w-full max-w-[1220px] px-4 pb-12 pt-6 sm:pb-16 lg:px-6">
-          <article className="rounded-3xl border border-[#1f4f9d]/20 bg-[linear-gradient(140deg,#1a3f91_0%,#133473_45%,#05070d_100%)] p-7 text-white shadow-[0_30px_70px_-40px_rgba(3,7,16,0.95)] md:p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--tl-primary-soft)]">
-              Product implementation
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-black">
-              How we handle PHI in this product
-            </h2>
-
-            <ul className="mt-5 space-y-3">
-              {phiHandlingPoints.map((point) => (
-                <li
-                  key={point}
-                  className="flex items-start gap-2.5 text-sm leading-relaxed text-blue-100"
-                >
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--tl-primary-soft)]" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-7 border-t border-white/20 pt-5">
-              <h3 className="font-display text-xl font-bold">References</h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {relatedResources.map((resource) => (
-                  <span
-                    key={resource}
-                    className="inline-flex rounded-full border border-white/35 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-blue-100"
-                  >
-                    {resource}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </article>
         </section>
       </main>
     </div>
