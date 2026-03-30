@@ -16,6 +16,7 @@
     },
     "tape": {
       "open24x7": "Abierto 24/7 en Tampa",
+      "noInsuranceNoPrescription": "Sin seguro, sin receta necesaria",
       "clia": "Certificacion CLIA",
       "cap": "Acreditacion CAP",
       "hipaa": "Cumplimiento HIPAA",

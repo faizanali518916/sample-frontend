@@ -25,6 +25,7 @@ const menuItems = [
 
 const tapeItems = [
   { key: "open24x7", href: "/trust-standards" },
+  { key: "noInsuranceNoPrescription", href: "/#services" },
   { key: "clia", href: "/trust-standards#clia" },
   { key: "cap", href: "/trust-standards#cap" },
   { key: "hipaa", href: "/trust-standards#hipaa" },

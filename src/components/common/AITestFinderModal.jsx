@@ -420,6 +420,8 @@ const COPY = {
       "Based on your selections, here are the tests we recommend. Each test includes descriptions and can be booked instantly.",
     loading: "Loading recommendations...",
     empty: "No matching products were found for this path yet.",
+    price: "Price",
+    priceUnavailable: "Call for pricing",
     bookNow: "Book Now",
   },
   es: {
@@ -438,6 +440,8 @@ const COPY = {
       "Segun tus respuestas, estas son las pruebas recomendadas. Cada prueba incluye descripciones y puede reservarse al instante.",
     loading: "Cargando recomendaciones...",
     empty: "Aun no encontramos productos para esta ruta.",
+    price: "Precio",
+    priceUnavailable: "Llama para conocer el precio",
     bookNow: "Reservar",
   },
 };
@@ -477,16 +481,27 @@ function extractProducts(payload) {
 function normalizeProduct(product) {
   if (!product?.id) return null;
 
+  const price = Number(product.regular_price);
+
   return {
     id: product.id,
-    name: product.name || `Product ${product.id}`,
-    image: product.main_image || null,
+    image: product.main_image ?? null,
+    name: product.name ?? `Product ${product.id}`,
+    price: Number.isFinite(price) ? price : null,
   };
 }
 
 export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
   const language = getCurrentLocale(locale);
   const copy = COPY[language];
+  const currencyFormatter = useMemo(
+    () =>
+      new Intl.NumberFormat(language === "es" ? "es-US" : "en-US", {
+        style: "currency",
+        currency: "USD",
+      }),
+    [language],
+  );
 
   const [step, setStep] = useState(1);
   const [path, setPath] = useState({
@@ -591,6 +606,7 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
             id,
             name: `${language === "es" ? "Prueba" : "Test"} #${id}`,
             image: null,
+            price: null,
           };
         });
 
@@ -601,6 +617,7 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
             id,
             name: `${language === "es" ? "Prueba" : "Test"} #${id}`,
             image: null,
+            price: null,
           })),
         );
       } finally {
@@ -646,6 +663,10 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
     : [];
 
   const showBack = step > 1;
+  const formatPrice = (price) =>
+    typeof price === "number" && Number.isFinite(price)
+      ? currencyFormatter.format(price)
+      : copy.priceUnavailable;
 
   const getStepTitle = () => {
     if (step === 1) {
@@ -710,9 +731,9 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
                 });
                 setStep(2);
               }}
-              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-4 py-4 text-left transition hover:border-[var(--tl-primary)] hover:bg-white"
+              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-3 py-3 text-left transition hover:border-[var(--tl-primary)] hover:bg-white sm:px-4 sm:py-4"
             >
-              <p className="font-display text-base font-bold text-slate-900">
+              <p className="font-display text-sm font-bold text-slate-900 sm:text-base">
                 {getLabel(intent.label, language)}
               </p>
             </button>
@@ -737,9 +758,9 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
                 }));
                 setStep(3);
               }}
-              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-4 py-4 text-left transition hover:border-[var(--tl-primary)] hover:bg-white"
+              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-3 py-3 text-left transition hover:border-[var(--tl-primary)] hover:bg-white sm:px-4 sm:py-4"
             >
-              <p className="font-display text-base font-bold text-slate-900">
+              <p className="font-display text-sm font-bold text-slate-900 sm:text-base">
                 {getLabel(category.label, language)}
               </p>
             </button>
@@ -763,9 +784,9 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
                 }));
                 setStep(4);
               }}
-              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-4 py-4 text-left transition hover:border-[var(--tl-primary)] hover:bg-white"
+              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-3 py-3 text-left transition hover:border-[var(--tl-primary)] hover:bg-white sm:px-4 sm:py-4"
             >
-              <p className="font-display text-base font-bold text-slate-900">
+              <p className="font-display text-sm font-bold text-slate-900 sm:text-base">
                 {getLabel(subcategory.label, language)}
               </p>
             </button>
@@ -785,9 +806,9 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
                 setPath((prev) => ({ ...prev, refinement: refinementKey }));
                 setStep(5);
               }}
-              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-4 py-4 text-left transition hover:border-[var(--tl-primary)] hover:bg-white"
+              className="rounded-2xl border border-sky-200 bg-sky-50/70 px-3 py-3 text-left transition hover:border-[var(--tl-primary)] hover:bg-white sm:px-4 sm:py-4"
             >
-              <p className="font-display text-base font-bold text-slate-900">
+              <p className="font-display text-sm font-bold text-slate-900 sm:text-base">
                 {getLabel(refinement.label, language)}
               </p>
             </button>
@@ -798,57 +819,58 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
 
     return (
       <div className="flex h-full min-h-0 flex-col gap-4">
-        <p className="text-sm text-slate-600">{copy.recommendedBody}</p>
+        <p className="text-[13px] text-slate-600 sm:text-sm">
+          {copy.recommendedBody}
+        </p>
 
         {isLoadingProducts ? (
-          <p className="rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-5 text-sm font-semibold text-[var(--tl-primary)]">
+          <p className="rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-4 text-xs font-semibold text-[var(--tl-primary)] sm:px-4 sm:py-5 sm:text-sm">
             {copy.loading}
           </p>
         ) : recommendedProducts.length === 0 ? (
-          <p className="rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-5 text-sm text-slate-600">
+          <p className="rounded-2xl border border-sky-100 bg-sky-50/70 px-3 py-4 text-xs text-slate-600 sm:px-4 sm:py-5 sm:text-sm">
             {copy.empty}
           </p>
         ) : (
-          <div className="grid min-h-0 flex-1 gap-4 overflow-y-auto pr-2 sm:grid-cols-2">
+          <div className="min-h-0 flex-1 overflow-y-auto pr-1">
             {recommendedProducts.map((product) => (
               <div
                 key={product.id}
-                className="flex h-full flex-col rounded-3xl border border-sky-100 bg-white shadow-sm transition hover:shadow-lg"
+                className="mb-3 flex flex-col gap-3 rounded-2xl border border-sky-100 bg-white p-3 shadow-sm transition last:mb-0 hover:border-sky-200 sm:flex-row sm:items-center sm:gap-4 sm:p-4"
               >
-                <div className="relative h-48 w-full overflow-hidden rounded-t-3xl bg-gradient-to-b from-sky-50 to-sky-25">
+                <div className="relative h-20 w-full shrink-0 overflow-hidden rounded-xl bg-gradient-to-b from-sky-50 to-sky-25 sm:h-20 sm:w-24">
                   {product.image ? (
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 96px"
+                      className="object-cover object-center"
                     />
                   ) : (
                     <div className="grid h-full w-full place-items-center">
                       <div className="text-center">
-                        <p className="text-3xl font-bold text-sky-100">
+                        <p className="text-lg font-bold text-sky-200">
                           #{product.id}
-                        </p>
-                        <p className="mt-1 text-xs text-sky-200">
-                          Product Image
                         </p>
                       </div>
                     </div>
                   )}
                 </div>
-                <div className="flex h-full flex-col gap-4 p-4 sm:p-5">
-                  <div>
-                    <p className="font-display text-lg font-bold text-slate-900">
+                <div className="min-w-0 flex-1">
+                  <div className="space-y-1">
+                    <p className="truncate font-display text-sm font-bold text-slate-900 sm:text-lg">
                       {product.name}
                     </p>
-                    <p className="mt-1 text-xs text-slate-500">
-                      Test ID: {product.id}
+                    <p className="text-xs font-semibold text-[var(--tl-primary-strong)] sm:text-sm">
+                      {copy.price}: {formatPrice(product.price)}
                     </p>
                   </div>
+                </div>
+                <div className="w-full sm:w-auto">
                   <button
                     type="button"
-                    className="mt-auto w-full rounded-full bg-[var(--tl-primary)] px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-[var(--tl-primary-strong)]"
+                    className="w-full rounded-full bg-[var(--tl-primary)] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-[var(--tl-primary-strong)] sm:w-auto sm:min-w-[132px]"
                   >
                     {copy.bookNow}
                   </button>
@@ -863,23 +885,27 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
 
   return (
     <div
-      className="fixed inset-0 z-[220] flex items-end bg-slate-900/45 p-3 sm:items-start sm:justify-center sm:px-6 sm:pb-6 sm:pt-24"
+      className="fixed inset-0 z-[220] flex items-start justify-center bg-slate-900/45 px-4 pb-4 pt-24 sm:px-6 sm:pb-6 sm:pt-24"
       role="dialog"
       aria-modal="true"
       aria-label={copy.title}
-      onClick={resetAndClose}
+      onPointerDown={(event) => {
+        if (event.target === event.currentTarget) {
+          resetAndClose();
+        }
+      }}
     >
       <div
-        className="flex max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl flex-col overflow-hidden rounded-[24px] border border-white/60 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_100%)] p-5 shadow-[0_30px_80px_-35px_rgba(3,86,197,0.55)] sm:max-h-[calc(100dvh-7rem)] sm:p-6"
-        onClick={(event) => event.stopPropagation()}
+        className="flex max-h-[72dvh] w-[calc(100%-3.25rem)] max-w-3xl flex-col overflow-hidden rounded-[24px] border border-white/60 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_100%)] p-4 shadow-[0_30px_80px_-35px_rgba(3,86,197,0.55)] sm:max-h-[calc(100dvh-7rem)] sm:w-full sm:p-6"
+        onPointerDown={(event) => event.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-3">
-          <div>
+        <div className="flex items-start justify-end gap-3 sm:justify-between">
+          <div className="hidden sm:block">
             <p className="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--tl-primary)]">
               <Sparkles className="h-3.5 w-3.5" />
               AI Test Finder
             </p>
-            <h3 className="mt-3 font-display text-2xl font-black text-slate-900">
+            <h3 className="mt-2 font-display text-xl font-black text-slate-900 sm:mt-3 sm:text-2xl">
               {copy.title}
             </h3>
             <p className="mt-1 text-sm text-slate-600">{copy.subtitle}</p>
@@ -887,15 +913,15 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
           <button
             type="button"
             onClick={resetAndClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 sm:h-10 sm:w-10"
             aria-label={copy.close}
           >
-            <X className="h-4 w-4" />
+            <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           </button>
         </div>
 
-        <div className="mt-5">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.08em] text-slate-500">
+        <div className="mt-2 sm:mt-5">
+          <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500 sm:text-xs">
             <span>
               {copy.step} {Math.min(step, 4)} {copy.of} 4
             </span>
@@ -903,16 +929,16 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
               <button
                 type="button"
                 onClick={goBack}
-                className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-bold text-slate-700 transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+                className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-0.5 text-[10px] font-bold text-slate-700 transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:px-3 sm:py-1 sm:text-[11px]"
               >
-                <ArrowLeft className="h-3.5 w-3.5" />
+                <ArrowLeft className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                 {copy.back}
               </button>
             ) : (
               <span />
             )}
           </div>
-          <div className="mt-2 h-2 rounded-full bg-sky-100">
+          <div className="mt-2 h-1.5 rounded-full bg-sky-100 sm:h-2">
             <div
               className="h-full rounded-full bg-[var(--tl-primary)] transition-all duration-300"
               style={{ width: `${stepProgress}%` }}
@@ -920,11 +946,11 @@ export default function AITestFinderModal({ isOpen, onClose, locale = "en" }) {
           </div>
         </div>
 
-        <div className="mt-5 flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-sky-100/80 bg-white/90 p-4 sm:p-5">
-          <h4 className="font-display text-lg font-extrabold text-slate-900">
+        <div className="mt-4 flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-sky-100/80 bg-white/90 p-3.5 sm:mt-5 sm:p-5">
+          <h4 className="font-display text-base font-extrabold text-slate-900 sm:text-lg">
             {getStepTitle()}
           </h4>
-          <div className="mt-4 min-h-0 flex-1 overflow-y-auto pr-1">
+          <div className="mt-3 min-h-0 flex-1 overflow-y-auto pr-1 sm:mt-4">
             {renderStepContent()}
           </div>
         </div>

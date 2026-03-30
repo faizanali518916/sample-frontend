@@ -325,9 +325,12 @@ export default function HomePage({ locale = "en" }) {
                 {t("Hero.badge")}
               </span>
 
-              <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl">
-                <span className="hero-line block">{t("Hero.line1")}</span>
-                <span className="hero-line mt-1 block text-[var(--tl-primary)]">
+              <h1
+                className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl"
+                style={{ fontFamily: '"Times New Roman", Times, serif' }}
+              >
+                <span className="hero-line">{t("Hero.line1") + " "}</span>
+                <span className="hero-line mt-1 text-[var(--tl-primary)]">
                   {t("Hero.line2")}
                 </span>
               </h1>
@@ -429,13 +432,15 @@ export default function HomePage({ locale = "en" }) {
               <button
                 type="button"
                 onClick={() => setIsAiFinderOpen(true)}
-                className="relative z-10 mt-5 w-full rounded-[20px] border-2 border-[var(--tl-primary-strong)] bg-white/98 px-6 py-4 text-center font-display text-[1.45rem] font-bold text-[var(--tl-primary-strong)] shadow-[0_18px_38px_-28px_rgba(2,6,14,0.6)] transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+                className="ai-finder-cta"
               >
-                <div className="flex items-center justify-center gap-2">
-                  <Sparkles className="h-5 w-5" />
-                  {isSpanish
-                    ? "Encuentra la prueba correcta con IA"
-                    : "Find the Right Test with AI"}
+                <div className="ai-finder-cta-inner">
+                  <Sparkles className="ai-finder-cta-icon h-6 w-6 sm:h-7 sm:w-7" />
+                  <span className="ai-finder-cta-title">
+                    {isSpanish
+                      ? "Encuentra la prueba correcta con IA"
+                      : "Find the Right Test with AI"}
+                  </span>
                 </div>
               </button>
             </div>
