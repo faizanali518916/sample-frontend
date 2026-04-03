@@ -122,7 +122,7 @@ export default function SiteNavbar() {
         <div className="flex h-[74px] items-center justify-between gap-3">
           <Link href="/" className="shrink-0" aria-label={t("aria.home")}>
             <Image
-              src="/images/24x7-logo.png"
+              src="/images/logo-dark.png"
               alt={t("brand.logoAlt")}
               width={214}
               height={52}

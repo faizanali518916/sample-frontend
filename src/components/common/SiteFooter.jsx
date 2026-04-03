@@ -122,19 +122,19 @@ export default function SiteFooter({ locale = "en" }) {
           </div>
         </div>
       </div>
-      <div className="relative mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-6">
-        <div>
+      <div className="relative mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-8 md:grid-cols-2 lg:grid-cols-4 lg:px-6">
+        <div className="flex flex-col items-center">
           <Image
-            src="/images/24x7-logo.png"
+            src="/images/logo-light.png"
             alt="24-7 Labs"
-            width={210}
-            height={54}
-            className="h-12 w-auto"
+            width={400}
+            height={100}
+            className="h-24 w-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
           />
-          <p className="mt-4 text-sm leading-relaxed text-sky-100/90">
+          <p className="text-sm leading-relaxed text-sky-100/90">
             {copy.about}
           </p>
-          <div className="mt-5 flex items-center gap-2 text-sky-200">
+          <div className="mt-5 flex items-center justify-center gap-2 text-sky-200">
             <a
               href="https://www.facebook.com/247Tampa/"
               target="_blank"

@@ -325,10 +325,7 @@ export default function HomePage({ locale = "en" }) {
                 {t("Hero.badge")}
               </span>
 
-              <h1
-                className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl"
-                style={{ fontFamily: '"Times New Roman", Times, serif' }}
-              >
+              <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl xl:text-6xl">
                 <span className="hero-line">{t("Hero.line1") + " "}</span>
                 <span className="hero-line mt-1 text-[var(--tl-primary)]">
                   {t("Hero.line2")}
