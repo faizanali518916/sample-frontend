@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function RouteScrollReset() {
-  const pathname = usePathname();
+	const pathname = usePathname();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname]);
+	useEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+	}, [pathname]);
 
-  return null;
+	return null;
 }

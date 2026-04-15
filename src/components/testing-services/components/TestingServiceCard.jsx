@@ -1,0 +1,145 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+
+function parsePrice(value) {
+	const numericValue = Number(value);
+	return Number.isFinite(numericValue) ? numericValue : null;
+}
+
+function getVariantPrices(variants = []) {
+	return variants
+		.map((variant) => {
+			const sale = parsePrice(variant.salePrice);
+			const regular = parsePrice(variant.regularPrice);
+			const resolvedPrice = sale && sale > 0 ? sale : regular;
+			return resolvedPrice && resolvedPrice > 0 ? resolvedPrice : null;
+		})
+		.filter((price) => price !== null);
+}
+
+function getPricingModel(product) {
+	const regularPrice = parsePrice(product.regularPrice);
+	const salePrice = parsePrice(product.salePrice);
+	const hasSale =
+		regularPrice !== null && salePrice !== null && regularPrice > 0 && salePrice > 0 && salePrice < regularPrice;
+
+	const variantPrices = getVariantPrices(product.variants);
+	const shouldUseVariantRange =
+		variantPrices.length > 0 && (regularPrice === null || regularPrice <= 0) && (salePrice === null || salePrice <= 0);
+
+	if (shouldUseVariantRange) {
+		const minimum = Math.min(...variantPrices);
+		const maximum = Math.max(...variantPrices);
+
+		return {
+			type: minimum === maximum ? 'single' : 'range',
+			minimum,
+			maximum,
+		};
+	}
+
+	if (hasSale) {
+		return {
+			type: 'sale',
+			regularPrice,
+			salePrice,
+		};
+	}
+
+	const fallbackPrice =
+		salePrice !== null && salePrice > 0 ? salePrice : regularPrice !== null && regularPrice > 0 ? regularPrice : null;
+
+	if (fallbackPrice !== null) {
+		return {
+			type: 'single',
+			minimum: fallbackPrice,
+			maximum: fallbackPrice,
+		};
+	}
+
+	return {
+		type: 'contact',
+	};
+}
+
+export default function TestingServiceCard({ product, t, locale, formatPrice, summarizeText, getProductImage }) {
+	const productName = product.name ?? t('fallbackProductName', { id: product.id });
+	const categoryNames = product.categories.length
+		? product.categories.map((category) => category.name).join(', ')
+		: t('emptyCategory');
+	const pricingModel = getPricingModel(product);
+
+	return (
+		<article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-sky-100 bg-white shadow-[0_18px_40px_-30px_rgba(2,6,14,0.85)] transition hover:-translate-y-1 hover:shadow-[0_30px_65px_-36px_rgba(2,6,14,0.9)]">
+			{pricingModel.type === 'sale' && (
+				<div className="absolute top-3 right-3 z-10 rounded-full bg-red-600 px-3 py-1 text-xs font-bold tracking-[0.08em] text-white uppercase shadow-lg">
+					{t('onSale')}
+				</div>
+			)}
+
+			<div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+				<Image
+					src={getProductImage(product)}
+					alt={productName}
+					fill
+					sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+					className="object-cover transition duration-500 group-hover:scale-105"
+				/>
+			</div>
+
+			<div className="flex h-full flex-1 flex-col p-5">
+				<p className="text-xs font-bold tracking-[0.14em] text-[var(--tl-primary)] uppercase">{categoryNames}</p>
+				<h2 className="font-display mt-2 text-xl leading-snug font-extrabold text-[var(--tl-metallic-black)]">
+					{productName}
+				</h2>
+				<p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{summarizeText(product.description, 145)}</p>
+
+				<div className="mt-5 border-t border-slate-100 pt-4">
+					{pricingModel.type === 'sale' && (
+						<p className="text-center text-base font-semibold text-slate-400 line-through">
+							{formatPrice(pricingModel.regularPrice, locale)}
+						</p>
+					)}
+
+					{pricingModel.type === 'sale' && (
+						<p className="font-display text-center text-2xl font-black text-[var(--tl-metallic-black)]">
+							{formatPrice(pricingModel.salePrice, locale)}
+						</p>
+					)}
+
+					{pricingModel.type === 'single' && (
+						<p className="font-display text-center text-2xl font-black text-[var(--tl-metallic-black)]">
+							{formatPrice(pricingModel.minimum, locale)}
+						</p>
+					)}
+
+					{pricingModel.type === 'range' && (
+						<p className="font-display text-center text-2xl font-black text-[var(--tl-metallic-black)]">
+							{t('variantRange', {
+								min: formatPrice(pricingModel.minimum, locale),
+								max: formatPrice(pricingModel.maximum, locale),
+							})}
+						</p>
+					)}
+
+					{pricingModel.type === 'contact' && (
+						<p className="font-display text-center text-2xl font-black text-[var(--tl-metallic-black)]">
+							{t('contactUs')}
+						</p>
+					)}
+
+					<div className="mt-3 flex justify-center">
+						<Link
+							href={`/contact?test=${encodeURIComponent(productName)}`}
+							className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-5 py-2.5 text-sm font-bold whitespace-nowrap text-white transition hover:bg-[var(--tl-primary-strong)]"
+						>
+							{t('bookTest')}
+							<ArrowRight className="h-4 w-4" />
+						</Link>
+					</div>
+				</div>
+			</div>
+		</article>
+	);
+}
