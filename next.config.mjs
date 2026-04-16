@@ -8,9 +8,9 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
+				port: '8081',
 				protocol: 'http',
 				hostname: '247labstage.spctek.com',
-				port: '8081',
 			},
 		],
 	},
