@@ -78,22 +78,34 @@ export default function TestingServiceCard({ product, t, locale, formatPrice, su
 				</div>
 			)}
 
-			<div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-				<Image
-					src={getProductImage(product)}
-					alt={productName}
-					fill
-					sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-					className="object-cover transition duration-500 group-hover:scale-105"
-				/>
+			<div className="aspect-[4/3] overflow-hidden bg-slate-100">
+				<Link
+					href={`/testing-services/${product.id}`}
+					className="relative block h-full w-full"
+					aria-label={productName}
+				>
+					<Image
+						src={getProductImage(product)}
+						alt={productName}
+						fill
+						sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+						className="object-cover transition duration-500 group-hover:scale-105"
+					/>
+				</Link>
 			</div>
 
 			<div className="flex h-full flex-1 flex-col p-5">
-				<p className="text-xs font-bold tracking-[0.14em] text-[var(--tl-primary)] uppercase">{categoryNames}</p>
+				<p className="text-xs font-bold tracking-[0.12em] text-[var(--tl-primary)] uppercase sm:tracking-[0.14em]">
+					{categoryNames}
+				</p>
 				<h2 className="font-display mt-2 text-xl leading-snug font-extrabold text-[var(--tl-metallic-black)]">
-					{productName}
+					<Link href={`/testing-services/${product.id}`} className="transition hover:text-[var(--tl-primary)]">
+						{productName}
+					</Link>
 				</h2>
-				<p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{summarizeText(product.description, 145)}</p>
+				<p className="mt-3 flex-1 text-sm leading-relaxed break-words text-slate-600">
+					{summarizeText(product.description, 145)}
+				</p>
 
 				<div className="mt-5 border-t border-slate-100 pt-4">
 					{pricingModel.type === 'sale' && (
@@ -131,8 +143,8 @@ export default function TestingServiceCard({ product, t, locale, formatPrice, su
 
 					<div className="mt-3 flex justify-center">
 						<Link
-							href={`/contact?test=${encodeURIComponent(productName)}`}
-							className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-5 py-2.5 text-sm font-bold whitespace-nowrap text-white transition hover:bg-[var(--tl-primary-strong)]"
+							href={`/testing-services/${product.id}`}
+							className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-4 py-2.5 text-center text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)] sm:px-5 sm:whitespace-nowrap"
 						>
 							{t('bookTest')}
 							<ArrowRight className="h-4 w-4" />

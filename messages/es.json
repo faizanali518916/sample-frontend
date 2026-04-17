@@ -393,6 +393,28 @@
 		"ctaTitle": "Necesitas ayuda para elegir una prueba?",
 		"ctaBody": "Nuestro equipo puede ayudarte a reducir opciones y agendar la cita correcta sin friccion."
 	},
+	"TestingServiceDetailsPage": {
+		"metadata": {
+			"title": "{name} | Servicio de Pruebas | 24-7 Labs",
+			"description": "Consulta detalles del servicio, contexto de precios y opciones relacionadas de 24-7 Labs."
+		},
+		"fallbackTitle": "Detalle del servicio",
+		"backToServices": "Volver a servicios de pruebas",
+		"serviceDetails": "Detalle del servicio",
+		"variantRange": "{min} - {max}",
+		"contactUs": "Contactanos",
+		"categoryLabel": "Categoria",
+		"categoriesTitle": "Categorías",
+		"allCategories": "Todas las Categorías",
+		"variationLabel": "Variacion",
+		"selectVariationPlaceholder": "Selecciona una variacion",
+		"optionsAvailable": "Opciones disponibles",
+		"bookTest": "Reservar esta prueba",
+		"callNow": "Llama al +1 (813) 932-3741",
+		"descriptionTitle": "Descripcion",
+		"relatedTitle": "Servicios relacionados",
+		"fallbackProductName": "Producto {id}"
+	},
 	"AboutPage": {
 		"metadata": {
 			"title": "Acerca de 24-7 Labs",

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowLeft, Sparkles, X } from 'lucide-react';
@@ -327,12 +328,13 @@ export default function AITestFinderModal({ isOpen, onClose, locale = 'en' }) {
 									</div>
 								</div>
 								<div className="w-full sm:w-auto">
-									<button
-										type="button"
-										className="w-full rounded-full bg-[var(--tl-primary)] px-4 py-2.5 text-xs font-bold tracking-wide text-white uppercase transition hover:bg-[var(--tl-primary-strong)] sm:w-auto sm:min-w-[132px]"
+									<Link
+										href={`/testing-services/${product.id}`}
+										onClick={resetAndClose}
+										className="inline-flex w-full items-center justify-center rounded-full bg-[var(--tl-primary)] px-4 py-2.5 text-xs font-bold tracking-wide text-white uppercase transition hover:bg-[var(--tl-primary-strong)] sm:w-auto sm:min-w-[132px]"
 									>
 										{copy.bookNow}
-									</button>
+									</Link>
 								</div>
 							</div>
 						))}

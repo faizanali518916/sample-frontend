@@ -393,6 +393,28 @@
 		"ctaTitle": "Need help choosing a test?",
 		"ctaBody": "Our team can help you narrow the options and book the right appointment without friction."
 	},
+	"TestingServiceDetailsPage": {
+		"metadata": {
+			"title": "{name} | Testing Service | 24-7 Labs",
+			"description": "View testing service details, pricing context, and related options from 24-7 Labs."
+		},
+		"fallbackTitle": "Testing Service Details",
+		"backToServices": "Back to testing services",
+		"serviceDetails": "Service details",
+		"variantRange": "{min} - {max}",
+		"contactUs": "Contact us",
+		"categoryLabel": "Category",
+		"categoriesTitle": "Categories",
+		"allCategories": "All Categories",
+		"variationLabel": "Variation",
+		"selectVariationPlaceholder": "Select a variation",
+		"optionsAvailable": "Options available",
+		"bookTest": "Book this test",
+		"callNow": "Call +1 (813) 932-3741",
+		"descriptionTitle": "Description",
+		"relatedTitle": "Related services",
+		"fallbackProductName": "Product {id}"
+	},
 	"AboutPage": {
 		"metadata": {
 			"title": "About 24-7 Labs",

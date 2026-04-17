@@ -1,7 +1,8 @@
-const API_ORIGIN = 'http://247labstage.spctek.com:8081';
+const API_ORIGIN = 'https://247labstage.spctek.com:9000';
 
 export const API_BASE_URL = `${API_ORIGIN}/api`;
 const PRODUCTS_API_URL = `${API_BASE_URL}/products`;
+const CATEGORIES_API_URL = `${API_BASE_URL}/category`;
 
 export function extractProducts(payload) {
 	if (Array.isArray(payload)) {
@@ -87,4 +88,38 @@ export async function fetchProducts() {
 
 	const payload = await response.json();
 	return extractProducts(payload).map(normalizeProduct).filter(Boolean);
+}
+
+export async function fetchCategories() {
+	const response = await fetch(CATEGORIES_API_URL, {
+		cache: 'no-store',
+		headers: {
+			Accept: 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error(`Categories API failed with status ${response.status}`);
+	}
+
+	const payload = await response.json();
+
+	// Extract categories from response
+	if (Array.isArray(payload)) {
+		return payload;
+	}
+
+	if (Array.isArray(payload?.categories)) {
+		return payload.categories;
+	}
+
+	if (Array.isArray(payload?.data)) {
+		return payload.data;
+	}
+
+	if (Array.isArray(payload?.data?.categories)) {
+		return payload.data.categories;
+	}
+
+	return [];
 }
