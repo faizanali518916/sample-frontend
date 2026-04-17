@@ -1,10 +1,19 @@
-import ScheduleAppointmentClient from './ScheduleAppointmentClient';
+import { cookies } from 'next/headers';
+import { getLocaleFromCookieStore } from '@/lib/locale';
+import { loadMessages } from '@/i18n/loadMessages';
+import GenericFormPage from '@/components/forms/GenericFormPage';
 
-export const metadata = {
-	title: 'Schedule Appointment | 24-7 Labs',
-	description: 'Book a same-day appointment for diagnostics testing at our Tampa location.',
-};
+export async function generateMetadata() {
+	const cookieStore = await cookies();
+	const locale = getLocaleFromCookieStore(cookieStore);
+	const messages = await loadMessages(locale);
+
+	return {
+		title: messages?.Forms?.scheduleAppointment?.metadata?.title,
+		description: messages?.Forms?.scheduleAppointment?.metadata?.description,
+	};
+}
 
 export default function ScheduleAppointmentPage() {
-	return <ScheduleAppointmentClient />;
+	return <GenericFormPage formKey="scheduleAppointment" />;
 }

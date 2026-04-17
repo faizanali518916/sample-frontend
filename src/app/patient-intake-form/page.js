@@ -9,11 +9,11 @@ export async function generateMetadata() {
 	const messages = await loadMessages(locale);
 
 	return {
-		title: messages?.Forms?.contact?.metadata?.title,
-		description: messages?.Forms?.contact?.metadata?.description,
+		title: messages?.Forms?.patientIntake?.metadata?.title,
+		description: messages?.Forms?.patientIntake?.metadata?.description,
 	};
 }
 
-export default function ContactPage() {
-	return <GenericFormPage formKey="contact" />;
+export default function PatientIntakeFormPage() {
+	return <GenericFormPage formKey="patientIntake" />;
 }

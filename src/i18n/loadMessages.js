@@ -6,6 +6,7 @@ const localeLoaders = {
 		() => import('../../locales/en/business.json').then((module) => module.default),
 		() => import('../../locales/en/services.json').then((module) => module.default),
 		() => import('../../locales/en/company.json').then((module) => module.default),
+		() => import('../../locales/en/forms.json').then((module) => module.default),
 	],
 	es: [
 		() => import('../../locales/es/common.json').then((module) => module.default),
@@ -14,6 +15,7 @@ const localeLoaders = {
 		() => import('../../locales/es/business.json').then((module) => module.default),
 		() => import('../../locales/es/services.json').then((module) => module.default),
 		() => import('../../locales/es/company.json').then((module) => module.default),
+		() => import('../../locales/es/forms.json').then((module) => module.default),
 	],
 };
 

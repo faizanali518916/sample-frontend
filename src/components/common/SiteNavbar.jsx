@@ -16,7 +16,7 @@ const primaryMenuItems = [
 		href: 'https://247labkit.com/',
 		external: true,
 	},
-	{ key: 'forms', href: '/#forms' },
+	{ key: 'forms', href: '/forms' },
 	{ key: 'schedule', href: '/schedule-appointment' },
 	{ key: 'contact', href: '/contact' },
 ];

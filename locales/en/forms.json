@@ -1,0 +1,184 @@
+{
+	"Forms": {
+		"common": {
+			"yes": "Yes",
+			"no": "No",
+			"sending": "Sending...",
+			"callNow": "Call Now",
+			"selectOption": "Select an option",
+			"selectState": "Select State",
+			"selectLocation": "Select Location",
+			"lookupLoadError": "Failed to load form options.",
+			"agreeTo": "I have read and agree.",
+			"declarationTitle": "Declaration",
+			"termsTitle": "Terms of Service",
+			"noticeTitle": "Important Notice",
+			"sections": {
+				"personalInformation": "Personal Information",
+				"agreements": "Agreements"
+			},
+			"fields": {
+				"name": "Name",
+				"firstName": "First Name",
+				"lastName": "Last Name",
+				"email": "Email",
+				"phone": "Phone Number",
+				"dateOfBirth": "Date of Birth",
+				"address": "Address",
+				"city": "City",
+				"apt": "Apt",
+				"zipCode": "Zip Code",
+				"state": "State",
+				"location": "Location",
+				"dateTime": "Choose Date",
+				"symptomsTests": "Symptoms / Tests",
+				"message": "Message",
+				"digitalSignature": "Digital Signature"
+			},
+			"validation": {
+				"required": "This field is required.",
+				"invalidEmail": "Please enter a valid email address.",
+				"invalidPhone": "Please enter a valid phone number.",
+				"mustAgree": "You must agree before submitting."
+			},
+			"aboutCard": {
+				"title": "About Us",
+				"body": "24-7 Labs is the first of a new line of innovative health care services from 24-7 Laboratory LLC. Our mission is to give people the power to control their health through convenient, affordable, and easy-to-understand options.",
+				"address": "6107 Memorial Hwy, Suite F Tampa, FL",
+				"hours": "We work every day, 24 hours a day.",
+				"phone": "+1 (813) 932-3741",
+				"email": "anytimelab@24-7labs.com"
+			},
+			"vaccination": {
+				"notVaccinated": "Not vaccinated",
+				"partiallyVaccinated": "Partially vaccinated",
+				"fullyVaccinated": "Fully vaccinated",
+				"booster": "Fully vaccinated with booster(s)"
+			},
+			"declarationContent": [
+				"I hereby certify that the answers given above are true and complete to the best of my knowledge.",
+				"I have had an opportunity to ask questions and received satisfactory answers before requesting services.",
+				"By submitting this form, I agree to all declarations and company policies published on this site."
+			],
+			"termsContent": [
+				"I understand that 24-7 Labs acts as a collection facility and does not interpret laboratory results.",
+				"I understand I am financially responsible for all collection and test-related fees.",
+				"I understand my data is treated as protected health information in accordance with applicable law."
+			],
+			"covidTermsContent": [
+				"I understand this COVID screening information is collected for clinical and operational screening purposes.",
+				"I understand test interpretation and treatment guidance require consultation with a licensed provider.",
+				"I consent to the collection and secure handling of this information as protected health data."
+			],
+			"medicationPricing": {
+				"title": "Medication Pricing and Payment Disclaimer",
+				"lines": [
+					"All medication is self-pay. Insurance is not accepted.",
+					"Supported pharmacies: CVS or Walgreens. Pricing varies by state.",
+					"Sample prices: Azithromycin ($20-$30), Doxycycline ($30-$60), Cefixime ($20-$30), Acyclovir ($40-$50), Metronidazole ($10-$20)."
+				]
+			}
+		},
+		"contact": {
+			"metadata": {
+				"title": "Contact 24-7 Labs",
+				"description": "Send us a message for testing support, appointments, and general inquiries."
+			},
+			"eyebrow": "Contact",
+			"title": "Contact 24-7 Labs",
+			"subtitle": "Reach out to our team for appointment support, test information, and location details.",
+			"formTitle": "Send a message",
+			"submitLabel": "Send Message",
+			"successMessage": "Message sent successfully.",
+			"errorMessage": "Failed to send message. Please try again."
+		},
+		"scheduleAppointment": {
+			"metadata": {
+				"title": "Schedule Appointment | 24-7 Labs",
+				"description": "Book a same-day appointment for diagnostics testing in Tampa."
+			},
+			"eyebrow": "Appointments",
+			"title": "Schedule Appointment",
+			"subtitle": "Book a same-day appointment for diagnostics testing. Our staff is ready to help.",
+			"formTitle": "Schedule Appointment",
+			"submitLabel": "Send",
+			"successMessage": "Appointment scheduled successfully.",
+			"errorMessage": "Failed to schedule appointment. Please try again."
+		},
+		"patientIntake": {
+			"metadata": {
+				"title": "Patient Intake Form | 24-7 Labs",
+				"description": "Complete your patient intake form securely before your visit."
+			},
+			"eyebrow": "Forms",
+			"title": "Patient Intake Form",
+			"subtitle": "Complete this intake form to speed up your appointment and improve service accuracy.",
+			"submitLabel": "Send",
+			"successMessage": "Patient intake form submitted successfully.",
+			"errorMessage": "Failed to submit patient intake form. Please try again.",
+			"sections": {
+				"permissions": "Contact Permissions"
+			},
+			"fields": {
+				"mayContactNumber": "May we contact you at this number?",
+				"mayContactEmail": "May we contact you at this email address?",
+				"mayForwardResults": "May we forward laboratory results to this email address?"
+			}
+		},
+		"covidScreening": {
+			"metadata": {
+				"title": "COVID Screening Form | 24-7 Labs",
+				"description": "Submit your COVID screening details securely before testing."
+			},
+			"eyebrow": "Forms",
+			"title": "COVID Screening Form",
+			"subtitle": "Please complete this form before your COVID-19 service.",
+			"submitLabel": "Send",
+			"successMessage": "COVID screening form submitted successfully.",
+			"errorMessage": "Failed to submit COVID screening form. Please try again.",
+			"sections": {
+				"symptoms": "COVID-19 Symptoms",
+				"exposureHistory": "COVID-19 Exposure and History"
+			},
+			"fields": {
+				"fever": "Fever or chills?",
+				"cough": "Cough (usually dry)?",
+				"breathing": "Difficulty breathing or shortness of breath?",
+				"fatigue": "Fatigue or tiredness?",
+				"headache": "Headache?",
+				"tasteSmell": "Loss of taste or smell?",
+				"soreThroat": "Sore throat?",
+				"congestion": "Congestion or runny nose?",
+				"exposure": "Have you been in close contact with a person with COVID-19 in the last 14 days?",
+				"vaccinationStatus": "What is your COVID-19 vaccination status?",
+				"previousInfection": "Have you tested positive for COVID-19 before?"
+			}
+		},
+		"prescriptionConsent": {
+			"metadata": {
+				"title": "Prescription Medication Consent Form | 24-7 Labs",
+				"description": "Submit prescription medication consent information securely."
+			},
+			"eyebrow": "Forms",
+			"title": "Prescription Medication Consent Form",
+			"subtitle": "Provide medical and pharmacy details so our team can process your request safely.",
+			"submitLabel": "Send",
+			"successMessage": "Prescription consent form submitted successfully.",
+			"errorMessage": "Failed to submit prescription consent form. Please try again.",
+			"selectInfection": "Select Infection",
+			"sections": {
+				"medicalQuestions": "Medical Questions"
+			},
+			"fields": {
+				"infection": "Please select the infection you need medication for",
+				"currentMedication": "Are you taking any current medication?",
+				"currentMedicationDetails": "If yes, explain the current medications you are taking.",
+				"allergicMedication": "Are you allergic to any medication that you know of?",
+				"allergiesDetails": "If yes, explain your allergies.",
+				"pregnant": "Are you pregnant or lactating?",
+				"pharmacyName": "Pharmacy Name",
+				"pharmacyPhone": "Pharmacy Phone Number"
+			}
+		}
+	}
+}

@@ -3,6 +3,33 @@ const API_ORIGIN = 'https://247labstage.spctek.com:9000';
 export const API_BASE_URL = `${API_ORIGIN}/api`;
 const PRODUCTS_API_URL = `${API_BASE_URL}/products`;
 const CATEGORIES_API_URL = `${API_BASE_URL}/category`;
+const LAB_LOCATIONS_API_URL = `${API_BASE_URL}/lab-locations`;
+const COUNTRY_STATES_API_URL = `${API_BASE_URL}/country-states`;
+const INFECTIONS_API_URL = `${API_BASE_URL}/infections`;
+const CONTACT_API_URL = `${API_BASE_URL}/contact`;
+const APPOINTMENTS_API_URL = `${API_BASE_URL}/appointments`;
+const PATIENT_INTAKE_API_URL = `${API_BASE_URL}/patient-intake`;
+const CONSENT_FORM_API_URL = `${API_BASE_URL}/consent-form`;
+const COVID_SCREENING_API_URL = `${API_BASE_URL}/covid-screening`;
+
+async function parseJsonResponse(response) {
+	if (!response.ok) {
+		throw new Error(`API failed with status ${response.status}`);
+	}
+
+	return response.json();
+}
+
+function withJsonOptions(body) {
+	return {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(body),
+	};
+}
 
 export function extractProducts(payload) {
 	if (Array.isArray(payload)) {
@@ -122,4 +149,104 @@ export async function fetchCategories() {
 	}
 
 	return [];
+}
+
+export async function fetchLabLocations() {
+	const response = await fetch(LAB_LOCATIONS_API_URL, {
+		cache: 'no-store',
+		headers: {
+			Accept: 'application/json',
+		},
+	});
+
+	const payload = await parseJsonResponse(response);
+
+	if (Array.isArray(payload)) {
+		return payload;
+	}
+
+	if (Array.isArray(payload?.data)) {
+		return payload.data;
+	}
+
+	if (Array.isArray(payload?.locations)) {
+		return payload.locations;
+	}
+
+	return [];
+}
+
+export async function fetchCountryStates() {
+	const response = await fetch(COUNTRY_STATES_API_URL, {
+		cache: 'no-store',
+		headers: {
+			Accept: 'application/json',
+		},
+	});
+
+	const payload = await parseJsonResponse(response);
+
+	if (Array.isArray(payload)) {
+		return payload;
+	}
+
+	if (Array.isArray(payload?.data)) {
+		return payload.data;
+	}
+
+	if (Array.isArray(payload?.countryStates)) {
+		return payload.countryStates;
+	}
+
+	return [];
+}
+
+export async function fetchInfections() {
+	const response = await fetch(INFECTIONS_API_URL, {
+		cache: 'no-store',
+		headers: {
+			Accept: 'application/json',
+		},
+	});
+
+	const payload = await parseJsonResponse(response);
+
+	if (Array.isArray(payload)) {
+		return payload;
+	}
+
+	if (Array.isArray(payload?.data)) {
+		return payload.data;
+	}
+
+	if (Array.isArray(payload?.infections)) {
+		return payload.infections;
+	}
+
+	return [];
+}
+
+export async function submitContactForm(payload) {
+	const response = await fetch(CONTACT_API_URL, withJsonOptions(payload));
+	return parseJsonResponse(response);
+}
+
+export async function submitAppointmentForm(payload) {
+	const response = await fetch(APPOINTMENTS_API_URL, withJsonOptions(payload));
+	return parseJsonResponse(response);
+}
+
+export async function submitPatientIntakeForm(payload) {
+	const response = await fetch(PATIENT_INTAKE_API_URL, withJsonOptions(payload));
+	return parseJsonResponse(response);
+}
+
+export async function submitPrescriptionConsentForm(payload) {
+	const response = await fetch(CONSENT_FORM_API_URL, withJsonOptions(payload));
+	return parseJsonResponse(response);
+}
+
+export async function submitCovidScreeningForm(payload) {
+	const response = await fetch(COVID_SCREENING_API_URL, withJsonOptions(payload));
+	return parseJsonResponse(response);
 }
