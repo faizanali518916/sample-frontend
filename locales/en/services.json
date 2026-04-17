@@ -1,0 +1,709 @@
+{
+	"CovidPage": {
+		"metadata": {
+			"title": "COVID-19 Testing Tampa | 24-7 Labs",
+			"description": "Same-day and next-day COVID-19 RT-PCR testing in Tampa with fast turnaround, private booking, and travel-ready documentation."
+		},
+		"eyebrow": "COVID-19 Testing Tampa",
+		"title": "COVID-19 Testing",
+		"intro1": "Whether you're vaccinated and keeping current on boosters or unvaccinated entirely, COVID-19 continues to be a very real risk. 24-7 Labs provides convenient same-day and next-day testing in Tampa, Florida.",
+		"intro2": "COVID-19 is caused by the SARS-CoV-2 virus and can affect everyone differently. Common symptoms include:",
+		"symptoms": [
+			"Fever/chills",
+			"Fatigue",
+			"Cough",
+			"Headaches",
+			"Muscle or body aches",
+			"Sore throat",
+			"Diarrhea",
+			"Congestion or runny nose",
+			"Nausea or vomiting",
+			"Loss of taste or smell"
+		],
+		"accreditation": "24-7 Labs and all lab partners are accredited by the College of American Pathologists (CAP) and certified under CLIA. You can trust both your testing quality and your privacy.",
+		"bookButton": "Book Your Test",
+		"howTitle": "How Does 24-7 Labs COVID-19 Testing Work?",
+		"howBody": "Our team guides you through a quick nasal swab process. Results can be delivered in as little as 24 hours by email, and we can provide documentation for travel, school, or work when required.",
+		"pricingTitle": "24-7 Labs Provides Quick, Affordable COVID-19 Testing",
+		"pricingBody": "In today's health-conscious environment, COVID-19 testing may be needed for several reasons:",
+		"reasons": [
+			"Are you traveling?",
+			"Do you suspect exposure?",
+			"Are you flying or leaving the country?",
+			"Are you returning to work?",
+			"Does your child need to return to school?"
+		],
+		"packageTag": "COVID-19 RT-PCR Test",
+		"packages": [
+			{
+				"id": "same-day",
+				"title": "COVID-19 RT-PCR - SAME DAY RESULTS",
+				"price": "$229"
+			},
+			{
+				"id": "next-day",
+				"title": "COVID-19 RT-PCR - NEXT DAY RESULTS",
+				"price": "$190"
+			}
+		],
+		"makeAppointment": "Make Appointment",
+		"stepsTitle": "24-7 Labs Is The Lab For You",
+		"steps": [
+			{
+				"id": "schedule",
+				"icon": "calendar",
+				"title": "Schedule a Test",
+				"description": "Choose a date and time that works for your routine and receive booking confirmation promptly."
+			},
+			{
+				"id": "visit",
+				"icon": "location",
+				"title": "Visit Our Testing Location",
+				"description": "Visit our convenient testing location and complete your test quickly with guidance from trained staff."
+			},
+			{
+				"id": "tested",
+				"icon": "tested",
+				"title": "Get Tested",
+				"description": "Complete the sample collection process safely and efficiently with clear instructions from our team."
+			},
+			{
+				"id": "results",
+				"icon": "results",
+				"title": "Receive Results",
+				"description": "Get your secure results by email as soon as they are ready, including documentation when needed."
+			}
+		],
+		"travelMap": "COVID-19 Travel Regulations Map",
+		"images": {
+			"shapeAlt": "Decorative shape",
+			"heroAlt": "COVID-19 sample test",
+			"secondaryAlt": "Doctor taking a COVID-19 swab sample",
+			"packageAlt": "COVID-19 test package"
+		}
+	},
+	"DnaTestingPage": {
+		"breadcrumbs": "Home > DNA Testing",
+		"hero": {
+			"title": "DNA Testing Tampa",
+			"overline": "DNA TESTING",
+			"mainTitle": "24-7Labs DNA Testing",
+			"description": [
+				"DNA testing is becoming increasingly popular for a number of different reasons. From genealogy to immigration to legal purposes, DNA testing has emerged as a trusted solution for individuals looking to answer their most pressing questions about family relationships.",
+				"Whether you need DNA testing to establish a family relationship or to use the results for legal, informational, or immigration purposes, 24-7Labs is here to help. With a team of trusted professionals and fast results, we're the best choice for all your DNA testing needs."
+			]
+		},
+		"howItWorks": {
+			"title": "How Does 24-7Labs DNA Testing Work?",
+			"intro": "24-7Labs is accredited by the College of American Pathologists (CAP) and holds a certification from the Clinical Laboratory Amendments of 1988 (CLIA). Our convenient Tampa location makes it easy to get tested. Here's what to expect:",
+			"steps": [
+				{
+					"title": "Schedule Your Test",
+					"description": "Book an appointment or walk in to any of our Tampa locations."
+				},
+				{
+					"title": "Provide Your Sample",
+					"description": "We'll collect a quick buccal swab (cheek swab). No needles required."
+				},
+				{
+					"title": "Lab Processing",
+					"description": "Your sample is processed with DNA extraction and analysis."
+				},
+				{
+					"title": "Receive Results",
+					"description": "Results are delivered securely within 3-5 business days via email."
+				}
+			]
+		},
+		"dnaTests": {
+			"title": "DNA Tests Offered",
+			"intro": "24-7Labs offers a comprehensive selection of DNA testing services for various purposes:",
+			"tests": [
+				{
+					"id": "paternity",
+					"name": "Paternity Testing",
+					"description": "Establish biological paternity with 99.9% accuracy. Used for legal, informational, or personal purposes."
+				},
+				{
+					"id": "maternity",
+					"name": "Maternity Testing",
+					"description": "Confirm biological maternity relationships with scientific accuracy."
+				},
+				{
+					"id": "siblingship",
+					"name": "Siblingship Testing",
+					"description": "Determine biological relationships between potential siblings."
+				},
+				{
+					"id": "grand-paternity",
+					"name": "Grand-Paternity Testing",
+					"description": "Establish biological relationships between grandparents and grandchildren."
+				},
+				{
+					"id": "familial",
+					"name": "Familial DNA Testing",
+					"description": "Test relationships among multiple family members to establish complex family connections."
+				},
+				{
+					"id": "twin",
+					"name": "Twin DNA Testing",
+					"description": "Determine if twins are identical (monozygotic) or fraternal (dizygotic)."
+				},
+				{
+					"id": "immigration",
+					"name": "Immigration DNA Testing",
+					"description": "AABB-accredited DNA testing for immigration and visa purposes."
+				},
+				{
+					"id": "court-ordered",
+					"name": "Court-Ordered DNA Testing",
+					"description": "Chain of Custody testing for legal proceedings with certified documentation."
+				}
+			]
+		},
+		"productsSection": "DNA Testing Products"
+	},
+	"StdTestingPage": {
+		"breadcrumbs": "Home > STD Testing",
+		"hero": {
+			"title": "STD Testing Tampa",
+			"overline": "CONFIDENTIAL TESTING",
+			"mainTitle": "24-7Labs STD Testing",
+			"description": [
+				"At 24-7Labs, we understand that STD testing can be a sensitive topic. We provide discreet, professional, and judgment-free testing in a confidential setting.",
+				"Whether you suspect exposure, want routine screening, or need testing for peace of mind, 24-7Labs makes it easy to get tested without insurance or doctor referrals."
+			]
+		},
+		"howItWorks": {
+			"title": "How STD Testing Works",
+			"intro": "Quick, confidential, and professional STD testing at 24-7Labs:",
+			"steps": [
+				{
+					"title": "Schedule Online or Walk In",
+					"description": "Book an appointment online or walk in to any Tampa location. Testing is discreet, professional, and judgment-free."
+				},
+				{
+					"title": "Visit Our Lab",
+					"description": "Bring a valid photo ID. No doctor referral needed to get tested for STDs."
+				},
+				{
+					"title": "Provide a Sample",
+					"description": "Depending on the test, we may collect a blood draw, urine sample, or swab. The process takes only a few minutes."
+				},
+				{
+					"title": "Receive Secure Results",
+					"description": "Results are delivered via secure email within 1–3 business days. We remain your point of contact for any follow-up questions."
+				}
+			]
+		},
+		"stdTypes": {
+			"title": "STD Tests Available",
+			"intro": "We test for all common STDs with confidentiality and accuracy:",
+			"tests": [
+				{
+					"id": "herpes",
+					"name": "Herpes",
+					"description": "Herpes is a virus caused by the herpes simplex virus (HSV). It exists in two forms, including oral and genital herpes. Both variations result in cold sores around the mouth, face, or genitals. It is spread through skin-to-skin contact with infected areas, most often during vaginal, oral, and anal sex, as well as kissing."
+				},
+				{
+					"id": "gonorrhea",
+					"name": "Gonorrhea",
+					"description": "Gonorrhea is a common bacterial infection that can infect the genitals, rectum, and throat. It is often asymptomatic, making testing essential. If left untreated, gonorrhea can lead to serious complications including pelvic inflammatory disease and infertility."
+				},
+				{
+					"id": "chlamydia",
+					"name": "Chlamydia",
+					"description": "Chlamydia is the most commonly reported bacterial sexually transmitted infection in the United States. It often has no symptoms but can cause serious reproductive damage if left untreated, including infertility."
+				},
+				{
+					"id": "syphilis",
+					"name": "Syphilis",
+					"description": "Syphilis is a bacterial infection that progresses in stages if left untreated. Early detection and treatment with antibiotics can fully cure the infection and prevent serious complications."
+				},
+				{
+					"id": "hiv",
+					"name": "HIV A/B",
+					"description": "HIV or human immunodeficiency virus is a virus that attacks the body's immune system. Early detection and modern treatments can help manage the virus effectively."
+				},
+				{
+					"id": "hepatitis",
+					"name": "Hepatitis",
+					"description": "Hepatitis B and C are viral infections that attack the liver. Hepatitis B is spread through contact with infected body fluids, while Hepatitis C is primarily spread through blood-to-blood contact."
+				},
+				{
+					"id": "trichomoniasis",
+					"name": "Trichomoniasis",
+					"description": "Trichomoniasis is caused by the parasite Trichomonas vaginalis. It is one of the most common curable STDs, affecting millions each year."
+				},
+				{
+					"id": "monkeypox",
+					"name": "Monkeypox",
+					"description": "Monkeypox can spread through close physical contact. Our test uses a PCR swab sample from skin lesions to confirm infection."
+				}
+			]
+		},
+		"productsSection": "STD Testing Products"
+	},
+	"DrugTestingPage": {
+		"breadcrumbs": "Home > Drug & Alcohol Testing",
+		"hero": {
+			"title": "Drug & Alcohol Testing Tampa",
+			"overline": "FULL-SERVICE TESTING",
+			"mainTitle": "24-7Labs Drug & Alcohol Testing",
+			"description": [
+				"As a full-service lab, 24-7Labs is happy to offer a full array of drug screening options. Whether you're in charge of hiring or screening candidates, you're applying for a new job, you're curious about your child's lifestyle, or you're worried you may have ingested something, we offer tests for everything from alcohol to illicit or illegal substances."
+			]
+		},
+		"howItWorks": {
+			"title": "What Does 24-7Labs Drug Testing Look Like?",
+			"intro": "Whether you're looking to make an appointment or stop by due to unexpected circumstances, 24-7Labs is ready to test when you are. No wait times.",
+			"steps": [
+				{
+					"title": "Schedule or Walk In",
+					"description": "Whether you make an appointment or walk in, 24-7Labs is ready to test when you are — no wait times."
+				},
+				{
+					"title": "Visit Our Lab",
+					"description": "Come to any of our Tampa-area locations. Bring valid government-issued ID and any required paperwork."
+				},
+				{
+					"title": "Provide a Sample",
+					"description": "We collect urine, hair, or blood samples depending on the test type. The collection process is quick and private."
+				},
+				{
+					"title": "Receive Results",
+					"description": "Results are available quickly via secure email. Positive screens can be forwarded to our lab for confirmation testing."
+				}
+			]
+		},
+		"selfDrugTesting": {
+			"title": "What is 24-7Labs Self-Drug Testing?",
+			"description": "Are you finding it difficult to make it in for a drug screen? 24-7Labs also offers convenient self-drug testing. With this method, you can detect whether a drug is present in the urine, although not how much. If you do receive positive preliminary results, we recommend forwarding the sample to our lab for further testing and confirmation."
+		},
+		"drugTestTypes": {
+			"title": "24-7Labs Offers These Drug Testing Options",
+			"intro": "To satisfy the diverse needs of every client, we offer a wide selection of drug screen options. Each of these options provides clear and focused results regarding the presence of any drugs or alcohol in a person's system.",
+			"tests": [
+				{
+					"id": "instant5",
+					"name": "Instant 5-Panel Drug Test",
+					"description": "Our standard instant urine drug screen tests for cocaine, marijuana (THC), amphetamines, opiates, and PCP. Results are available in minutes."
+				},
+				{
+					"id": "instant1013",
+					"name": "Instant 10–13-Panel Drug Test",
+					"description": "Expanded panel covering marijuana, cocaine, heroin, PCP, amphetamines, benzodiazepines, barbiturates, methadone, propoxyphene, methamphetamine, oxycodone, MDMA, and tricyclics."
+				},
+				{
+					"id": "etg",
+					"name": "ETG (Ethyl Glucuronide) Test",
+					"description": "ETG testing detects alcohol consumption up to 80 hours after drinking, even when alcohol is no longer detectable in blood or breath. Commonly used in DUI monitoring and sobriety programs."
+				},
+				{
+					"id": "coc",
+					"name": "COC (Chain of Custody) Exam",
+					"description": "A Chain of Custody exam ensures the integrity of the specimen from collection to result, providing a legally defensible paper trail. Required for DOT, court-ordered, and employment drug testing."
+				},
+				{
+					"id": "self",
+					"name": "Self-Drug Testing",
+					"description": "24-7Labs offers self-drug testing for individuals who need to test on their own schedule."
+				},
+				{
+					"id": "hair",
+					"name": "Hair Drug Testing",
+					"description": "Hair follicle tests detect drug use over a 90-day window. Available in 5-panel and 10-panel options, hair testing is harder to adulterate than urine."
+				},
+				{
+					"id": "blood",
+					"name": "Blood Drug Testing",
+					"description": "Blood drug tests are the most accurate method for detecting current intoxication."
+				},
+				{
+					"id": "dot",
+					"name": "DOT Drug & Alcohol Testing",
+					"description": "DOT-compliant testing meets Department of Transportation requirements for regulated industries."
+				}
+			]
+		},
+		"productsSection": "Drug Testing Products"
+	},
+	"AllergyTestingPage": {
+		"breadcrumbs": "Home > Allergy Testing",
+		"hero": {
+			"title": "Allergy Testing Tampa",
+			"overline": "ALLERGY TESTING",
+			"mainTitle": "24-7Labs Allergy Testing",
+			"description": [
+				"At 24-7Labs, we understand how frustrating and limiting allergies can be. From sneezing and watery eyes to hives and an itchy throat, allergies are an unpleasant part of life that can seem worse when you don't know their cause.",
+				"If you suspect you may have some type of allergy but have never been diagnosed, 24-7Labs offers a comprehensive variety of allergy testing services to help you pinpoint exactly what's causing your discomfort."
+			]
+		},
+		"howItWorks": {
+			"title": "How Does 24-7Labs Allergy Testing Work?",
+			"intro": "24-7Labs is accredited by the College of American Pathologists (CAP) and certified under CLIA. Whether you're looking to get allergy testing for yourself or a child, 24-7Labs has you covered with testing available on an appointment and walk-in basis.",
+			"steps": [
+				{
+					"title": "Book an Appointment",
+					"description": "Schedule online or walk in. No doctor referral needed. Our staff will walk you through the best panel for your needs."
+				},
+				{
+					"title": "Visit Our Lab",
+					"description": "Come to any of our conveniently located Tampa labs. Quick, comfortable, and professionally administered."
+				},
+				{
+					"title": "Provide a Blood Sample",
+					"description": "Allergy testing at 24-7Labs uses a simple blood draw — no skin prick testing required. Fast and minimally invasive."
+				},
+				{
+					"title": "Receive Results",
+					"description": "Results are delivered securely within a few days, with clear explanations of any allergens detected."
+				}
+			]
+		},
+		"allergyPanels": {
+			"title": "24-7Labs Tests Offers The Following Allergy Tests",
+			"intro": "Whether you're looking to get allergy testing for yourself or a child, explore our allergy panels below.",
+			"panels": [
+				{
+					"id": "basic-combo",
+					"name": "Basic Combination Allergy Panel",
+					"description": "Environmental allergies testing for grass, weeds, trees, and epidermal triggers like cats, dogs, and dust mites."
+				},
+				{
+					"id": "basic-food",
+					"name": "Basic Food Panel",
+					"description": "Identifies common food allergies including cow's milk, whole egg, soy, wheat, peanuts, tree nuts, sesame, shellfish, and fish."
+				},
+				{
+					"id": "comprehensive-combo",
+					"name": "Comprehensive Combination Allergy Panel",
+					"description": "An extended environmental panel covering a wider range of regional and seasonal allergens including pollens, molds, animal dander, dust, and cockroach."
+				},
+				{
+					"id": "expanded-food",
+					"name": "Expanded Food Panel (90 Foods and Food Additives)",
+					"description": "Our most comprehensive food allergy panel, testing for reactions to 90 different foods."
+				},
+				{
+					"id": "mold",
+					"name": "Mold Panel (24 Allergens)",
+					"description": "Comprehensive mold testing for 24 mold variations including black mold, penicillium digitatum, aspergillus, and mucor mucedo."
+				},
+				{
+					"id": "pediatric",
+					"name": "Pediatric Allergy Panel",
+					"description": "Specially designed for children, this panel screens for the most common food and environmental allergens in pediatric populations."
+				},
+				{
+					"id": "regional-env",
+					"name": "Regional Environmental Panel",
+					"description": "Tailored to Florida-specific allergens, this panel tests for the pollens, grasses, weeds, and molds most commonly found in the Tampa Bay area."
+				}
+			]
+		},
+		"productsSection": "Allergy Testing Products"
+	},
+	"HeartTestingPage": {
+		"breadcrumbs": "Home > Heart Health Testing",
+		"hero": {
+			"title": "Heart Health Testing Tampa",
+			"overline": "HEART HEALTH TESTING",
+			"mainTitle": "24-7Labs Heart Testing",
+			"description": [
+				"When it comes to your health, proactive testing is crucial. Cardiovascular disease is the leading cause of death in the United States. Rather than taking a risk with your heart health, choose 24-7Labs for all your heart health testing needs.",
+				"With our thorough heart health assessment, we'll review your overall health and identify any risk factors for heart disease."
+			]
+		},
+		"howItWorks": {
+			"title": "How the Heart Health Panel Works",
+			"intro": "The professionals at our labs conveniently located in Tampa, FL are ready to run testing when you are. If you're interested in heart testing, 24-7Labs has you covered with an array of testing services.",
+			"steps": [
+				{
+					"title": "Book an Appointment",
+					"description": "Schedule online or walk in. No referral required. Our team will recommend the right cardiovascular panel for your goals."
+				},
+				{
+					"title": "Visit Our Lab",
+					"description": "Come to any 24-7Labs location in Tampa. We offer fast, professional service with minimal wait times."
+				},
+				{
+					"title": "Quick Blood Draw",
+					"description": "Heart health panels are done via a simple blood draw. Most tests require fasting for 9–12 hours beforehand for accurate lipid results."
+				},
+				{
+					"title": "Review Your Results",
+					"description": "Results are available within 1–3 business days through our secure online portal with detailed explanations."
+				}
+			]
+		},
+		"cardiacTests": {
+			"title": "What's Included in The 24-7Labs Basic Panel?",
+			"intro": "Our complete cardiac risk and heart health panel encompasses six tests:",
+			"tests": [
+				{
+					"id": "lipid",
+					"name": "Lipid Profile",
+					"description": "Measures total cholesterol, HDL, LDL, VLDL, and triglycerides."
+				},
+				{
+					"id": "cbc",
+					"name": "Complete Blood Count (CBC)",
+					"description": "Evaluates overall health by measuring red blood cells, white blood cells, hemoglobin, hematocrit, and platelets."
+				},
+				{
+					"id": "cmp",
+					"name": "Complete Metabolic Panel (CMP)",
+					"description": "Assesses kidney and liver function, blood sugar, and electrolytes critical to heart function."
+				},
+				{
+					"id": "crp",
+					"name": "High Sensitivity, Cardiac C-Reactive Protein (CRP)",
+					"description": "Detects inflammation in arteries and indicates increased risk of heart attack and stroke."
+				},
+				{
+					"id": "homocysteine",
+					"name": "Homocysteine",
+					"description": "High homocysteine levels are an independent risk factor for heart disease, stroke, and blood clot formation."
+				},
+				{
+					"id": "lipoprotein",
+					"name": "Lipoprotein (a) [Lp(a)]",
+					"description": "Elevated Lp(a) is a genetic risk factor for coronary heart disease, heart attack, and stroke."
+				}
+			]
+		},
+		"productsSection": "Heart Health Products"
+	},
+	"HormoneTestingPage": {
+		"breadcrumbs": "Home > Hormone Testing",
+		"hero": {
+			"title": "Hormone Testing Tampa",
+			"overline": "HORMONE TESTING",
+			"mainTitle": "24-7Labs Hormone Testing",
+			"description": [
+				"Many things change — hormones are among these ever-changing health factors. From insulin and testosterone to cortisol, thyroid hormones, and more, hormones are the body's chemical messengers.",
+				"At 24-7Labs, we make it easy for you to take control of your health with comprehensive hormone testing on your schedule."
+			]
+		},
+		"howItWorks": {
+			"title": "How Does 24-7Labs Hormone Testing Work?",
+			"intro": "24-7Labs is ready to test when you are — all you need to do is schedule your hormone testing around your availability.",
+			"steps": [
+				{
+					"title": "Book an Appointment",
+					"description": "Schedule online or walk in. No referral needed. Our staff can guide you to the most appropriate hormone panel."
+				},
+				{
+					"title": "Visit Our Lab",
+					"description": "Come to any of our Tampa-area locations. We offer fast, professional service in a comfortable environment."
+				},
+				{
+					"title": "Give a Blood Sample",
+					"description": "Hormone testing requires a simple blood draw. Some panels may require fasting. Instructions will be provided when you book."
+				},
+				{
+					"title": "Get Your Results",
+					"description": "Receive results securely online within 1–3 business days. Our reports include detailed explanations of every biomarker."
+				}
+			]
+		},
+		"hormonePackages": {
+			"title": "Hormone Testing Panels We Offer",
+			"intro": "Choose from our curated hormone testing panels below.",
+			"showTests": "Show tests",
+			"hideTests": "Hide tests",
+			"includedTests": "Included Tests:",
+			"packages": [
+				{
+					"id": "womens-health",
+					"name": "Women's Health Testing",
+					"description": "Comprehensive female wellness panel screening of overall health, including how well your hormones are functioning. Includes ten tests in total.",
+					"tests": [
+						"Complete Blood Count (CBC)",
+						"Comprehensive Chemistry Panel (CMP)",
+						"Thyroid Stimulating Hormone (TSH)",
+						"Urinalysis (UA)",
+						"Lipid Profile",
+						"Progesterone",
+						"Estradiol",
+						"Follicle Stimulating Hormone (FSH)",
+						"Luteinizing Hormone (LH)",
+						"Dehydroepiandrosterone (DHEA-S)"
+					]
+				},
+				{
+					"id": "growth-hormones",
+					"name": "Growth Hormone Testing",
+					"description": "Growth hormones serve many functions, including cell regeneration, burning fat, enhancing muscle growth, and maintaining the immune system. Includes five exams.",
+					"tests": [
+						"Insulin like Growth Hormone (IGF-1)",
+						"Human Growth Hormone (HGH)",
+						"Thyroid Stimulating Hormone (TSH)",
+						"Testosterone F/T",
+						"Lipid Profile"
+					]
+				},
+				{
+					"id": "thyroid",
+					"name": "Comprehensive Thyroid Wellness Panel",
+					"description": "When there are hormone issues within the thyroid, you run the risk of facing several health problems. Includes seven tests.",
+					"tests": [
+						"TSH",
+						"T4 Total",
+						"T3 Uptake",
+						"Thyroid Peroxidase (TPO)",
+						"Triiodothyronine (T3)",
+						"T4 Free",
+						"Thyroglobulin/Anti Thyroglobulin"
+					]
+				},
+				{
+					"id": "fibromyalgia",
+					"name": "Fibromyalgia Health Screen Check Up",
+					"description": "Fibromyalgia screening to rule out other conditions. Includes nine tests.",
+					"tests": [
+						"Complete Blood Count (CBC)",
+						"14 Test Chemistry Panel (CMP)",
+						"Alpha-Fetoprotein",
+						"CEA",
+						"Lipid Profile",
+						"Neuron-Specific Enolase (NSE)",
+						"PSA",
+						"Amylase",
+						"Beta 2 - Microglobulin"
+					]
+				}
+			]
+		},
+		"productsSection": "Hormone Testing Products",
+		"cta": {
+			"title": "Balance Your Hormones",
+			"description": "Find the right hormone panel for your needs. Comprehensive testing with detailed results.",
+			"buttonText": "Schedule Hormone Testing"
+		}
+	},
+	"RoutineHealthTestingPage": {
+		"breadcrumbs": "Home > Routine Health Testing",
+		"hero": {
+			"title": "Routine Health Testing Tampa",
+			"overline": "COMPREHENSIVE CARE",
+			"mainTitle": "24-7Labs Routine Health Testing",
+			"description": [
+				"When it comes to American healthcare today, many factors can prevent residents from seeking proper health testing. 24-7Labs understands these concerns and answers them with an easy way for anyone to take their health into their own hands."
+			]
+		},
+		"servicesList": {
+			"title": "24-7Labs Routine Health Tests",
+			"intro": "We offer a diverse array of health testing services, encompassing everything from DNA and COVID to STD and drug/ETG testing:",
+			"services": [
+				"Drug and ETG Testing",
+				"STD Testing",
+				"Covid-19 Testing",
+				"Hormone Testing",
+				"Allergy Testing",
+				"Thyroid Testing",
+				"Diabetes",
+				"Parasitic Testing",
+				"Heart Health",
+				"Men's and Women's Health",
+				"Fertility and Pregnancy Testing",
+				"Osteoporosis",
+				"Cancer Testing",
+				"Blood Testing",
+				"Physical Screening",
+				"Fatigue Health Testing",
+				"And Much More…"
+			]
+		},
+		"howItWorks": {
+			"title": "How Does 24-7Labs Routine Health Testing Work?",
+			"intro": "24-7Labs is accredited by CAP and certified under CLIA. If you want routine health testing done for any reason, 24-7Labs has you covered.",
+			"steps": [
+				{
+					"title": "Book a Consultation",
+					"description": "Set up a consultation so we can learn about your concerns and which testing you would like to run."
+				},
+				{
+					"title": "Visit Our Lab",
+					"description": "Come into any of our conveniently located Tampa labs. Our experts are ready to run testing when you are."
+				},
+				{
+					"title": "Provide a Sample",
+					"description": "Depending on your chosen tests, we collect blood, urine, or other samples. Fast and minimally invasive."
+				},
+				{
+					"title": "Receive Results",
+					"description": "Secure results are delivered digitally with clear explanations. We remain available for questions or follow-up."
+				}
+			]
+		},
+		"healthTests": {
+			"title": "24-7Labs Routine Health Testing Services",
+			"intro": "If you're interested in routine health testing, you must first set up a consultation so we can learn about your concerns.",
+			"tests": [
+				{
+					"id": "vitamin-d",
+					"name": "Vitamin D25",
+					"description": "Measures your D25 levels to determine whether there is a deficiency."
+				},
+				{
+					"id": "cbc",
+					"name": "Complete Blood Count (CBC)",
+					"description": "Measures white blood cells, red blood cells, and platelets. Useful in diagnosing anemia and infections."
+				},
+				{
+					"id": "fsh",
+					"name": "Follicle-Stimulating Hormone (FSH)",
+					"description": "In women, helps regulate the menstrual cycle. In men, helps control sperm production."
+				},
+				{
+					"id": "cmp",
+					"name": "14 Test Chemistry Panel (CMP)",
+					"description": "Comprehensive metabolic panel measuring kidney function, liver function, blood glucose, and electrolytes."
+				},
+				{
+					"id": "lipid",
+					"name": "Lipid Profile",
+					"description": "Measures total cholesterol, HDL, LDL, VLDL, and triglycerides to assess cardiovascular risk."
+				},
+				{
+					"id": "tsh",
+					"name": "Thyroid Stimulating Hormone (TSH)",
+					"description": "Evaluates thyroid function. Abnormal levels can signal hypothyroidism or hyperthyroidism."
+				},
+				{
+					"id": "diabetes",
+					"name": "Diabetes & Blood Sugar Testing",
+					"description": "Tests including fasting glucose and HbA1c evaluate blood sugar regulation."
+				},
+				{
+					"id": "b12",
+					"name": "Vitamin B12 & Folate",
+					"description": "Critical for red blood cell formation and neurological function. Deficiencies can cause anemia and fatigue."
+				},
+				{
+					"id": "cortisol",
+					"name": "Cortisol",
+					"description": "The stress hormone that affects metabolism, immune response, and blood pressure."
+				},
+				{
+					"id": "uric",
+					"name": "Uric Acid",
+					"description": "Elevated uric acid levels can cause gout and kidney stones."
+				},
+				{
+					"id": "crp",
+					"name": "C-Reactive Protein (CRP)",
+					"description": "A marker of inflammation. Elevated levels may indicate infection or autoimmune conditions."
+				},
+				{
+					"id": "osteo",
+					"name": "Osteoporosis & Bone Health",
+					"description": "Tests bone health and risk for osteoporosis, especially important for post-menopausal women."
+				}
+			]
+		},
+		"productsSection": "Routine Health Testing Products"
+	}
+}

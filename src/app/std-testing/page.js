@@ -1,0 +1,42 @@
+import { cookies } from 'next/headers';
+import { getTranslations } from 'next-intl/server';
+import {
+	TestingServiceHero,
+	TestingServiceHowItWorks,
+	TestingServiceItems,
+	TestingServiceFinalCta,
+} from '@/components/testing-services/TestingServiceTemplate';
+import { loadMessages } from '@/i18n/loadMessages';
+import { getLocaleFromCookieStore } from '@/lib/locale';
+
+export async function generateMetadata() {
+	const cookieStore = await cookies();
+	const locale = getLocaleFromCookieStore(cookieStore);
+	const messages = await loadMessages(locale);
+
+	return {
+		title: messages?.StdTestingPage?.metadata?.title,
+		description: messages?.StdTestingPage?.metadata?.description,
+	};
+}
+
+const pageKey = 'StdTestingPage';
+
+export default async function StdTestingPage() {
+	const cookieStore = await cookies();
+	const locale = getLocaleFromCookieStore(cookieStore);
+	const t = await getTranslations({ locale });
+
+	return (
+		<main className="bg-white">
+			<TestingServiceHero t={t} pageKey={pageKey} />
+			<TestingServiceHowItWorks t={t} pageKey={pageKey} />
+			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="stdTypes" itemsKey="tests" />
+			<TestingServiceFinalCta
+				title="Discreet STD Testing When You Need It"
+				description="Walk in anytime or schedule a confidential appointment. Results delivered securely to your email."
+				buttonText="Book Your Test"
+			/>
+		</main>
+	);
+}

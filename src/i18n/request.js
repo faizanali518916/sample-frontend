@@ -1,6 +1,7 @@
 import { hasLocale } from 'next-intl';
 import { getRequestConfig } from 'next-intl/server';
 import { cookies } from 'next/headers';
+import { loadMessages } from '@/i18n/loadMessages';
 
 const locales = ['en', 'es'];
 const defaultLocale = 'en';
@@ -12,6 +13,6 @@ export default getRequestConfig(async () => {
 
 	return {
 		locale,
-		messages: (await import(`../../messages/${locale}.json`)).default,
+		messages: await loadMessages(locale),
 	};
 });

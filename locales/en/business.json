@@ -1,0 +1,186 @@
+{
+	"BusinessOpportunitiesPage": {
+		"breadcrumbs": "Home > Business Opportunities",
+		"hero": {
+			"title": "Business Opportunities at 24-7 Labs",
+			"overline": "FRANCHISE & PARTNERSHIPS",
+			"mainTitle": "Grow Your Business With 24-7 Labs",
+			"description": "Join the 24-7 Labs network as a franchise or partnership partner. Build a profitable testing lab business with proven systems, ongoing support, and proven revenue models.",
+			"callButton": "Call 813-932-3741"
+		},
+		"benefits": {
+			"title": "Why Partner With 24-7 Labs?",
+			"intro": "Discover the advantages of becoming a 24-7 Labs franchise partner:",
+			"items": [
+				{
+					"title": "Proven Business Model",
+					"description": "Leverage our 15+ years of experience and proven operational systems for laboratory testing."
+				},
+				{
+					"title": "80/20 Profit Split",
+					"description": "Attractive profit sharing model gives you significant returns on your investment."
+				},
+				{
+					"title": "24/7 Operations",
+					"description": "Multiple revenue streams from round-the-clock testing services with extended hours."
+				},
+				{
+					"title": "Comprehensive Support",
+					"description": "From training to marketing to compliance, we provide full operational support."
+				},
+				{
+					"title": "Certified Professionals",
+					"description": "Access to trained, CLIA-certified staff and ongoing professional development."
+				},
+				{
+					"title": "Multiple Revenue Streams",
+					"description": "Income from DNA, STD, drug, COVID, and comprehensive health testing services."
+				},
+				{
+					"title": "Marketing & Branding",
+					"description": "Strong brand recognition and marketing support to build your client base quickly."
+				}
+			]
+		},
+		"faq": {
+			"title": "Frequently Asked Questions",
+			"questions": [
+				{
+					"question": "What is the initial investment required?",
+					"answer": "Investment varies based on location and services offered. Contact us for a detailed financial breakdown and available package options."
+				},
+				{
+					"question": "Do I need a healthcare background?",
+					"answer": "No healthcare background is required. We provide comprehensive training and employ CLIA-certified staff."
+				},
+				{
+					"question": "What support does 24-7 Labs provide?",
+					"answer": "We provide complete support including staff training, marketing, operations, compliance, and ongoing consultation."
+				},
+				{
+					"question": "How long does it take to break even?",
+					"answer": "Break-even timelines vary by location. Our proven model shows profitability within 18-24 months in most markets."
+				},
+				{
+					"question": "Can I operate multiple locations?",
+					"answer": "Yes, multi-unit franchises are available for qualified partners."
+				},
+				{
+					"question": "What are the ongoing fees?",
+					"answer": "Ongoing fees include royalties and marketing contributions. Detailed fee schedules are provided after initial consultation."
+				}
+			]
+		},
+		"team": {
+			"title": "Our Leadership Team",
+			"intro": "Led by experienced healthcare professionals with a proven track record of success.",
+			"cards": [
+				{
+					"title": "Proven Track Record",
+					"desc": "Over 15 years of healthcare excellence and proven operational systems"
+				},
+				{
+					"title": "Partner Success",
+					"desc": "Dedicated support team committed to your growth and profitability"
+				},
+				{
+					"title": "Compliance Ready",
+					"desc": "CLIA certified labs with full regulatory compliance support"
+				}
+			]
+		},
+		"cta": {
+			"title": "Ready to Build Your Business?",
+			"body": "Join 24-7 Labs and create a profitable testing lab business. Contact us today to learn more about franchise opportunities.",
+			"buttonText": "Request Information",
+			"callButton": "Call Today"
+		}
+	},
+	"BusinessSolutionPage": {
+		"breadcrumbs": "Home > Business Solutions",
+		"hero": {
+			"title": "Business Solutions",
+			"subtitle": "Comprehensive Laboratory Testing for Your Organization",
+			"callNow": "Call Now: 813-932-3741"
+		},
+		"sections": [
+			{
+				"title": "Physician Referrals",
+				"body": "24-7 Labs is an alternative lab testing provider for physicians who are conscious about the cost of lab tests, especially with high deductible insurance or health savings accounts. We fill the gap of being able to provide lab tests that physicians may want to order but which are no longer covered by insurance. Affordability is key, and customers have a safe, reliable source with us. We offer accredited and certified laboratory testing partners and can assist you in the diagnostic process with thousands of lab tests.",
+				"cta": "REQUEST A PHYSICIANS QUOTE",
+				"ctaHref": "/contact"
+			},
+			{
+				"title": "Employer Solutions",
+				"body": "24-7 Labs is an alternative lab testing provider for organizations conscious about the cost of lab tests and employee health programs. We help employers provide affordable testing options for employee wellness programs, pre-employment screening, and ongoing health monitoring. We can work with you to create custom testing packages that fit your budget and employee needs.",
+				"cta": "REQUEST AN EMPLOYER QUOTE",
+				"ctaHref": "/contact"
+			},
+			{
+				"title": "Legal Industry Solutions",
+				"body": "For legal professionals and organizations requiring Chain of Custody testing, DNA analysis, or drug screening for court cases, 24-7 Labs provides certified, court-admissible testing with proper documentation. Our CLIA-certified lab ensures all testing meets legal standards and maintains the integrity of specimens.",
+				"cta": "REQUEST A LEGAL INDUSTRY QUOTE",
+				"ctaHref": "/contact"
+			}
+		],
+		"highlights": [
+			{
+				"title": "15+ Years Experience",
+				"desc": "Industry-leading expertise in medical lab testing and healthcare solutions"
+			},
+			{
+				"title": "24/7 Expert Review",
+				"desc": "Experienced physicians available to review results and offer guidance"
+			},
+			{
+				"title": "Flexible Programs",
+				"desc": "Custom testing packages designed for your specific business needs"
+			}
+		],
+		"features": {
+			"title": "What Sets Us Apart",
+			"items": [
+				{
+					"title": "No Hidden Fees",
+					"desc": "Transparent pricing with no surprise billing or hidden charges"
+				},
+				{
+					"title": "HSA/FSA Accepted",
+					"desc": "Full support for flexible spending and health savings accounts"
+				},
+				{
+					"title": "Quick Results",
+					"desc": "Fast turnaround on all test results with detailed reporting"
+				},
+				{
+					"title": "Accredited Labs",
+					"desc": "CLIA certified and CAP accredited testing partners"
+				},
+				{
+					"title": "Easy Integration",
+					"desc": "Simple online ordering platform for your organization"
+				},
+				{
+					"title": "Personal Support",
+					"desc": "Dedicated account managers for your ongoing needs"
+				}
+			]
+		},
+		"whyChooseUs": {
+			"title": "Why Choose 24-7 Labs for Business Solutions",
+			"body": "At 24-7 Labs, we use the latest technology to provide quick and accurate results for all of your testing needs. Our team of experienced physicians specializes in diagnostic testing and is available 24/7 to review all results and offer consultations. We accept HSA/FSA plans with no hidden fees or surprise billing. With 15+ years in healthcare and the highest quality care standards, 24-7 Labs is your trusted partner for comprehensive business testing solutions."
+		},
+		"cta": {
+			"title": "Ready to Get Started?",
+			"body": "Contact our team to discuss your organization's specific testing needs and receive a customized quote.",
+			"primaryButton": "Get Your Quote",
+			"secondaryButton": "Call 813-932-3741"
+		}
+	},
+	"TelemedicineServicePage": {
+		"title": "Telemedicine Services",
+		"subtitle": "Coming Soon",
+		"description": "24-7 Labs is developing comprehensive telemedicine services to bring healthcare consultations directly to you. Check back soon for more information about our virtual care options.",
+		"comingSoon": "Coming Soon"
+	}
+}

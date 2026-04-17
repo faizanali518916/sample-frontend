@@ -3,13 +3,14 @@ import { notFound } from 'next/navigation';
 import TestingServiceDetailsPage from '@/components/testing-services/TestingServiceDetailsPage';
 import { fetchProducts, fetchCategories } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
+import { loadMessages } from '@/i18n/loadMessages';
 
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
 	const cookieStore = await cookies();
 	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = (await import(`../../../../messages/${locale}.json`)).default;
+	const messages = await loadMessages(locale);
 	const resolvedParams = await params;
 	const id = resolvedParams?.id;
 
@@ -36,7 +37,7 @@ export default async function TestingServiceDetailsRoute({ params }) {
 	const locale = getLocaleFromCookieStore(cookieStore);
 	const resolvedParams = await params;
 	const id = resolvedParams?.id;
-	const messages = (await import(`../../../../messages/${locale}.json`)).default;
+	const messages = await loadMessages(locale);
 	const t = messages?.TestingServiceDetailsPage;
 
 	let products = [];

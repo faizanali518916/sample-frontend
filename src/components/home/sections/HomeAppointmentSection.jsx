@@ -1,13 +1,26 @@
 import { ArrowRight, Clock3, Mail, MapPin, PhoneCall } from 'lucide-react';
 
-export default function HomeAppointmentSection({ t, appointmentLocations }) {
+export default function HomeAppointmentSection({ t, appointmentLocations, enableReveal = true }) {
+	const sectionRevealProps = enableReveal
+		? {
+				'data-reveal': true,
+				'data-reveal-delay': '170',
+			}
+		: {};
+
+	const mapRevealProps = enableReveal
+		? {
+				'data-reveal': true,
+				'data-reveal-delay': '190',
+			}
+		: {};
+
 	return (
 		<>
 			<section
 				id="appointment"
-				data-reveal
-				data-reveal-delay="170"
-				className="scroll-reveal relative isolate overflow-hidden bg-[linear-gradient(120deg,rgba(7,41,73,0.95),rgba(12,89,151,0.9))] py-16 md:py-24"
+				{...sectionRevealProps}
+				className={`${enableReveal ? 'scroll-reveal ' : ''}relative isolate overflow-hidden bg-[linear-gradient(120deg,rgba(7,41,73,0.95),rgba(12,89,151,0.9))] py-16 md:py-24`}
 			>
 				<div className="relative mx-auto w-full max-w-[1240px] px-4 lg:px-6">
 					<div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
@@ -102,7 +115,10 @@ export default function HomeAppointmentSection({ t, appointmentLocations }) {
 				</div>
 			</section>
 
-			<section data-reveal data-reveal-delay="190" className="scroll-reveal h-[320px] w-full sm:h-[380px] md:h-[450px]">
+			<section
+				{...mapRevealProps}
+				className={`${enableReveal ? 'scroll-reveal ' : ''}h-[320px] w-full sm:h-[380px] md:h-[450px]`}
+			>
 				<iframe
 					title={t('Appointment.mapTitle')}
 					aria-label={t('Appointment.mapAria')}

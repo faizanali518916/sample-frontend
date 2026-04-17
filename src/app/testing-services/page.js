@@ -2,11 +2,12 @@ import { cookies } from 'next/headers';
 import TestingServicesPage from '@/components/testing-services/TestingServicesPage';
 import { fetchProducts } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
+import { loadMessages } from '@/i18n/loadMessages';
 
 export async function generateMetadata() {
 	const cookieStore = await cookies();
 	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = (await import(`../../../messages/${locale}.json`)).default;
+	const messages = await loadMessages(locale);
 
 	return {
 		title: messages?.TestingServicesPage?.metadata?.title,

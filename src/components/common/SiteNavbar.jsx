@@ -5,13 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Fragment, useEffect, useState } from 'react';
-import { Menu, Search, ShoppingCart, X } from 'lucide-react';
+import { ChevronDown, Menu, Search, ShoppingCart, X } from 'lucide-react';
 
-const menuItems = [
-	{ key: 'home', href: '/' },
+const primaryMenuItems = [
 	{ key: 'about', href: '/about' },
 	{ key: 'trust', href: '/trust-standards' },
-	{ key: 'testingServices', href: '/testing-services' },
 	{ key: 'covid', href: '/covid-19' },
 	{
 		key: 'homeKits',
@@ -19,8 +17,26 @@ const menuItems = [
 		external: true,
 	},
 	{ key: 'forms', href: '/#forms' },
-	{ key: 'schedule', href: '/#appointment' },
+	{ key: 'schedule', href: '/schedule-appointment' },
 	{ key: 'contact', href: '/contact' },
+];
+
+const testingMenuItems = [
+	{ key: 'testingServices', href: '/testing-services' },
+	{ key: 'dnaTestingServices', href: '/dna-testing' },
+	{ key: 'stdTestingServices', href: '/std-testing' },
+	{ key: 'drugTesting', href: '/drug-testing' },
+	{ key: 'allergyTesting', href: '/allergy-testing' },
+	{ key: 'heartTesting', href: '/heart-testing' },
+	{ key: 'hormoneTesting', href: '/hormone-testing' },
+	{ key: 'routineHealthTesting', href: '/routine-health-testing' },
+];
+
+const businessMenuItems = [
+	{ key: 'businessOpportunities', href: '/business-opportunities' },
+	{ key: 'businessSolutions', href: '/business-solutions' },
+	{ key: 'privacyPolicy', href: '/privacy-policy' },
+	{ key: 'telemedicine', href: '/telemedicine' },
 ];
 
 const tapeItems = [
@@ -50,14 +66,66 @@ function isActiveRoute(pathname, href) {
 	}
 
 	if (href === '/testing-services') {
-		return pathname === '/testing-services';
+		return pathname === '/testing-services' || pathname.startsWith('/testing-services/');
 	}
 
 	if (href === '/covid-19') {
 		return pathname === '/covid-19';
 	}
 
+	if (href === '/dna-testing') {
+		return pathname === '/dna-testing';
+	}
+
+	if (href === '/std-testing') {
+		return pathname === '/std-testing';
+	}
+
+	if (href === '/drug-testing') {
+		return pathname === '/drug-testing';
+	}
+
+	if (href === '/allergy-testing') {
+		return pathname === '/allergy-testing';
+	}
+
+	if (href === '/heart-testing') {
+		return pathname === '/heart-testing';
+	}
+
+	if (href === '/hormone-testing') {
+		return pathname === '/hormone-testing';
+	}
+
+	if (href === '/routine-health-testing') {
+		return pathname === '/routine-health-testing';
+	}
+
+	if (href === '/business-opportunities') {
+		return pathname === '/business-opportunities';
+	}
+
+	if (href === '/business-solutions') {
+		return pathname === '/business-solutions';
+	}
+
+	if (href === '/privacy-policy') {
+		return pathname === '/privacy-policy';
+	}
+
+	if (href === '/telemedicine') {
+		return pathname === '/telemedicine';
+	}
+
 	return false;
+}
+
+function isTestingRoute(pathname) {
+	return testingMenuItems.some((item) => isActiveRoute(pathname, item.href));
+}
+
+function isBusinessRoute(pathname) {
+	return businessMenuItems.some((item) => isActiveRoute(pathname, item.href));
 }
 
 export default function SiteNavbar() {
@@ -65,6 +133,8 @@ export default function SiteNavbar() {
 	const tapeItemsExtended = [...tapeItems, ...tapeItems];
 	const pathname = usePathname();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [mobileTestingOpen, setMobileTestingOpen] = useState(false);
+	const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -135,7 +205,7 @@ export default function SiteNavbar() {
 
 					<nav className="hidden min-w-0 flex-1 xl:block">
 						<ul className="flex items-center justify-center gap-0.5 text-[11.5px] font-semibold text-slate-700">
-							{menuItems.map((item) => {
+							{primaryMenuItems.map((item) => {
 								const isActive = !item.external && isActiveRoute(pathname, item.href);
 
 								return (
@@ -168,6 +238,76 @@ export default function SiteNavbar() {
 									</li>
 								);
 							})}
+
+							<li className="group relative">
+								<button
+									type="button"
+									className={`group inline-flex h-10 items-center rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-white/75 hover:text-[var(--tl-primary-strong)] ${
+										isTestingRoute(pathname) ? 'bg-white/85 text-[var(--tl-primary-strong)]' : ''
+									}`}
+								>
+									<span>{t('menu.testingServices')}</span>
+									<ChevronDown className="ml-1.5 h-3.5 w-3.5" />
+									<span
+										className={`absolute bottom-[4px] left-3 h-[2px] rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8 ${
+											isTestingRoute(pathname) ? 'w-8' : 'w-0'
+										}`}
+									/>
+								</button>
+								<div className="invisible absolute left-1/2 z-50 mt-2 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+									<ul className="space-y-0.5">
+										{testingMenuItems.map((item) => (
+											<li key={`desktop-testing-${item.key}`}>
+												<Link
+													href={item.href}
+													className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
+														isActiveRoute(pathname, item.href)
+															? 'bg-sky-50 text-[var(--tl-primary-strong)]'
+															: 'text-slate-700'
+													}`}
+												>
+													{t(`menu.${item.key}`)}
+												</Link>
+											</li>
+										))}
+									</ul>
+								</div>
+							</li>
+
+							<li className="group relative">
+								<button
+									type="button"
+									className={`group inline-flex h-10 items-center rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-white/75 hover:text-[var(--tl-primary-strong)] ${
+										isBusinessRoute(pathname) ? 'bg-white/85 text-[var(--tl-primary-strong)]' : ''
+									}`}
+								>
+									<span>{t('menu.business')}</span>
+									<ChevronDown className="ml-1.5 h-3.5 w-3.5" />
+									<span
+										className={`absolute bottom-[4px] left-3 h-[2px] rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8 ${
+											isBusinessRoute(pathname) ? 'w-8' : 'w-0'
+										}`}
+									/>
+								</button>
+								<div className="invisible absolute left-1/2 z-50 mt-2 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+									<ul className="space-y-0.5">
+										{businessMenuItems.map((item) => (
+											<li key={`desktop-business-${item.key}`}>
+												<Link
+													href={item.href}
+													className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
+														isActiveRoute(pathname, item.href)
+															? 'bg-sky-50 text-[var(--tl-primary-strong)]'
+															: 'text-slate-700'
+													}`}
+												>
+													{t(`menu.${item.key}`)}
+												</Link>
+											</li>
+										))}
+									</ul>
+								</div>
+							</li>
 						</ul>
 					</nav>
 
@@ -212,7 +352,7 @@ export default function SiteNavbar() {
 					}`}
 				>
 					<ul className="grid max-h-[70vh] gap-1 overflow-y-auto rounded-2xl border border-white/75 bg-white/85 p-3">
-						{menuItems.map((item) => (
+						{primaryMenuItems.map((item) => (
 							<li key={`mobile-${item.key}`} className="menu-item">
 								{item.external ? (
 									<a
@@ -235,6 +375,66 @@ export default function SiteNavbar() {
 								)}
 							</li>
 						))}
+
+						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
+							<button
+								type="button"
+								onClick={() => setMobileTestingOpen((prev) => !prev)}
+								className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm font-semibold text-slate-700"
+							>
+								<span>{t('menu.testingServices')}</span>
+								<ChevronDown className={`h-4 w-4 transition-transform ${mobileTestingOpen ? 'rotate-180' : ''}`} />
+							</button>
+							{mobileTestingOpen ? (
+								<ul className="space-y-1 border-t border-slate-200 px-2 py-2">
+									{testingMenuItems.map((item) => (
+										<li key={`mobile-testing-${item.key}`}>
+											<Link
+												href={item.href}
+												onClick={() => setMobileMenuOpen(false)}
+												className={`block rounded-lg px-3 py-2 text-sm font-semibold transition ${
+													isActiveRoute(pathname, item.href)
+														? 'bg-sky-50 text-[var(--tl-primary-strong)]'
+														: 'text-slate-700 hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]'
+												}`}
+											>
+												{t(`menu.${item.key}`)}
+											</Link>
+										</li>
+									))}
+								</ul>
+							) : null}
+						</li>
+
+						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
+							<button
+								type="button"
+								onClick={() => setMobileBusinessOpen((prev) => !prev)}
+								className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm font-semibold text-slate-700"
+							>
+								<span>{t('menu.business')}</span>
+								<ChevronDown className={`h-4 w-4 transition-transform ${mobileBusinessOpen ? 'rotate-180' : ''}`} />
+							</button>
+							{mobileBusinessOpen ? (
+								<ul className="space-y-1 border-t border-slate-200 px-2 py-2">
+									{businessMenuItems.map((item) => (
+										<li key={`mobile-business-${item.key}`}>
+											<Link
+												href={item.href}
+												onClick={() => setMobileMenuOpen(false)}
+												className={`block rounded-lg px-3 py-2 text-sm font-semibold transition ${
+													isActiveRoute(pathname, item.href)
+														? 'bg-sky-50 text-[var(--tl-primary-strong)]'
+														: 'text-slate-700 hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]'
+												}`}
+											>
+												{t(`menu.${item.key}`)}
+											</Link>
+										</li>
+									))}
+								</ul>
+							) : null}
+						</li>
 					</ul>
 				</div>
 			</div>

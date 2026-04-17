@@ -1,0 +1,71 @@
+{
+	"TestingServicesPage": {
+		"metadata": {
+			"title": "Testing Services | 24-7 Labs",
+			"description": "Browse live testing services from 24-7 Labs, filter by category, and quickly move to booking or contact."
+		},
+		"eyebrow": "Testing Services",
+		"title": "Choose your test with confidence and keep the process simple.",
+		"body": "Browse the available testing services, filter by category, and move quickly from search to booking. The page is powered by the live product API so what you see stays in sync with the backend catalog.",
+		"callNow": "Call +1 (813) 932-3741",
+		"schedule": "Schedule a visit",
+		"totalLabel": "services available",
+		"searchLabel": "Search tests",
+		"searchPlaceholder": "Search by name or keyword",
+		"categoryLabel": "Category",
+		"allCategories": "All categories",
+		"resultsLabel": "Showing",
+		"resultsSuffix": "results",
+		"noResultsTitle": "No services matched your filters.",
+		"noResultsBody": "Try a broader search or clear the category filter to see more options.",
+		"bookTest": "Book this test",
+		"optionsAvailable": "Options available",
+		"featuredLabel": "Fast turnaround",
+		"privateLabel": "Private booking",
+		"insuranceLabel": "No insurance required",
+		"emptyCategory": "Uncategorized",
+		"fallbackProductName": "Product {id}",
+		"fallbackCategory": "Category {id}",
+		"pageLabel": "Page",
+		"previous": "Previous",
+		"next": "Next",
+		"priceLabel": "Price",
+		"onSale": "On Sale!",
+		"variantRange": "{min} - {max}",
+		"contactUs": "Contact us",
+		"clearFilters": "Clear filters",
+		"paginationAria": "Testing services pagination",
+		"heroImageAlt": "24-7 Labs testing services",
+		"heroCards": {
+			"clock": "Around-the-clock testing access",
+			"privacyTitle": "Privacy",
+			"privacy": "Confidential booking flow",
+			"resultsTitle": "Results",
+			"results": "Fast turnaround on most services"
+		},
+		"ctaTitle": "Need help choosing a test?",
+		"ctaBody": "Our team can help you narrow the options and book the right appointment without friction."
+	},
+	"TestingServiceDetailsPage": {
+		"metadata": {
+			"title": "{name} | Testing Service | 24-7 Labs",
+			"description": "View testing service details, pricing context, and related options from 24-7 Labs."
+		},
+		"fallbackTitle": "Testing Service Details",
+		"backToServices": "Back to testing services",
+		"serviceDetails": "Service details",
+		"variantRange": "{min} - {max}",
+		"contactUs": "Contact us",
+		"categoryLabel": "Category",
+		"categoriesTitle": "Categories",
+		"allCategories": "All Categories",
+		"variationLabel": "Variation",
+		"selectVariationPlaceholder": "Select a variation",
+		"optionsAvailable": "Options available",
+		"bookTest": "Book this test",
+		"callNow": "Call +1 (813) 932-3741",
+		"descriptionTitle": "Description",
+		"relatedTitle": "Related services",
+		"fallbackProductName": "Product {id}"
+	}
+}

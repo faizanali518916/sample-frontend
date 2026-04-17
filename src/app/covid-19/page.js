@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
+import { loadMessages } from '@/i18n/loadMessages';
 import {
 	ArrowRight,
 	CalendarDays,
@@ -17,7 +18,7 @@ import { getLocaleFromCookieStore } from '@/lib/locale';
 export async function generateMetadata() {
 	const cookieStore = await cookies();
 	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = (await import(`../../../messages/${locale}.json`)).default;
+	const messages = await loadMessages(locale);
 
 	return {
 		title: messages?.CovidPage?.metadata?.title,

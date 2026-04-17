@@ -1,0 +1,188 @@
+{
+	"AboutPage": {
+		"metadata": {
+			"title": "Acerca de 24-7 Labs",
+			"description": "Conoce mas sobre 24-7 Labs, nuestra mision, servicios y por que los pacientes confian en nosotros para diagnosticos rapidos y precisos en Tampa."
+		},
+		"eyebrow": "Acerca de 24-7 Labs",
+		"heroTitle": "Diagnosticos innovadores para que las personas controlen su salud.",
+		"heroBody": "24-7 Labs forma parte de una nueva linea de servicios de salud de 24-7 Laboratory LLC. Nuestra mision es ofrecer opciones de pruebas convenientes, accesibles y faciles de entender para que los pacientes tomen decisiones de bienestar con confianza.",
+		"stats": {
+			"open247": "Abierto 24/7",
+			"certifiedTeam": "Equipo certificado",
+			"locations": "Ubicaciones en Tampa Bay"
+		},
+		"sectionLabTitle": "El laboratorio para tus necesidades de bienestar",
+		"sectionLabBody": "Brindamos pruebas de laboratorio medico para una amplia variedad de objetivos de salud. No hay cargos ocultos ni facturacion sorpresa, y aceptamos HSA/FSA y algunos planes de seguro medico.",
+		"serviceHighlights": [
+			"Alergias",
+			"Embarazo",
+			"Bienestar basico",
+			"Salud cardiaca",
+			"Salud para hombres y mujeres",
+			"Pruebas hormonales",
+			"Diabetes",
+			"Menopausia",
+			"Pruebas de tiroides",
+			"Pruebas de ADN, drogas, ETS y COVID-19"
+		],
+		"stillLooking": "Aun buscando?",
+		"stillTitle": "24-7 Labs es el laboratorio para ti.",
+		"whyChooseUs": [
+			"Ofrecemos miles de pruebas de laboratorio medico de forma profesional, conveniente y rentable.",
+			"Sin largas esperas, buscamos atender a los pacientes en 15 minutos o menos.",
+			"Resultados en 24 a 48 horas para la mayoria de las pruebas.",
+			"Pruebas de alta calidad con personal capacitado, experimentado y certificado.",
+			"No se requiere orden medica ni seguro para realizar pruebas.",
+			"Siempre recibimos pacientes sin cita previa."
+		],
+		"managementTitle": "Nuestro equipo directivo",
+		"managementSubtitle": "Los mejores servicios de pruebas, liderados por profesionales con experiencia.",
+		"management": {
+			"marleyName": "Marley Roldan",
+			"marleyRole": "Presidenta",
+			"marleyBio": "La Sra. Roldan ha dedicado su carrera a ayudar a los pacientes a controlar su salud con opciones de pruebas convenientes y accesibles. Ayudo a desarrollar soluciones para pruebas de drogas, paternidad, legales y de bienestar integral, y ha expandido 24-7 Labs en varias ubicaciones de Florida.",
+			"linaresName": "Dr. Rey Linares, M.D",
+			"linaresRole": "Director y jefe medico",
+			"linaresBio": "El Dr. Linares esta certificado en Medicina Interna, Medicina Pulmonar y Medicina del Sueno, con amplia experiencia en liderazgo clinico en Tampa Bay desde 1996. Su trabajo abarca cuidados criticos, medicina preventiva e iniciativas de salud comunitaria."
+		},
+		"images": {
+			"locationAlt": "Ubicacion de 24-7 Labs",
+			"marleyAlt": "Marley Roldan",
+			"linaresAlt": "Dr. Rey Linares"
+		},
+		"ctaTitle": "Necesitas ayuda para elegir una prueba?",
+		"ctaBody": "Nuestro equipo puede ayudarte a seleccionar el panel diagnostico correcto y agendar una cita conveniente en una de nuestras ubicaciones.",
+		"contact": {
+			"phone": "+1 (813) 932-3741",
+			"email": "anytimelab@24-7labs.com",
+			"contactUs": "Contactanos"
+		}
+	},
+	"ContactPage": {
+		"metadata": {
+			"title": "Contacto 24-7 Labs",
+			"description": "Contacta a 24-7 Labs en Tampa para citas, apoyo diagnostico y consultas generales."
+		},
+		"eyebrow": "Contacto 24-7 Labs",
+		"title": "Estamos aqui para ayudarte a agendar, realizarte pruebas y obtener respuestas rapido.",
+		"body": "Contacta a nuestro equipo para apoyo con citas, informacion de pruebas y detalles de ubicaciones. Puedes llamarnos directamente o enviar un mensaje rapido abajo.",
+		"locationTitle": "Ubicacion principal",
+		"supportHours": "Abierto todos los dias con soporte de pruebas las 24 horas",
+		"callNow": "Llamar ahora",
+		"formTitle": "Envia un mensaje rapido",
+		"formSubtitle": "Normalmente respondemos rapido durante el horario laboral.",
+		"firstName": "Nombre",
+		"firstNamePlaceholder": "Nombre",
+		"lastName": "Apellido",
+		"lastNamePlaceholder": "Apellido",
+		"email": "Correo electronico",
+		"emailPlaceholder": "tu@ejemplo.com",
+		"message": "Mensaje",
+		"messagePlaceholder": "Como podemos ayudarte hoy?",
+		"submit": "Enviar",
+		"contact": {
+			"address": "6107 Memorial Hwy, Suite F Tampa, Florida",
+			"phone": "+1 (813) 932-3741",
+			"email": "anytimelab@24-7labs.com"
+		}
+	},
+	"TrustStandardsPage": {
+		"metadata": {
+			"title": "Confianza y Estandares | 24-7 Labs",
+			"description": "Conoce que significan CLIA, CAP e HIPAA en lenguaje sencillo y como 24-7 Labs aplica estos estandares en pruebas y manejo de datos."
+		},
+		"eyebrow": "Confianza y estandares",
+		"title": "CLIA, CAP e HIPAA explicados en lenguaje sencillo.",
+		"body": "Veras terminos como CLIA, CAP e HIPAA en este sitio. Esta pagina explica que significan en un lenguaje claro y que representan para tu experiencia.",
+		"badges": {
+			"clinicalLabQuality": "Calidad de laboratorio clinico",
+			"externalReview": "Revision externa recurrente",
+			"privacyControls": "Controles de privacidad y seguridad"
+		},
+		"whatItMeans": "Que significa esto para ti",
+		"standards": [
+			{
+				"id": "clia",
+				"short": "CLIA",
+				"title": "Laboratorios con certificacion CLIA",
+				"description": "CLIA es un programa de calidad de laboratorios en Estados Unidos bajo supervision federal. Un laboratorio con certificacion CLIA debe seguir procesos validados, controles de calidad y pruebas de competencia.",
+				"points": [
+					"Tu muestra se procesa en un laboratorio sujeto a estandares de calidad clinica.",
+					"Los metodos de prueba y controles de calidad deben cumplir requisitos definidos.",
+					"Los resultados se producen en un entorno clinico regulado."
+				]
+			},
+			{
+				"id": "cap",
+				"short": "CAP",
+				"title": "Acreditacion CAP",
+				"description": "La acreditacion CAP (College of American Pathologists) es un programa riguroso de inspeccion por pares utilizado por laboratorios clinicos de alto rendimiento.",
+				"points": [
+					"Los laboratorios se inspeccionan con estandares detallados de calidad y operacion.",
+					"La acreditacion se revisa y mantiene con evaluaciones externas recurrentes.",
+					"Es una capa adicional de calidad sobre los requisitos regulatorios basicos."
+				]
+			},
+			{
+				"id": "hipaa",
+				"short": "HIPAA",
+				"title": "Cumplimiento HIPAA",
+				"description": "HIPAA es un marco de privacidad y seguridad en Estados Unidos para informacion medica protegida (PHI). Regula como se usa, divulga y protege la informacion relacionada con la salud.",
+				"points": [
+					"El acceso a PHI se limita a flujos operativos y clinicos necesarios.",
+					"Los sistemas deben aplicar controles de seguridad para almacenamiento, transferencia y acceso.",
+					"Las practicas de privacidad definen como se usan los datos y como solicitar ayuda."
+				]
+			}
+		]
+	},
+	"PrivacyPolicyPage": {
+		"title": "Politica de Privacidad",
+		"lastUpdated": "Ultima actualizacion: Enero 2024",
+		"intro": "En 24-7 Labs, estamos comprometidos en proteger tu privacidad. Esta politica de privacidad explica como recopilamos, utilizamos y divulgamos tu informacion personal.",
+		"sections": [
+			{
+				"title": "1. Introduccion",
+				"content": "24-7 Labs valora tu privacidad y se compromete a asegurar que tengas una experiencia positiva. Esta politica se aplica a la informacion recopilada a traves de nuestro sitio web y servicios de pruebas."
+			},
+			{
+				"title": "2. Informacion que recopilamos",
+				"content": "Recopilamos informacion que proporciones directamente, como nombre, direccion, informacion de contacto, informacion de salud e informacion de pago. Tambien recopilamos informacion automaticamente."
+			},
+			{
+				"title": "3. Como utilizamos tu informacion",
+				"content": "Utilizamos tu informacion para proporcionar servicios de pruebas, procesar resultados, comunicarnos contigo, mejorar nuestros servicios y cumplir con obligaciones legales."
+			},
+			{
+				"title": "4. Divulgacion de informacion",
+				"content": "No vendemos, comercializamos ni compartimos tu informacion personal con terceros sin tu consentimiento, excepto cuando lo requiere la ley."
+			},
+			{
+				"title": "5. Cumplimiento de HIPAA",
+				"content": "Como proveedor de salud, 24-7 Labs cumple con la Ley de Portabilidad y Responsabilidad de Seguros de Salud (HIPAA). Tu informacion protegida se salvaguarda."
+			},
+			{
+				"title": "6. Seguridad de datos",
+				"content": "Implementamos salvaguardas tecnicas y administrativas apropiadas para proteger tu informacion contra acceso, alteracion, divulgacion o destruccion no autorizados."
+			},
+			{
+				"title": "7. Tus derechos",
+				"content": "Tienes el derecho de acceder, corregir y solicitar la eliminacion de tu informacion personal, sujeto a las leyes aplicables."
+			},
+			{
+				"title": "8. Cookies",
+				"content": "Nuestro sitio web utiliza cookies para mejorar tu experiencia. Puedes controlar la configuracion de cookies a traves de las preferencias de tu navegador."
+			},
+			{
+				"title": "9. Contactanos",
+				"content": "Si tienes preguntas sobre esta Politica de Privacidad o nuestras practicas, contactanos en anytimelab@24-7labs.com o llama al +1 (813) 932-3741."
+			}
+		],
+		"contactInfo": {
+			"email": "anytimelab@24-7labs.com",
+			"phone": "+1 (813) 932-3741",
+			"address": "6107 Memorial Hwy, Suite F, Tampa, FL"
+		}
+	}
+}

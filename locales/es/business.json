@@ -1,0 +1,186 @@
+{
+	"BusinessOpportunitiesPage": {
+		"breadcrumbs": "Inicio > Oportunidades de Negocio",
+		"hero": {
+			"title": "Oportunidades de negocio en 24-7 Labs",
+			"overline": "FRANQUICIA Y ASOCIACIONES",
+			"mainTitle": "Haz crecer tu negocio con 24-7 Labs",
+			"description": "Unite a la red de 24-7 Labs como socio de franquicia. Construye un negocio de laboratorio de pruebas rentable con sistemas probados, apoyo continuo y modelos de ingresos comprobados.",
+			"callButton": "Llama al 813-932-3741"
+		},
+		"benefits": {
+			"title": "Por que asociarse con 24-7 Labs?",
+			"intro": "Descubre las ventajas de ser socio de franquicia de 24-7 Labs:",
+			"items": [
+				{
+					"title": "Modelo de negocio comprobado",
+					"description": "Aprovecha nuestros 15+ anos de experiencia y sistemas operacionales probados."
+				},
+				{
+					"title": "Division de ganancias 80/20",
+					"description": "Modelo de participacion en ganancias atractivo que te proporciona retornos significativos."
+				},
+				{
+					"title": "Operaciones 24/7",
+					"description": "Multiples flujos de ingresos de servicios de pruebas de horario extendido."
+				},
+				{
+					"title": "Apoyo integral",
+					"description": "Desde capacitacion hasta marketing y cumplimiento, proporcionamos apoyo operacional completo."
+				},
+				{
+					"title": "Profesionales certificados",
+					"description": "Acceso a personal capacitado y certificado bajo CLIA."
+				},
+				{
+					"title": "Multiples fuentes de ingresos",
+					"description": "Ingresos de pruebas de ADN, ETS, drogas, COVID y salud integral."
+				},
+				{
+					"title": "Marketing y marca",
+					"description": "Fuerte reconocimiento de marca y apoyo en marketing para construir tu base de clientes."
+				}
+			]
+		},
+		"faq": {
+			"title": "Preguntas frecuentes",
+			"questions": [
+				{
+					"question": "Cual es la inversion inicial requerida?",
+					"answer": "La inversion varia segun la ubicacion y servicios. Contactanos para un desglose financiero detallado."
+				},
+				{
+					"question": "Necesito experiencia en salud?",
+					"answer": "No necesitas experiencia en salud. Proporcionamos capacitacion integral y empleamos personal certificado bajo CLIA."
+				},
+				{
+					"question": "Que apoyo proporciona 24-7 Labs?",
+					"answer": "Proporcionamos apoyo completo incluyendo capacitacion de personal, marketing, operaciones y cumplimiento."
+				},
+				{
+					"question": "Cuanto tiempo tarda en recuperar la inversion?",
+					"answer": "Los tiempos de recuperacion varian segun ubicacion. Nuestro modelo comprobado muestra rentabilidad en 18-24 meses."
+				},
+				{
+					"question": "Puedo operar multiples ubicaciones?",
+					"answer": "Si, hay franquicias multiunitarias disponibles para socios calificados."
+				},
+				{
+					"question": "Cuales son las tarifas continuas?",
+					"answer": "Las tarifas continuas incluyen regalias y contribuciones de marketing. Oferecemos cronogramas de tarifas detallados."
+				}
+			]
+		},
+		"team": {
+			"title": "Nuestro equipo directivo",
+			"intro": "Liderado por profesionales de la salud experimentados con un historial comprobado de exito.",
+			"cards": [
+				{
+					"title": "Trayectoria comprobada",
+					"desc": "Mas de 15 anos de excelencia en salud y sistemas operativos comprobados"
+				},
+				{
+					"title": "Exito del socio",
+					"desc": "Equipo dedicado comprometido con tu crecimiento y rentabilidad"
+				},
+				{
+					"title": "Listo para cumplimiento",
+					"desc": "Laboratorios certificados CLIA con soporte completo de cumplimiento normativo"
+				}
+			]
+		},
+		"cta": {
+			"title": "Listo para construir tu negocio?",
+			"body": "Unite a 24-7 Labs y crea un negocio de laboratorio de pruebas rentable. Contactanos hoy para aprender mas sobre oportunidades de franquicia.",
+			"buttonText": "Solicitar informacion",
+			"callButton": "Llamar hoy"
+		}
+	},
+	"BusinessSolutionPage": {
+		"breadcrumbs": "Inicio > Soluciones Empresariales",
+		"hero": {
+			"title": "Soluciones empresariales",
+			"subtitle": "Pruebas de laboratorio integral para tu organizacion",
+			"callNow": "Llama ahora: 813-932-3741"
+		},
+		"sections": [
+			{
+				"title": "Derivaciones medicas",
+				"body": "24-7 Labs es un proveedor alternativo de pruebas de laboratorio para medicos conscientes del costo de las pruebas, especialmente con seguros de alto deducible o cuentas de ahorro de salud. Llenamos el vacio de poder proporcionar pruebas de laboratorio que los medicos pueden ordenar pero que ya no estan cubiertas por seguros. La asequibilidad es clave, y los clientes tienen una fuente segura y confiable. Ofrecemos socios de pruebas de laboratorio acreditados y certificados.",
+				"cta": "SOLICITAR COTIZACION MEDICA",
+				"ctaHref": "/contact"
+			},
+			{
+				"title": "Soluciones para empleadores",
+				"body": "24-7 Labs es un proveedor alternativo de pruebas de laboratorio para organizaciones conscientes del costo de las pruebas y los programas de salud de empleados. Ayudamos a los empleadores a proporcionar opciones de pruebas asequibles para programas de bienestar de empleados, examenes previos al empleo y monitoreo de salud continuo.",
+				"cta": "SOLICITAR COTIZACION PARA EMPLEADORES",
+				"ctaHref": "/contact"
+			},
+			{
+				"title": "Soluciones para la industria legal",
+				"body": "Para profesionales legales y organizaciones que requieren pruebas de Cadena de Custodia, analisis de ADN o analisis de drogas para casos judiciales, 24-7 Labs proporciona pruebas certificadas y admisibles en tribunal.",
+				"cta": "SOLICITAR COTIZACION PARA INDUSTRIA LEGAL",
+				"ctaHref": "/contact"
+			}
+		],
+		"highlights": [
+			{
+				"title": "15+ anos de experiencia",
+				"desc": "Experiencia lider en pruebas de laboratorio medico y soluciones de salud"
+			},
+			{
+				"title": "Revision experta 24/7",
+				"desc": "Medicos experimentados disponibles para revisar resultados y orientar"
+			},
+			{
+				"title": "Programas flexibles",
+				"desc": "Paquetes de pruebas personalizados para las necesidades de tu organizacion"
+			}
+		],
+		"features": {
+			"title": "Que nos diferencia",
+			"items": [
+				{
+					"title": "Sin cargos ocultos",
+					"desc": "Precios transparentes sin facturacion sorpresa ni cargos escondidos"
+				},
+				{
+					"title": "HSA/FSA aceptados",
+					"desc": "Soporte completo para cuentas de ahorro y gastos de salud"
+				},
+				{
+					"title": "Resultados rapidos",
+					"desc": "Respuesta rapida en resultados con reportes detallados"
+				},
+				{
+					"title": "Laboratorios acreditados",
+					"desc": "Socios de pruebas certificados por CLIA y acreditados por CAP"
+				},
+				{
+					"title": "Integracion sencilla",
+					"desc": "Plataforma en linea simple para pedidos de tu organizacion"
+				},
+				{
+					"title": "Soporte personal",
+					"desc": "Gerentes de cuenta dedicados para tus necesidades continuas"
+				}
+			]
+		},
+		"whyChooseUs": {
+			"title": "Por que elegir 24-7 Labs para soluciones empresariales",
+			"body": "En 24-7 Labs, utilizamos la tecnologia mas reciente para proporcionar resultados rapidos y precisos. Nuestro equipo de medicos experimentados se especializa en pruebas diagnosticas y esta disponible 24/7. Aceptamos planes HSA/FSA sin cargos ocultos. Con 15+ anos en salud y los mas altos estandares de calidad, 24-7 Labs es tu socio confiable."
+		},
+		"cta": {
+			"title": "Listo para comenzar?",
+			"body": "Contacta a nuestro equipo para hablar de las necesidades de pruebas de tu organizacion y recibir una cotizacion personalizada.",
+			"primaryButton": "Obtener cotizacion",
+			"secondaryButton": "Llama al 813-932-3741"
+		}
+	},
+	"TelemedicineServicePage": {
+		"title": "Servicios de telemedicina",
+		"subtitle": "Proximamente",
+		"description": "24-7 Labs esta desarrollando servicios de telemedicina integrales para traer consultas de attencion medica directamente a ti. Vuelve pronto para mas informacion sobre nuestras opciones de atencion virtual.",
+		"comingSoon": "Proximamente"
+	}
+}

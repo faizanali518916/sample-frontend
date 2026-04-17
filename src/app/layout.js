@@ -5,13 +5,9 @@ import RouteScrollReset from '@/components/common/RouteScrollReset';
 import SiteNavbar from '@/components/common/SiteNavbar';
 import SiteFooter from '@/components/common/SiteFooter';
 import FloatingLocaleSwitcher from '@/components/common/FloatingLocaleSwitcher';
+import { loadMessages } from '@/i18n/loadMessages';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import './globals.css';
-
-const messagesByLocale = {
-	en: () => import('../../messages/en.json').then((module) => module.default),
-	es: () => import('../../messages/es.json').then((module) => module.default),
-};
 
 const montserrat = Montserrat({
 	variable: '--font-montserrat',
@@ -33,8 +29,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 	const cookieStore = await cookies();
 	const locale = getLocaleFromCookieStore(cookieStore);
-	const loadMessages = messagesByLocale[locale] || messagesByLocale.en;
-	const messages = await loadMessages();
+	const messages = await loadMessages(locale);
 
 	return (
 		<html

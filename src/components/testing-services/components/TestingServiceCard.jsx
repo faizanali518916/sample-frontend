@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import React from 'react';
 
 function parsePrice(value) {
 	const numericValue = Number(value);
@@ -63,7 +64,14 @@ function getPricingModel(product) {
 	};
 }
 
-export default function TestingServiceCard({ product, t, locale, formatPrice, summarizeText, getProductImage }) {
+export default React.memo(function TestingServiceCard({
+	product,
+	t,
+	locale,
+	formatPrice,
+	summarizeText,
+	getProductImage,
+}) {
 	const productName = product.name ?? t('fallbackProductName', { id: product.id });
 	const categoryNames = product.categories.length
 		? product.categories.map((category) => category.name).join(', ')
@@ -154,4 +162,4 @@ export default function TestingServiceCard({ product, t, locale, formatPrice, su
 			</div>
 		</article>
 	);
-}
+});

@@ -1,0 +1,100 @@
+{
+	"SiteNavbar": {
+		"brand": {
+			"logoAlt": "24-7 Labs"
+		},
+		"menu": {
+			"home": "Home",
+			"about": "About 24-7 Labs",
+			"trust": "Trust & Standards",
+			"business": "Business",
+			"testingServices": "Testing Services",
+			"covid": "COVID-19",
+			"dnaTestingServices": "DNA Testing",
+			"stdTestingServices": "STD Testing",
+			"drugTesting": "Drug Testing",
+			"allergyTesting": "Allergy Testing",
+			"heartTesting": "Heart Testing",
+			"hormoneTesting": "Hormone Testing",
+			"routineHealthTesting": "Routine Health Testing",
+			"homeKits": "At-Home Testing Kits",
+			"forms": "Forms",
+			"schedule": "Schedule Appointment",
+			"businessOpportunities": "Business Opportunities",
+			"businessSolutions": "Business Solutions",
+			"telemedicine": "Telemedicine",
+			"privacyPolicy": "Privacy Policy",
+			"contact": "Contact"
+		},
+		"tape": {
+			"open24x7": "Open 24/7 in Tampa",
+			"noInsuranceNoPrescription": "No Insurance, No Prescription Needed",
+			"clia": "CLIA Certified",
+			"cap": "CAP Accredited",
+			"hipaa": "HIPAA Compliant",
+			"results": "Results in 24-48 hours"
+		},
+		"locale": {
+			"enShort": "EN",
+			"esShort": "ES",
+			"english": "English",
+			"spanish": "Spanish"
+		},
+		"aria": {
+			"home": "24-7 Labs home",
+			"openCart": "Open cart",
+			"search": "Search",
+			"openMenu": "Open menu",
+			"closeMenu": "Close menu",
+			"switchToEnglish": "Switch language to English",
+			"switchToSpanish": "Switch language to Spanish"
+		},
+		"contact": {
+			"phoneDisplay": "+1 (813) 932-3741"
+		}
+	},
+	"FloatingLocaleSwitcher": {
+		"englishShort": "EN",
+		"spanishShort": "ES",
+		"switchToEnglish": "Switch language to English",
+		"switchToSpanish": "Switch language to Spanish"
+	},
+	"AITestFinderModal": {
+		"title": "Find the Right Test",
+		"subtitle": "Let AI do the test searching for you.",
+		"close": "Close",
+		"back": "Back",
+		"step": "Step",
+		"of": "of",
+		"intentTitle": "What are you testing for today?",
+		"categoryTitle": "What specific area?",
+		"subcategoryTitle": "Pick a focus area",
+		"refinementTitle": "Choose your preference",
+		"recommendedTitle": "Recommended tests for you",
+		"recommendedBody": "Based on your selections, here are the tests we recommend. Each test includes descriptions and can be booked instantly.",
+		"loading": "Loading recommendations...",
+		"empty": "No matching products were found for this path yet.",
+		"price": "Price",
+		"priceUnavailable": "Call for pricing",
+		"bookNow": "Book Now",
+		"fallbackProductName": "Product",
+		"fallbackTestName": "Test",
+		"ariaLabel": "AI test finder",
+		"badgeTitle": "AI Test Finder",
+		"loadError": "Unable to load products"
+	},
+	"NotFoundPage": {
+		"metadata": {
+			"title": "Page Not Found | 24-7 Labs",
+			"description": "The page you are looking for doesn't exist."
+		},
+		"heading": "404",
+		"subtitle": "Oops! The page you are looking for doesn't exist.",
+		"buttonText": "Go Back Home",
+		"buttonHref": "/"
+	},
+	"LocalizationCommon": {
+		"option": "Option",
+		"includes": "Includes:"
+	}
+}

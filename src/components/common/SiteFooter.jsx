@@ -40,20 +40,43 @@ const footerTranslations = {
 			'24-7Labs is the first of a new line of innovative health care services from 24-7laboratories. Our mission is to give people the power to control their health with convenient, affordable, and easy-to-understand options.',
 		productsTitle: 'Products',
 		products: [
-			'At-Home Chlamydia Testing Kit',
-			'At-Home Herpes Testing Kit',
-			'At-Home HIV Testing Kit',
-			'At-Home COVID Testing Kit',
+			{
+				label: 'At-Home Chlamydia Testing Kit',
+				href: 'https://247labkit.com/product/basic-kit-chlamydia-gonorrhea/',
+			},
+			{
+				label: 'At-Home Herpes Testing Kit',
+				href: 'https://247labkit.com/product/hsv-kit-herpes-at-home-test/',
+			},
+			{
+				label: 'At-Home HIV Testing Kit',
+				href: 'https://247labkit.com/product/comprehensive-kit-chlamydia-gonorrhea-trich-syphilis-hsv-hiv-hep-c/',
+			},
+			{
+				label: 'At-Home COVID Testing Kit',
+				href: 'https://247labkit.com/product/covid-kit-covid-19-at-home-test/',
+			},
 		],
 		resourcesTitle: 'Resources',
 		resources: [
-			'Trust & Standards',
-			'Business Opportunities',
-			'Business Solutions',
-			'Telemedicine Service',
-			'Testing Locations',
-			'Blog',
-			'Privacy Policy',
+			{ label: 'Trust & Standards', href: '/trust-standards' },
+			{ label: 'Business Opportunities', href: '/business-opportunities' },
+			{ label: 'Business Solutions', href: '/business-solutions' },
+			{ label: 'Telemedicine Service', href: '/telemedicine' },
+			{ label: 'Schedule Appointment', href: '/schedule-appointment' },
+			{ label: 'Privacy Policy', href: '/privacy-policy' },
+			{ label: 'Contact', href: '/contact' },
+		],
+		testingTitle: 'Testing Pages',
+		testing: [
+			{ label: 'Testing Services', href: '/testing-services' },
+			{ label: 'DNA Testing', href: '/dna-testing' },
+			{ label: 'STD Testing', href: '/std-testing' },
+			{ label: 'Drug Testing', href: '/drug-testing' },
+			{ label: 'Allergy Testing', href: '/allergy-testing' },
+			{ label: 'Heart Testing', href: '/heart-testing' },
+			{ label: 'Hormone Testing', href: '/hormone-testing' },
+			{ label: 'Routine Health Testing', href: '/routine-health-testing' },
 		],
 		contactTitle: 'Contact',
 		copyright: 'All rights reserved.',
@@ -64,20 +87,43 @@ const footerTranslations = {
 			'24-7Labs es la primera de una nueva linea de servicios innovadores de salud de 24-7laboratories. Nuestra mision es dar a las personas el poder de controlar su salud con opciones convenientes, accesibles y faciles de entender.',
 		productsTitle: 'Productos',
 		products: [
-			'Kit de prueba en casa para clamidia',
-			'Kit de prueba en casa para herpes',
-			'Kit de prueba en casa para VIH',
-			'Kit de prueba en casa para COVID',
+			{
+				label: 'Kit de prueba en casa para clamidia',
+				href: 'https://247labkit.com/product/basic-kit-chlamydia-gonorrhea/',
+			},
+			{
+				label: 'Kit de prueba en casa para herpes',
+				href: 'https://247labkit.com/product/hsv-kit-herpes-at-home-test/',
+			},
+			{
+				label: 'Kit de prueba en casa para VIH',
+				href: 'https://247labkit.com/product/comprehensive-kit-chlamydia-gonorrhea-trich-syphilis-hsv-hiv-hep-c/',
+			},
+			{
+				label: 'Kit de prueba en casa para COVID',
+				href: 'https://247labkit.com/product/covid-kit-covid-19-at-home-test/',
+			},
 		],
 		resourcesTitle: 'Recursos',
 		resources: [
-			'Confianza y Estandares',
-			'Oportunidades de negocio',
-			'Soluciones para negocios',
-			'Servicio de telemedicina',
-			'Ubicaciones de pruebas',
-			'Blog',
-			'Politica de privacidad',
+			{ label: 'Confianza y Estandares', href: '/trust-standards' },
+			{ label: 'Oportunidades de negocio', href: '/business-opportunities' },
+			{ label: 'Soluciones para negocios', href: '/business-solutions' },
+			{ label: 'Servicio de telemedicina', href: '/telemedicine' },
+			{ label: 'Agendar cita', href: '/schedule-appointment' },
+			{ label: 'Politica de privacidad', href: '/privacy-policy' },
+			{ label: 'Contacto', href: '/contact' },
+		],
+		testingTitle: 'Paginas de Pruebas',
+		testing: [
+			{ label: 'Servicios de Pruebas', href: '/testing-services' },
+			{ label: 'Pruebas de ADN', href: '/dna-testing' },
+			{ label: 'Pruebas de ETS', href: '/std-testing' },
+			{ label: 'Pruebas de Drogas', href: '/drug-testing' },
+			{ label: 'Pruebas de Alergias', href: '/allergy-testing' },
+			{ label: 'Pruebas Cardiacas', href: '/heart-testing' },
+			{ label: 'Pruebas Hormonales', href: '/hormone-testing' },
+			{ label: 'Pruebas de Salud General', href: '/routine-health-testing' },
 		],
 		contactTitle: 'Contacto',
 		copyright: 'Todos los derechos reservados.',
@@ -112,7 +158,7 @@ export default function SiteFooter({ locale = 'en' }) {
 					</div>
 				</div>
 			</div>
-			<div className="relative mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-8 md:grid-cols-2 lg:grid-cols-4 lg:px-6">
+			<div className="relative mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-8 md:grid-cols-2 lg:grid-cols-5 lg:px-6">
 				<div className="flex flex-col items-center">
 					<Image
 						src="/images/logo-light.png"
@@ -175,7 +221,11 @@ export default function SiteFooter({ locale = 'en' }) {
 					<h3 className="font-display text-lg font-bold text-white">{copy.productsTitle}</h3>
 					<ul className="mt-4 space-y-2 text-sm text-sky-100/90">
 						{copy.products.map((item) => (
-							<li key={item}>{item}</li>
+							<li key={item.href}>
+								<a href={item.href} target="_blank" rel="noreferrer" className="transition hover:text-white">
+									{item.label}
+								</a>
+							</li>
 						))}
 					</ul>
 				</div>
@@ -183,41 +233,26 @@ export default function SiteFooter({ locale = 'en' }) {
 				<div>
 					<h3 className="font-display text-lg font-bold text-white">{copy.resourcesTitle}</h3>
 					<ul className="mt-4 space-y-2 text-sm text-sky-100/90">
-						<li>
-							<Link href="/trust-standards" className="transition hover:text-white">
-								{copy.resources[0]}
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="transition hover:text-white">
-								{copy.resources[1]}
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="transition hover:text-white">
-								{copy.resources[2]}
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="transition hover:text-white">
-								{copy.resources[3]}
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="transition hover:text-white">
-								{copy.resources[4]}
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="transition hover:text-white">
-								{copy.resources[5]}
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="transition hover:text-white">
-								{copy.resources[6]}
-							</Link>
-						</li>
+						{copy.resources.map((item) => (
+							<li key={item.href}>
+								<Link href={item.href} className="transition hover:text-white">
+									{item.label}
+								</Link>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<div>
+					<h3 className="font-display text-lg font-bold text-white">{copy.testingTitle}</h3>
+					<ul className="mt-4 space-y-2 text-sm text-sky-100/90">
+						{copy.testing.map((item) => (
+							<li key={item.href}>
+								<Link href={item.href} className="transition hover:text-white">
+									{item.label}
+								</Link>
+							</li>
+						))}
 					</ul>
 				</div>
 

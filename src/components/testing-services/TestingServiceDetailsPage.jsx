@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, PhoneCall } from 'lucide-react';
+import React from 'react';
 import { t as translate } from '@/lib/i18n-utils';
 import { resolveImageUrl } from '@/lib/api';
 import TestingServiceCard from './components/TestingServiceCard';
@@ -104,7 +105,13 @@ function getCategoryImage(category) {
 	return resolveImageUrl(imageCandidate);
 }
 
-export default function TestingServiceDetailsPage({ product, allProducts = [], allCategories = [], t, locale }) {
+export default React.memo(function TestingServiceDetailsPage({
+	product,
+	allProducts = [],
+	allCategories = [],
+	t,
+	locale,
+}) {
 	const sourceVariants = Array.isArray(product?.variants) ? product.variants : [];
 	const [selectedVariantId, setSelectedVariantId] = useState('');
 	const [selectedCategoryId, setSelectedCategoryId] = useState('all');
@@ -485,4 +492,4 @@ export default function TestingServiceDetailsPage({ product, allProducts = [], a
 			</section>
 		</main>
 	);
-}
+});

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import React from 'react';
 
 export function SectionHeading({ title, subtitle }) {
 	return (
@@ -10,7 +11,7 @@ export function SectionHeading({ title, subtitle }) {
 	);
 }
 
-export function WhyChooseFeatureCard({ feature, iconLeft = false, iconAlt }) {
+export const WhyChooseFeatureCard = React.memo(function WhyChooseFeatureCard({ feature, iconLeft = false, iconAlt }) {
 	return (
 		<article className="group flex items-start justify-between gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-sm transition hover:shadow-lg">
 			{iconLeft ? (
@@ -32,4 +33,4 @@ export function WhyChooseFeatureCard({ feature, iconLeft = false, iconAlt }) {
 			)}
 		</article>
 	);
-}
+});

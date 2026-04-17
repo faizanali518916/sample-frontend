@@ -1,0 +1,100 @@
+{
+	"SiteNavbar": {
+		"brand": {
+			"logoAlt": "24-7 Labs"
+		},
+		"menu": {
+			"home": "Inicio",
+			"about": "Acerca de 24-7 Labs",
+			"trust": "Confianza y Estandares",
+			"business": "Empresas",
+			"testingServices": "Servicios de Pruebas",
+			"covid": "COVID-19",
+			"dnaTestingServices": "Pruebas de ADN",
+			"stdTestingServices": "Pruebas de ETS",
+			"drugTesting": "Pruebas de Drogas",
+			"allergyTesting": "Pruebas de Alergias",
+			"heartTesting": "Pruebas Cardiacas",
+			"hormoneTesting": "Pruebas Hormonales",
+			"routineHealthTesting": "Pruebas de Salud General",
+			"homeKits": "Kits de Pruebas en Casa",
+			"forms": "Formularios",
+			"schedule": "Agendar Cita",
+			"businessOpportunities": "Oportunidades de Negocio",
+			"businessSolutions": "Soluciones Empresariales",
+			"telemedicine": "Telemedicina",
+			"privacyPolicy": "Politica de Privacidad",
+			"contact": "Contacto"
+		},
+		"tape": {
+			"open24x7": "Abierto 24/7 en Tampa",
+			"noInsuranceNoPrescription": "Sin seguro, sin receta necesaria",
+			"clia": "Certificacion CLIA",
+			"cap": "Acreditacion CAP",
+			"hipaa": "Cumplimiento HIPAA",
+			"results": "Resultados en 24-48 horas"
+		},
+		"locale": {
+			"enShort": "EN",
+			"esShort": "ES",
+			"english": "Ingles",
+			"spanish": "Espanol"
+		},
+		"aria": {
+			"home": "Inicio de 24-7 Labs",
+			"openCart": "Abrir carrito",
+			"search": "Buscar",
+			"openMenu": "Abrir menu",
+			"closeMenu": "Cerrar menu",
+			"switchToEnglish": "Cambiar idioma a ingles",
+			"switchToSpanish": "Cambiar idioma a espanol"
+		},
+		"contact": {
+			"phoneDisplay": "+1 (813) 932-3741"
+		}
+	},
+	"FloatingLocaleSwitcher": {
+		"englishShort": "EN",
+		"spanishShort": "ES",
+		"switchToEnglish": "Cambiar idioma a ingles",
+		"switchToSpanish": "Cambiar idioma a espanol"
+	},
+	"AITestFinderModal": {
+		"title": "Encuentra la prueba correcta",
+		"subtitle": "Deja que la IA busque la prueba por ti.",
+		"close": "Cerrar",
+		"back": "Volver",
+		"step": "Paso",
+		"of": "de",
+		"intentTitle": "Que necesitas evaluar hoy?",
+		"categoryTitle": "Que area especifica?",
+		"subcategoryTitle": "Elige un area de enfoque",
+		"refinementTitle": "Elige tu preferencia",
+		"recommendedTitle": "Pruebas recomendadas para ti",
+		"recommendedBody": "Segun tus respuestas, estas son las pruebas recomendadas. Cada prueba incluye descripciones y puede reservarse al instante.",
+		"loading": "Cargando recomendaciones...",
+		"empty": "Aun no encontramos productos para esta ruta.",
+		"price": "Precio",
+		"priceUnavailable": "Llama para conocer el precio",
+		"bookNow": "Reservar",
+		"fallbackProductName": "Producto",
+		"fallbackTestName": "Prueba",
+		"ariaLabel": "Buscador de pruebas con IA",
+		"badgeTitle": "Buscador IA",
+		"loadError": "No se pudieron cargar los productos"
+	},
+	"NotFoundPage": {
+		"metadata": {
+			"title": "Pagina no encontrada | 24-7 Labs",
+			"description": "La pagina que buscas no existe."
+		},
+		"heading": "404",
+		"subtitle": "Oops! La pagina que buscas no existe.",
+		"buttonText": "Volver al inicio",
+		"buttonHref": "/"
+	},
+	"LocalizationCommon": {
+		"option": "Opcion",
+		"includes": "Incluye:"
+	}
+}

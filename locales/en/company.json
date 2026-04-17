@@ -1,0 +1,188 @@
+{
+	"AboutPage": {
+		"metadata": {
+			"title": "About 24-7 Labs",
+			"description": "Learn more about 24-7 Labs, our mission, services, and why patients trust us for fast and accurate diagnostics in Tampa."
+		},
+		"eyebrow": "About 24-7 Labs",
+		"heroTitle": "Innovative diagnostics built to give people control of their health.",
+		"heroBody": "24-7 Labs is part of a new line of healthcare services from 24-7 Laboratory LLC. Our mission is to provide convenient, affordable, and easy-to-understand testing options so patients can make confident wellness decisions.",
+		"stats": {
+			"open247": "Open 24/7",
+			"certifiedTeam": "Certified Team",
+			"locations": "Tampa Bay Locations"
+		},
+		"sectionLabTitle": "The lab for your wellness testing needs",
+		"sectionLabBody": "We provide medical laboratory testing for a broad range of health goals. There are no hidden fees or surprise billing, and we accept HSA/FSA plus select health insurance plans.",
+		"serviceHighlights": [
+			"Allergies",
+			"Pregnancy",
+			"Basic Wellness",
+			"Heart Health",
+			"Men & Women's Health",
+			"Hormone Testing",
+			"Diabetes",
+			"Menopause",
+			"Thyroid Testing",
+			"DNA, Drug, STD, and COVID-19 Testing"
+		],
+		"stillLooking": "Still looking?",
+		"stillTitle": "24-7 Labs is the lab for you.",
+		"whyChooseUs": [
+			"Provides thousands of medical lab tests in a professional, convenient and cost-effective way.",
+			"No long waits, we strive to see patients in 15 minutes or less.",
+			"Results in 24 to 48 hours for most tests.",
+			"High-quality testing with trained, experienced, and certified staff.",
+			"No doctor order or insurance required for testing.",
+			"Walk-ins are always welcomed."
+		],
+		"managementTitle": "Our Management Team",
+		"managementSubtitle": "The best testing services, led by experienced professionals.",
+		"management": {
+			"marleyName": "Marley Roldan",
+			"marleyRole": "President",
+			"marleyBio": "Ms. Roldan has dedicated her career to helping patients control their health through convenient and affordable testing options. She helped develop solutions for drug, paternity, legal, and comprehensive wellness testing, and has grown 24-7 Labs across multiple Florida locations.",
+			"linaresName": "Dr. Rey Linares, M.D",
+			"linaresRole": "Chief Medical Officer & Director",
+			"linaresBio": "Dr. Linares is board certified in Internal Medicine, Pulmonary Medicine, and Sleep Medicine, with extensive clinical leadership experience in Tampa Bay since 1996. His work spans critical care, preventive medicine, and community health initiatives."
+		},
+		"images": {
+			"locationAlt": "24-7 Labs location",
+			"marleyAlt": "Marley Roldan",
+			"linaresAlt": "Dr. Rey Linares"
+		},
+		"ctaTitle": "Need help choosing a test?",
+		"ctaBody": "Our team can help you select the right diagnostic panel and book a convenient appointment at one of our locations.",
+		"contact": {
+			"phone": "+1 (813) 932-3741",
+			"email": "anytimelab@24-7labs.com",
+			"contactUs": "Contact Us"
+		}
+	},
+	"ContactPage": {
+		"metadata": {
+			"title": "Contact 24-7 Labs",
+			"description": "Contact 24-7 Labs in Tampa for appointments, diagnostics support, and general inquiries."
+		},
+		"eyebrow": "Contact 24-7 Labs",
+		"title": "We're here to help you book, test, and get answers fast.",
+		"body": "Reach out to our team for appointment support, test information, and location details. You can call us directly or send a quick message below.",
+		"locationTitle": "Main Location",
+		"supportHours": "Open daily with 24-hour testing support",
+		"callNow": "Call Now",
+		"formTitle": "Send a quick message",
+		"formSubtitle": "We usually respond quickly during business hours.",
+		"firstName": "First Name",
+		"firstNamePlaceholder": "First name",
+		"lastName": "Last Name",
+		"lastNamePlaceholder": "Last name",
+		"email": "Email",
+		"emailPlaceholder": "you@example.com",
+		"message": "Message",
+		"messagePlaceholder": "How can we help you today?",
+		"submit": "Submit",
+		"contact": {
+			"address": "6107 Memorial Hwy, Suite F Tampa, Florida",
+			"phone": "+1 (813) 932-3741",
+			"email": "anytimelab@24-7labs.com"
+		}
+	},
+	"TrustStandardsPage": {
+		"metadata": {
+			"title": "Trust & Standards | 24-7 Labs",
+			"description": "Learn what CLIA, CAP, and HIPAA mean in plain language and how 24-7 Labs applies these standards to patient testing and data handling."
+		},
+		"eyebrow": "Trust & Standards",
+		"title": "CLIA, CAP, and HIPAA explained in plain language.",
+		"body": "You'll see terms like CLIA, CAP, and HIPAA across this site. This page explains what they mean in plain language and what they mean for your experience.",
+		"badges": {
+			"clinicalLabQuality": "Clinical-lab quality",
+			"externalReview": "Recurring external review",
+			"privacyControls": "Privacy and security controls"
+		},
+		"whatItMeans": "What this means for you",
+		"standards": [
+			{
+				"id": "clia",
+				"short": "CLIA",
+				"title": "CLIA-certified labs",
+				"description": "CLIA is a U.S. lab quality program run under federal oversight. A CLIA-certified lab has to follow validated processes, quality controls, and proficiency checks.",
+				"points": [
+					"Your sample is processed by a lab held to clinical testing quality standards.",
+					"Testing methods and quality checks must meet defined requirements.",
+					"Results are produced in a regulated clinical-lab environment."
+				]
+			},
+			{
+				"id": "cap",
+				"short": "CAP",
+				"title": "CAP-accredited",
+				"description": "CAP (College of American Pathologists) accreditation is a rigorous, peer-based inspection program used by high-performing clinical laboratories.",
+				"points": [
+					"Labs are inspected against detailed quality and operational standards.",
+					"Accreditation is reviewed and maintained through recurring external assessments.",
+					"It is an additional quality layer beyond baseline regulatory requirements."
+				]
+			},
+			{
+				"id": "hipaa",
+				"short": "HIPAA",
+				"title": "HIPAA-compliant",
+				"description": "HIPAA is a U.S. privacy and security framework for protected health information (PHI). It governs how health-related information is used, disclosed, and protected.",
+				"points": [
+					"Access to PHI is limited to necessary operational and clinical workflows.",
+					"Systems must use security controls for storage, transfer, and access.",
+					"Privacy practices define how data is used and how users can request support."
+				]
+			}
+		]
+	},
+	"PrivacyPolicyPage": {
+		"title": "Privacy Policy",
+		"lastUpdated": "Last updated: January 2024",
+		"intro": "At 24-7 Labs, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and disclose your personal information.",
+		"sections": [
+			{
+				"title": "1. Introduction",
+				"content": "24-7 Labs values your privacy and is committed to ensuring you have a positive experience on our website and when using our services. This policy applies to information collected through our website and testing services."
+			},
+			{
+				"title": "2. Information We Collect",
+				"content": "We collect information you provide directly, such as your name, address, contact information, health information, and payment information. We also collect information automatically, such as device information, IP addresses, and browsing activities."
+			},
+			{
+				"title": "3. How We Use Your Information",
+				"content": "We use your information to provide testing services, process results, communicate with you, improve our services, and comply with legal obligations. All information is handled with strict confidentiality."
+			},
+			{
+				"title": "4. Information Disclosure",
+				"content": "We do not sell, trade, or share your personal information with third parties without your consent, except as required by law or for necessary service providers bound by confidentiality agreements."
+			},
+			{
+				"title": "5. HIPAA Compliance",
+				"content": "As a healthcare provider, 24-7 Labs complies with the Health Insurance Portability and Accountability Act (HIPAA). Your protected health information is safeguarded and only disclosed as permitted by law."
+			},
+			{
+				"title": "6. Data Security",
+				"content": "We implement appropriate technical and administrative safeguards to protect your information against unauthorized access, alteration, disclosure, or destruction."
+			},
+			{
+				"title": "7. Your Rights",
+				"content": "You have the right to access, correct, and request deletion of your personal information, subject to applicable laws. Contact us to exercise these rights."
+			},
+			{
+				"title": "8. Cookies",
+				"content": "Our website uses cookies to enhance your experience. You can control cookie settings through your browser preferences."
+			},
+			{
+				"title": "9. Contact Us",
+				"content": "If you have questions about this Privacy Policy or our practices, please contact us at anytimelab@24-7labs.com or call +1 (813) 932-3741."
+			}
+		],
+		"contactInfo": {
+			"email": "anytimelab@24-7labs.com",
+			"phone": "+1 (813) 932-3741",
+			"address": "6107 Memorial Hwy, Suite F, Tampa, FL"
+		}
+	}
+}

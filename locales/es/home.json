@@ -1,0 +1,301 @@
+{
+	"HomePage": {
+		"Hero": {
+			"logoAlt": "24-7 Labs",
+			"loadingTitle": "Cargando 24-7 Labs",
+			"loadingSubtitle": "Preparando tu experiencia de diagnostico",
+			"badge": "Abierto 24/7 para diagnosticos prioritarios",
+			"line1": "Pruebas diagnosticas 24-7 para",
+			"line2": "ETS, drogas, ADN y COVID.",
+			"body": "Somos un laboratorio medico integral con pruebas 24 horas para ETS, ADN, COVID-19, drogas, bienestar basico, alergias, salud cardiaca, diabetes y mucho mas.",
+			"hoursWeekdays": "Lunes a viernes: 9 AM - 7 PM",
+			"hoursSaturday": "Sabado: 9 AM - 1 PM",
+			"subText": "Agenda una cita en 24-7 Labs, el unico laboratorio integral 24 horas en Tampa.",
+			"scheduleButton": "Agendar cita",
+			"callButton": "Llamanos 813 932 3741",
+			"locationsButton": "Ubicaciones",
+			"trustedBy": "Con la confianza de familias y proveedores en Tampa",
+			"slideAria": "Ir a la diapositiva {index}",
+			"slides": [
+				{
+					"image": "/images/bannerSlider/heroimg1.png",
+					"alt": "Equipo de laboratorio"
+				},
+				{
+					"image": "/images/bannerSlider/heroimg2.png",
+					"alt": "Consulta de salud"
+				},
+				{
+					"image": "/images/bannerSlider/heroimg3.png",
+					"alt": "Muestra de servicio de pruebas"
+				},
+				{
+					"image": "/images/bannerSlider/heroimg4.png",
+					"alt": "Entorno de pruebas de 24-7 Labs"
+				}
+			]
+		},
+		"Services": {
+			"title": "Pruebas integrales 24 horas disponibles en Tampa",
+			"subtitle": "Desde paneles de bienestar hasta diagnosticos especificos, nuestro menu de pruebas te ayuda a pasar de la incertidumbre a la claridad.",
+			"learnMore": "Ver mas",
+			"items": [
+				{
+					"icon": "/images/test-tube3.png",
+					"title": "Pruebas de Drogas",
+					"description": "En 24-7 Labs ofrecemos pruebas individuales y de 5 y 10 paneles. Tambien realizamos pruebas DOT y para empleadores. Puedes esperar resultados en 24-48 horas.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/biotechnology3.png",
+					"title": "Pruebas de ADN",
+					"description": "Nuestras pruebas de ADN cubren maternidad, paternidad, abuelos y hermanos. Los resultados pueden usarse con fines legales, informativos o migratorios. La mayoria llega en 72 horas.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/sexual-transmitted-disease3.png",
+					"title": "Pruebas de ETS",
+					"description": "Realizamos pruebas para ETS comunes como herpes, gonorrea y clamidia. Cuidate y cuida a tus parejas con resultados confiables y rapidos.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/test-tube3.png",
+					"title": "Pruebas de COVID",
+					"description": "Ofrecemos RT-PCR el mismo dia o al dia siguiente. Son ideales para viajes y para protegerte a ti y a tus seres queridos.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/test-tube3.png",
+					"title": "Pruebas de Salud General",
+					"description": "Tambien ofrecemos pruebas de diabetes, paneles de cancer, tiroides y salud cardiaca. 24-7 Labs tambien brinda pruebas hormonales y de alergias.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/diabetes3.png",
+					"title": "Pruebas de Alergias",
+					"description": "Mas de 50 millones de personas en Estados Unidos tienen alergias. Descubre que te afecta y encuentra alivio.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/heart-rate3-1.png",
+					"title": "Pruebas Cardiacas",
+					"description": "La enfermedad cardiovascular es una de las principales causas de muerte. La mejor estrategia es ser preventivo y realizar pruebas regulares.",
+					"href": "#"
+				},
+				{
+					"icon": "/images/hormone-therapy3.png",
+					"title": "Pruebas Hormonales",
+					"description": "Cambios de humor, aumento de peso, fatiga y baja libido pueden indicar desequilibrios hormonales. Nuestras pruebas ayudan a identificar la causa.",
+					"href": "#"
+				}
+			]
+		},
+		"WhyChoose": {
+			"title": "Por que elegir 24-7 Labs para tus pruebas",
+			"subtitle": "24-7 Labs es un centro de pruebas integral 24 horas en el area de Tampa.",
+			"bookTestButton": "Reserva tu prueba",
+			"featureIconAlt": "Icono de caracteristica",
+			"microscopeAlt": "Microscopio",
+			"items": [
+				{
+					"title": "ACCESIBLE Y HSA ACEPTADO",
+					"description": "Resultados rapidos, precisos y a costo razonable.",
+					"icon": "/images/Assetnew-2.png"
+				},
+				{
+					"title": "ATENCION TODO EL DIA",
+					"description": "Operamos 24/7 con citas diurnas disponibles.",
+					"icon": "/images/Assetnew-1.png"
+				},
+				{
+					"title": "DISCRETO",
+					"description": "100% confidencial. Sin seguro ni receta medica.",
+					"icon": "/images/Assetnew-3.png"
+				},
+				{
+					"title": "RECETA PARA POSITIVOS",
+					"description": "Receta para resultados positivos por medicos expertos.",
+					"icon": "/images/Assetnew-4.png"
+				},
+				{
+					"title": "RESULTADOS RAPIDOS",
+					"description": "Resultados en 24-48 horas para casi todas las pruebas.",
+					"icon": "/images/Assetnew-5.png"
+				},
+				{
+					"title": "MERCADO TODO EN UNO",
+					"description": "Una sola plataforma para tus pruebas de salud.",
+					"icon": "/images/Assetnew-6-1.png"
+				}
+			]
+		},
+		"Process": {
+			"title": "Como Funciona",
+			"subtitle": "Disenamos el proceso para que sea rapido, discreto y sencillo.",
+			"badge": "24-7",
+			"items": [
+				{
+					"image": "/images/calender2.png",
+					"title": "Paso Uno: Elige Fecha y Hora",
+					"description": "Selecciona la fecha y hora que mejor se ajuste a tu agenda."
+				},
+				{
+					"image": "/images/location-gredient-1.png",
+					"title": "Paso Dos: Elige la Ubicacion",
+					"description": "Agenda en nuestras ubicaciones de Tampa, Temple Terrace o New Port Richey."
+				},
+				{
+					"image": "/images/get-started.png",
+					"title": "Paso Tres: Selecciona la Prueba",
+					"description": "Indica la prueba que deseas junto con sintomas u observaciones."
+				}
+			]
+		},
+		"Reviews": {
+			"title": "Lo que dicen nuestros pacientes",
+			"googleReviews": "294 resenas de Google",
+			"writeReview": "Escribir una resena",
+			"previousAria": "Resena anterior",
+			"nextAria": "Siguiente resena",
+			"placeName": "24-7 Labs Memorial Hwy",
+			"placeImageAlt": "24-7 Labs Memorial Hwy",
+			"certificationAlt": "Certificacion",
+			"certificationLogos": [
+				"/images/image2.png",
+				"/images/image5.png",
+				"/images/image4.png",
+				"/images/image3.png",
+				"/images/logo_cola.png"
+			],
+			"items": [
+				{
+					"avatar": "N",
+					"name": "Neraida Fernandez",
+					"date": "2021-03-17",
+					"text": "Personas muy amables y muy buenos precios... lugar fantastico."
+				},
+				{
+					"avatar": "S",
+					"name": "Solanch Coca",
+					"date": "2021-03-10",
+					"text": "Recomiendo este lugar rapido y asequible, 100% buena atencion encantada."
+				},
+				{
+					"avatar": "C",
+					"name": "Carlos Harrell",
+					"date": "2021-03-08",
+					"text": "Recomiendo esta clinica, te cuidan muy bien."
+				}
+			]
+		},
+		"Appointment": {
+			"title": "Agenda una cita para pruebas en Tampa hoy",
+			"body": "Reserva una cita para hoy en nuestro laboratorio de Tampa. Nuestro equipo esta listo para ayudarte.",
+			"address": "6107 Memorial Hwy, Suite F Tampa, FL",
+			"openAllDay": "Trabajamos todos los dias, 24 horas al dia.",
+			"phone": "+1 (813) 932-3741",
+			"email": "anytimelab@24-7labs.com",
+			"mapTitle": "24-7 Labs Memorial Hwy",
+			"mapAria": "24-7 Labs Memorial Hwy",
+			"sendRequest": "Enviar solicitud",
+			"locations": ["Tampa - Memorial Hwy", "Temple Terrace", "New Port Richey"],
+			"fields": {
+				"name": {
+					"label": "Nombre",
+					"placeholder": "Tu nombre"
+				},
+				"email": {
+					"label": "Correo",
+					"placeholder": "tu@ejemplo.com"
+				},
+				"phone": {
+					"label": "Telefono",
+					"placeholder": "(813) 000-0000"
+				},
+				"selectLocation": {
+					"label": "Selecciona ubicacion"
+				},
+				"date": {
+					"label": "Elige fecha"
+				},
+				"symptoms": {
+					"label": "Sintomas / Pruebas",
+					"placeholder": "Cuentanos que necesitas"
+				}
+			}
+		},
+		"FAQ": {
+			"title": "Preguntas frecuentes",
+			"subtitle": "Respuestas a preguntas comunes sobre citas, privacidad, pruebas y tiempos de entrega.",
+			"itemsLeft": [
+				{
+					"question": "Como agendo una cita con 24-7 Labs?",
+					"answer": "Completa el formulario en https://24-7labs.com/schedule-appointment/. Tambien aceptamos pacientes sin cita previa."
+				},
+				{
+					"question": "Tienen servicio de consulta?",
+					"answer": "Puedes reservar consulta desde Testing Services o en https://24-7labs.com/product/booking-consultation/."
+				},
+				{
+					"question": "Que kits para casa ofrecen?",
+					"answer": "Tenemos kits para clamidia, herpes, COVID y VIH, ademas de opciones de embarazo, hormonas, diabetes y tiroides."
+				},
+				{
+					"question": "Mi informacion es confidencial?",
+					"answer": "Tus resultados procesados y emitidos por 24-7 Labs son 100% confidenciales."
+				},
+				{
+					"question": "Que tipos de pruebas diagnosticas ofrecen?",
+					"answer": "Ofrecemos pruebas de ADN, ETS, drogas, salud cardiaca y COVID-19, entre otras."
+				}
+			],
+			"itemsRight": [
+				{
+					"question": "Cual es el proceso completo de prueba?",
+					"answer": "Agenda tu prueba, visita la ubicacion, realiza tu prueba en laboratorio o kit en casa y recibe resultados rapido por correo."
+				},
+				{
+					"question": "Puedo tener COVID-19 aunque este vacunado?",
+					"answer": "Si, sigue siendo un riesgo real. Mas informacion en https://24-7labs.com/covid-19/."
+				},
+				{
+					"question": "Necesito referencia medica?",
+					"answer": "No, no necesitas referencia ni seguro para hacerte pruebas."
+				},
+				{
+					"question": "Recibo resultados el mismo dia?",
+					"answer": "La mayoria de resultados se entrega en 24-48 horas."
+				},
+				{
+					"question": "Cuanto tarda la prueba de COVID-19?",
+					"answer": "Disponemos de opciones de resultados el mismo dia y al dia siguiente."
+				}
+			]
+		},
+		"Breadcrumb": {
+			"goTo": "Ir a {label}",
+			"items": [
+				{
+					"id": "home",
+					"label": "Inicio"
+				},
+				{
+					"id": "services",
+					"label": "Servicios"
+				},
+				{
+					"id": "about",
+					"label": "Por que"
+				},
+				{
+					"id": "appointment",
+					"label": "Cita"
+				},
+				{
+					"id": "forms",
+					"label": "FAQ"
+				}
+			]
+		}
+	}
+}

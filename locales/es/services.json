@@ -1,0 +1,709 @@
+{
+	"CovidPage": {
+		"metadata": {
+			"title": "Pruebas COVID-19 Tampa | 24-7 Labs",
+			"description": "Pruebas RT-PCR de COVID-19 el mismo dia o al dia siguiente en Tampa, con respuesta rapida, reserva privada y documentacion para viajes."
+		},
+		"eyebrow": "Pruebas COVID-19 Tampa",
+		"title": "Pruebas COVID-19",
+		"intro1": "Estes vacunado o no, COVID-19 sigue siendo un riesgo real. 24-7 Labs ofrece pruebas convenientes el mismo dia y al dia siguiente en Tampa, Florida.",
+		"intro2": "COVID-19 es causado por el virus SARS-CoV-2 y puede afectar a cada persona de forma diferente. Los sintomas comunes incluyen:",
+		"symptoms": [
+			"Fiebre/escalofrios",
+			"Fatiga",
+			"Tos",
+			"Dolor de cabeza",
+			"Dolor muscular o corporal",
+			"Dolor de garganta",
+			"Diarrea",
+			"Congestion o secrecion nasal",
+			"Nauseas o vomitos",
+			"Perdida del gusto o del olfato"
+		],
+		"accreditation": "24-7 Labs y todos sus laboratorios asociados estan acreditados por CAP y certificados bajo CLIA. Puedes confiar en la calidad de tus pruebas y en tu privacidad.",
+		"bookButton": "Reserva tu prueba",
+		"howTitle": "Como funcionan las pruebas COVID-19 en 24-7 Labs?",
+		"howBody": "Nuestro equipo te guia en un proceso rapido con hisopo nasal. Los resultados pueden entregarse en tan solo 24 horas por correo electronico, con documentacion para viaje, escuela o trabajo cuando sea necesario.",
+		"pricingTitle": "24-7 Labs ofrece pruebas COVID-19 rapidas y accesibles",
+		"pricingBody": "En el entorno actual, las pruebas de COVID-19 pueden requerirse por distintas razones:",
+		"reasons": [
+			"Vas a viajar?",
+			"Sospechas exposicion?",
+			"Vas a volar o salir del pais?",
+			"Vuelves al trabajo?",
+			"Tu hijo debe regresar a la escuela?"
+		],
+		"packageTag": "Prueba COVID-19 RT-PCR",
+		"packages": [
+			{
+				"id": "same-day",
+				"title": "COVID-19 RT-PCR - RESULTADOS EL MISMO DIA",
+				"price": "$229"
+			},
+			{
+				"id": "next-day",
+				"title": "COVID-19 RT-PCR - RESULTADOS AL DIA SIGUIENTE",
+				"price": "$190"
+			}
+		],
+		"makeAppointment": "Agendar cita",
+		"stepsTitle": "24-7 Labs es el laboratorio para ti",
+		"steps": [
+			{
+				"id": "schedule",
+				"icon": "calendar",
+				"title": "Agenda una prueba",
+				"description": "Elige fecha y hora segun tu disponibilidad y recibe confirmacion rapidamente."
+			},
+			{
+				"id": "visit",
+				"icon": "location",
+				"title": "Visita nuestra ubicacion",
+				"description": "Acude a nuestra ubicacion de pruebas y completa el proceso con apoyo de personal capacitado."
+			},
+			{
+				"id": "tested",
+				"icon": "tested",
+				"title": "Realizate la prueba",
+				"description": "Completa la toma de muestra de forma segura y eficiente con instrucciones claras."
+			},
+			{
+				"id": "results",
+				"icon": "results",
+				"title": "Recibe resultados",
+				"description": "Recibe resultados seguros por correo en cuanto esten listos, con documentacion si la necesitas."
+			}
+		],
+		"travelMap": "Mapa de regulaciones de viaje COVID-19",
+		"images": {
+			"shapeAlt": "Figura decorativa",
+			"heroAlt": "Muestra de prueba COVID-19",
+			"secondaryAlt": "Medico tomando muestra de hisopo COVID-19",
+			"packageAlt": "Paquete de prueba COVID-19"
+		}
+	},
+	"DnaTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas de ADN",
+		"hero": {
+			"title": "Pruebas de ADN Tampa",
+			"overline": "PRUEBAS DE ADN",
+			"mainTitle": "Pruebas de ADN 24-7Labs",
+			"description": [
+				"Las pruebas de ADN se utilizan cada vez mas para diferentes propositos. Desde genealogia hasta inmigracion y asuntos legales, las pruebas de ADN se han convertido en una solucion confiable para establecer relaciones familiares.",
+				"Ya sea que necesites pruebas de ADN para establecer una relacion familiar o para fines legales, informativos o de inmigracion, 24-7Labs esta aqui para ayudarte."
+			]
+		},
+		"howItWorks": {
+			"title": "Como funcionan las pruebas de ADN en 24-7Labs?",
+			"intro": "24-7Labs esta acreditado por CAP y certificado bajo CLIA. Nuestra ubicacion conveniente en Tampa facilita la realizacion de pruebas. Esto es lo que puedes esperar:",
+			"steps": [
+				{
+					"title": "Agenda tu prueba",
+					"description": "Reserva una cita o visita cualquiera de nuestras ubicaciones en Tampa."
+				},
+				{
+					"title": "Proporciona tu muestra",
+					"description": "Recolectamos un rapido hisopo bucal (de mejilla). Sin agujas necesarias."
+				},
+				{
+					"title": "Procesamiento en laboratorio",
+					"description": "Tu muestra se procesa con extraccion y analisis de ADN."
+				},
+				{
+					"title": "Recibe resultados",
+					"description": "Los resultados se entregan de forma segura en 3-5 dias habiles por correo electronico."
+				}
+			]
+		},
+		"dnaTests": {
+			"title": "Pruebas de ADN disponibles",
+			"intro": "24-7Labs ofrece una seleccion completa de servicios de pruebas de ADN:",
+			"tests": [
+				{
+					"id": "paternity",
+					"name": "Prueba de Paternidad",
+					"description": "Establece paternidad biologica con precisión del 99.9%. Para fines legales, informativos o personales."
+				},
+				{
+					"id": "maternity",
+					"name": "Prueba de Maternidad",
+					"description": "Confirma relaciones biologicas de maternidad con precision cientifica."
+				},
+				{
+					"id": "siblingship",
+					"name": "Prueba de Hermandad",
+					"description": "Determina relaciones biologicas entre posibles hermanos."
+				},
+				{
+					"id": "grand-paternity",
+					"name": "Prueba de Abuelos",
+					"description": "Establece relaciones biologicas entre abuelos y nietos."
+				},
+				{
+					"id": "familial",
+					"name": "Prueba de ADN Familiar",
+					"description": "Prueba relaciones entre multiples miembros de la familia."
+				},
+				{
+					"id": "twin",
+					"name": "Prueba de Gemelos",
+					"description": "Determina si los gemelos son identicos (monocigotos) o fraternos (dicigotos)."
+				},
+				{
+					"id": "immigration",
+					"name": "Prueba de ADN para Inmigracion",
+					"description": "Pruebas de ADN acreditadas por AABB para propositos de inmigracion y visas."
+				},
+				{
+					"id": "court-ordered",
+					"name": "Prueba de ADN Ordenada por Tribunal",
+					"description": "Cadena de custodia para procedimientos legales con documentacion certificada."
+				}
+			]
+		},
+		"productsSection": "Productos de Pruebas de ADN"
+	},
+	"StdTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas de ETS",
+		"hero": {
+			"title": "Pruebas de ETS Tampa",
+			"overline": "PRUEBAS CONFIDENCIALES",
+			"mainTitle": "Pruebas de ETS 24-7Labs",
+			"description": [
+				"En 24-7Labs entendemos que las pruebas de ETS pueden ser un tema sensible. Proporcionamos pruebas discretas, profesionales y sin juzgamiento en un entorno confidencial.",
+				"Ya sea que sospechas exposicion, deseas examen de rutina, o necesites pruebas para tu tranquilidad, 24-7Labs facilita hacerte la prueba sin seguros ni derivaciones medicas."
+			]
+		},
+		"howItWorks": {
+			"title": "Como funcionan las pruebas de ETS",
+			"intro": "Pruebas de ETS rapidas, confidenciales y profesionales en 24-7Labs:",
+			"steps": [
+				{
+					"title": "Agenda en linea o visita sin cita",
+					"description": "Reserva una cita en linea o visita cualquiera de nuestras ubicaciones en Tampa. Las pruebas son discretas, profesionales y sin juzgamiento."
+				},
+				{
+					"title": "Visita nuestro laboratorio",
+					"description": "Trae una identificacion valida con foto. No necesitas derivacion medica para pruebas de ETS."
+				},
+				{
+					"title": "Proporciona una muestra",
+					"description": "Dependiendo de la prueba, recolectamos sangre, orina o hisopo. El proceso toma solo unos minutos."
+				},
+				{
+					"title": "Recibe resultados seguros",
+					"description": "Los resultados se entregan por correo seguro en 1-3 dias habiles. Somos tu punto de contacto para preguntas."
+				}
+			]
+		},
+		"stdTypes": {
+			"title": "Pruebas de ETS disponibles",
+			"intro": "Realizamos pruebas para todos los ETS comunes con confidencialidad y precision:",
+			"tests": [
+				{
+					"id": "herpes",
+					"name": "Herpes",
+					"description": "El herpes es un virus causado por el virus del herpes simple (HSV). Existe en dos formas: herpes oral y genital. Se transmite por contacto piel a piel."
+				},
+				{
+					"id": "gonorrhea",
+					"name": "Gonorrea",
+					"description": "Gonorrea es una infeccion bacteriana comun que puede infectar los genitales, recto y garganta. Frecuentemente no tiene sintomas, lo que hace las pruebas esenciales."
+				},
+				{
+					"id": "chlamydia",
+					"name": "Clamidia",
+					"description": "Clamidia es la infeccion de transmision sexual bacteriana mas comun en Estados Unidos. Frecuentemente sin sintomas pero puede causar dano reproductivo grave."
+				},
+				{
+					"id": "syphilis",
+					"name": "Sifilis",
+					"description": "Sifilis es una infeccion bacteriana que progresa en etapas si no se trata. La deteccion temprana y el tratamiento con antibioticos pueden curar completamente la infeccion."
+				},
+				{
+					"id": "hiv",
+					"name": "VIH A/B",
+					"description": "VIH o virus de la inmunodeficiencia humana es un virus que ataca el sistema inmunologico del cuerpo. La deteccion temprana y los tratamientos modernos pueden ayudar a controlar el virus."
+				},
+				{
+					"id": "hepatitis",
+					"name": "Hepatitis",
+					"description": "Hepatitis B y C son infecciones virales que atacan el higado. Hepatitis B se transmite por contacto con fluidos infectados, mientras que Hepatitis C se transmite principalmente por contacto de sangre."
+				},
+				{
+					"id": "trichomoniasis",
+					"name": "Tricomoniasis",
+					"description": "Tricomoniasis es causada por el parasito Trichomonas vaginalis. Es una de las ETS mas comunes y curables."
+				},
+				{
+					"id": "monkeypox",
+					"name": "Viruela del Mono",
+					"description": "La viruela del mono se puede transmitir por contacto fisico cercano. Nuestras pruebas utilizan muestras de hisopo PCR de lesiones en la piel."
+				}
+			]
+		},
+		"productsSection": "Productos de Pruebas de ETS"
+	},
+	"DrugTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas de Drogas",
+		"hero": {
+			"title": "Pruebas de Drogas y Alcohol Tampa",
+			"overline": "PRUEBAS COMPLETAS",
+			"mainTitle": "Pruebas de Drogas y Alcohol 24-7Labs",
+			"description": [
+				"Como laboratorio de servicio completo, 24-7Labs ofrece una amplia gama de opciones de analisis de drogas. Ya sea que estes a cargo de contrataciones, solicites un nuevo trabajo, tengas curiosidad sobre el estilo de vida de tu hijo, o te preocupe haber ingerido algo, ofrecemos pruebas para todo."
+			]
+		},
+		"howItWorks": {
+			"title": "Como se ven las pruebas de drogas en 24-7Labs?",
+			"intro": "Ya sea que quieras agendar una cita o visitarnos en circunstancias inesperadas, 24-7Labs esta listo para hacerte la prueba. Sin tiempos de espera.",
+			"steps": [
+				{
+					"title": "Agenda o visita sin cita",
+					"description": "Ya sea que agendes una cita o visites sin cita, 24-7Labs esta listo para hacerte la prueba sin tiempos de espera."
+				},
+				{
+					"title": "Visita nuestro laboratorio",
+					"description": "Acude a cualquiera de nuestras ubicaciones en el area de Tampa. Trae una identificacion valida emitida por el gobierno."
+				},
+				{
+					"title": "Proporciona una muestra",
+					"description": "Recolectamos muestras de orina, cabello o sangre dependiendo del tipo de prueba. El proceso es rapido y privado."
+				},
+				{
+					"title": "Recibe resultados",
+					"description": "Los resultados estan disponibles rapidamente por correo seguro. Las muestras positivas se pueden enviar para pruebas de confirmacion."
+				}
+			]
+		},
+		"selfDrugTesting": {
+			"title": "Que es la autoprueba de drogas de 24-7Labs?",
+			"description": "Teniendo dificultades para venir al laboratorio? 24-7Labs tambien ofrece autopruebas de drogas convenientes. Con este metodo puedes detectar si una droga esta presente en la orina, aunque no la cantidad. Si recibes resultados preliminares positivos, recomendamos enviar la muestra a nuestro laboratorio para pruebas de confirmacion."
+		},
+		"drugTestTypes": {
+			"title": "Opciones de pruebas de drogas ofrecidas por 24-7Labs",
+			"intro": "Para satisfacer las necesidades diversas de cada cliente, ofrecemos una amplia seleccion de opciones de analisis de drogas.",
+			"tests": [
+				{
+					"id": "instant5",
+					"name": "Prueba de Drogas instantanea de 5 paneles",
+					"description": "Nuestro analisis de orina instantaneo estandar prueba cocaina, marihuana (THC), anfetaminas, opioides y PCP. Los resultados estan disponibles en minutos."
+				},
+				{
+					"id": "instant1013",
+					"name": "Prueba de Drogas instantanea de 10-13 paneles",
+					"description": "Panel expandido que cubre marihuana, cocaina, heroina, PCP, anfetaminas, benzodiazepinas y mas."
+				},
+				{
+					"id": "etg",
+					"name": "Prueba ETG (Glucuronido de Etilo)",
+					"description": "La prueba ETG detecta el consumo de alcohol hasta 80 horas despues de beber. Comun en monitoreo de conducir bajo influencia."
+				},
+				{
+					"id": "coc",
+					"name": "Examen COC (Cadena de Custodia)",
+					"description": "Un examen de Cadena de Custodia asegura la integridad del especimen desde la recoleccion hasta el resultado."
+				},
+				{
+					"id": "self",
+					"name": "Autoprueba de Drogas",
+					"description": "24-7Labs ofrece autopruebas de drogas para personas que necesitan hacerse la prueba con su propio horario."
+				},
+				{
+					"id": "hair",
+					"name": "Prueba de Drogas en Cabello",
+					"description": "Las pruebas de foliculo capilar detectan el uso de drogas en una ventana de 90 dias."
+				},
+				{
+					"id": "blood",
+					"name": "Prueba de Drogas en Sangre",
+					"description": "Las pruebas de drogas en sangre son el metodo mas preciso para detectar intoxicacion actual."
+				},
+				{
+					"id": "dot",
+					"name": "Pruebas de Drogas y Alcohol DOT",
+					"description": "Las pruebas conformes DOT cumplen con los requisitos del Departamento de Transporte."
+				}
+			]
+		},
+		"productsSection": "Productos de Pruebas de Drogas"
+	},
+	"AllergyTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas de Alergias",
+		"hero": {
+			"title": "Pruebas de Alergias Tampa",
+			"overline": "PRUEBAS DE ALERGIAS",
+			"mainTitle": "Pruebas de Alergias 24-7Labs",
+			"description": [
+				"En 24-7Labs entendemos lo frustrante y limitante que pueden ser las alergias. Desde estornudos y ojos llorosos hasta ronchas y picazon, las alergias son una parte desagradable de la vida.",
+				"Si sospechas que puedas tener algun tipo de alergia pero nunca has sido diagnosticado, 24-7Labs ofrece una variedad completa de servicios de pruebas de alergias."
+			]
+		},
+		"howItWorks": {
+			"title": "Como funcionan las pruebas de alergias en 24-7Labs?",
+			"intro": "24-7Labs esta acreditado por CAP y certificado bajo CLIA. Ya sea que busques pruebas de alergias para ti o tu hijo, 24-7Labs te tiene cubierto.",
+			"steps": [
+				{
+					"title": "Agenda una cita",
+					"description": "Reserva en linea o visita sin cita. No necesitas derivacion medica. Nuestro personal te guiara en el mejor panel."
+				},
+				{
+					"title": "Visita nuestro laboratorio",
+					"description": "Acude a cualquiera de nuestros laboratorios convenientemente ubicados en Tampa. Servicio rapido, comodo y profesional."
+				},
+				{
+					"title": "Proporciona una muestra de sangre",
+					"description": "Las pruebas de alergias en 24-7Labs usan una simple extraccion de sangre, sin pruebas de puncion de piel. Rapido y minimamente invasivo."
+				},
+				{
+					"title": "Recibe resultados",
+					"description": "Los resultados se entregan de forma segura en pocos dias, con explicaciones claras de cualquier alergeno detectado."
+				}
+			]
+		},
+		"allergyPanels": {
+			"title": "Pruebas de alergias que ofrece 24-7Labs",
+			"intro": "Ya sea que busques pruebas de alergias para ti o tu hijo, explora nuestros paneles de alergias a continuacion:",
+			"panels": [
+				{
+					"id": "basic-combo",
+					"name": "Panel basico de alergias combinadas",
+					"description": "Pruebas de alergias ambientales para pasto, maleza, arboles y desencadenantes como gatos, perros y acaros del polvo."
+				},
+				{
+					"id": "basic-food",
+					"name": "Panel basico de alimentos",
+					"description": "Identifica alergias alimentarias comunes incluyendo leche de vaca, huevo, soja, trigo, cacahuetes, frutos secos, sesamo, marisco y pescado."
+				},
+				{
+					"id": "comprehensive-combo",
+					"name": "Panel completo de alergias combinadas",
+					"description": "Panel ambiental extendido que cubre una gama mas amplia de alergenos regionales y estacionales."
+				},
+				{
+					"id": "expanded-food",
+					"name": "Panel expandido de alimentos (90 alimentos y aditivos)",
+					"description": "Nuestro panel de alergia alimentaria mas completo, probando reacciones a 90 alimentos diferentes."
+				},
+				{
+					"id": "mold",
+					"name": "Panel de moho (24 alergenos)",
+					"description": "Prueba completa de moho para 24 variaciones de moho incluyendo moho negro, penicillium digitatum, aspergillus y mucor mucedo."
+				},
+				{
+					"id": "pediatric",
+					"name": "Panel de alergias pediatrico",
+					"description": "Disenado especificamente para ninos, este panel detecta los alergenos alimentarios y ambientales mas comunes en poblaciones pediatricas."
+				},
+				{
+					"id": "regional-env",
+					"name": "Panel ambiental regional",
+					"description": "Personalizado para alergenos especificos de Florida, esta prueba detecta los pólenes, hierbas, malezas y mohos mas comunes en el area de Tampa Bay."
+				}
+			]
+		},
+		"productsSection": "Productos de Pruebas de Alergias"
+	},
+	"HeartTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas de Salud Cardiaca",
+		"hero": {
+			"title": "Pruebas de Salud Cardiaca Tampa",
+			"overline": "PRUEBAS DE SALUD CARDIACA",
+			"mainTitle": "Pruebas Cardiacas 24-7Labs",
+			"description": [
+				"Cuando se trata de tu salud, las pruebas proactivas son cruciales. La enfermedad cardiovascular es la principal causa de muerte en Estados Unidos. En lugar de arriesgar tu salud cardiaca, elige 24-7Labs.",
+				"Con nuestra evaluacion completa de salud cardiaca, revisaremos tu salud general e identificaremos cualquier factor de riesgo."
+			]
+		},
+		"howItWorks": {
+			"title": "Como funciona el panel de salud cardiaca",
+			"intro": "Los profesionales en nuestros laboratorios ubicados convenientemente en Tampa, FL estan listos para hacerte pruebas cuando lo necesites.",
+			"steps": [
+				{
+					"title": "Agenda una cita",
+					"description": "Reserva en linea o visita sin cita. No se requiere derivacion. Nuestro equipo recomendara el panel cardiovascular adecuado."
+				},
+				{
+					"title": "Visita nuestro laboratorio",
+					"description": "Acude a cualquier ubicacion de 24-7Labs en Tampa. Ofrecemos servicio rapido y profesional con tiempos minimos de espera."
+				},
+				{
+					"title": "Extraccion de sangre rapida",
+					"description": "Los paneles de salud cardiaca se realizan mediante una simple extraccion de sangre. La mayoria requieren ayuno de 9-12 horas."
+				},
+				{
+					"title": "Revisa tus resultados",
+					"description": "Los resultados estan disponibles en 1-3 dias habiles a traves de nuestro portal seguro en linea."
+				}
+			]
+		},
+		"cardiacTests": {
+			"title": "Que se incluye en el panel basico de 24-7Labs?",
+			"intro": "Nuestro panel completo de riesgo cardiaco abarca seis pruebas:",
+			"tests": [
+				{
+					"id": "lipid",
+					"name": "Perfil de lipidos",
+					"description": "Mide colesterol total, HDL, LDL, VLDL y trigliceridos."
+				},
+				{
+					"id": "cbc",
+					"name": "Conteo completo de sangre (CBC)",
+					"description": "Evalua la salud general midiendo globulos rojos, globulos blancos, hemoglobina, hematocrito y plaquetas."
+				},
+				{
+					"id": "cmp",
+					"name": "Panel metabolico completo (CMP)",
+					"description": "Evalua la funcion renal e hepatica, glucosa en sangre y electrolitos."
+				},
+				{
+					"id": "crp",
+					"name": "Proteina C reactiva cardiaca de alta sensibilidad (CRP)",
+					"description": "Detecta inflamacion en las arterias e indica mayor riesgo de infarto y accidente cerebrovascular."
+				},
+				{
+					"id": "homocysteine",
+					"name": "Homocisteina",
+					"description": "Los niveles altos de homocisteina son un factor de riesgo independiente para enfermedad cardiaca, accidente cerebrovascular y formacion de coagulos."
+				},
+				{
+					"id": "lipoprotein",
+					"name": "Lipoproteina (a) [Lp(a)]",
+					"description": "Lp(a) elevada es un factor de riesgo genetico para enfermedad cardiaca coronaria, infarto y accidente cerebrovascular."
+				}
+			]
+		},
+		"productsSection": "Productos de Salud Cardiaca"
+	},
+	"HormoneTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas Hormonales",
+		"hero": {
+			"title": "Pruebas Hormonales Tampa",
+			"overline": "PRUEBAS HORMONALES",
+			"mainTitle": "Pruebas Hormonales 24-7Labs",
+			"description": [
+				"Muchas cosas cambian — las hormonas son uno de estos factores de salud en constante cambio. Desde insulina y testosterona hasta cortisol y hormonas tiroideas, las hormonas son los mensajeros quimicos del cuerpo.",
+				"En 24-7Labs, facilitamos que tomes el control de tu salud con pruebas hormonales completas en tu horario."
+			]
+		},
+		"howItWorks": {
+			"title": "Como funcionan las pruebas hormonales en 24-7Labs?",
+			"intro": "24-7Labs esta listo para hacerte pruebas cuando lo necesites. Solo necesitas agendar tus pruebas hormonales alrededor de tu disponibilidad.",
+			"steps": [
+				{
+					"title": "Agenda una cita",
+					"description": "Reserva en linea o visita sin cita. No se requiere derivacion. Nuestro personal puede guiarte al panel hormonal mas apropiado."
+				},
+				{
+					"title": "Visita nuestro laboratorio",
+					"description": "Acude a cualquiera de nuestras ubicaciones en el area de Tampa. Ofrecemos servicio rapido y profesional en un ambiente comodo."
+				},
+				{
+					"title": "Proporciona una muestra de sangre",
+					"description": "Las pruebas hormonales requieren una simple extraccion de sangre. Algunos paneles pueden requerir ayuno. Se proporcionaran instrucciones al agendar."
+				},
+				{
+					"title": "Obtén tus resultados",
+					"description": "Recibe resultados de forma segura en linea en 1-3 dias habiles. Nuestros reportes incluyen explicaciones detalladas."
+				}
+			]
+		},
+		"hormonePackages": {
+			"title": "Paneles de pruebas hormonales que ofrecemos",
+			"intro": "Elige de nuestros paneles de pruebas hormonales curados a continuacion:",
+			"showTests": "Mostrar pruebas",
+			"hideTests": "Ocultar pruebas",
+			"includedTests": "Pruebas incluidas:",
+			"packages": [
+				{
+					"id": "womens-health",
+					"name": "Pruebas de salud de la mujer",
+					"description": "Panel completo de bienestar femenino para evaluar la salud general, incluyendo como funcionan tus hormonas. Incluye diez pruebas en total.",
+					"tests": [
+						"Conteo completo de sangre (CBC)",
+						"Panel metabolico (CMP)",
+						"Hormona estimulante de tiroides (TSH)",
+						"Urinalisis (UA)",
+						"Perfil de lipidos",
+						"Progesterona",
+						"Estradiol",
+						"Hormona estimulante del foliculo (FSH)",
+						"Hormona luteinizante (LH)",
+						"Deshidroepiandrosterona (DHEA-S)"
+					]
+				},
+				{
+					"id": "growth-hormones",
+					"name": "Pruebas de hormona del crecimiento",
+					"description": "Las hormonas del crecimiento cumplen muchas funciones, incluyendo regeneracion celular, quema de grasas, aumento muscular y mantenimiento inmunologico. Incluye cinco examenes.",
+					"tests": [
+						"Hormona de crecimiento similar a insulina (IGF-1)",
+						"Hormona del crecimiento humano (HGH)",
+						"Hormona estimulante de tiroides (TSH)",
+						"Testosterona F/T",
+						"Perfil de lipidos"
+					]
+				},
+				{
+					"id": "thyroid",
+					"name": "Panel completo de bienestar tiroideo",
+					"description": "Cuando hay problemas hormonales en la tiroides, corres riesgo de enfrentar varios problemas de salud. Incluye siete pruebas.",
+					"tests": [
+						"TSH",
+						"T4 Total",
+						"T3 Uptake",
+						"Peroxidasa tiroidea (TPO)",
+						"Triyodotironina (T3)",
+						"T4 Libre",
+						"Tiroglobulina/Anti Tiroglobulina"
+					]
+				},
+				{
+					"id": "fibromyalgia",
+					"name": "Evaluacion de salud de fibromialgia",
+					"description": "Evaluacion de fibromialgia para descartar otras condiciones. Incluye nueve pruebas.",
+					"tests": [
+						"Conteo completo de sangre (CBC)",
+						"Panel metabolico (CMP)",
+						"Alfafetoproteina",
+						"CEA",
+						"Perfil de lipidos",
+						"Enolasa especifica neuronal (NSE)",
+						"PSA",
+						"Amilasa",
+						"Beta 2 - Microglobulina"
+					]
+				}
+			]
+		},
+		"productsSection": "Productos de Pruebas Hormonales",
+		"cta": {
+			"title": "Equilibra tus hormonas",
+			"description": "Encuentra el panel hormonal adecuado para tus necesidades. Pruebas integrales con resultados detallados.",
+			"buttonText": "Agendar prueba hormonal"
+		}
+	},
+	"RoutineHealthTestingPage": {
+		"breadcrumbs": "Inicio > Pruebas de Salud General",
+		"hero": {
+			"title": "Pruebas de Salud General Tampa",
+			"overline": "ATENCION INTEGRAL",
+			"mainTitle": "Pruebas de Salud General 24-7Labs",
+			"description": [
+				"Cuando se trata del sistema de salud estadounidense actual, muchos factores pueden prevenir que los residentes busquen pruebas de salud adecuadas. 24-7Labs entiende estas preocupaciones y ofrece una forma facil para que todos tomen control de su salud."
+			]
+		},
+		"servicesList": {
+			"title": "Pruebas de salud general de 24-7Labs",
+			"intro": "Ofrecemos una amplia gama de servicios de pruebas de salud, incluyendo todo desde ADN y COVID hasta ETS y pruebas de drogas:",
+			"services": [
+				"Pruebas de drogas y ETG",
+				"Pruebas de ETS",
+				"Pruebas de COVID-19",
+				"Pruebas hormonales",
+				"Pruebas de alergias",
+				"Pruebas de tiroides",
+				"Diabetes",
+				"Pruebas parasitarias",
+				"Salud cardiaca",
+				"Salud de hombres y mujeres",
+				"Pruebas de fertilidad y embarazo",
+				"Osteoporosis",
+				"Pruebas de cancer",
+				"Pruebas de sangre",
+				"Examenes fisicos",
+				"Pruebas de fatiga",
+				"Y mucho mas…"
+			]
+		},
+		"howItWorks": {
+			"title": "Como funcionan las pruebas de salud general en 24-7Labs?",
+			"intro": "24-7Labs esta acreditado por CAP y certificado bajo CLIA. Si necesitas pruebas de salud general, 24-7Labs te tiene cubierto.",
+			"steps": [
+				{
+					"title": "Agenda una consulta",
+					"description": "Establece una consulta para que podamos conocer tus preocupaciones y que pruebas deseas realizarte."
+				},
+				{
+					"title": "Visita nuestro laboratorio",
+					"description": "Acude a cualquiera de nuestros laboratorios convenientemente ubicados en Tampa. Nuestros expertos estan listos."
+				},
+				{
+					"title": "Proporciona una muestra",
+					"description": "Dependiendo de tus pruebas, recolectamos sangre, orina u otras muestras. Rapido y minimamente invasivo."
+				},
+				{
+					"title": "Recibe resultados",
+					"description": "Los resultados se entregan digitalmente de forma segura con explicaciones claras. Permanecemos disponibles para preguntas."
+				}
+			]
+		},
+		"healthTests": {
+			"title": "Servicios de pruebas de salud general de 24-7Labs",
+			"intro": "Si te interesa hacerte pruebas de salud general, primero debes agendar una consulta.",
+			"tests": [
+				{
+					"id": "vitamin-d",
+					"name": "Vitamina D25",
+					"description": "Mide tus niveles de D25 para determinar si hay una deficiencia."
+				},
+				{
+					"id": "cbc",
+					"name": "Conteo completo de sangre (CBC)",
+					"description": "Mide globulos blancos, globulos rojos y plaquetas. Util en el diagnostico de anemia e infecciones."
+				},
+				{
+					"id": "fsh",
+					"name": "Hormona estimulante del foliculo (FSH)",
+					"description": "En mujeres, ayuda a regular el ciclo menstrual. En hombres, ayuda a controlar la produccion de esperma."
+				},
+				{
+					"id": "cmp",
+					"name": "Panel metabolico (CMP)",
+					"description": "Panel metabolico completo que mide funcion renal, hepatica, glucosa e iones."
+				},
+				{
+					"id": "lipid",
+					"name": "Perfil de lipidos",
+					"description": "Mide colesterol total, HDL, LDL, VLDL y trigliceridos para evaluar el riesgo cardiovascular."
+				},
+				{
+					"id": "tsh",
+					"name": "Hormona estimulante de tiroides (TSH)",
+					"description": "Evalua la funcion tiroidea. Los niveles anormales pueden indicar hipotiroidismo o hipertiroidismo."
+				},
+				{
+					"id": "diabetes",
+					"name": "Pruebas de diabetes y glucosa en sangre",
+					"description": "Las pruebas incluyendo glucosa en ayunas y HbA1c evaluan la regulacion del azucar en sangre."
+				},
+				{
+					"id": "b12",
+					"name": "Vitamina B12 y folato",
+					"description": "Critico para la formacion de globulos rojos y funcion neurologica. Las deficiencias pueden causar anemia y fatiga."
+				},
+				{
+					"id": "cortisol",
+					"name": "Cortisol",
+					"description": "La hormona del estres que afecta el metabolismo, la respuesta inmunologica y la presion arterial."
+				},
+				{
+					"id": "uric",
+					"name": "Acido urico",
+					"description": "Los niveles elevados de acido urico pueden causar gota y calculos renales."
+				},
+				{
+					"id": "crp",
+					"name": "Proteina C reactiva (CRP)",
+					"description": "Un marcador de inflamacion. Los niveles elevados pueden indicar infecciones o enfermedades autoinmunes."
+				},
+				{
+					"id": "osteo",
+					"name": "Salud osea y osteoporosis",
+					"description": "Evalua la salud osea y el riesgo de osteoporosis, especialmente importante para mujeres posmenopausicas."
+				}
+			]
+		},
+		"productsSection": "Productos de Pruebas de Salud General"
+	}
+}

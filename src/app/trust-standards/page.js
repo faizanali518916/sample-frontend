@@ -2,11 +2,12 @@ import { CheckCircle2, ClipboardCheck, ShieldCheck, Stethoscope } from 'lucide-r
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { getLocaleFromCookieStore } from '@/lib/locale';
+import { loadMessages } from '@/i18n/loadMessages';
 
 export async function generateMetadata() {
 	const cookieStore = await cookies();
 	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = (await import(`../../../messages/${locale}.json`)).default;
+	const messages = await loadMessages(locale);
 
 	return {
 		title: messages?.TrustStandardsPage?.metadata?.title,
