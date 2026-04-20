@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Clock3, Loader2, Mail, MapPin, PhoneCall } from 'lucide-react';
+import SignatureField from '@/components/forms/SignatureField';
 import {
 	fetchCountryStates,
 	fetchInfections,
@@ -272,7 +273,7 @@ function buildFormConfig(formKey, t, optionSets) {
 						},
 						{
 							name: 'digital_signature',
-							type: 'text',
+							type: 'signature',
 							label: safeT(t, 'common.fields.digitalSignature'),
 							required: true,
 							span: 'full',
@@ -294,8 +295,7 @@ function buildFormConfig(formKey, t, optionSets) {
 				may_contact_number: values.may_contact_number === 'yes',
 				may_contact_email: values.may_contact_email === 'yes',
 				may_forward_results: values.may_forward_results === 'yes',
-				declaration_agreed: Boolean(values.declaration_agreed),
-				terms_agreed: Boolean(values.terms_agreed),
+				self_declaration: Boolean(values.declaration_agreed) && Boolean(values.terms_agreed),
 				digital_signature: values.digital_signature,
 			}),
 			submit: submitPatientIntakeForm,
@@ -420,7 +420,7 @@ function buildFormConfig(formKey, t, optionSets) {
 						},
 						{
 							name: 'digital_signature',
-							type: 'text',
+							type: 'signature',
 							label: safeT(t, 'common.fields.digitalSignature'),
 							required: true,
 							span: 'full',
@@ -558,7 +558,7 @@ function buildFormConfig(formKey, t, optionSets) {
 						},
 						{
 							name: 'digital_signature',
-							type: 'text',
+							type: 'signature',
 							label: safeT(t, 'common.fields.digitalSignature'),
 							required: true,
 							span: 'full',
@@ -941,6 +941,18 @@ export default function GenericFormPage({ formKey }) {
 					/>
 					{fieldError ? <p className="mt-1 text-xs text-rose-600">{fieldError}</p> : null}
 				</label>
+			);
+		}
+
+		if (field.type === 'signature') {
+			return (
+				<SignatureField
+					key={field.name}
+					label={field.label}
+					value={value}
+					error={fieldError}
+					onChange={(nextValue) => setFieldValue(field.name, nextValue)}
+				/>
 			);
 		}
 

@@ -9,16 +9,13 @@ import { ChevronDown, Menu, Search, ShoppingCart, X } from 'lucide-react';
 
 const primaryMenuItems = [
 	{ key: 'about', href: '/about' },
-	{ key: 'trust', href: '/trust-standards' },
 	{ key: 'covid', href: '/covid-19' },
+	{ key: 'trust', href: '/trust-standards' },
 	{
 		key: 'homeKits',
 		href: 'https://247labkit.com/',
 		external: true,
 	},
-	{ key: 'forms', href: '/forms' },
-	{ key: 'schedule', href: '/schedule-appointment' },
-	{ key: 'contact', href: '/contact' },
 ];
 
 const testingMenuItems = [
@@ -39,6 +36,14 @@ const businessMenuItems = [
 	{ key: 'telemedicine', href: '/telemedicine' },
 ];
 
+const formsMenuItems = [
+	{ key: 'contactForm', href: '/contact' },
+	{ key: 'appointmentForm', href: '/schedule-appointment' },
+	{ key: 'patientIntakeForm', href: '/patient-intake-form' },
+	{ key: 'covidScreeningForm', href: '/covid-screening-form' },
+	{ key: 'prescriptionConsentForm', href: '/prescription-consent-form' },
+];
+
 const tapeItems = [
 	{ key: 'open24x7', href: '/trust-standards' },
 	{ key: 'noInsuranceNoPrescription', href: '/#services' },
@@ -48,85 +53,61 @@ const tapeItems = [
 	{ key: 'results', href: '/trust-standards' },
 ];
 
-function isActiveRoute(pathname, href) {
-	if (href === '/') {
-		return pathname === '/';
-	}
+const isActiveRoute = (pathname, href) =>
+	pathname === href &&
+	[...primaryMenuItems, ...testingMenuItems, ...businessMenuItems, ...formsMenuItems].some(
+		(item) => item.href === href
+	);
 
-	if (href === '/about') {
-		return pathname === '/about';
-	}
+const isFormsRoute = (pathname) => formsMenuItems.some((item) => isActiveRoute(pathname, item.href));
 
-	if (href === '/contact') {
-		return pathname === '/contact';
-	}
+const isTestingRoute = (pathname) => testingMenuItems.some((item) => isActiveRoute(pathname, item.href));
 
-	if (href === '/trust-standards') {
-		return pathname === '/trust-standards';
-	}
+const isBusinessRoute = (pathname) => businessMenuItems.some((item) => isActiveRoute(pathname, item.href));
 
-	if (href === '/testing-services') {
-		return pathname === '/testing-services' || pathname.startsWith('/testing-services/');
-	}
+const NavDropdown = ({ label, items, pathname, checkActive, checkParentActive, t }) => {
+	const isParentActive = checkParentActive(pathname);
 
-	if (href === '/covid-19') {
-		return pathname === '/covid-19';
-	}
+	return (
+		<li className="group relative">
+			<button
+				type="button"
+				className={`group inline-flex h-10 items-center rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-white/75 hover:text-[var(--tl-primary-strong)] ${
+					isParentActive ? 'bg-white/85 text-[var(--tl-primary-strong)]' : ''
+				}`}
+			>
+				<span>{label}</span>
+				<ChevronDown className="ml-1.5 h-3.5 w-3.5" />
+				<span
+					className={`absolute bottom-[4px] left-3 h-[2px] rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8 ${
+						isParentActive ? 'w-8' : 'w-0'
+					}`}
+				/>
+			</button>
 
-	if (href === '/dna-testing') {
-		return pathname === '/dna-testing';
-	}
+			<div className="invisible absolute left-1/2 z-50 mt-2 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+				<ul className="space-y-0.5">
+					{items.map((item) => {
+						const isActive = checkActive(pathname, item.href);
 
-	if (href === '/std-testing') {
-		return pathname === '/std-testing';
-	}
-
-	if (href === '/drug-testing') {
-		return pathname === '/drug-testing';
-	}
-
-	if (href === '/allergy-testing') {
-		return pathname === '/allergy-testing';
-	}
-
-	if (href === '/heart-testing') {
-		return pathname === '/heart-testing';
-	}
-
-	if (href === '/hormone-testing') {
-		return pathname === '/hormone-testing';
-	}
-
-	if (href === '/routine-health-testing') {
-		return pathname === '/routine-health-testing';
-	}
-
-	if (href === '/business-opportunities') {
-		return pathname === '/business-opportunities';
-	}
-
-	if (href === '/business-solutions') {
-		return pathname === '/business-solutions';
-	}
-
-	if (href === '/privacy-policy') {
-		return pathname === '/privacy-policy';
-	}
-
-	if (href === '/telemedicine') {
-		return pathname === '/telemedicine';
-	}
-
-	return false;
-}
-
-function isTestingRoute(pathname) {
-	return testingMenuItems.some((item) => isActiveRoute(pathname, item.href));
-}
-
-function isBusinessRoute(pathname) {
-	return businessMenuItems.some((item) => isActiveRoute(pathname, item.href));
-}
+						return (
+							<li key={`desktop-${item.key}`}>
+								<Link
+									href={item.href}
+									className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
+										isActive ? 'bg-sky-50 text-[var(--tl-primary-strong)]' : 'text-slate-700'
+									}`}
+								>
+									{t(`menu.${item.key}`)}
+								</Link>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+		</li>
+	);
+};
 
 export default function SiteNavbar() {
 	const t = useTranslations('SiteNavbar');
@@ -239,75 +220,32 @@ export default function SiteNavbar() {
 								);
 							})}
 
-							<li className="group relative">
-								<button
-									type="button"
-									className={`group inline-flex h-10 items-center rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-white/75 hover:text-[var(--tl-primary-strong)] ${
-										isTestingRoute(pathname) ? 'bg-white/85 text-[var(--tl-primary-strong)]' : ''
-									}`}
-								>
-									<span>{t('menu.testingServices')}</span>
-									<ChevronDown className="ml-1.5 h-3.5 w-3.5" />
-									<span
-										className={`absolute bottom-[4px] left-3 h-[2px] rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8 ${
-											isTestingRoute(pathname) ? 'w-8' : 'w-0'
-										}`}
-									/>
-								</button>
-								<div className="invisible absolute left-1/2 z-50 mt-2 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-									<ul className="space-y-0.5">
-										{testingMenuItems.map((item) => (
-											<li key={`desktop-testing-${item.key}`}>
-												<Link
-													href={item.href}
-													className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
-														isActiveRoute(pathname, item.href)
-															? 'bg-sky-50 text-[var(--tl-primary-strong)]'
-															: 'text-slate-700'
-													}`}
-												>
-													{t(`menu.${item.key}`)}
-												</Link>
-											</li>
-										))}
-									</ul>
-								</div>
-							</li>
+							<NavDropdown
+								label={t('menu.forms')}
+								items={formsMenuItems}
+								pathname={pathname}
+								checkActive={isActiveRoute}
+								checkParentActive={isFormsRoute}
+								t={t}
+							/>
 
-							<li className="group relative">
-								<button
-									type="button"
-									className={`group inline-flex h-10 items-center rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-white/75 hover:text-[var(--tl-primary-strong)] ${
-										isBusinessRoute(pathname) ? 'bg-white/85 text-[var(--tl-primary-strong)]' : ''
-									}`}
-								>
-									<span>{t('menu.business')}</span>
-									<ChevronDown className="ml-1.5 h-3.5 w-3.5" />
-									<span
-										className={`absolute bottom-[4px] left-3 h-[2px] rounded-full bg-[var(--tl-primary)] transition-all duration-300 group-hover:w-8 ${
-											isBusinessRoute(pathname) ? 'w-8' : 'w-0'
-										}`}
-									/>
-								</button>
-								<div className="invisible absolute left-1/2 z-50 mt-2 w-72 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-									<ul className="space-y-0.5">
-										{businessMenuItems.map((item) => (
-											<li key={`desktop-business-${item.key}`}>
-												<Link
-													href={item.href}
-													className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
-														isActiveRoute(pathname, item.href)
-															? 'bg-sky-50 text-[var(--tl-primary-strong)]'
-															: 'text-slate-700'
-													}`}
-												>
-													{t(`menu.${item.key}`)}
-												</Link>
-											</li>
-										))}
-									</ul>
-								</div>
-							</li>
+							<NavDropdown
+								label={t('menu.testingServices')}
+								items={testingMenuItems}
+								pathname={pathname}
+								checkActive={isActiveRoute}
+								checkParentActive={isTestingRoute}
+								t={t}
+							/>
+
+							<NavDropdown
+								label={t('menu.business')}
+								items={businessMenuItems}
+								pathname={pathname}
+								checkActive={isActiveRoute}
+								checkParentActive={isBusinessRoute}
+								t={t}
+							/>
 						</ul>
 					</nav>
 

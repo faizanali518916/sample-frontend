@@ -1,16 +1,17 @@
-const API_ORIGIN = 'https://247labstage.spctek.com:9000';
+const API_ORIGIN = 'https://247labstage.spctek.com:9000/api';
 
-export const API_BASE_URL = `${API_ORIGIN}/api`;
-const PRODUCTS_API_URL = `${API_BASE_URL}/products`;
-const CATEGORIES_API_URL = `${API_BASE_URL}/category`;
-const LAB_LOCATIONS_API_URL = `${API_BASE_URL}/lab-locations`;
-const COUNTRY_STATES_API_URL = `${API_BASE_URL}/country-states`;
-const INFECTIONS_API_URL = `${API_BASE_URL}/infections`;
-const CONTACT_API_URL = `${API_BASE_URL}/contact`;
-const APPOINTMENTS_API_URL = `${API_BASE_URL}/appointments`;
-const PATIENT_INTAKE_API_URL = `${API_BASE_URL}/patient-intake`;
-const CONSENT_FORM_API_URL = `${API_BASE_URL}/consent-form`;
-const COVID_SCREENING_API_URL = `${API_BASE_URL}/covid-screening`;
+const PRODUCTS_API_URL = `${API_ORIGIN}/products`;
+const CATEGORIES_API_URL = `${API_ORIGIN}/category`;
+
+const INFECTIONS_API_URL = `${API_ORIGIN}/infections`;
+const LAB_LOCATIONS_API_URL = `${API_ORIGIN}/lab-locations`;
+const COUNTRY_STATES_API_URL = `${API_ORIGIN}/country-states`;
+
+const CONTACT_API_URL = `${API_ORIGIN}/contact`;
+const APPOINTMENTS_API_URL = `${API_ORIGIN}/appointments`;
+const CONSENT_FORM_API_URL = `${API_ORIGIN}/consent-form`;
+const PATIENT_INTAKE_API_URL = `${API_ORIGIN}/patient-intake`;
+const COVID_SCREENING_API_URL = `${API_ORIGIN}/covid-screening`;
 
 async function parseJsonResponse(response) {
 	if (!response.ok) {
