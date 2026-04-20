@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 
-export default function SignatureField({ label, value, error, onChange }) {
+export default function SignatureField({ label, value, error, onChange, clearLabel = 'Clear Signature' }) {
 	const sigPadRef = useRef(null);
 	const wrapperRef = useRef(null);
 	const [canvasWidth, setCanvasWidth] = useState(750);
@@ -80,7 +80,7 @@ export default function SignatureField({ label, value, error, onChange }) {
 					onClick={clearSignature}
 					className="rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100"
 				>
-					Clear Signature
+					{clearLabel}
 				</button>
 			</div>
 			{error ? <p className="mt-1 text-xs text-rose-600">{error}</p> : null}

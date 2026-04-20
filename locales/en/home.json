@@ -14,7 +14,10 @@
 			"scheduleButton": "Schedule Appointment",
 			"callButton": "Call Us 813 932 3741",
 			"locationsButton": "Locations",
+			"locationLine1": "6107 Memorial Hwy.",
+			"locationLine2": "Suite F, Tampa, Florida",
 			"trustedBy": "Trusted by Tampa families and providers",
+			"aiFinderButton": "Find the Right Test with AI",
 			"slideAria": "Go to slide {index}",
 			"slides": [
 				{

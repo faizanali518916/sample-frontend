@@ -33,9 +33,9 @@ export default async function HeartTestingPage() {
 			<TestingServiceHowItWorks t={t} pageKey={pageKey} />
 			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="cardiacTests" itemsKey="tests" />
 			<TestingServiceFinalCta
-				title="Take Control of Your Heart Health"
-				description="Get comprehensive cardiac testing with results in 1-3 days. Know your risk factors."
-				buttonText="Schedule Heart Testing"
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

@@ -8,10 +8,12 @@ import {
 	TestingServiceFinalCta,
 } from '@/components/testing-services/TestingServiceTemplate';
 
+const pageKey = 'HormoneTestingPage';
+
 export default function HormoneTestingPage() {
-	const t = useTranslations(pageKey);
+	const t = useTranslations();
 	const [expandedPackage, setExpandedPackage] = useState(null);
-	const packages = t.raw('hormonePackages.packages');
+	const packages = t.raw(`${pageKey}.hormonePackages.packages`);
 
 	return (
 		<main className="bg-white">
@@ -23,9 +25,11 @@ export default function HormoneTestingPage() {
 				<div className="mx-auto max-w-5xl">
 					<div className="mb-12">
 						<h2 className="font-display mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">
-							{t('hormonePackages.title')}
+							{t(`${pageKey}.hormonePackages.title`)}
 						</h2>
-						<p className="text-base leading-relaxed text-slate-700 sm:text-lg">{t('hormonePackages.intro')}</p>
+						<p className="text-base leading-relaxed text-slate-700 sm:text-lg">
+							{t(`${pageKey}.hormonePackages.intro`)}
+						</p>
 					</div>
 
 					<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -42,7 +46,9 @@ export default function HormoneTestingPage() {
 									<p className="text-base leading-relaxed text-slate-700">{pkg.description}</p>
 									<div className="text-var-tl-primary mt-4 flex items-center">
 										<span className="font-semibold">
-											{expandedPackage === index ? t('hormonePackages.hideTests') : t('hormonePackages.showTests')}
+											{expandedPackage === index
+												? t(`${pageKey}.hormonePackages.hideTests`)
+												: t(`${pageKey}.hormonePackages.showTests`)}
 										</span>
 										<span className={`ml-2 transition-transform ${expandedPackage === index ? 'rotate-180' : ''}`}>
 											▼
@@ -52,7 +58,9 @@ export default function HormoneTestingPage() {
 
 								{expandedPackage === index && pkg.tests && (
 									<div className="border-t border-slate-200 bg-slate-50 p-8">
-										<p className="mb-4 text-sm font-semibold text-slate-900">{t('hormonePackages.includedTests')}</p>
+										<p className="mb-4 text-sm font-semibold text-slate-900">
+											{t(`${pageKey}.hormonePackages.includedTests`)}
+										</p>
 										<ul className="space-y-3">
 											{pkg.tests.map((test, idx) => (
 												<li key={idx} className="flex items-start gap-3 text-sm text-slate-700">
@@ -70,9 +78,9 @@ export default function HormoneTestingPage() {
 			</section>
 
 			<TestingServiceFinalCta
-				title={t('cta.title')}
-				description={t('cta.description')}
-				buttonText={t('cta.buttonText')}
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

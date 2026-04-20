@@ -2,6 +2,7 @@ const API_ORIGIN = 'https://247labstage.spctek.com:9000/api';
 
 const PRODUCTS_API_URL = `${API_ORIGIN}/products`;
 const CATEGORIES_API_URL = `${API_ORIGIN}/category`;
+const BLOGS_API_URL = `${API_ORIGIN}/blogs`;
 
 const INFECTIONS_API_URL = `${API_ORIGIN}/infections`;
 const LAB_LOCATIONS_API_URL = `${API_ORIGIN}/lab-locations`;
@@ -102,6 +103,28 @@ export function normalizeProduct(product) {
 	};
 }
 
+export function normalizeBlog(blog) {
+	if (!blog?.id) {
+		return null;
+	}
+
+	return {
+		id: blog.id,
+		slug: blog.slug ?? String(blog.id),
+		title: blog.title ?? null,
+		author: blog.author ?? null,
+		blogcontent: blog.blogcontent ?? '',
+		thumbnailimage: resolveImageUrl(blog.thumbnailimage),
+		created_at: blog.created_at ?? null,
+		categories: Array.isArray(blog.categories)
+			? blog.categories.map((category) => ({
+					id: category?.id,
+					name: category?.name ?? null,
+				}))
+			: [],
+	};
+}
+
 export async function fetchProducts() {
 	const response = await fetch(PRODUCTS_API_URL, {
 		cache: 'no-store',
@@ -116,6 +139,30 @@ export async function fetchProducts() {
 
 	const payload = await response.json();
 	return extractProducts(payload).map(normalizeProduct).filter(Boolean);
+}
+
+export async function fetchBlogs() {
+	const response = await fetch(BLOGS_API_URL, {
+		cache: 'no-store',
+		headers: {
+			Accept: 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error(`Blogs API failed with status ${response.status}`);
+	}
+
+	const payload = await response.json();
+	const blogs = Array.isArray(payload)
+		? payload
+		: Array.isArray(payload?.blogs)
+			? payload.blogs
+			: Array.isArray(payload?.data)
+				? payload.data
+				: [];
+
+	return blogs.map(normalizeBlog).filter(Boolean);
 }
 
 export async function fetchCategories() {

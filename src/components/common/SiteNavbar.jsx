@@ -9,6 +9,7 @@ import { ChevronDown, Menu, Search, ShoppingCart, X } from 'lucide-react';
 
 const primaryMenuItems = [
 	{ key: 'about', href: '/about' },
+	{ key: 'blogs', href: '/blogs' },
 	{ key: 'covid', href: '/covid-19' },
 	{ key: 'trust', href: '/trust-standards' },
 	{

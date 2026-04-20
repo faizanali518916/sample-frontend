@@ -161,7 +161,12 @@
 				}
 			]
 		},
-		"productsSection": "DNA Testing Products"
+		"productsSection": "DNA Testing Products",
+		"cta": {
+			"title": "Ready to get tested?",
+			"description": "Schedule your DNA test at 24-7 Labs today. No insurance or doctor referral required.",
+			"buttonText": "Schedule Your Test"
+		}
 	},
 	"StdTestingPage": {
 		"breadcrumbs": "Home > STD Testing",
@@ -242,7 +247,12 @@
 				}
 			]
 		},
-		"productsSection": "STD Testing Products"
+		"productsSection": "STD Testing Products",
+		"cta": {
+			"title": "Discreet STD Testing When You Need It",
+			"description": "Walk in anytime or schedule a confidential appointment. Results delivered securely to your email.",
+			"buttonText": "Book Your Test"
+		}
 	},
 	"DrugTestingPage": {
 		"breadcrumbs": "Home > Drug & Alcohol Testing",
@@ -326,7 +336,12 @@
 				}
 			]
 		},
-		"productsSection": "Drug Testing Products"
+		"productsSection": "Drug Testing Products",
+		"cta": {
+			"title": "Fast, Confidential Drug Testing",
+			"description": "No wait times. Walk in anytime or schedule an appointment at any of our Tampa locations.",
+			"buttonText": "Schedule Your Test"
+		}
 	},
 	"AllergyTestingPage": {
 		"breadcrumbs": "Home > Allergy Testing",
@@ -402,7 +417,12 @@
 				}
 			]
 		},
-		"productsSection": "Allergy Testing Products"
+		"productsSection": "Allergy Testing Products",
+		"cta": {
+			"title": "Find Your Allergy Triggers",
+			"description": "Get comprehensive allergy testing and start feeling better today.",
+			"buttonText": "Schedule Allergy Testing"
+		}
 	},
 	"HeartTestingPage": {
 		"breadcrumbs": "Home > Heart Health Testing",
@@ -473,7 +493,12 @@
 				}
 			]
 		},
-		"productsSection": "Heart Health Products"
+		"productsSection": "Heart Health Products",
+		"cta": {
+			"title": "Take Control of Your Heart Health",
+			"description": "Get comprehensive cardiac testing with results in 1-3 days. Know your risk factors.",
+			"buttonText": "Schedule Heart Testing"
+		}
 	},
 	"HormoneTestingPage": {
 		"breadcrumbs": "Home > Hormone Testing",
@@ -704,6 +729,11 @@
 				}
 			]
 		},
-		"productsSection": "Routine Health Testing Products"
+		"productsSection": "Routine Health Testing Products",
+		"cta": {
+			"title": "Take Control of Your Health",
+			"description": "Comprehensive wellness testing tailored to your needs. Schedule a consultation today.",
+			"buttonText": "Book Your Consultation"
+		}
 	}
 }

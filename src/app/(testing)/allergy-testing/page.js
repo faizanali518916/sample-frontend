@@ -33,9 +33,9 @@ export default async function AllergyTestingPage() {
 			<TestingServiceHowItWorks t={t} pageKey={pageKey} />
 			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="allergyPanels" itemsKey="panels" />
 			<TestingServiceFinalCta
-				title="Find Your Allergy Triggers"
-				description="Get comprehensive allergy testing and start feeling better today."
-				buttonText="Schedule Allergy Testing"
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

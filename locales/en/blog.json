@@ -1,0 +1,36 @@
+{
+	"BlogListPage": {
+		"metadata": {
+			"title": "Blogs | 24-7 Labs",
+			"description": "Explore the latest health testing insights, updates, and educational posts from 24-7 Labs."
+		},
+		"eyebrow": "Insights & Education",
+		"title": "24-7 Labs Blog",
+		"description": "Explore practical articles, lab updates, and clear health guidance from our team.",
+		"searchPlaceholder": "Search blog posts",
+		"resultsCount": "{count} results",
+		"allCategories": "All Categories",
+		"readArticle": "Read Article",
+		"showMore": "Show More",
+		"emptyState": "No blog posts match your filters yet.",
+		"recentPosts": "Recent Posts",
+		"categories": "Categories",
+		"byLabel": "By {author}",
+		"brandName": "24-7 Labs",
+		"cardImageAlt": "Blog cover image"
+	},
+	"BlogDetailPage": {
+		"metadata": {
+			"title": "{title} | 24-7 Labs Blog",
+			"description": "Read the full article from 24-7 Labs with practical, easy-to-understand health information."
+		},
+		"fallbackTitle": "Blog Details",
+		"backToBlogs": "Back to Blogs",
+		"recentPosts": "Recent Posts",
+		"categories": "Categories",
+		"byLabel": "By {author}",
+		"brandName": "24-7 Labs",
+		"cardImageAlt": "Blog cover image",
+		"contentImageAlt": "Blog content image"
+	}
+}

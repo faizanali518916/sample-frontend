@@ -39,9 +39,9 @@ export default async function RoutineHealthTestingPage() {
 
 			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="healthTests" itemsKey="tests" />
 			<TestingServiceFinalCta
-				title="Take Control of Your Health"
-				description="Comprehensive wellness testing tailored to your needs. Schedule a consultation today."
-				buttonText="Book Your Consultation"
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

@@ -58,7 +58,7 @@ const heroImageMap = {
 		small: '/images/lab4-300x200.jpg',
 	},
 	AllergyTestingPage: {
-		large: '/images/DSC09527-Edit.jpg',
+		large: '/images/waiting-room.jpg',
 		small: '/images/labtory.jpg',
 	},
 	HeartTestingPage: {
@@ -145,13 +145,13 @@ export function TestingServiceHero({ t, pageKey, heroImages }) {
 
 					<div className="mt-6 flex flex-wrap gap-2.5">
 						<span className="inline-flex items-center rounded-full border border-white/35 bg-white/12 px-3 py-1 text-xs font-bold tracking-[0.08em] text-white/95 uppercase">
-							CLIA Certified
+							{t('LocalizationCommon.cliaCertified')}
 						</span>
 						<span className="inline-flex items-center rounded-full border border-white/35 bg-white/12 px-3 py-1 text-xs font-bold tracking-[0.08em] text-white/95 uppercase">
-							CAP Accredited
+							{t('LocalizationCommon.capAccredited')}
 						</span>
 						<span className="inline-flex items-center rounded-full border border-white/35 bg-white/12 px-3 py-1 text-xs font-bold tracking-[0.08em] text-white/95 uppercase">
-							Results in 1-3 days
+							{t('LocalizationCommon.resultsIn1To3Days')}
 						</span>
 					</div>
 

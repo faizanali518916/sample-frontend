@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CalendarDays, Clock3, MapPin, PhoneCall, Sparkles } from 'lucide-react';
 
-export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveSlide, isSpanish, setIsAiFinderOpen }) {
+export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveSlide, setIsAiFinderOpen }) {
 	return (
 		<section
 			id="home"
@@ -40,9 +40,9 @@ export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveS
 						<div className="flex items-start gap-3">
 							<MapPin className="mt-0.5 h-5 w-5 text-[var(--tl-primary)]" />
 							<p className="text-sm text-slate-600">
-								6107 Memorial Hwy.
+								{t('Hero.locationLine1')}
 								<br />
-								Suite F, Tampa, Florida
+								{t('Hero.locationLine2')}
 							</p>
 						</div>
 					</div>
@@ -113,9 +113,7 @@ export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveS
 					<button type="button" onClick={() => setIsAiFinderOpen(true)} className="ai-finder-cta">
 						<div className="ai-finder-cta-inner">
 							<Sparkles className="ai-finder-cta-icon h-6 w-6 sm:h-7 sm:w-7" />
-							<span className="ai-finder-cta-title">
-								{isSpanish ? 'Encuentra la prueba correcta con IA' : 'Find the Right Test with AI'}
-							</span>
+							<span className="ai-finder-cta-title">{t('Hero.aiFinderButton')}</span>
 						</div>
 					</button>
 				</div>

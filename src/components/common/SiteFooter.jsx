@@ -79,6 +79,18 @@ const footerTranslations = {
 			{ label: 'Routine Health Testing', href: '/routine-health-testing' },
 		],
 		contactTitle: 'Contact',
+		socialAria: {
+			facebook: 'Facebook',
+			twitter: 'Twitter',
+			youtube: 'YouTube',
+			instagram: 'Instagram',
+			linkedin: 'LinkedIn',
+		},
+		brandAlt: '24-7 Labs',
+		contactAddress: '6107 Memorial Hwy, Suite F Tampa, Florida',
+		contactEmail: 'anytimelab@24-7labs.com',
+		contactPhone: '+1 (813) 932-3741',
+		copyrightPrefix: 'Copyright',
 		copyright: 'All rights reserved.',
 	},
 	es: {
@@ -126,6 +138,18 @@ const footerTranslations = {
 			{ label: 'Pruebas de Salud General', href: '/routine-health-testing' },
 		],
 		contactTitle: 'Contacto',
+		socialAria: {
+			facebook: 'Facebook',
+			twitter: 'Twitter',
+			youtube: 'YouTube',
+			instagram: 'Instagram',
+			linkedin: 'LinkedIn',
+		},
+		brandAlt: '24-7 Labs',
+		contactAddress: '6107 Memorial Hwy, Suite F Tampa, Florida',
+		contactEmail: 'anytimelab@24-7labs.com',
+		contactPhone: '+1 (813) 932-3741',
+		copyrightPrefix: 'Copyright',
 		copyright: 'Todos los derechos reservados.',
 	},
 };
@@ -139,9 +163,9 @@ export default function SiteFooter({ locale = 'en' }) {
 			<div className="relative mx-auto w-full max-w-[1240px] px-4 pt-10 lg:px-6">
 				<div className="rounded-[30px] border border-sky-300/25 bg-[linear-gradient(135deg,#0d3761_0%,#0b3156_50%,#082842_100%)] p-5 shadow-[0_28px_60px_-45px_rgba(6,12,20,0.9)] md:p-6">
 					<div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 text-center lg:gap-x-20">
-						{trustFooterItems.map((item) => {
+						{trustFooterItems.map((item, index) => {
 							const Icon = item.icon;
-							const itemLabel = copy.trustItems[trustFooterItems.findIndex((x) => x.href === item.href)] || item.label;
+							const itemLabel = copy.trustItems[index] || item.label;
 
 							return (
 								<Link
@@ -162,7 +186,7 @@ export default function SiteFooter({ locale = 'en' }) {
 				<div className="flex flex-col items-center">
 					<Image
 						src="/images/logo-light.png"
-						alt="24-7 Labs"
+						alt={copy.brandAlt}
 						width={400}
 						height={100}
 						className="h-24 w-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
@@ -174,7 +198,7 @@ export default function SiteFooter({ locale = 'en' }) {
 							target="_blank"
 							rel="noreferrer"
 							className="grid h-9 w-9 place-items-center rounded-full border border-sky-100/30 transition hover:border-sky-100 hover:text-white"
-							aria-label="Facebook"
+							aria-label={copy.socialAria.facebook}
 						>
 							<Facebook className="h-4 w-4" />
 						</a>
@@ -183,7 +207,7 @@ export default function SiteFooter({ locale = 'en' }) {
 							target="_blank"
 							rel="noreferrer"
 							className="grid h-9 w-9 place-items-center rounded-full border border-sky-100/30 transition hover:border-sky-100 hover:text-white"
-							aria-label="Twitter"
+							aria-label={copy.socialAria.twitter}
 						>
 							<Twitter className="h-4 w-4" />
 						</a>
@@ -192,7 +216,7 @@ export default function SiteFooter({ locale = 'en' }) {
 							target="_blank"
 							rel="noreferrer"
 							className="grid h-9 w-9 place-items-center rounded-full border border-sky-100/30 transition hover:border-sky-100 hover:text-white"
-							aria-label="YouTube"
+							aria-label={copy.socialAria.youtube}
 						>
 							<Youtube className="h-4 w-4" />
 						</a>
@@ -201,7 +225,7 @@ export default function SiteFooter({ locale = 'en' }) {
 							target="_blank"
 							rel="noreferrer"
 							className="grid h-9 w-9 place-items-center rounded-full border border-sky-100/30 transition hover:border-sky-100 hover:text-white"
-							aria-label="Instagram"
+							aria-label={copy.socialAria.instagram}
 						>
 							<Instagram className="h-4 w-4" />
 						</a>
@@ -210,7 +234,7 @@ export default function SiteFooter({ locale = 'en' }) {
 							target="_blank"
 							rel="noreferrer"
 							className="grid h-9 w-9 place-items-center rounded-full border border-sky-100/30 transition hover:border-sky-100 hover:text-white"
-							aria-label="LinkedIn"
+							aria-label={copy.socialAria.linkedin}
 						>
 							<Linkedin className="h-4 w-4" />
 						</a>
@@ -261,22 +285,22 @@ export default function SiteFooter({ locale = 'en' }) {
 					<ul className="mt-4 space-y-3 text-sm text-sky-100/90">
 						<li className="flex items-start gap-2">
 							<MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-							6107 Memorial Hwy, Suite F Tampa, Florida
+							{copy.contactAddress}
 						</li>
 						<li className="flex items-start gap-2">
 							<Mail className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-							anytimelab@24-7labs.com
+							{copy.contactEmail}
 						</li>
 						<li className="flex items-start gap-2">
 							<PhoneCall className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-							+1 (813) 932-3741
+							{copy.contactPhone}
 						</li>
 					</ul>
 				</div>
 			</div>
 
 			<div className="relative border-t border-white/10 bg-[var(--tl-primary)] py-4 text-center text-xs font-semibold tracking-wide text-white sm:text-sm">
-				Copyright {new Date().getFullYear()} 24-7 Labs. {copy.copyright}
+				{copy.copyrightPrefix} {new Date().getFullYear()} 24-7 Labs. {copy.copyright}
 			</div>
 		</footer>
 	);

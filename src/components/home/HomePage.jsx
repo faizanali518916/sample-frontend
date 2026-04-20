@@ -1,5 +1,4 @@
 'use client';
-'use client';
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -48,7 +47,6 @@ function BootScreen({ t }) {
 
 export default function HomePage({ locale = 'en' }) {
 	const t = useTranslations('HomePage');
-	const isSpanish = locale?.toLowerCase().startsWith('es');
 	const heroSlides = t.raw('Hero.slides');
 	const serviceCards = t.raw('Services.items');
 	const whyChooseFeatures = t.raw('WhyChoose.items');
@@ -93,7 +91,6 @@ export default function HomePage({ locale = 'en' }) {
 					heroSlides={heroSlides}
 					activeSlide={activeSlide}
 					setActiveSlide={setActiveSlide}
-					isSpanish={isSpanish}
 					setIsAiFinderOpen={setIsAiFinderOpen}
 				/>
 				<HomeServicesSection t={t} serviceCards={serviceCards} activeServiceCard={activeServiceCard} />

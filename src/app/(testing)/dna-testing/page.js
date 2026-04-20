@@ -33,9 +33,9 @@ export default async function DnaTestingPage() {
 			<TestingServiceHowItWorks t={t} pageKey={pageKey} />
 			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="dnaTests" itemsKey="tests" />
 			<TestingServiceFinalCta
-				title="Ready to get tested?"
-				description="Schedule your DNA test at 24-7 Labs today. No insurance or doctor referral required."
-				buttonText="Schedule Your Test"
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

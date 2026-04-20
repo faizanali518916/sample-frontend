@@ -7,6 +7,7 @@
 			"home": "Home",
 			"covid": "COVID-19",
 			"about": "About 24-7 Labs",
+			"blogs": "Blogs",
 			"trust": "Trust & Standards",
 			"homeKits": "At-Home Testing Kits",
 			"testingServices": "Testing Services",
@@ -98,6 +99,9 @@
 	},
 	"LocalizationCommon": {
 		"option": "Option",
-		"includes": "Includes:"
+		"includes": "Includes:",
+		"cliaCertified": "CLIA Certified",
+		"capAccredited": "CAP Accredited",
+		"resultsIn1To3Days": "Results in 1-3 days"
 	}
 }

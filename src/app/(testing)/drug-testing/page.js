@@ -46,9 +46,9 @@ export default async function DrugTestingPage() {
 
 			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="drugTestTypes" itemsKey="tests" />
 			<TestingServiceFinalCta
-				title="Fast, Confidential Drug Testing"
-				description="No wait times. Walk in anytime or schedule an appointment at any of our Tampa locations."
-				buttonText="Schedule Your Test"
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

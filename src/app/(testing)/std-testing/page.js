@@ -33,9 +33,9 @@ export default async function StdTestingPage() {
 			<TestingServiceHowItWorks t={t} pageKey={pageKey} />
 			<TestingServiceItems t={t} pageKey={pageKey} sectionKey="stdTypes" itemsKey="tests" />
 			<TestingServiceFinalCta
-				title="Discreet STD Testing When You Need It"
-				description="Walk in anytime or schedule a confidential appointment. Results delivered securely to your email."
-				buttonText="Book Your Test"
+				title={t(`${pageKey}.cta.title`)}
+				description={t(`${pageKey}.cta.description`)}
+				buttonText={t(`${pageKey}.cta.buttonText`)}
 			/>
 		</main>
 	);

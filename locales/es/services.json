@@ -161,7 +161,12 @@
 				}
 			]
 		},
-		"productsSection": "Productos de Pruebas de ADN"
+		"productsSection": "Productos de Pruebas de ADN",
+		"cta": {
+			"title": "Listo para hacerte la prueba?",
+			"description": "Agenda tu prueba de ADN en 24-7 Labs hoy. No se requiere seguro ni referencia medica.",
+			"buttonText": "Agendar prueba"
+		}
 	},
 	"StdTestingPage": {
 		"breadcrumbs": "Inicio > Pruebas de ETS",
@@ -242,7 +247,12 @@
 				}
 			]
 		},
-		"productsSection": "Productos de Pruebas de ETS"
+		"productsSection": "Productos de Pruebas de ETS",
+		"cta": {
+			"title": "Pruebas de ETS discretas cuando las necesites",
+			"description": "Visitanos sin cita o agenda una cita confidencial. Resultados entregados de forma segura por correo.",
+			"buttonText": "Reservar prueba"
+		}
 	},
 	"DrugTestingPage": {
 		"breadcrumbs": "Inicio > Pruebas de Drogas",
@@ -326,7 +336,12 @@
 				}
 			]
 		},
-		"productsSection": "Productos de Pruebas de Drogas"
+		"productsSection": "Productos de Pruebas de Drogas",
+		"cta": {
+			"title": "Pruebas de drogas rapidas y confidenciales",
+			"description": "Sin tiempos de espera. Visitanos cuando quieras o agenda una cita en cualquiera de nuestras ubicaciones en Tampa.",
+			"buttonText": "Agendar prueba"
+		}
 	},
 	"AllergyTestingPage": {
 		"breadcrumbs": "Inicio > Pruebas de Alergias",
@@ -402,7 +417,12 @@
 				}
 			]
 		},
-		"productsSection": "Productos de Pruebas de Alergias"
+		"productsSection": "Productos de Pruebas de Alergias",
+		"cta": {
+			"title": "Identifica tus desencadenantes de alergia",
+			"description": "Recibe pruebas de alergias integrales y comienza a sentirte mejor hoy.",
+			"buttonText": "Agendar prueba de alergias"
+		}
 	},
 	"HeartTestingPage": {
 		"breadcrumbs": "Inicio > Pruebas de Salud Cardiaca",
@@ -473,7 +493,12 @@
 				}
 			]
 		},
-		"productsSection": "Productos de Salud Cardiaca"
+		"productsSection": "Productos de Salud Cardiaca",
+		"cta": {
+			"title": "Toma el control de tu salud cardiaca",
+			"description": "Obten pruebas cardiacas integrales con resultados en 1-3 dias. Conoce tus factores de riesgo.",
+			"buttonText": "Agendar prueba cardiaca"
+		}
 	},
 	"HormoneTestingPage": {
 		"breadcrumbs": "Inicio > Pruebas Hormonales",
@@ -704,6 +729,11 @@
 				}
 			]
 		},
-		"productsSection": "Productos de Pruebas de Salud General"
+		"productsSection": "Productos de Pruebas de Salud General",
+		"cta": {
+			"title": "Toma el control de tu salud",
+			"description": "Pruebas integrales de bienestar adaptadas a tus necesidades. Agenda una consulta hoy.",
+			"buttonText": "Agendar consulta"
+		}
 	}
 }
