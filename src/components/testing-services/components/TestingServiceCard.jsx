@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useCart } from '@/components/cart/CartProvider';
 
 function parsePrice(value) {
 	const numericValue = Number(value);
@@ -72,11 +73,30 @@ export default React.memo(function TestingServiceCard({
 	summarizeText,
 	getProductImage,
 }) {
+	const { addToCart } = useCart();
+	const [added, setAdded] = useState(false);
 	const productName = product.name ?? t('fallbackProductName', { id: product.id });
 	const categoryNames = product.categories.length
 		? product.categories.map((category) => category.name).join(', ')
 		: t('emptyCategory');
 	const pricingModel = getPricingModel(product);
+	const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
+
+	useEffect(() => {
+		if (!added) {
+			return undefined;
+		}
+
+		const timeoutId = window.setTimeout(() => setAdded(false), 1800);
+		return () => window.clearTimeout(timeoutId);
+	}, [added]);
+
+	function handleAddToCart(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		addToCart(product);
+		setAdded(true);
+	}
 
 	return (
 		<article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-sky-100 bg-white shadow-[0_18px_40px_-30px_rgba(2,6,14,0.85)] transition hover:-translate-y-1 hover:shadow-[0_30px_65px_-36px_rgba(2,6,14,0.9)]">
@@ -150,13 +170,27 @@ export default React.memo(function TestingServiceCard({
 					)}
 
 					<div className="mt-3 flex justify-center">
-						<Link
-							href={`/testing-services/${product.id}`}
-							className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-4 py-2.5 text-center text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)] sm:px-5 sm:whitespace-nowrap"
-						>
-							{t('bookTest')}
-							<ArrowRight className="h-4 w-4" />
-						</Link>
+						{hasVariants ? (
+							<Link
+								href={`/testing-services/${product.id}`}
+								className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-4 py-2.5 text-center text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)] sm:px-5 sm:whitespace-nowrap"
+							>
+								{t('viewOptions')}
+								<ArrowRight className="h-4 w-4" />
+							</Link>
+						) : (
+							<button
+								type="button"
+								onClick={handleAddToCart}
+								className={`inline-flex max-w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-center text-sm font-bold text-white transition sm:px-5 sm:whitespace-nowrap ${
+									added
+										? 'bg-emerald-600 hover:bg-emerald-700'
+										: 'bg-[var(--tl-primary)] hover:bg-[var(--tl-primary-strong)]'
+								}`}
+							>
+								{added ? t('addedToCart') : t('addToCart')}
+							</button>
+						)}
 					</div>
 				</div>
 			</div>

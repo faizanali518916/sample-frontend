@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, PhoneCall } from 'lucide-react';
 import React from 'react';
+import { useCart } from '@/components/cart/CartProvider';
 import { t as translate } from '@/lib/i18n-utils';
 import { resolveImageUrl } from '@/lib/api';
 import TestingServiceCard from './components/TestingServiceCard';
@@ -112,9 +113,11 @@ export default React.memo(function TestingServiceDetailsPage({
 	t,
 	locale,
 }) {
+	const { addToCart } = useCart();
 	const sourceVariants = Array.isArray(product?.variants) ? product.variants : [];
 	const [selectedVariantId, setSelectedVariantId] = useState('');
 	const [selectedCategoryId, setSelectedCategoryId] = useState('all');
+	const [added, setAdded] = useState(false);
 
 	const productCategories = useMemo(() => {
 		return Array.isArray(product?.categories) ? product.categories : [];
@@ -158,13 +161,14 @@ export default React.memo(function TestingServiceDetailsPage({
 		translate(t, 'fallbackProductName', { id: selectedCategory?.id ?? selectedCategoryId ?? '-' });
 	const categoryDescription = selectedCategory?.description || selectedCategory?.shortDescription || '';
 	const categoryImage = getCategoryImage(selectedCategory);
-	// Use variant image only if it exists, otherwise fall back to product image
-	const productImage =
-		(selectedVariant && (selectedVariant.mainImage || selectedVariant.image)) ||
-		product?.mainImage ||
-		product?.image ||
-		'/images/placeholder.png';
 	const pricing = buildPriceModel(activeProduct);
+
+	const productImage = useMemo(() => {
+		const finalPath = selectedVariant?.mainImage || product?.mainImage || '/images/placeholder.png';
+		return resolveImageUrl(finalPath);
+	}, [selectedVariant, product]);
+
+	const isAddToCartDisabled = variants.length > 0 && !selectedVariantId;
 
 	const categoryProducts = useMemo(() => {
 		if (selectedCategoryId === 'all') {
@@ -223,6 +227,16 @@ export default React.memo(function TestingServiceDetailsPage({
 	};
 
 	const cardT = (key, params) => translate(t, key, params);
+
+	function handleAddToCart() {
+		const selectedItem = selectedVariant || product;
+		addToCart(selectedItem, {
+			variantId: selectedVariant ? selectedVariant.id : null,
+			variantLabel: selectedVariant ? selectedVariant.name : null,
+		});
+		setAdded(true);
+		window.setTimeout(() => setAdded(false), 1800);
+	}
 
 	return (
 		<main className="min-h-screen bg-[linear-gradient(180deg,#eef6ff_0%,#ffffff_40%,#f7fbff_100%)] text-[var(--tl-ink)]">
@@ -434,6 +448,26 @@ export default React.memo(function TestingServiceDetailsPage({
 												)}
 
 												<div className="mt-6 flex flex-wrap gap-3">
+													<button
+														type="button"
+														onClick={handleAddToCart}
+														disabled={isAddToCartDisabled}
+														className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition ${
+															isAddToCartDisabled
+																? 'cursor-not-allowed bg-slate-300 opacity-70'
+																: added
+																	? 'bg-emerald-600 hover:bg-emerald-700'
+																	: 'bg-[var(--tl-primary)] hover:bg-[var(--tl-primary-strong)]'
+														}`}
+													>
+														{added ? translate(t, 'addedToCart') : translate(t, 'addToCart')}
+													</button>
+													<Link
+														href="/checkout"
+														className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
+													>
+														{translate(t, 'goToCheckout')}
+													</Link>
 													<Link
 														href={`/contact?test=${encodeURIComponent(productName)}`}
 														className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)]"

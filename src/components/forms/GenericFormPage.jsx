@@ -27,26 +27,24 @@ export default function GenericFormPage({ formKey }) {
 
 		async function resolveOptions() {
 			try {
-				const nextOptions = await loadFormOptions(config);
+				const currentConfig = buildFormConfig(formKey, t, optionSets);
+				const nextOptions = await loadFormOptions(currentConfig);
 				if (isMounted && Object.keys(nextOptions).length > 0) {
-					setOptionSets((previous) => ({ ...previous, ...nextOptions }));
+					setOptionSets((prev) => ({ ...prev, ...nextOptions }));
 				}
-			} catch {
-				if (isMounted) {
-					setSubmitResult({
-						status: 'error',
-						message: safeT(t, 'common.lookupLoadError', 'Failed to load form options.'),
-					});
-				}
+			} catch (error) {
+				console.error('Failed to load options:', error);
 			}
 		}
 
-		resolveOptions();
+		if (optionSets.countryStates.length <= 0 && optionSets.infections.length <= 0) {
+			resolveOptions();
+		}
 
 		return () => {
 			isMounted = false;
 		};
-	}, [config, t]);
+	}, [formKey]);
 
 	if (!config) {
 		return null;

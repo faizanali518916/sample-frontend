@@ -269,6 +269,11 @@ body {
 	padding: 0.25rem 0.5rem;
 }
 
+.marquee-pausable:hover .marquee-track-right-tape,
+.marquee-pausable:focus-within .marquee-track-right-tape {
+	animation-play-state: paused;
+}
+
 .marquee-group {
 	display: flex;
 	flex-shrink: 0;
@@ -371,6 +376,25 @@ body {
 	transform: translate3d(-200%, 0, 0);
 	opacity: 0;
 	pointer-events: none;
+}
+
+.field {
+	width: 100%;
+	border: 1px solid #bfdbfe;
+	border-radius: 0.75rem;
+	background: #fff;
+	padding: 0.625rem 0.75rem;
+	font-size: 0.9rem;
+	color: #0f172a;
+	outline: none;
+	transition:
+		border-color 180ms ease,
+		box-shadow 180ms ease;
+}
+
+.field:focus {
+	border-color: var(--tl-primary);
+	box-shadow: 0 0 0 3px rgba(3, 86, 197, 0.16);
 }
 
 .ai-finder-cta-inner {

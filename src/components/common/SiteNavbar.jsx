@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Fragment, useEffect, useState } from 'react';
 import { ChevronDown, Menu, Search, ShoppingCart, X } from 'lucide-react';
+import CartDrawer from '@/components/cart/CartDrawer';
+import { useCart } from '@/components/cart/CartProvider';
 
 const primaryMenuItems = [
 	{ key: 'about', href: '/about' },
@@ -112,11 +114,13 @@ const NavDropdown = ({ label, items, pathname, checkActive, checkParentActive, t
 
 export default function SiteNavbar() {
 	const t = useTranslations('SiteNavbar');
+	const { cart } = useCart();
 	const tapeItemsExtended = [...tapeItems, ...tapeItems];
 	const pathname = usePathname();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [mobileTestingOpen, setMobileTestingOpen] = useState(false);
 	const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
+	const [cartOpen, setCartOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -149,7 +153,7 @@ export default function SiteNavbar() {
 					isScrolled ? 'max-h-0 border-b border-transparent' : 'max-h-6 border-b border-white/45'
 				}`}
 			>
-				<div className="marquee-right h-6">
+				<div className="marquee-right marquee-pausable h-6">
 					<div className="marquee-track-right-tape">
 						{[0, 1].map((groupIndex) => (
 							<div key={`marquee-group-${groupIndex}`} className="marquee-group flex items-center gap-6 sm:gap-10">
@@ -253,10 +257,16 @@ export default function SiteNavbar() {
 					<div className="flex items-center gap-1.5 sm:gap-3">
 						<button
 							type="button"
-							className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:inline-flex"
+							className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
 							aria-label={t('aria.openCart')}
+							onClick={() => setCartOpen(true)}
 						>
 							<ShoppingCart className="h-4.5 w-4.5" />
+							{cart.itemCount > 0 ? (
+								<span className="absolute -top-1 -right-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[var(--tl-primary)] px-1 text-[10px] font-bold text-white">
+									{cart.itemCount > 99 ? '99+' : cart.itemCount}
+								</span>
+							) : null}
 						</button>
 
 						<button
@@ -384,6 +394,8 @@ export default function SiteNavbar() {
 					style={{ width: `${scrollProgress}%` }}
 				/>
 			</div>
+
+			<CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 		</header>
 	);
 }

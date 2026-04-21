@@ -5,6 +5,7 @@ import RouteScrollReset from '@/components/common/RouteScrollReset';
 import SiteNavbar from '@/components/common/SiteNavbar';
 import SiteFooter from '@/components/common/SiteFooter';
 import FloatingLocaleSwitcher from '@/components/common/FloatingLocaleSwitcher';
+import { CartProvider } from '@/components/cart/CartProvider';
 import { loadMessages } from '@/i18n/loadMessages';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import './globals.css';
@@ -39,11 +40,13 @@ export default async function RootLayout({ children }) {
 		>
 			<body className="min-h-full bg-[var(--tl-surface)] font-sans text-[var(--tl-ink)]">
 				<NextIntlClientProvider locale={locale} messages={messages}>
-					<RouteScrollReset />
-					<SiteNavbar />
-					{children}
-					<SiteFooter locale={locale} />
-					<FloatingLocaleSwitcher />
+					<CartProvider>
+						<RouteScrollReset />
+						<SiteNavbar />
+						{children}
+						<SiteFooter locale={locale} />
+						<FloatingLocaleSwitcher />
+					</CartProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>

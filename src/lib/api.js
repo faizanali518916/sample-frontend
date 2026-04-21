@@ -1,4 +1,7 @@
-const API_ORIGIN = 'https://247labstage.spctek.com:9000/api';
+const API_ORIGIN =
+	process.env.NEXT_PUBLIC_MODE === 'dev' ? 'http://localhost:3000/api' : 'https://247labstage.spctek.com:9000/api';
+console.log('Development mode:', process.env.NEXT_PUBLIC_MODE);
+console.log('API_ORIGIN set to:', API_ORIGIN);
 
 const PRODUCTS_API_URL = `${API_ORIGIN}/products`;
 const CATEGORIES_API_URL = `${API_ORIGIN}/category`;
@@ -13,6 +16,8 @@ const APPOINTMENTS_API_URL = `${API_ORIGIN}/appointments`;
 const CONSENT_FORM_API_URL = `${API_ORIGIN}/consent-form`;
 const PATIENT_INTAKE_API_URL = `${API_ORIGIN}/patient-intake`;
 const COVID_SCREENING_API_URL = `${API_ORIGIN}/covid-screening`;
+const ORDERS_API_URL = `${API_ORIGIN}/orders`;
+const COUPONS_API_URL = `${API_ORIGIN}/coupons`;
 
 async function parseJsonResponse(response) {
 	if (!response.ok) {
@@ -234,6 +239,8 @@ export async function fetchCountryStates() {
 
 	const payload = await parseJsonResponse(response);
 
+	console.log('Fetched country states:', payload);
+
 	if (Array.isArray(payload)) {
 		return payload;
 	}
@@ -296,5 +303,44 @@ export async function submitPrescriptionConsentForm(payload) {
 
 export async function submitCovidScreeningForm(payload) {
 	const response = await fetch(COVID_SCREENING_API_URL, withJsonOptions(payload));
+	return parseJsonResponse(response);
+}
+
+export async function validateCoupon(code) {
+	const normalizedCode = String(code || '')
+		.trim()
+		.toUpperCase();
+	if (!normalizedCode) {
+		throw new Error('Coupon code is required');
+	}
+
+	const response = await fetch(`${COUPONS_API_URL}/validate/${encodeURIComponent(normalizedCode)}`, {
+		method: 'POST',
+		cache: 'no-store',
+		headers: {
+			Accept: 'application/json',
+		},
+	});
+
+	let payload = null;
+	try {
+		payload = await response.json();
+	} catch {
+		payload = null;
+	}
+
+	if (!response.ok) {
+		throw new Error(payload?.error || `API failed with status ${response.status}`);
+	}
+
+	if (payload?.valid) {
+		return payload;
+	}
+
+	throw new Error(payload?.error || 'Invalid or expired coupon code');
+}
+
+export async function createOrder(payload) {
+	const response = await fetch(ORDERS_API_URL, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }
