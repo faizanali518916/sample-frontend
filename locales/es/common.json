@@ -28,7 +28,10 @@
 			"businessOpportunities": "Oportunidades de Negocio",
 			"businessSolutions": "Soluciones Empresariales",
 			"privacyPolicy": "Política de Privacidad",
-			"telemedicine": "Telemedicina"
+			"telemedicine": "Telemedicina",
+			"login": "Acceso",
+			"patientLogin": "Acceso de Paciente",
+			"providerLogin": "Acceso de Proveedor"
 		},
 		"tape": {
 			"open24x7": "Abierto 24/7 en Tampa",

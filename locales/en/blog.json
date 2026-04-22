@@ -24,6 +24,7 @@
 			"title": "{title} | 24-7 Labs Blog",
 			"description": "Read the full article from 24-7 Labs with practical, easy-to-understand health information."
 		},
+		"relatedProducts": "Related Products",
 		"fallbackTitle": "Blog Details",
 		"backToBlogs": "Back to Blogs",
 		"recentPosts": "Recent Posts",

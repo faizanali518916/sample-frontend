@@ -5,10 +5,53 @@ import Link from 'next/link';
 import { CalendarDays, ChevronLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import BlogContentRenderer from './BlogContentRenderer';
+import RelatedProductsSection from '@/components/common/RelatedProductsSection';
+import TestingServiceCard from '@/components/testing-services/components/TestingServiceCard';
 import { formatBlogDate } from '@/lib/blog-content';
+import { resolveImageUrl } from '@/lib/api';
 
-export default function BlogDetailPage({ blog, categories = [], recentPosts = [], locale = 'en' }) {
+export default function BlogDetailPage({
+	blog,
+	categories = [],
+	recentPosts = [],
+	relatedProducts = [],
+	locale = 'en',
+}) {
 	const t = useTranslations('BlogDetailPage');
+	const productT = useTranslations('TestingServiceDetailsPage');
+
+	const formatPrice = (value, localeOverride = locale) => {
+		const numericValue = Number(value);
+
+		if (!Number.isFinite(numericValue) || numericValue <= 0) {
+			return productT('contactUs');
+		}
+
+		return new Intl.NumberFormat(localeOverride === 'es' ? 'es-US' : 'en-US', {
+			style: 'currency',
+			currency: 'USD',
+			maximumFractionDigits: 2,
+		}).format(numericValue);
+	};
+
+	const summarizeText = (value, limit = 145) => {
+		if (!value) {
+			return '';
+		}
+
+		const plainText = String(value)
+			.replace(/<[^>]+>/g, ' ')
+			.replace(/\s+/g, ' ')
+			.trim();
+		if (plainText.length <= limit) {
+			return plainText;
+		}
+
+		return `${plainText.slice(0, limit).trimEnd()}...`;
+	};
+
+	const getProductImage = (product) =>
+		resolveImageUrl(product?.mainImage || product?.image || '/images/placeholder.png');
 
 	return (
 		<main className="min-h-screen bg-[linear-gradient(180deg,#eff6ff_0%,#ffffff_45%,#f6faff_100%)] text-[var(--tl-ink)]">
@@ -97,6 +140,23 @@ export default function BlogDetailPage({ blog, categories = [], recentPosts = []
 						</ul>
 					</section>
 				</aside>
+			</section>
+
+			<section className="mx-auto w-full max-w-[1320px] px-4 pb-16 lg:px-6 lg:pb-20">
+				<RelatedProductsSection
+					title={t('relatedProducts')}
+					items={relatedProducts}
+					renderItem={(relatedProduct) => (
+						<TestingServiceCard
+							product={relatedProduct}
+							t={productT}
+							locale={locale}
+							formatPrice={formatPrice}
+							summarizeText={summarizeText}
+							getProductImage={getProductImage}
+						/>
+					)}
+				/>
 			</section>
 		</main>
 	);

@@ -1,23 +1,25 @@
 const API_ORIGIN =
 	process.env.NEXT_PUBLIC_MODE === 'dev' ? 'http://localhost:3000/api' : 'https://247labstage.spctek.com:9000/api';
-console.log('Development mode:', process.env.NEXT_PUBLIC_MODE);
-console.log('API_ORIGIN set to:', API_ORIGIN);
 
-const PRODUCTS_API_URL = `${API_ORIGIN}/products`;
-const CATEGORIES_API_URL = `${API_ORIGIN}/category`;
-const BLOGS_API_URL = `${API_ORIGIN}/blogs`;
+const PATH_MAP = {
+	BLOGS: 'blogs',
+	CONTACT: 'contact',
+	PRODUCTS: 'products',
+	CATEGORIES: 'category',
+	INFECTIONS: 'infections',
+	LAB_LOCATIONS: 'lab-locations',
+	COUNTRY_STATES: 'country-states',
+	APPOINTMENTS: 'appointments',
+	CONSENT_FORM: 'consent-form',
+	PATIENT_INTAKE: 'patient-intake',
+	COVID_SCREENING: 'covid-screening',
+	COUPONS: 'coupons',
+	ORDERS: 'orders',
+};
 
-const INFECTIONS_API_URL = `${API_ORIGIN}/infections`;
-const LAB_LOCATIONS_API_URL = `${API_ORIGIN}/lab-locations`;
-const COUNTRY_STATES_API_URL = `${API_ORIGIN}/country-states`;
-
-const CONTACT_API_URL = `${API_ORIGIN}/contact`;
-const APPOINTMENTS_API_URL = `${API_ORIGIN}/appointments`;
-const CONSENT_FORM_API_URL = `${API_ORIGIN}/consent-form`;
-const PATIENT_INTAKE_API_URL = `${API_ORIGIN}/patient-intake`;
-const COVID_SCREENING_API_URL = `${API_ORIGIN}/covid-screening`;
-const ORDERS_API_URL = `${API_ORIGIN}/orders`;
-const COUPONS_API_URL = `${API_ORIGIN}/coupons`;
+export const ENDPOINTS = new Proxy(PATH_MAP, {
+	get: (target, prop) => (prop in target ? `${API_ORIGIN}/${target[prop]}` : target[prop]),
+});
 
 async function parseJsonResponse(response) {
 	if (!response.ok) {
@@ -131,7 +133,7 @@ export function normalizeBlog(blog) {
 }
 
 export async function fetchProducts() {
-	const response = await fetch(PRODUCTS_API_URL, {
+	const response = await fetch(ENDPOINTS.PRODUCTS, {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -147,7 +149,7 @@ export async function fetchProducts() {
 }
 
 export async function fetchBlogs() {
-	const response = await fetch(BLOGS_API_URL, {
+	const response = await fetch(ENDPOINTS.BLOGS, {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -171,7 +173,7 @@ export async function fetchBlogs() {
 }
 
 export async function fetchCategories() {
-	const response = await fetch(CATEGORIES_API_URL, {
+	const response = await fetch(ENDPOINTS.CATEGORIES, {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -205,7 +207,7 @@ export async function fetchCategories() {
 }
 
 export async function fetchLabLocations() {
-	const response = await fetch(LAB_LOCATIONS_API_URL, {
+	const response = await fetch(ENDPOINTS.LAB_LOCATIONS, {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -230,7 +232,7 @@ export async function fetchLabLocations() {
 }
 
 export async function fetchCountryStates() {
-	const response = await fetch(COUNTRY_STATES_API_URL, {
+	const response = await fetch(ENDPOINTS.COUNTRY_STATES, {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -257,7 +259,7 @@ export async function fetchCountryStates() {
 }
 
 export async function fetchInfections() {
-	const response = await fetch(INFECTIONS_API_URL, {
+	const response = await fetch(ENDPOINTS.INFECTIONS, {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -282,27 +284,27 @@ export async function fetchInfections() {
 }
 
 export async function submitContactForm(payload) {
-	const response = await fetch(CONTACT_API_URL, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.CONTACT, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitAppointmentForm(payload) {
-	const response = await fetch(APPOINTMENTS_API_URL, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.APPOINTMENTS, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitPatientIntakeForm(payload) {
-	const response = await fetch(PATIENT_INTAKE_API_URL, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.PATIENT_INTAKE, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitPrescriptionConsentForm(payload) {
-	const response = await fetch(CONSENT_FORM_API_URL, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.CONSENT_FORM, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitCovidScreeningForm(payload) {
-	const response = await fetch(COVID_SCREENING_API_URL, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.COVID_SCREENING, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }
 
@@ -314,7 +316,7 @@ export async function validateCoupon(code) {
 		throw new Error('Coupon code is required');
 	}
 
-	const response = await fetch(`${COUPONS_API_URL}/validate/${encodeURIComponent(normalizedCode)}`, {
+	const response = await fetch(`${ENDPOINTS.COUPONS}/validate/${encodeURIComponent(normalizedCode)}`, {
 		method: 'POST',
 		cache: 'no-store',
 		headers: {
@@ -341,6 +343,6 @@ export async function validateCoupon(code) {
 }
 
 export async function createOrder(payload) {
-	const response = await fetch(ORDERS_API_URL, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.ORDERS, withJsonOptions(payload));
 	return parseJsonResponse(response);
 }

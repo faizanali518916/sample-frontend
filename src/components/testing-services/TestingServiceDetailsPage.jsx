@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, PhoneCall } from 'lucide-react';
 import React from 'react';
 import { useCart } from '@/components/cart/CartProvider';
+import RelatedProductsSection from '@/components/common/RelatedProductsSection';
 import { t as translate } from '@/lib/i18n-utils';
 import { resolveImageUrl } from '@/lib/api';
 import TestingServiceCard from './components/TestingServiceCard';
@@ -495,30 +496,20 @@ export default React.memo(function TestingServiceDetailsPage({
 									<div className="mt-3">{renderDescription(activeProduct?.description || product?.description)}</div>
 								</div>
 
-								{relatedProducts.length > 0 && (
-									<div className="mt-8">
-										<h3 className="font-display text-2xl font-black text-[var(--tl-metallic-black)]">
-											{translate(t, 'relatedTitle')}
-										</h3>
-										<div className="mt-4 flex w-full max-w-full gap-4 overflow-x-auto pb-2 sm:gap-5">
-											{relatedProducts.map((relatedProduct) => (
-												<div
-													key={relatedProduct.id}
-													className="w-[85vw] max-w-[340px] flex-none sm:w-[330px] lg:w-[320px]"
-												>
-													<TestingServiceCard
-														product={relatedProduct}
-														t={cardT}
-														locale={locale}
-														formatPrice={formatPrice}
-														summarizeText={summarizeText}
-														getProductImage={getProductImage}
-													/>
-												</div>
-											))}
-										</div>
-									</div>
-								)}
+								<RelatedProductsSection
+									title={translate(t, 'relatedTitle')}
+									items={relatedProducts}
+									renderItem={(relatedProduct) => (
+										<TestingServiceCard
+											product={relatedProduct}
+											t={cardT}
+											locale={locale}
+											formatPrice={formatPrice}
+											summarizeText={summarizeText}
+											getProductImage={getProductImage}
+										/>
+									)}
+								/>
 							</>
 						)}
 					</div>

@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import BlogDetailPage from '@/components/blog/BlogDetailPage';
-import { fetchBlogs, fetchCategories } from '@/lib/api';
+import { fetchBlogs, fetchCategories, fetchProducts } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import { loadMessages } from '@/i18n/loadMessages';
 
@@ -39,6 +39,7 @@ export default async function BlogDetailsRoute({ params }) {
 
 	let blogs = [];
 	let categories = [];
+	let products = [];
 
 	try {
 		blogs = await fetchBlogs();
@@ -50,6 +51,12 @@ export default async function BlogDetailsRoute({ params }) {
 		categories = await fetchCategories();
 	} catch {
 		categories = [];
+	}
+
+	try {
+		products = await fetchProducts();
+	} catch {
+		products = [];
 	}
 
 	const blog = blogs.find((entry) => entry.slug === slug);
@@ -68,5 +75,27 @@ export default async function BlogDetailsRoute({ params }) {
 		})
 		.slice(0, 4);
 
-	return <BlogDetailPage blog={blog} categories={categories} recentPosts={recentPosts} locale={locale} />;
+	const relatedProducts = products
+		.filter((product) =>
+			(blog.categories || []).some((category) =>
+				(product.categories || []).some(
+					(productCategory) =>
+						String(productCategory.id) === String(category.id) ||
+						String(productCategory.name || '').toLowerCase() === String(category.name || '').toLowerCase()
+				)
+			)
+		)
+		.slice(0, 4);
+
+	const relatedProductsToShow = relatedProducts.length > 0 ? relatedProducts : products.slice(0, 4);
+
+	return (
+		<BlogDetailPage
+			blog={blog}
+			categories={categories}
+			recentPosts={recentPosts}
+			relatedProducts={relatedProductsToShow}
+			locale={locale}
+		/>
+	);
 }

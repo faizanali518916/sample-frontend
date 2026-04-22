@@ -47,6 +47,19 @@ const formsMenuItems = [
 	{ key: 'prescriptionConsentForm', href: '/prescription-consent-form' },
 ];
 
+const loginMenuItems = [
+	{
+		key: 'patientLogin',
+		href: 'https://24-7labs.apexcloudlab.org/frmPPLogin.aspx',
+		external: true,
+	},
+	{
+		key: 'providerLogin',
+		href: 'https://24-7labs.apexcloudlab.org/ProviderLogin.aspx',
+		external: true,
+	},
+];
+
 const tapeItems = [
 	{ key: 'open24x7', href: '/trust-standards' },
 	{ key: 'noInsuranceNoPrescription', href: '/#services' },
@@ -95,14 +108,25 @@ const NavDropdown = ({ label, items, pathname, checkActive, checkParentActive, t
 
 						return (
 							<li key={`desktop-${item.key}`}>
-								<Link
-									href={item.href}
-									className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
-										isActive ? 'bg-sky-50 text-[var(--tl-primary-strong)]' : 'text-slate-700'
-									}`}
-								>
-									{t(`menu.${item.key}`)}
-								</Link>
+								{item.external ? (
+									<a
+										href={item.href}
+										target="_blank"
+										rel="noreferrer"
+										className="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]"
+									>
+										{t(`menu.${item.key}`)}
+									</a>
+								) : (
+									<Link
+										href={item.href}
+										className={`block rounded-xl px-3 py-2 text-sm font-semibold transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)] ${
+											isActive ? 'bg-sky-50 text-[var(--tl-primary-strong)]' : 'text-slate-700'
+										}`}
+									>
+										{t(`menu.${item.key}`)}
+									</Link>
+								)}
 							</li>
 						);
 					})}
@@ -120,6 +144,7 @@ export default function SiteNavbar() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [mobileTestingOpen, setMobileTestingOpen] = useState(false);
 	const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
+	const [mobileLoginOpen, setMobileLoginOpen] = useState(false);
 	const [cartOpen, setCartOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [scrollProgress, setScrollProgress] = useState(0);
@@ -251,6 +276,15 @@ export default function SiteNavbar() {
 								checkParentActive={isBusinessRoute}
 								t={t}
 							/>
+
+							<NavDropdown
+								label={t('menu.login')}
+								items={loginMenuItems}
+								pathname={pathname}
+								checkActive={isActiveRoute}
+								checkParentActive={() => false}
+								t={t}
+							/>
 						</ul>
 					</nav>
 
@@ -324,6 +358,34 @@ export default function SiteNavbar() {
 								)}
 							</li>
 						))}
+
+						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
+							<button
+								type="button"
+								onClick={() => setMobileLoginOpen((prev) => !prev)}
+								className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm font-semibold text-slate-700"
+							>
+								<span>{t('menu.login')}</span>
+								<ChevronDown className={`h-4 w-4 transition-transform ${mobileLoginOpen ? 'rotate-180' : ''}`} />
+							</button>
+							{mobileLoginOpen ? (
+								<ul className="space-y-1 border-t border-slate-200 px-2 py-2">
+									{loginMenuItems.map((item) => (
+										<li key={`mobile-login-${item.key}`}>
+											<a
+												href={item.href}
+												target="_blank"
+												rel="noreferrer"
+												onClick={() => setMobileMenuOpen(false)}
+												className="block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]"
+											>
+												{t(`menu.${item.key}`)}
+											</a>
+										</li>
+									))}
+								</ul>
+							) : null}
+						</li>
 
 						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
 							<button

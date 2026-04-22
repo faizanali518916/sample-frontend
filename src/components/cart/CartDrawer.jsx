@@ -43,15 +43,19 @@ export default function CartDrawer({ open, onClose }) {
 		};
 	}, [cart.subtotal, locale]);
 
+	if (!open) {
+		return null;
+	}
+
 	return (
 		<>
 			<div
-				className={`fixed inset-0 z-[70] bg-slate-900/45 transition ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+				className="pointer-events-auto fixed inset-0 z-[70] bg-slate-900/45 opacity-100 transition"
 				onClick={onClose}
 				aria-hidden="true"
 			/>
 			<aside
-				className={`fixed top-0 right-0 z-[80] flex h-dvh w-full max-w-[460px] flex-col overscroll-contain border-l border-slate-200 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_50%,#ffffff_100%)] shadow-[-18px_0_50px_-35px_rgba(2,6,14,0.9)] transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}
+				className="fixed top-0 right-0 z-[80] flex h-dvh w-full max-w-[460px] flex-col overscroll-contain border-l border-slate-200 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_50%,#ffffff_100%)] shadow-[-18px_0_50px_-35px_rgba(2,6,14,0.9)]"
 				aria-label={t('title')}
 			>
 				<header className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
