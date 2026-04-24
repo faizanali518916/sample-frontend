@@ -138,20 +138,20 @@ export default async function AboutPage() {
 							<article className="rounded-3xl border border-[#cfe0fa] bg-white p-6 shadow-[0_24px_48px_-40px_rgba(5,7,13,0.9)]">
 								<div className="flex flex-col gap-4 sm:flex-row sm:items-start">
 									<Image
-										src="/images/Chief-Medical-Officer-Director-600x541.jpeg"
-										alt={t('images.linaresAlt')}
+										src="/images/wilson-molina.avif"
+										alt={t('images.molinaAlt')}
 										width={210}
 										height={210}
 										className="h-44 w-44 rounded-2xl object-cover sm:h-48 sm:w-48"
 									/>
 									<div>
 										<h3 className="font-display text-2xl font-extrabold text-[var(--tl-metallic-black)]">
-											{t('management.linaresName')}
+											{t('management.molinaName')}
 										</h3>
 										<p className="mt-1 text-sm font-bold tracking-[0.14em] text-[var(--tl-primary)] uppercase">
-											{t('management.linaresRole')}
+											{t('management.molinaRole')}
 										</p>
-										<p className="mt-3 text-sm leading-relaxed text-slate-600">{t('management.linaresBio')}</p>
+										<p className="mt-3 text-sm leading-relaxed text-slate-600">{t('management.molinaBio')}</p>
 									</div>
 								</div>
 							</article>

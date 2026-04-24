@@ -41,15 +41,15 @@
 		"management": {
 			"marleyName": "Marley Roldan",
 			"marleyRole": "Presidenta",
-			"marleyBio": "La Sra. Roldan ha dedicado su carrera a ayudar a los pacientes a controlar su salud con opciones de pruebas convenientes y accesibles. Ayudo a desarrollar soluciones para pruebas de drogas, paternidad, legales y de bienestar integral, y ha expandido 24-7 Labs en varias ubicaciones de Florida.",
-			"linaresName": "Dr. Rey Linares, M.D",
-			"linaresRole": "Director y jefe medico",
-			"linaresBio": "El Dr. Linares esta certificado en Medicina Interna, Medicina Pulmonar y Medicina del Sueno, con amplia experiencia en liderazgo clinico en Tampa Bay desde 1996. Su trabajo abarca cuidados criticos, medicina preventiva e iniciativas de salud comunitaria."
+			"marleyBio": "La Sra. Roldan ha dedicado su carrera a ayudar a los pacientes a controlar su salud con opciones de pruebas convenientes y accesibles. Ayudó a desarrollar soluciones para pruebas de drogas, paternidad, legales y de bienestar integral, y ha expandido 24-7 Labs en varias ubicaciones de Florida.",
+			"molinaName": "Dr. Wilson O. Molina Vázquez, M.D.",
+			"molinaRole": "Director Médico",
+			"molinaBio": "El Dr. Molina Vázquez es un médico de atención primaria y líder en laboratorios médicos con amplia trayectoria clínica en Puerto Rico y Florida. Su liderazgo abarca la dirección de departamentos de emergencias, diagnósticos moleculares y la gestión de laboratorios clínicos, integrando la precisión diagnóstica con la excelencia en el cuidado del paciente."
 		},
 		"images": {
-			"locationAlt": "Ubicacion de 24-7 Labs",
+			"locationAlt": "Ubicación de 24-7 Labs",
 			"marleyAlt": "Marley Roldan",
-			"linaresAlt": "Dr. Rey Linares"
+			"molinaAlt": "Dr. Wilson O. Molina Vázquez"
 		},
 		"ctaTitle": "Necesitas ayuda para elegir una prueba?",
 		"ctaBody": "Nuestro equipo puede ayudarte a seleccionar el panel diagnostico correcto y agendar una cita conveniente en una de nuestras ubicaciones.",

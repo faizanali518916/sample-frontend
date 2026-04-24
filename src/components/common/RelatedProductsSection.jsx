@@ -1,14 +1,45 @@
+import { useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 export default function RelatedProductsSection({ title, items = [], renderItem }) {
-	if (!items.length) {
-		return null;
-	}
+	const scrollRef = useRef(null);
+
+	if (!items.length) return null;
+
+	const scroll = (direction) => {
+		if (scrollRef.current) {
+			const { scrollLeft, clientWidth } = scrollRef.current;
+			const scrollAmount = clientWidth + 20; // clientWidth + the gap
+			const scrollTo = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
+
+			scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+		}
+	};
 
 	return (
-		<section className="mt-8 overflow-hidden">
-			<h3 className="font-display text-2xl font-black text-[var(--tl-metallic-black)]">{title}</h3>
-			<div className="-mx-4 mt-4 flex gap-4 overflow-x-auto px-4 pb-2 sm:gap-5 lg:-mx-6 lg:px-6">
+		<section className="mt-8">
+			<div className="mb-6 flex items-center justify-between">
+				<h3 className="font-display text-2xl font-black text-[var(--tl-metallic-black)]">{title}</h3>
+
+				<div className="flex gap-2">
+					<button
+						onClick={() => scroll('left')}
+						className="rounded-full border border-gray-200 p-2 transition-all hover:bg-gray-100 active:scale-90 dark:border-gray-800 dark:hover:bg-slate-800"
+					>
+						<ChevronLeft className="h-5 w-5" />
+					</button>
+					<button
+						onClick={() => scroll('right')}
+						className="rounded-full border border-gray-200 p-2 transition-all hover:bg-gray-100 active:scale-90 dark:border-gray-800 dark:hover:bg-slate-800"
+					>
+						<ChevronRight className="h-5 w-5" />
+					</button>
+				</div>
+			</div>
+
+			<div ref={scrollRef} className="flex gap-4 overflow-x-hidden scroll-smooth p-4 sm:gap-5">
 				{items.map((item) => (
-					<div key={item.id} className="w-[calc(100vw-48px)] max-w-[340px] flex-none sm:w-[330px] lg:w-[320px]">
+					<div key={item.id} className="w-[calc(100vw-48px)] flex-none sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-14px)]">
 						{renderItem(item)}
 					</div>
 				))}

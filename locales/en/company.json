@@ -42,14 +42,14 @@
 			"marleyName": "Marley Roldan",
 			"marleyRole": "President",
 			"marleyBio": "Ms. Roldan has dedicated her career to helping patients control their health through convenient and affordable testing options. She helped develop solutions for drug, paternity, legal, and comprehensive wellness testing, and has grown 24-7 Labs across multiple Florida locations.",
-			"linaresName": "Dr. Rey Linares, M.D",
-			"linaresRole": "Chief Medical Officer & Director",
-			"linaresBio": "Dr. Linares is board certified in Internal Medicine, Pulmonary Medicine, and Sleep Medicine, with extensive clinical leadership experience in Tampa Bay since 1996. His work spans critical care, preventive medicine, and community health initiatives."
+			"molinaName": "Dr. Wilson O. Molina Vazquez, M.D.",
+			"molinaRole": "Medical Director",
+			"molinaBio": "Dr. Molina Vazquez is a primary care physician and medical laboratory leader with extensive clinical experience in Puerto Rico and Florida. His leadership spans emergency department operations, molecular diagnostics, and multi-site laboratory management, with a focus on integrating clinical data to improve patient outcomes."
 		},
 		"images": {
 			"locationAlt": "24-7 Labs location",
 			"marleyAlt": "Marley Roldan",
-			"linaresAlt": "Dr. Rey Linares"
+			"molinaAlt": "Dr. Wilson O. Molina Vazquez"
 		},
 		"ctaTitle": "Need help choosing a test?",
 		"ctaBody": "Our team can help you select the right diagnostic panel and book a convenient appointment at one of our locations.",

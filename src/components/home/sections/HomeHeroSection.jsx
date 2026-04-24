@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CalendarDays, Clock3, MapPin, PhoneCall, Sparkles } from 'lucide-react';
+import { ArrowRight, CalendarDays, Clock3, MapPin, PhoneCall, Wand2 } from 'lucide-react';
 
 export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveSlide, setIsAiFinderOpen }) {
 	return (
@@ -110,10 +110,19 @@ export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveS
 						</div>
 					</div>
 
-					<button type="button" onClick={() => setIsAiFinderOpen(true)} className="ai-finder-cta">
-						<div className="ai-finder-cta-inner">
-							<Sparkles className="ai-finder-cta-icon h-6 w-6 sm:h-7 sm:w-7" />
-							<span className="ai-finder-cta-title">{t('Hero.aiFinderButton')}</span>
+					<button
+						type="button"
+						onClick={() => setIsAiFinderOpen(true)}
+						className="group relative mx-auto mt-12 flex items-center justify-center rounded-full p-[1px] transition-all duration-300 hover:scale-105 active:scale-95"
+					>
+						<div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200"></div>
+
+						<div className="relative flex items-center gap-4 rounded-full bg-white px-8 py-4 leading-none dark:bg-slate-950">
+							<Wand2 className="h-8 w-8 text-purple-600 transition-transform duration-300 group-hover:rotate-12 dark:text-purple-400" />
+
+							<span className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
+								{t('Hero.aiFinderButton')}
+							</span>
 						</div>
 					</button>
 				</div>
