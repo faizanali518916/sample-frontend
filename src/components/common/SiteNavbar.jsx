@@ -209,7 +209,7 @@ export default function SiteNavbar() {
 							alt={t('brand.logoAlt')}
 							width={214}
 							height={52}
-							className="h-9 w-auto sm:h-11"
+							className="h-20 w-auto sm:h-20"
 							priority
 						/>
 					</Link>

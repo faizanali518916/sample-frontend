@@ -3,14 +3,14 @@
 		"breadcrumbs": "Home > Business Opportunities",
 		"hero": {
 			"title": "Business Opportunities at 24-7 Labs",
-			"overline": "FRANCHISE & PARTNERSHIPS",
+			"overline": "BUSINESS & PARTNERSHIPS",
 			"mainTitle": "Grow Your Business With 24-7 Labs",
-			"description": "Join the 24-7 Labs network as a franchise or partnership partner. Build a profitable testing lab business with proven systems, ongoing support, and proven revenue models.",
+			"description": "Join the 24-7 Labs network as a business or partnership partner. Build a profitable testing lab business with proven systems, ongoing support, and proven revenue models.",
 			"callButton": "Call 813-932-3741"
 		},
 		"benefits": {
 			"title": "Why Partner With 24-7 Labs?",
-			"intro": "Discover the advantages of becoming a 24-7 Labs franchise partner:",
+			"intro": "Discover the advantages of becoming a 24-7 Labs business partner:",
 			"items": [
 				{
 					"title": "Proven Business Model",
@@ -63,7 +63,7 @@
 				},
 				{
 					"question": "Can I operate multiple locations?",
-					"answer": "Yes, multi-unit franchises are available for qualified partners."
+					"answer": "Yes, multi-unit businesses are available for qualified partners."
 				},
 				{
 					"question": "What are the ongoing fees?",
@@ -91,7 +91,7 @@
 		},
 		"cta": {
 			"title": "Ready to Build Your Business?",
-			"body": "Join 24-7 Labs and create a profitable testing lab business. Contact us today to learn more about franchise opportunities.",
+			"body": "Join 24-7 Labs and create a profitable testing lab business. Contact us today to learn more about business opportunities.",
 			"buttonText": "Request Information",
 			"callButton": "Call Today"
 		}

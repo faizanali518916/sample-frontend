@@ -69,8 +69,8 @@
 				},
 				{
 					"icon": "/images/test-tube3.png",
-					"title": "Pruebas de Salud General",
-					"description": "Tambien ofrecemos pruebas de diabetes, paneles de cancer, tiroides y salud cardiaca. 24-7 Labs tambien brinda pruebas hormonales y de alergias.",
+					"title": "Pruebas Individuales",
+					"description": "Tambien ofrecemos pruebas individuales por tu conveniencia. Estas pruebas incluyen diabetes, paneles de cancer, tiroides y salud cardiaca. 24-7 Labs tambien brinda pruebas de alergias.",
 					"href": "#"
 				},
 				{
@@ -81,14 +81,8 @@
 				},
 				{
 					"icon": "/images/heart-rate3-1.png",
-					"title": "Pruebas Cardiacas",
-					"description": "La enfermedad cardiovascular es una de las principales causas de muerte. La mejor estrategia es ser preventivo y realizar pruebas regulares.",
-					"href": "#"
-				},
-				{
-					"icon": "/images/hormone-therapy3.png",
-					"title": "Pruebas Hormonales",
-					"description": "Cambios de humor, aumento de peso, fatiga y baja libido pueden indicar desequilibrios hormonales. Nuestras pruebas ayudan a identificar la causa.",
+					"title": "Paneles de Bienestar",
+					"description": "Pruebas de bienestar integrales incluyendo bienestar cardiaco, paneles basicos y completos de bienestar, deteccion de osteoporosis, salud tiroidea y pruebas de bienestar sexual. Obtén una imagen completa de tu salud.",
 					"href": "#"
 				}
 			]

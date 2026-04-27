@@ -3,14 +3,14 @@
 		"breadcrumbs": "Inicio > Oportunidades de Negocio",
 		"hero": {
 			"title": "Oportunidades de negocio en 24-7 Labs",
-			"overline": "FRANQUICIA Y ASOCIACIONES",
+			"overline": "NEGOCIO Y ASOCIACIONES",
 			"mainTitle": "Haz crecer tu negocio con 24-7 Labs",
-			"description": "Unite a la red de 24-7 Labs como socio de franquicia. Construye un negocio de laboratorio de pruebas rentable con sistemas probados, apoyo continuo y modelos de ingresos comprobados.",
+			"description": "Unite a la red de 24-7 Labs como socio de negocio. Construye un negocio de laboratorio de pruebas rentable con sistemas probados, apoyo continuo y modelos de ingresos comprobados.",
 			"callButton": "Llama al 813-932-3741"
 		},
 		"benefits": {
 			"title": "Por que asociarse con 24-7 Labs?",
-			"intro": "Descubre las ventajas de ser socio de franquicia de 24-7 Labs:",
+			"intro": "Descubre las ventajas de ser socio de negocio de 24-7 Labs:",
 			"items": [
 				{
 					"title": "Modelo de negocio comprobado",
@@ -63,7 +63,7 @@
 				},
 				{
 					"question": "Puedo operar multiples ubicaciones?",
-					"answer": "Si, hay franquicias multiunitarias disponibles para socios calificados."
+					"answer": "Si, hay negocios multiunitarios disponibles para socios calificados."
 				},
 				{
 					"question": "Cuales son las tarifas continuas?",
@@ -91,7 +91,7 @@
 		},
 		"cta": {
 			"title": "Listo para construir tu negocio?",
-			"body": "Unite a 24-7 Labs y crea un negocio de laboratorio de pruebas rentable. Contactanos hoy para aprender mas sobre oportunidades de franquicia.",
+			"body": "Unite a 24-7 Labs y crea un negocio de laboratorio de pruebas rentable. Contactanos hoy para aprender mas sobre oportunidades de negocio.",
 			"buttonText": "Solicitar informacion",
 			"callButton": "Llamar hoy"
 		}

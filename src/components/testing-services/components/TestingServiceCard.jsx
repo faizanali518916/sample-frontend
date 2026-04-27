@@ -99,7 +99,7 @@ export default React.memo(function TestingServiceCard({
 	}
 
 	return (
-		<article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-sky-100 bg-white shadow-[0_18px_40px_-30px_rgba(2,6,14,0.85)] transition hover:-translate-y-1 hover:shadow-[0_30px_65px_-36px_rgba(2,6,14,0.9)]">
+		<article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-sky-100 bg-white transition hover:-translate-y-1">
 			{pricingModel.type === 'sale' && (
 				<div className="absolute top-3 right-3 z-10 rounded-full bg-red-600 px-3 py-1 text-xs font-bold tracking-[0.08em] text-white uppercase shadow-lg">
 					{t('onSale')}

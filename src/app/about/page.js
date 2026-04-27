@@ -53,7 +53,7 @@ export default async function AboutPage() {
 							</div>
 						</div>
 
-						<div className="rounded-3xl border border-[#cfe0fa] bg-white p-3 shadow-[0_34px_80px_-42px_rgba(17,58,123,0.62)]">
+						<div className="hidden rounded-3xl border border-[#cfe0fa] bg-white p-3 shadow-[0_34px_80px_-42px_rgba(17,58,123,0.62)] lg:block">
 							<Image
 								src="/images/24-7labs-business-oppurtunities-1536x1280.jpg"
 								alt={t('images.locationAlt')}
@@ -117,7 +117,7 @@ export default async function AboutPage() {
 							<article className="rounded-3xl border border-[#cfe0fa] bg-white p-6 shadow-[0_24px_48px_-40px_rgba(5,7,13,0.9)]">
 								<div className="flex flex-col gap-4 sm:flex-row sm:items-start">
 									<Image
-										src="/images/Chief-Medical-Officer-Director.png"
+										src="/images/marley-roldan.jpeg"
 										alt={t('images.marleyAlt')}
 										width={210}
 										height={210}

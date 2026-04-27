@@ -73,7 +73,7 @@ export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveS
 					</div>
 				</div>
 
-				<div className="relative">
+				<div className="relative hidden lg:block">
 					<div className="pointer-events-none absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[var(--tl-primary)]/30 via-cyan-200/20 to-transparent blur-2xl" />
 					<div className="relative z-10 overflow-hidden rounded-[24px] border border-white/80 bg-white/70 p-3 shadow-[0_30px_80px_-40px_rgba(38,127,199,0.7)] backdrop-blur">
 						<div className="relative aspect-[4/3] overflow-hidden rounded-[16px]">

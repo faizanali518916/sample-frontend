@@ -8,9 +8,19 @@ export default function RelatedProductsSection({ title, items = [], renderItem }
 
 	const scroll = (direction) => {
 		if (scrollRef.current) {
-			const { scrollLeft, clientWidth } = scrollRef.current;
-			const scrollAmount = clientWidth + 20; // clientWidth + the gap
-			const scrollTo = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
+			const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+			const cardWidth = clientWidth - 32; // Subtract padding (16px * 2)
+			const gap = 16; // gap-4 = 16px
+			const scrollAmount = cardWidth + gap;
+			const maxScroll = scrollWidth - clientWidth;
+
+			let scrollTo = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
+
+			// Clamp scroll to bounds
+			scrollTo = Math.max(0, Math.min(scrollTo, maxScroll));
+
+			// Snap to nearest card position
+			scrollTo = Math.round(scrollTo / scrollAmount) * scrollAmount;
 
 			scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
 		}
@@ -37,9 +47,15 @@ export default function RelatedProductsSection({ title, items = [], renderItem }
 				</div>
 			</div>
 
-			<div ref={scrollRef} className="flex gap-4 overflow-x-hidden scroll-smooth p-4 sm:gap-5">
+			<div
+				ref={scrollRef}
+				className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth p-4 sm:gap-5"
+			>
 				{items.map((item) => (
-					<div key={item.id} className="w-[calc(100vw-48px)] flex-none sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-14px)]">
+					<div
+						key={item.id}
+						className="w-[calc(100vw-48px)] flex-none snap-center sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-14px)]"
+					>
 						{renderItem(item)}
 					</div>
 				))}

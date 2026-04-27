@@ -69,8 +69,8 @@
 				},
 				{
 					"icon": "/images/test-tube3.png",
-					"title": "Routine Health Testing",
-					"description": "We also provide routine health tests for your convenience. These tests include diabetes, cancer panels, thyroid checks, and heart health. 24-7 Labs also offers hormone and allergy testing.",
+					"title": "Individual Testing",
+					"description": "We also provide individual tests for your convenience. These tests include diabetes, cancer panels, thyroid checks, and heart health. 24-7 Labs also offers allergy testing.",
 					"href": "#"
 				},
 				{
@@ -81,14 +81,8 @@
 				},
 				{
 					"icon": "/images/heart-rate3-1.png",
-					"title": "Heart Testing",
-					"description": "Cardiovascular disease is known to be the leading cause of death in the United States. The best way to combat heart disease is by being proactive and opting for regular testing.",
-					"href": "#"
-				},
-				{
-					"icon": "/images/hormone-therapy3.png",
-					"title": "Hormone Testing",
-					"description": "Could you be experiencing hormonal imbalances? Mood fluctuations, weight gain, lethargy, and reduced sexual desire can all be signals. Our hormone tests can help identify the root cause.",
+					"title": "Wellness Panels",
+					"description": "Comprehensive wellness testing including heart wellness, basic and comprehensive wellness panels, osteoporosis screening, thyroid health, and sexual wellness testing. Get a complete picture of your health.",
 					"href": "#"
 				}
 			]

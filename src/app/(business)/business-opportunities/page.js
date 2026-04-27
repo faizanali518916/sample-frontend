@@ -60,7 +60,7 @@ export default async function BusinessOpportunitiesPage() {
 						</div>
 					</div>
 
-					<div className="relative mx-auto w-full max-w-md">
+					<div className="relative mx-auto hidden w-full max-w-md md:block">
 						<div className="relative overflow-hidden rounded-[2rem] border-[3px] border-white/20 shadow-2xl">
 							<Image
 								src="/images/8_About_Business_Consulting_Company-Hero-Img_1.jpg"

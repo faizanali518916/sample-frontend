@@ -48,7 +48,7 @@ export default function TestingServicesHero({ t, productsCount, categoryCount, f
 					</div>
 				</div>
 
-				<div className="relative">
+				<div className="relative hidden lg:block">
 					<div className="absolute -inset-4 rounded-[2rem] bg-[linear-gradient(145deg,rgba(3,86,197,0.12),rgba(255,255,255,0.08))] blur-2xl" />
 					<div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[#eaf3ff] shadow-[0_36px_80px_-44px_rgba(8,18,36,0.95)]">
 						<Image
