@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { SectionHeading } from '@/components/home/HomePageShared';
 
-export default function HomeServicesSection({ t, serviceCards, activeServiceCard }) {
+export default function HomeServicesSection({ t, serviceCards }) {
 	return (
 		<section
 			id="services"

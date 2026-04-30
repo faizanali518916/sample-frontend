@@ -5,7 +5,6 @@ export default function useHomePageInteractions({ heroSlidesCount, reviewsCount 
 	const [activeReview, setActiveReview] = useState(0);
 	const [isBooting, setIsBooting] = useState(true);
 	const [activeSection, setActiveSection] = useState('home');
-	const [activeServiceCard, setActiveServiceCard] = useState(0);
 	const [activeWhyFeature, setActiveWhyFeature] = useState(0);
 	const [activeFaqId, setActiveFaqId] = useState(null);
 	const [isAiFinderOpen, setIsAiFinderOpen] = useState(false);
@@ -128,7 +127,6 @@ export default function useHomePageInteractions({ heroSlidesCount, reviewsCount 
 				}
 			}
 
-			setActiveServiceCard((prev) => getCardIndexAtViewportLine('[data-mobile-service-card]', prev));
 			setActiveWhyFeature((prev) => getCardIndexAtViewportLine('[data-mobile-why-card]', prev));
 		};
 
@@ -180,7 +178,6 @@ export default function useHomePageInteractions({ heroSlidesCount, reviewsCount 
 		prevReview,
 		isBooting,
 		activeSection,
-		activeServiceCard,
 		activeWhyFeature,
 		activeFaqId,
 		setActiveFaqId,

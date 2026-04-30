@@ -65,7 +65,7 @@ export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveS
 							{t('Hero.callButton')}
 						</a>
 						<Link
-							href="#contact"
+							href="/contact"
 							className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-slate-50/80 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-white sm:w-auto"
 						>
 							{t('Hero.locationsButton')}

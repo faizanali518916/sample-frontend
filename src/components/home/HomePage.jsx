@@ -70,7 +70,6 @@ export default function HomePage({ locale = 'en' }) {
 		prevReview,
 		isBooting,
 		activeSection,
-		activeServiceCard,
 		activeWhyFeature,
 		activeFaqId,
 		setActiveFaqId,
@@ -93,7 +92,7 @@ export default function HomePage({ locale = 'en' }) {
 					setActiveSlide={setActiveSlide}
 					setIsAiFinderOpen={setIsAiFinderOpen}
 				/>
-				<HomeServicesSection t={t} serviceCards={serviceCards} activeServiceCard={activeServiceCard} />
+				<HomeServicesSection t={t} serviceCards={serviceCards} />
 				<HomeWhyChooseSection
 					t={t}
 					whyChooseFeatures={whyChooseFeatures}

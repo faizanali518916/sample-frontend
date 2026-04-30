@@ -47,43 +47,43 @@
 					"icon": "/images/test-tube3.png",
 					"title": "Pruebas de Drogas",
 					"description": "En 24-7 Labs ofrecemos pruebas individuales y de 5 y 10 paneles. Tambien realizamos pruebas DOT y para empleadores. Puedes esperar resultados en 24-48 horas.",
-					"href": "#"
+					"href": "/drug-testing"
 				},
 				{
 					"icon": "/images/biotechnology3.png",
 					"title": "Pruebas de ADN",
 					"description": "Nuestras pruebas de ADN cubren maternidad, paternidad, abuelos y hermanos. Los resultados pueden usarse con fines legales, informativos o migratorios. La mayoria llega en 72 horas.",
-					"href": "#"
+					"href": "/dna-testing"
 				},
 				{
 					"icon": "/images/sexual-transmitted-disease3.png",
 					"title": "Pruebas de ETS",
 					"description": "Realizamos pruebas para ETS comunes como herpes, gonorrea y clamidia. Cuidate y cuida a tus parejas con resultados confiables y rapidos.",
-					"href": "#"
+					"href": "/std-testing"
 				},
 				{
 					"icon": "/images/test-tube3.png",
 					"title": "Pruebas de COVID",
 					"description": "Ofrecemos RT-PCR el mismo dia o al dia siguiente. Son ideales para viajes y para protegerte a ti y a tus seres queridos.",
-					"href": "#"
+					"href": "/covid-19"
 				},
 				{
 					"icon": "/images/test-tube3.png",
 					"title": "Pruebas Individuales",
 					"description": "Tambien ofrecemos pruebas individuales por tu conveniencia. Estas pruebas incluyen diabetes, paneles de cancer, tiroides y salud cardiaca. 24-7 Labs tambien brinda pruebas de alergias.",
-					"href": "#"
+					"href": "/routine-health-testing"
 				},
 				{
 					"icon": "/images/diabetes3.png",
 					"title": "Pruebas de Alergias",
 					"description": "Mas de 50 millones de personas en Estados Unidos tienen alergias. Descubre que te afecta y encuentra alivio.",
-					"href": "#"
+					"href": "/allergy-testing"
 				},
 				{
 					"icon": "/images/heart-rate3-1.png",
 					"title": "Paneles de Bienestar",
 					"description": "Pruebas de bienestar integrales incluyendo bienestar cardiaco, paneles basicos y completos de bienestar, deteccion de osteoporosis, salud tiroidea y pruebas de bienestar sexual. Obtén una imagen completa de tu salud.",
-					"href": "#"
+					"href": "/heart-testing"
 				}
 			]
 		},
