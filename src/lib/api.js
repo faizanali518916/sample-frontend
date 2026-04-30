@@ -15,6 +15,7 @@ const PATH_MAP = {
 	COVID_SCREENING: 'covid-screening',
 	COUPONS: 'coupons',
 	ORDERS: 'orders',
+	PAYMENT: 'payment',
 };
 
 export const ENDPOINTS = new Proxy(PATH_MAP, {
@@ -344,5 +345,10 @@ export async function validateCoupon(code) {
 
 export async function createOrder(payload) {
 	const response = await fetch(ENDPOINTS.ORDERS, withJsonOptions(payload));
+	return parseJsonResponse(response);
+}
+
+export async function processPayment(paymentData) {
+	const response = await fetch(`${ENDPOINTS.PAYMENT}/process`, withJsonOptions(paymentData));
 	return parseJsonResponse(response);
 }

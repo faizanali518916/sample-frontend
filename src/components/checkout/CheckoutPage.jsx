@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { CheckCircle2, LoaderCircle, Tag, TriangleAlert } from 'lucide-react';
+import { CheckCircle2, LoaderCircle, Tag, TriangleAlert, Lock } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
-import { createOrder, fetchCountryStates, validateCoupon } from '@/lib/api';
+import { createOrder, fetchCountryStates, validateCoupon, processPayment } from '@/lib/api';
 
 const initialForm = {
 	firstname: '',
@@ -19,6 +19,12 @@ const initialForm = {
 	countrystate_id: '',
 	zipcode: '',
 	additional_information: '',
+};
+
+const initialPaymentForm = {
+	cardNumber: '',
+	expirationDate: '',
+	cardCode: '',
 };
 
 function toCurrency(value, locale) {
@@ -44,6 +50,10 @@ export default function CheckoutPage() {
 	const [submitting, setSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState('');
 	const [success, setSuccess] = useState(false);
+	const [paymentForm, setPaymentForm] = useState(initialPaymentForm);
+	const [processingPayment, setProcessingPayment] = useState(false);
+	const [acceptJsLoaded, setAcceptJsLoaded] = useState(false);
+	const [tokenError, setTokenError] = useState('');
 
 	useEffect(() => {
 		let mounted = true;
@@ -66,8 +76,28 @@ export default function CheckoutPage() {
 				}
 			});
 
+		// Load Authorize.net Accept.js
+		const script = document.createElement('script');
+		script.src = 'https://js.authorize.net/v1/Accept.js';
+		script.charset = 'utf-8';
+		script.async = true;
+		script.onload = () => {
+			if (mounted) {
+				setAcceptJsLoaded(true);
+			}
+		};
+		script.onerror = () => {
+			if (mounted) {
+				setTokenError('Failed to load payment processing library');
+			}
+		};
+		document.body.appendChild(script);
+
 		return () => {
 			mounted = false;
+			if (document.body.contains(script)) {
+				document.body.removeChild(script);
+			}
 		};
 	}, []);
 
@@ -88,6 +118,11 @@ export default function CheckoutPage() {
 	function onFieldChange(event) {
 		const { name, value } = event.target;
 		setForm((previous) => ({ ...previous, [name]: value }));
+	}
+
+	function onPaymentFieldChange(event) {
+		const { name, value } = event.target;
+		setPaymentForm((previous) => ({ ...previous, [name]: value }));
 	}
 
 	async function onApplyCoupon() {
@@ -151,10 +186,72 @@ export default function CheckoutPage() {
 			return;
 		}
 
+		// Validate payment fields
+		if (!paymentForm.cardNumber || !paymentForm.expirationDate || !paymentForm.cardCode) {
+			setSubmitError('Please complete all payment fields');
+			return;
+		}
+
+		if (!acceptJsLoaded) {
+			setSubmitError('Payment processing is not ready. Please refresh the page.');
+			return;
+		}
+
 		setSubmitting(true);
 		setSubmitError('');
 
 		try {
+			// Tokenize card data using Authorize.net Accept.js
+			setProcessingPayment(true);
+			setTokenError('');
+
+			const secureData = {
+				authData: {
+					clientKey: process.env.NEXT_PUBLIC_AUTHORIZE_NET_CLIENT_KEY || 'YOUR_CLIENT_KEY',
+					apiLoginID: process.env.NEXT_PUBLIC_AUTHORIZE_NET_API_LOGIN_ID || 'YOUR_API_LOGIN_ID',
+				},
+				cardData: {
+					cardNumber: paymentForm.cardNumber.replace(/\s/g, ''),
+					month: paymentForm.expirationDate.split('/')[0],
+					year: '20' + paymentForm.expirationDate.split('/')[1],
+					cardCode: paymentForm.cardCode,
+				},
+			};
+
+			// Use Accept.js to get the opaque data
+			const response = await new Promise((resolve, reject) => {
+				window.Accept.dispatchData(secureData, (response) => {
+					if (response.messages.resultCode === 'Error') {
+						reject(new Error(response.messages.message[0].text));
+					} else {
+						resolve(response);
+					}
+				});
+			});
+
+			// Extract the token data
+			const { opaqueData } = response;
+
+			// Process payment with token
+			const paymentResult = await processPayment({
+				amount: pricing.total,
+				dataDescriptor: opaqueData.dataDescriptor,
+				dataValue: opaqueData.dataValue,
+				billingInfo: {
+					firstName: form.firstname,
+					lastName: form.lastname,
+					address: form.house_number + (form.apartment ? ', ' + form.apartment : ''),
+					city: form.city,
+					state: states.find((s) => s.id === Number(form.countrystate_id))?.name || '',
+					zip: form.zipcode,
+					country: form.country || 'US',
+				},
+				isTestMode: process.env.NEXT_PUBLIC_AUTHORIZE_NET_TEST_MODE !== 'false',
+			});
+
+			setProcessingPayment(false);
+
+			// Create order with payment transaction ID
 			await createOrder({
 				items: cart.items.map((item) => ({
 					productId: item.id,
@@ -167,12 +264,15 @@ export default function CheckoutPage() {
 				totalAmount: pricing.total,
 				status: 'PENDING',
 				coupon_id: appliedCoupon?.id || null,
+				paymentTransactionId: paymentResult.transactionId,
 				...form,
 			});
 
 			setSuccess(true);
 			clearCart();
 		} catch (error) {
+			setProcessingPayment(false);
+			setTokenError(error.message || t('submitError'));
 			setSubmitError(error.message || t('submitError'));
 		} finally {
 			setSubmitting(false);
@@ -327,20 +427,82 @@ export default function CheckoutPage() {
 							</div>
 						</div>
 
+						<h3 className="font-display mt-6 text-lg font-bold text-[var(--tl-metallic-black)]">Payment Information</h3>
+						<div className="mt-4 grid gap-4 sm:grid-cols-2">
+							<div className="sm:col-span-2">
+								<label className="text-xs font-bold tracking-[0.08em] text-slate-500 uppercase">Card Number</label>
+								<input
+									name="cardNumber"
+									type="text"
+									value={paymentForm.cardNumber}
+									onChange={onPaymentFieldChange}
+									placeholder="4111 1111 1111 1111"
+									maxLength={19}
+									className="field"
+								/>
+							</div>
+							<div>
+								<label className="text-xs font-bold tracking-[0.08em] text-slate-500 uppercase">
+									Expiration Date (MM/YY)
+								</label>
+								<input
+									name="expirationDate"
+									type="text"
+									value={paymentForm.expirationDate}
+									onChange={onPaymentFieldChange}
+									placeholder="12/25"
+									maxLength={5}
+									className="field"
+								/>
+							</div>
+							<div>
+								<label className="text-xs font-bold tracking-[0.08em] text-slate-500 uppercase">CVV</label>
+								<input
+									name="cardCode"
+									type="password"
+									value={paymentForm.cardCode}
+									onChange={onPaymentFieldChange}
+									placeholder="123"
+									maxLength={4}
+									className="field"
+								/>
+							</div>
+						</div>
+
+						{pricing.total > 0 && (
+							<div className="mt-4 flex items-center gap-2 rounded-xl border border-sky-200 bg-sky-50 px-3 py-2 text-sm text-slate-700">
+								<Lock className="h-4 w-4 shrink-0" />
+								<span>
+									<strong>Secure Payment:</strong> Your card information is encrypted and never stored on our servers.
+								</span>
+							</div>
+						)}
+
 						{submitError ? (
 							<div className="mt-4 flex items-start gap-2 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
 								<TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" />
-								<span>{submitError}</span>
+								{submitError}
+							</div>
+						) : null}
+
+						{tokenError && !submitError ? (
+							<div className="mt-2 flex items-start gap-2 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
+								<TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" />
+								{tokenError}
 							</div>
 						) : null}
 
 						<button
 							type="submit"
-							disabled={submitting}
+							disabled={submitting || !acceptJsLoaded}
 							className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)] disabled:cursor-not-allowed disabled:opacity-75"
 						>
 							{submitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
-							{submitting ? t('creatingOrder') : t('placeOrder')}
+							{processingPayment
+								? t('processingPayment')
+								: submitting
+									? t('creatingOrder')
+									: `Pay ${toCurrency(pricing.total, locale)}`}
 						</button>
 					</form>
 

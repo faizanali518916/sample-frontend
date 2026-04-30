@@ -64,6 +64,7 @@ const footerTranslations = {
 			{ label: 'Business Solutions', href: '/business-solutions' },
 			{ label: 'Telemedicine Service', href: '/telemedicine' },
 			{ label: 'Schedule Appointment', href: '/schedule-appointment' },
+			{ label: 'Testing Locations', href: '/contact' },
 			{ label: 'Privacy Policy', href: '/privacy-policy' },
 			{ label: 'Contact', href: '/contact' },
 		],
@@ -123,6 +124,7 @@ const footerTranslations = {
 			{ label: 'Soluciones para negocios', href: '/business-solutions' },
 			{ label: 'Servicio de telemedicina', href: '/telemedicine' },
 			{ label: 'Agendar cita', href: '/schedule-appointment' },
+			{ label: 'Ubicaciones de pruebas', href: '/contact' },
 			{ label: 'Politica de privacidad', href: '/privacy-policy' },
 			{ label: 'Contacto', href: '/contact' },
 		],
@@ -258,7 +260,7 @@ export default function SiteFooter({ locale = 'en' }) {
 					<h3 className="font-display text-lg font-bold text-white">{copy.resourcesTitle}</h3>
 					<ul className="mt-4 space-y-2 text-sm text-sky-100/90">
 						{copy.resources.map((item) => (
-							<li key={item.href}>
+							<li key={item.label}>
 								<Link href={item.href} className="transition hover:text-white">
 									{item.label}
 								</Link>

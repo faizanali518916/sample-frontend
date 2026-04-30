@@ -143,6 +143,7 @@
 		"total": "Total",
 		"placeOrder": "Realizar pedido",
 		"creatingOrder": "Creando pedido...",
+		"processingPayment": "Procesando pago...",
 		"requiredField": "Completa todos los campos obligatorios.",
 		"submitError": "No se pudo crear el pedido. Intentalo de nuevo.",
 		"cartEmpty": "Tu carrito esta vacio.",
