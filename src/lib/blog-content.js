@@ -1,4 +1,4 @@
-const API_HOST = 'https://247labstage.spctek.com:9000';
+const API_HOST = 'http://localhost:3000/';
 
 function decodeHtmlEntities(value) {
 	if (!value) {
@@ -15,6 +15,8 @@ function decodeHtmlEntities(value) {
 }
 
 export function resolveBlogImageUrl(value) {
+	console.log('Resolving blog image URL:', value);
+
 	if (!value) {
 		return '/images/placeholder.png';
 	}
@@ -35,6 +37,23 @@ export function resolveBlogImageUrl(value) {
 }
 
 export function parseBlogContent(blogcontent) {
+	if (blogcontent && typeof blogcontent === 'object') {
+		if (typeof blogcontent.content === 'string' && !blogcontent.blocks) {
+			return {
+				blocks: [
+					{
+						type: 'legacy-html',
+						data: { html: blogcontent.content },
+					},
+				],
+			};
+		}
+
+		if (Array.isArray(blogcontent.blocks)) {
+			return blogcontent;
+		}
+	}
+
 	if (typeof blogcontent === 'object' && blogcontent !== null && Array.isArray(blogcontent.blocks)) {
 		return blogcontent;
 	}
@@ -42,6 +61,17 @@ export function parseBlogContent(blogcontent) {
 	if (typeof blogcontent === 'string') {
 		try {
 			const parsed = JSON.parse(blogcontent);
+			if (parsed && typeof parsed.content === 'string' && !parsed.blocks) {
+				return {
+					blocks: [
+						{
+							type: 'legacy-html',
+							data: { html: parsed.content },
+						},
+					],
+				};
+			}
+
 			if (parsed && Array.isArray(parsed.blocks)) {
 				return parsed;
 			}

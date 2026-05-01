@@ -7,10 +7,16 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				port: '9000',
 				protocol: 'https',
-				pathname: '/uploads/**',
 				hostname: '247labstage.spctek.com',
+				port: '9000',
+				pathname: '/uploads/**',
+			},
+			{
+				protocol: 'http',
+				hostname: 'localhost',
+				port: '3000',
+				pathname: '/uploads/**',
 			},
 		],
 	},

@@ -1,15 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Clock3, Loader2, Mail, MapPin, PhoneCall } from 'lucide-react';
 import FormFieldRenderer from '@/components/forms/generic-form/FormFieldRenderer';
-import {
-	buildFormConfig,
-	flattenVisibleFields,
-	initialFieldValues,
-	loadFormOptions,
-} from '@/components/forms/generic-form/config';
+import { buildFormConfig, flattenVisibleFields, initialFieldValues } from '@/components/forms/generic-form/config';
 import { useAppData } from '@/components/providers/DataProvider';
 import { isEmail, normalizePhone, safeT } from '@/components/forms/generic-form/utils';
 
