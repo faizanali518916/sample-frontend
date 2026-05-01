@@ -35,8 +35,8 @@ export function createScheduleAppointmentConfig(t, optionSets) {
 						required: true,
 						placeholder: safeT(t, 'common.selectLocation', 'Select Location'),
 						options: optionSets.locations.map((location) => ({
-							value: String(location.id),
-							label: location.name,
+							value: location,
+							label: location,
 						})),
 					},
 					{
@@ -62,7 +62,7 @@ export function createScheduleAppointmentConfig(t, optionSets) {
 			phonenumber: normalizePhone(values.phone),
 			symptoms_tests: values.symptoms,
 			datetime: toIsoDate(values.datetime),
-			lablocation_id: Number(values.location),
+			lablocation: values.location,
 		}),
 		submit: submitAppointmentForm,
 	};

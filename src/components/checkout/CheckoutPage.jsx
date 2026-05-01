@@ -5,7 +5,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CheckCircle2, LoaderCircle, Tag, TriangleAlert, Lock } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
-import { createOrder, fetchCountryStates, validateCoupon, processPayment } from '@/lib/api';
+import { useAppData } from '@/components/providers/DataProvider';
+import { createOrder, validateCoupon, processPayment } from '@/lib/api';
 
 const initialForm = {
 	firstname: '',
@@ -39,13 +40,12 @@ export default function CheckoutPage() {
 	const t = useTranslations('CheckoutPage');
 	const locale = useLocale();
 	const { cart, clearCart } = useCart();
+	const { states } = useAppData();
 
 	const [form, setForm] = useState(initialForm);
-	const [states, setStates] = useState([]);
 	const [couponCode, setCouponCode] = useState('');
 	const [appliedCoupon, setAppliedCoupon] = useState(null);
 	const [couponError, setCouponError] = useState('');
-	const [loadingStates, setLoadingStates] = useState(false);
 	const [validatingCoupon, setValidatingCoupon] = useState(false);
 	const [submitting, setSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState('');
@@ -56,45 +56,24 @@ export default function CheckoutPage() {
 	const [tokenError, setTokenError] = useState('');
 
 	useEffect(() => {
-		let mounted = true;
-		setLoadingStates(true);
+		const scriptUrl =
+			process.env.NEXT_PUBLIC_AUTHORIZE_NET_TEST_MODE === 'true'
+				? 'https://jstest.authorize.net/v1/Accept.js'
+				: 'https://js.authorize.net/v1/Accept.js';
 
-		fetchCountryStates()
-			.then((payload) => {
-				if (mounted) {
-					setStates(Array.isArray(payload) ? payload : []);
-				}
-			})
-			.catch(() => {
-				if (mounted) {
-					setStates([]);
-				}
-			})
-			.finally(() => {
-				if (mounted) {
-					setLoadingStates(false);
-				}
-			});
-
-		// Load Authorize.net Accept.js
 		const script = document.createElement('script');
-		script.src = 'https://js.authorize.net/v1/Accept.js';
+		script.src = scriptUrl;
 		script.charset = 'utf-8';
 		script.async = true;
 		script.onload = () => {
-			if (mounted) {
-				setAcceptJsLoaded(true);
-			}
+			setAcceptJsLoaded(true);
 		};
 		script.onerror = () => {
-			if (mounted) {
-				setTokenError('Failed to load payment processing library');
-			}
+			setTokenError('Failed to load payment processing library');
 		};
 		document.body.appendChild(script);
 
 		return () => {
-			mounted = false;
 			if (document.body.contains(script)) {
 				document.body.removeChild(script);
 			}
@@ -175,6 +154,7 @@ export default function CheckoutPage() {
 
 	async function onSubmitOrder(event) {
 		event.preventDefault();
+
 		if (cart.items.length === 0) {
 			setSubmitError(t('cartEmpty'));
 			return;
@@ -207,8 +187,8 @@ export default function CheckoutPage() {
 
 			const secureData = {
 				authData: {
-					clientKey: process.env.NEXT_PUBLIC_AUTHORIZE_NET_CLIENT_KEY || 'YOUR_CLIENT_KEY',
-					apiLoginID: process.env.NEXT_PUBLIC_AUTHORIZE_NET_API_LOGIN_ID || 'YOUR_API_LOGIN_ID',
+					clientKey: process.env.NEXT_PUBLIC_AUTHORIZE_NET_CLIENT_KEY,
+					apiLoginID: process.env.NEXT_PUBLIC_AUTHORIZE_NET_API_LOGIN_ID,
 				},
 				cardData: {
 					cardNumber: paymentForm.cardNumber.replace(/\s/g, ''),
@@ -242,7 +222,7 @@ export default function CheckoutPage() {
 					lastName: form.lastname,
 					address: form.house_number + (form.apartment ? ', ' + form.apartment : ''),
 					city: form.city,
-					state: states.find((s) => s.id === Number(form.countrystate_id))?.name || '',
+					state: form.countrystate_id || '',
 					zip: form.zipcode,
 					country: form.country || 'US',
 				},
@@ -399,10 +379,10 @@ export default function CheckoutPage() {
 									{t('fields.countrystate_id')}
 								</label>
 								<select name="countrystate_id" value={form.countrystate_id} onChange={onFieldChange} className="field">
-									<option value="">{loadingStates ? t('loadingStates') : t('selectState')}</option>
-									{states.map((entry) => (
-										<option key={entry.id} value={entry.id}>
-											{entry.name}
+									<option value="">{t('selectState')}</option>
+									{states.map((state) => (
+										<option key={state} value={state}>
+											{state}
 										</option>
 									))}
 								</select>

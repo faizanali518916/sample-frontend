@@ -6,9 +6,6 @@ const PATH_MAP = {
 	CONTACT: 'contact',
 	PRODUCTS: 'products',
 	CATEGORIES: 'category',
-	INFECTIONS: 'infections',
-	LAB_LOCATIONS: 'lab-locations',
-	COUNTRY_STATES: 'country-states',
 	APPOINTMENTS: 'appointments',
 	CONSENT_FORM: 'consent-form',
 	PATIENT_INTAKE: 'patient-intake',
@@ -202,83 +199,6 @@ export async function fetchCategories() {
 
 	if (Array.isArray(payload?.data?.categories)) {
 		return payload.data.categories;
-	}
-
-	return [];
-}
-
-export async function fetchLabLocations() {
-	const response = await fetch(ENDPOINTS.LAB_LOCATIONS, {
-		cache: 'no-store',
-		headers: {
-			Accept: 'application/json',
-		},
-	});
-
-	const payload = await parseJsonResponse(response);
-
-	if (Array.isArray(payload)) {
-		return payload;
-	}
-
-	if (Array.isArray(payload?.data)) {
-		return payload.data;
-	}
-
-	if (Array.isArray(payload?.locations)) {
-		return payload.locations;
-	}
-
-	return [];
-}
-
-export async function fetchCountryStates() {
-	const response = await fetch(ENDPOINTS.COUNTRY_STATES, {
-		cache: 'no-store',
-		headers: {
-			Accept: 'application/json',
-		},
-	});
-
-	const payload = await parseJsonResponse(response);
-
-	console.log('Fetched country states:', payload);
-
-	if (Array.isArray(payload)) {
-		return payload;
-	}
-
-	if (Array.isArray(payload?.data)) {
-		return payload.data;
-	}
-
-	if (Array.isArray(payload?.countryStates)) {
-		return payload.countryStates;
-	}
-
-	return [];
-}
-
-export async function fetchInfections() {
-	const response = await fetch(ENDPOINTS.INFECTIONS, {
-		cache: 'no-store',
-		headers: {
-			Accept: 'application/json',
-		},
-	});
-
-	const payload = await parseJsonResponse(response);
-
-	if (Array.isArray(payload)) {
-		return payload;
-	}
-
-	if (Array.isArray(payload?.data)) {
-		return payload.data;
-	}
-
-	if (Array.isArray(payload?.infections)) {
-		return payload.infections;
 	}
 
 	return [];

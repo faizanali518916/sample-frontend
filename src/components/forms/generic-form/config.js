@@ -1,4 +1,3 @@
-import { fetchCountryStates, fetchInfections, fetchLabLocations } from '@/lib/api';
 import { initialFieldValues } from './initialValues';
 import { createContactConfig } from './forms/contact';
 import { createScheduleAppointmentConfig } from './forms/scheduleAppointment';
@@ -37,21 +36,21 @@ export function flattenVisibleFields(config, values) {
 	return allFields;
 }
 
-export async function loadFormOptions(config) {
+export async function loadFormOptions(config, optionSets) {
 	if (!config?.dataNeeds) {
 		return {};
 	}
 
 	const nextOptions = {};
 
-	if (config.dataNeeds.countryStates) {
-		nextOptions.countryStates = await fetchCountryStates();
+	if (config.dataNeeds.countryStates && optionSets?.countryStates) {
+		nextOptions.countryStates = optionSets.countryStates;
 	}
-	if (config.dataNeeds.locations) {
-		nextOptions.locations = await fetchLabLocations();
+	if (config.dataNeeds.locations && optionSets?.locations) {
+		nextOptions.locations = optionSets.locations;
 	}
-	if (config.dataNeeds.infections) {
-		nextOptions.infections = await fetchInfections();
+	if (config.dataNeeds.infections && optionSets?.infections) {
+		nextOptions.infections = optionSets.infections;
 	}
 
 	return nextOptions;

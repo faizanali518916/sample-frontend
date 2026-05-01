@@ -142,7 +142,7 @@ export function createCovidScreeningConfig(t, shared) {
 			city: values.city,
 			apt: values.apt,
 			zipcode: values.zipcode,
-			countrystate_id: Number(values.state),
+			countrystate: values.state,
 			symptoms: {
 				fever_or_chills: values.fever_or_chills === 'yes',
 				cough: values.cough === 'yes',

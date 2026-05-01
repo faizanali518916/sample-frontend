@@ -10,41 +10,27 @@ import {
 	initialFieldValues,
 	loadFormOptions,
 } from '@/components/forms/generic-form/config';
+import { useAppData } from '@/components/providers/DataProvider';
 import { isEmail, normalizePhone, safeT } from '@/components/forms/generic-form/utils';
 
 export default function GenericFormPage({ formKey }) {
 	const t = useTranslations('Forms');
+	const { states, locations, infections } = useAppData();
 	const [values, setValues] = useState(initialFieldValues(formKey));
 	const [errors, setErrors] = useState({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitResult, setSubmitResult] = useState({ status: 'idle', message: '' });
-	const [optionSets, setOptionSets] = useState({ countryStates: [], locations: [], infections: [] });
+
+	const optionSets = useMemo(
+		() => ({
+			countryStates: states,
+			locations,
+			infections,
+		}),
+		[states, locations, infections]
+	);
 
 	const config = useMemo(() => buildFormConfig(formKey, t, optionSets), [formKey, optionSets, t]);
-
-	useEffect(() => {
-		let isMounted = true;
-
-		async function resolveOptions() {
-			try {
-				const currentConfig = buildFormConfig(formKey, t, optionSets);
-				const nextOptions = await loadFormOptions(currentConfig);
-				if (isMounted && Object.keys(nextOptions).length > 0) {
-					setOptionSets((prev) => ({ ...prev, ...nextOptions }));
-				}
-			} catch (error) {
-				console.error('Failed to load options:', error);
-			}
-		}
-
-		if (optionSets.countryStates.length <= 0 && optionSets.infections.length <= 0) {
-			resolveOptions();
-		}
-
-		return () => {
-			isMounted = false;
-		};
-	}, [formKey]);
 
 	if (!config) {
 		return null;

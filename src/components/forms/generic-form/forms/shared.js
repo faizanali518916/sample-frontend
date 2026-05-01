@@ -44,7 +44,7 @@ export function createSharedFormData(t, optionSets) {
 			label: safeT(t, 'common.fields.state', 'State'),
 			required: true,
 			placeholder: safeT(t, 'common.selectState', 'Select State'),
-			options: optionSets.countryStates.map((state) => ({ value: String(state.id), label: state.name })),
+			options: optionSets.countryStates.map((state) => ({ value: state, label: state })),
 		},
 	];
 

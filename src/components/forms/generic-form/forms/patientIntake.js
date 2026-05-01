@@ -76,7 +76,7 @@ export function createPatientIntakeConfig(t, shared) {
 			city: values.city,
 			apt: values.apt,
 			zipcode: values.zipcode,
-			countrystate_id: Number(values.state),
+			countrystate: values.state,
 			may_contact_number: values.may_contact_number === 'yes',
 			may_contact_email: values.may_contact_email === 'yes',
 			may_forward_results: values.may_forward_results === 'yes',
