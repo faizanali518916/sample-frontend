@@ -55,11 +55,11 @@ export default function SignatureField({ label, value, error, onChange, clearLab
 	};
 
 	return (
-		<div className="md:col-span-2">
+		<div className="w-full md:col-span-2">
 			<p className="text-sm font-semibold text-slate-700">{label}</p>
 			<div
 				ref={wrapperRef}
-				className={`mt-1 overflow-hidden rounded-xl border-2 bg-white ${
+				className={`mt-1 w-full overflow-hidden rounded-xl border-2 bg-white ${
 					error ? 'border-rose-500' : 'border-slate-300'
 				}`}
 			>
@@ -70,7 +70,7 @@ export default function SignatureField({ label, value, error, onChange, clearLab
 					canvasProps={{
 						width: canvasWidth,
 						height: canvasHeight,
-						className: 'block touch-none',
+						className: 'block touch-none w-full',
 					}}
 				/>
 			</div>

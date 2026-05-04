@@ -15,6 +15,7 @@ export default function GenericFormPage({ formKey }) {
 	const [errors, setErrors] = useState({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitResult, setSubmitResult] = useState({ status: 'idle', message: '' });
+	const [validationAttempted, setValidationAttempted] = useState(false);
 
 	const optionSets = useMemo(
 		() => ({
@@ -77,6 +78,7 @@ export default function GenericFormPage({ formKey }) {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		setSubmitResult({ status: 'idle', message: '' });
+		setValidationAttempted(true);
 
 		const isValid = validateForm();
 		if (!isValid) {
@@ -89,6 +91,7 @@ export default function GenericFormPage({ formKey }) {
 			await config.submit(payload);
 			setSubmitResult({ status: 'success', message: config.successMessage });
 			setValues(initialFieldValues(formKey));
+			setValidationAttempted(false);
 		} catch {
 			setSubmitResult({ status: 'error', message: config.errorMessage });
 		} finally {
@@ -112,7 +115,7 @@ export default function GenericFormPage({ formKey }) {
 				</section>
 
 				<section
-					className={`mx-auto w-full max-w-[1220px] gap-6 px-4 pb-16 lg:px-6 ${
+					className={`mx-auto w-full max-w-[1220px] gap-6 overflow-x-hidden px-4 pb-16 lg:px-6 ${
 						config.layout === 'split' ? 'grid lg:grid-cols-[0.95fr_1.05fr]' : ''
 					}`}
 				>
@@ -152,7 +155,7 @@ export default function GenericFormPage({ formKey }) {
 
 					<form
 						onSubmit={handleSubmit}
-						className={`rounded-3xl border border-sky-100 bg-white p-6 shadow-sm ${
+						className={`overflow-hidden rounded-3xl border border-sky-100 bg-white p-6 shadow-sm ${
 							config.layout === 'single' ? 'mx-auto max-w-5xl' : ''
 						}`}
 					>
@@ -174,6 +177,12 @@ export default function GenericFormPage({ formKey }) {
 								</div>
 							</div>
 						))}
+
+						{validationAttempted && Object.keys(errors).length > 0 ? (
+							<p className="mt-5 rounded-xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
+								{safeT(t, 'common.validation.fixErrors', 'Please fix the errors above before submitting.')}
+							</p>
+						) : null}
 
 						{submitResult.status !== 'idle' ? (
 							<p

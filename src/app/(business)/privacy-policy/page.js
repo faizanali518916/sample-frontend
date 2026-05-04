@@ -148,46 +148,44 @@ export default async function PrivacyPolicyPage() {
 			</section>
 
 			{/* Contact Section */}
-			<section className="from-var-tl-primary relative overflow-hidden bg-gradient-to-r to-blue-600 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.15),transparent_50%)]" />
-
+			<section className="relative overflow-hidden bg-[linear-gradient(135deg,#ffffff_0%,#f4f9ff_100%)] px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
 				<div className="relative mx-auto max-w-4xl text-center">
-					<h2 className="font-display mb-4 text-3xl font-bold text-white sm:text-4xl">
+					<h2 className="font-display mb-4 text-3xl font-bold text-[var(--tl-metallic-black)] sm:text-4xl">
 						{locale === 'en' ? 'Questions About Your Privacy?' : '¿Preguntas sobre su privacidad?'}
 					</h2>
-					<p className="mb-8 text-base text-blue-50 sm:text-lg">
+					<p className="mb-8 text-base text-slate-700 sm:text-lg">
 						{locale === 'en'
 							? 'If you have any questions or concerns about this Privacy Policy, please contact us.'
 							: 'Si tiene preguntas o inquietudes sobre esta Política de Privacidad, contáctenos.'}
 					</p>
 
-					<div className="mb-8 rounded-[1.5rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
-						<div className="grid grid-cols-1 gap-6 text-white md:grid-cols-3">
+					<div className="mb-8 rounded-[1.5rem] border border-sky-200 bg-white p-8 shadow-sm">
+						<div className="grid grid-cols-1 gap-6 text-slate-900 md:grid-cols-3">
 							<div>
-								<p className="mb-2 text-sm text-blue-100">{locale === 'en' ? 'Email' : 'Correo Electrónico'}</p>
+								<p className="mb-2 text-sm text-slate-600">{locale === 'en' ? 'Email' : 'Correo Electrónico'}</p>
 								<a
 									href={`mailto:${t('contactInfo.email')}`}
-									className="text-base font-semibold transition-colors hover:text-blue-50"
+									className="text-base font-semibold transition-colors hover:text-[var(--tl-primary)]"
 								>
 									{t('contactInfo.email')}
 								</a>
 							</div>
 							<div>
-								<p className="mb-2 text-sm text-blue-100">{locale === 'en' ? 'Phone' : 'Teléfono'}</p>
+								<p className="mb-2 text-sm text-slate-600">{locale === 'en' ? 'Phone' : 'Teléfono'}</p>
 								<a
 									href={`tel:${t('contactInfo.phone').replace(/\s+/g, '')}`}
-									className="text-base font-semibold transition-colors hover:text-blue-50"
+									className="text-base font-semibold transition-colors hover:text-[var(--tl-primary)]"
 								>
 									{t('contactInfo.phone')}
 								</a>
 							</div>
 							<div>
-								<p className="mb-2 text-sm text-blue-100">{locale === 'en' ? 'Address' : 'Dirección'}</p>
+								<p className="mb-2 text-sm text-slate-600">{locale === 'en' ? 'Address' : 'Dirección'}</p>
 								<a
 									href="https://maps.app.goo.gl/jYLTRTk3D1wxUWHd6"
 									target="_blank"
 									rel="noreferrer"
-									className="text-base font-semibold transition-colors hover:text-blue-50"
+									className="text-base font-semibold transition-colors hover:text-[var(--tl-primary)]"
 								>
 									{t('contactInfo.address')}
 								</a>
@@ -198,13 +196,13 @@ export default async function PrivacyPolicyPage() {
 					<div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
 						<a
 							href={`mailto:${t('contactInfo.email')}`}
-							className="text-var-tl-primary inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-semibold transition-all duration-200 hover:bg-blue-50 hover:shadow-lg"
+							className="inline-flex items-center justify-center rounded-lg bg-[var(--tl-primary)] px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-[var(--tl-primary-strong)] hover:shadow-lg"
 						>
 							{locale === 'en' ? 'Send Email' : 'Enviar Correo'}
 						</a>
 						<Link
 							href="tel:+18139323741"
-							className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all duration-200 hover:border-blue-50 hover:text-blue-50"
+							className="inline-flex items-center justify-center rounded-lg border-2 border-sky-200 px-8 py-3 font-semibold text-[var(--tl-primary-strong)] transition-all duration-200 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
 						>
 							{locale === 'en' ? 'Call 813-932-3741' : 'Llamar 813-932-3741'}
 						</Link>

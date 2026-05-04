@@ -16,11 +16,15 @@ export default function RelatedProductsSection({ title, items = [], renderItem }
 
 			let scrollTo = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
 
-			// Clamp scroll to bounds
-			scrollTo = Math.max(0, Math.min(scrollTo, maxScroll));
-
-			// Snap to nearest card position
-			scrollTo = Math.round(scrollTo / scrollAmount) * scrollAmount;
+			// Loop around to beginning/end
+			if (scrollTo > maxScroll) {
+				scrollTo = 0;
+			} else if (scrollTo < 0) {
+				scrollTo = maxScroll;
+			} else {
+				// Snap to nearest card position
+				scrollTo = Math.round(scrollTo / scrollAmount) * scrollAmount;
+			}
 
 			scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
 		}

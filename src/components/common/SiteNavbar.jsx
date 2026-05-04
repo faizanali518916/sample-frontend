@@ -144,6 +144,7 @@ export default function SiteNavbar() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [mobileTestingOpen, setMobileTestingOpen] = useState(false);
 	const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
+	const [mobileFormsOpen, setMobileFormsOpen] = useState(false);
 	const [mobileLoginOpen, setMobileLoginOpen] = useState(false);
 	const [cartOpen, setCartOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -358,6 +359,36 @@ export default function SiteNavbar() {
 								)}
 							</li>
 						))}
+
+						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
+							<button
+								type="button"
+								onClick={() => setMobileFormsOpen((prev) => !prev)}
+								className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm font-semibold text-slate-700"
+							>
+								<span>{t('menu.forms')}</span>
+								<ChevronDown className={`h-4 w-4 transition-transform ${mobileFormsOpen ? 'rotate-180' : ''}`} />
+							</button>
+							{mobileFormsOpen ? (
+								<ul className="space-y-1 border-t border-slate-200 px-2 py-2">
+									{formsMenuItems.map((item) => (
+										<li key={`mobile-forms-${item.key}`}>
+											<Link
+												href={item.href}
+												onClick={() => setMobileMenuOpen(false)}
+												className={`block rounded-lg px-3 py-2 text-sm font-semibold transition ${
+													isActiveRoute(pathname, item.href)
+														? 'bg-sky-50 text-[var(--tl-primary-strong)]'
+														: 'text-slate-700 hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]'
+												}`}
+											>
+												{t(`menu.${item.key}`)}
+											</Link>
+										</li>
+									))}
+								</ul>
+							) : null}
+						</li>
 
 						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
 							<button

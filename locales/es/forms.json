@@ -40,7 +40,8 @@
 				"required": "Este campo es obligatorio.",
 				"invalidEmail": "Ingresa un correo electronico valido.",
 				"invalidPhone": "Ingresa un numero de telefono valido.",
-				"mustAgree": "Debes aceptar antes de enviar."
+				"mustAgree": "Debes aceptar antes de enviar.",
+				"fixErrors": "Por favor corrige los errores de arriba antes de enviar."
 			},
 			"aboutCard": {
 				"title": "Sobre nosotros",

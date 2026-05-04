@@ -73,6 +73,8 @@
 		"callNow": "Call +1 (813) 932-3741",
 		"descriptionTitle": "Description",
 		"relatedTitle": "Related services",
-		"fallbackProductName": "Product {id}"
+		"fallbackProductName": "Product {id}",
+		"readMore": "Read More",
+		"readLess": "Read Less"
 	}
 }

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { ArrowLeft, ArrowRight, PhoneCall } from 'lucide-react';
+import { ArrowLeft, ArrowRight, PhoneCall, ChevronDown } from 'lucide-react';
 import React from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import RelatedProductsSection from '@/components/common/RelatedProductsSection';
@@ -119,6 +119,9 @@ export default React.memo(function TestingServiceDetailsPage({
 	const [selectedVariantId, setSelectedVariantId] = useState('');
 	const [selectedCategoryId, setSelectedCategoryId] = useState('all');
 	const [added, setAdded] = useState(false);
+	const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
+	const [descriptionExpanded, setDescriptionExpanded] = useState(false);
+	const [categoryDescriptionExpanded, setCategoryDescriptionExpanded] = useState(false);
 
 	const productCategories = useMemo(() => {
 		return Array.isArray(product?.categories) ? product.categories : [];
@@ -163,6 +166,9 @@ export default React.memo(function TestingServiceDetailsPage({
 	const categoryDescription = selectedCategory?.description || selectedCategory?.shortDescription || '';
 	const categoryImage = getCategoryImage(selectedCategory);
 	const pricing = buildPriceModel(activeProduct);
+	const descriptionText = activeProduct?.description || product?.description;
+	const isDescriptionLong = descriptionText && descriptionText.length > 300;
+	const isCategoryDescriptionLong = categoryDescription && categoryDescription.length > 300;
 
 	const productImage = useMemo(() => {
 		const finalPath = selectedVariant?.mainImage || product?.mainImage || '/images/placeholder.png';
@@ -255,12 +261,24 @@ export default React.memo(function TestingServiceDetailsPage({
 				<div className="grid gap-8 lg:grid-cols-[280px_1fr]">
 					{/* Category Sidebar */}
 					<aside className="h-fit rounded-2xl border border-sky-100 bg-white p-5 shadow-[0_18px_50px_-42px_rgba(2,6,14,0.9)] sm:p-6">
-						<h3 className="font-display text-lg font-black text-[var(--tl-metallic-black)]">
+						<button
+							onClick={() => setCategoryDropdownOpen((prev) => !prev)}
+							className="flex w-full items-center justify-between lg:hidden"
+						>
+							<h3 className="font-display text-lg font-black text-[var(--tl-metallic-black)]">
+								{translate(t, 'categoriesTitle') || 'Categories'}
+							</h3>
+							<ChevronDown className={`h-5 w-5 transition-transform ${categoryDropdownOpen ? 'rotate-180' : ''}`} />
+						</button>
+						<h3 className="font-display hidden text-lg font-black text-[var(--tl-metallic-black)] lg:block">
 							{translate(t, 'categoriesTitle') || 'Categories'}
 						</h3>
-						<div className="mt-4 space-y-2">
+						<div className={`mt-4 space-y-2 ${categoryDropdownOpen ? 'block' : 'hidden lg:block'}`}>
 							<button
-								onClick={() => setSelectedCategoryId('all')}
+								onClick={() => {
+									setSelectedCategoryId('all');
+									setCategoryDropdownOpen(false);
+								}}
 								className={`block w-full rounded-lg px-4 py-3 text-left text-sm font-semibold break-words transition ${
 									selectedCategoryId === 'all'
 										? 'bg-sky-100 text-[var(--tl-primary)]'
@@ -272,7 +290,10 @@ export default React.memo(function TestingServiceDetailsPage({
 							{allCategories.map((category) => (
 								<button
 									key={category.id}
-									onClick={() => setSelectedCategoryId(String(category.id))}
+									onClick={() => {
+										setSelectedCategoryId(String(category.id));
+										setCategoryDropdownOpen(false);
+									}}
 									className={`block w-full rounded-lg px-4 py-3 text-left text-sm font-semibold break-words transition ${
 										String(selectedCategoryId) === String(category.id)
 											? 'bg-sky-100 text-[var(--tl-primary)]'
@@ -318,32 +339,47 @@ export default React.memo(function TestingServiceDetailsPage({
 									<h2 className="font-display text-xl font-black text-[var(--tl-metallic-black)]">
 										{translate(t, 'descriptionTitle')}
 									</h2>
-									<div className="mt-3">{renderDescription(categoryDescription)}</div>
+									<div className="mt-3">
+										{!categoryDescriptionExpanded && isCategoryDescriptionLong ? (
+											<>
+												{renderDescription(categoryDescription?.slice(0, 300) + '...')}
+												<button
+													onClick={() => setCategoryDescriptionExpanded(true)}
+													className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
+												>
+													{translate(t, 'readMore') || 'Read More'}
+												</button>
+											</>
+										) : (
+											<>
+												{renderDescription(categoryDescription)}
+												{isCategoryDescriptionLong && (
+													<button
+														onClick={() => setCategoryDescriptionExpanded(false)}
+														className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
+													>
+														{translate(t, 'readLess') || 'Read Less'}
+													</button>
+												)}
+											</>
+										)}
+									</div>
 								</div>
 
-								<div className="mt-8">
-									<h3 className="font-display text-2xl font-black text-[var(--tl-metallic-black)]">{categoryName}</h3>
-									<div className="mt-4 flex w-full max-w-full gap-4 overflow-x-auto pb-2 sm:gap-5">
-										{categoryProducts.map((categoryProduct) => (
-											<div
-												key={categoryProduct.id}
-												className="w-[85vw] max-w-[340px] flex-none sm:w-[330px] lg:w-[320px]"
-											>
-												<TestingServiceCard
-													product={categoryProduct}
-													t={cardT}
-													locale={locale}
-													formatPrice={formatPrice}
-													summarizeText={summarizeText}
-													getProductImage={getProductImage}
-												/>
-											</div>
-										))}
-									</div>
-									{categoryProducts.length === 0 && (
-										<p className="mt-4 text-sm text-slate-600">{translate(t, 'contactUs')}</p>
+								<RelatedProductsSection
+									title={categoryName}
+									items={categoryProducts}
+									renderItem={(categoryProduct) => (
+										<TestingServiceCard
+											product={categoryProduct}
+											t={cardT}
+											locale={locale}
+											formatPrice={formatPrice}
+											summarizeText={summarizeText}
+											getProductImage={getProductImage}
+										/>
 									)}
-								</div>
+								/>
 							</>
 						) : (
 							<>
@@ -493,7 +529,31 @@ export default React.memo(function TestingServiceDetailsPage({
 									<h2 className="font-display text-xl font-black text-[var(--tl-metallic-black)]">
 										{translate(t, 'descriptionTitle')}
 									</h2>
-									<div className="mt-3">{renderDescription(activeProduct?.description || product?.description)}</div>
+									<div className="mt-3">
+										{!descriptionExpanded && isDescriptionLong ? (
+											<>
+												{renderDescription(descriptionText?.slice(0, 300) + '...')}
+												<button
+													onClick={() => setDescriptionExpanded(true)}
+													className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
+												>
+													{translate(t, 'readMore') || 'Read More'}
+												</button>
+											</>
+										) : (
+											<>
+												{renderDescription(descriptionText)}
+												{isDescriptionLong && (
+													<button
+														onClick={() => setDescriptionExpanded(false)}
+														className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
+													>
+														{translate(t, 'readLess') || 'Read Less'}
+													</button>
+												)}
+											</>
+										)}
+									</div>
 								</div>
 
 								<RelatedProductsSection

@@ -160,22 +160,22 @@ export default async function BusinessSolutionPage() {
 			</section>
 
 			{/* CTA Section */}
-			<section className="from-var-tl-primary relative overflow-hidden bg-gradient-to-r to-blue-600 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-				<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.15),transparent_50%)]" />
-
+			<section className="relative overflow-hidden bg-[linear-gradient(135deg,#ffffff_0%,#f4f9ff_100%)] px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
 				<div className="relative mx-auto max-w-4xl text-center">
-					<h2 className="font-display mb-4 text-3xl font-bold text-white sm:text-4xl">{cta.title}</h2>
-					<p className="mb-8 text-base leading-relaxed text-blue-50 sm:text-lg">{cta.body}</p>
+					<h2 className="font-display mb-4 text-3xl font-bold text-[var(--tl-metallic-black)] sm:text-4xl">
+						{cta.title}
+					</h2>
+					<p className="mb-8 text-base leading-relaxed text-slate-700 sm:text-lg">{cta.body}</p>
 					<div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
 						<Link
 							href="/contact"
-							className="text-var-tl-primary inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-semibold transition-all duration-200 hover:bg-blue-50 hover:shadow-lg"
+							className="inline-flex items-center justify-center rounded-lg bg-[var(--tl-primary)] px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-[var(--tl-primary-strong)] hover:shadow-lg"
 						>
 							{cta.primaryButton}
 						</Link>
 						<Link
 							href="tel:+18139323741"
-							className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all duration-200 hover:border-blue-50 hover:text-blue-50"
+							className="inline-flex items-center justify-center rounded-lg border-2 border-sky-200 px-8 py-3 font-semibold text-[var(--tl-primary-strong)] transition-all duration-200 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
 						>
 							{cta.secondaryButton}
 						</Link>

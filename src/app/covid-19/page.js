@@ -40,7 +40,7 @@ export default async function CovidPage() {
 		<div className="min-h-screen bg-[linear-gradient(180deg,#eff7ff_0%,#ffffff_36%)] text-[var(--tl-ink)]">
 			<main>
 				<section className="mx-auto grid w-full max-w-[1280px] gap-10 px-4 pt-12 pb-12 lg:grid-cols-[1fr_1fr] lg:px-6 lg:pt-16">
-					<div className="relative min-h-[440px]">
+					<div className="relative min-h-[300px] lg:min-h-[500px]">
 						<Image
 							src="/images/cspt-bgshape-150x150.png"
 							alt={t('images.shapeAlt')}
@@ -60,7 +60,7 @@ export default async function CovidPage() {
 							/>
 						</div>
 
-						<div className="absolute -bottom-10 left-0 w-[50%] max-w-[300px] overflow-hidden rounded-[1.5rem] border-[14px] border-[#8C9BA33D] bg-white shadow-[0_22px_50px_-38px_rgba(2,6,14,0.9)]">
+						<div className="absolute -bottom-10 left-0 hidden w-[50%] max-w-[300px] overflow-hidden rounded-[1.5rem] border-[14px] border-[#8C9BA33D] bg-white shadow-[0_22px_50px_-38px_rgba(2,6,14,0.9)] lg:block">
 							<Image
 								src="/images/doctor-protective-suit-surgical-face-mask-cotton-swab-from-throat-nose-patient-s-coronavirus-test-test-covid-19-infection-pandemic.jpg"
 								alt={t('images.secondaryAlt')}
