@@ -8,7 +8,8 @@ export function initialFieldValues(formKey) {
 			message: '',
 		},
 		scheduleAppointment: {
-			name: '',
+			firstname: '',
+			lastname: '',
 			email: '',
 			phone: '',
 			location: '',

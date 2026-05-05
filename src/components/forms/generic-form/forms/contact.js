@@ -45,6 +45,7 @@ export function createContactConfig(t) {
 			},
 		],
 		buildPayload: (values) => ({
+			form_type: 'contact',
 			firstname: values.firstname,
 			lastname: values.lastname,
 			email: values.email,

@@ -126,6 +126,7 @@ export function createPrescriptionConsentConfig(t, optionSets, shared) {
 			},
 		],
 		buildPayload: (values) => ({
+			form_type: 'consent',
 			firstname: values.firstname,
 			lastname: values.lastname,
 			phonenumber: normalizePhone(values.phone),

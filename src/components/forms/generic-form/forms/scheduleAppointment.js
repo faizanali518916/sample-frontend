@@ -13,7 +13,8 @@ export function createScheduleAppointmentConfig(t, optionSets) {
 			{
 				title: safeT(t, 'scheduleAppointment.formTitle'),
 				fields: [
-					{ name: 'name', type: 'text', label: safeT(t, 'common.fields.name', 'Name'), required: true },
+					{ name: 'firstname', type: 'text', label: safeT(t, 'common.fields.firstName', 'First Name'), required: true },
+					{ name: 'lastname', type: 'text', label: safeT(t, 'common.fields.lastName', 'Last Name'), required: true },
 					{
 						name: 'email',
 						type: 'email',
@@ -57,7 +58,9 @@ export function createScheduleAppointmentConfig(t, optionSets) {
 			},
 		],
 		buildPayload: (values) => ({
-			name: values.name,
+			form_type: 'appointment',
+			firstname: values.firstname,
+			lastname: values.lastname,
 			emailaddress: values.email,
 			phonenumber: normalizePhone(values.phone),
 			symptoms_tests: values.symptoms,

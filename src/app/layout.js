@@ -45,7 +45,7 @@ export default async function RootLayout({ children }) {
 						<CartProvider>
 							<RouteScrollReset />
 							<SiteNavbar />
-							{children}
+							<div className="pt-[98px]">{children}</div>
 							<SiteFooter locale={locale} />
 							<FloatingLocaleSwitcher />
 						</CartProvider>

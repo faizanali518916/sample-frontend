@@ -168,7 +168,7 @@ export default function SiteNavbar() {
 
 	return (
 		<header
-			className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+			className={`fixed top-0 z-50 w-full transition-all duration-500 ${
 				isScrolled
 					? 'border-b border-white/20 bg-[rgba(217,232,255,0.4)] shadow-sm backdrop-blur-md'
 					: 'border-b border-transparent bg-[rgb(217,232,255)]'

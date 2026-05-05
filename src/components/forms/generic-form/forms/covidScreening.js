@@ -133,6 +133,7 @@ export function createCovidScreeningConfig(t, shared) {
 			},
 		],
 		buildPayload: (values) => ({
+			form_type: 'covid_screening',
 			firstname: values.firstname,
 			lastname: values.lastname,
 			phonenumber: normalizePhone(values.phone),

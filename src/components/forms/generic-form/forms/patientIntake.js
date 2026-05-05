@@ -67,6 +67,7 @@ export function createPatientIntakeConfig(t, shared) {
 			},
 		],
 		buildPayload: (values) => ({
+			form_type: 'patient_intake',
 			firstname: values.firstname,
 			lastname: values.lastname,
 			phonenumber: normalizePhone(values.phone),

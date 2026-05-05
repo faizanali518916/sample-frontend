@@ -10,6 +10,7 @@ const PATH_MAP = {
 	CONSENT_FORM: 'consent-form',
 	PATIENT_INTAKE: 'patient-intake',
 	COVID_SCREENING: 'covid-screening',
+	FORMS: 'forms',
 	COUPONS: 'coupons',
 	ORDERS: 'orders',
 	PAYMENT: 'payment',
@@ -36,6 +37,13 @@ function withJsonOptions(body) {
 		},
 		body: JSON.stringify(body),
 	};
+}
+
+function withFormSubmissionOptions(formType, payload) {
+	return withJsonOptions({
+		...payload,
+		form_type: formType,
+	});
 }
 
 export function extractProducts(payload) {
@@ -205,27 +213,27 @@ export async function fetchCategories() {
 }
 
 export async function submitContactForm(payload) {
-	const response = await fetch(ENDPOINTS.CONTACT, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.FORMS, withFormSubmissionOptions('contact', payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitAppointmentForm(payload) {
-	const response = await fetch(ENDPOINTS.APPOINTMENTS, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.FORMS, withFormSubmissionOptions('appointment', payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitPatientIntakeForm(payload) {
-	const response = await fetch(ENDPOINTS.PATIENT_INTAKE, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.FORMS, withFormSubmissionOptions('patient_intake', payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitPrescriptionConsentForm(payload) {
-	const response = await fetch(ENDPOINTS.CONSENT_FORM, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.FORMS, withFormSubmissionOptions('consent', payload));
 	return parseJsonResponse(response);
 }
 
 export async function submitCovidScreeningForm(payload) {
-	const response = await fetch(ENDPOINTS.COVID_SCREENING, withJsonOptions(payload));
+	const response = await fetch(ENDPOINTS.FORMS, withFormSubmissionOptions('covid_screening', payload));
 	return parseJsonResponse(response);
 }
 
