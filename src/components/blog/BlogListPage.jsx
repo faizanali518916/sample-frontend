@@ -7,13 +7,13 @@ import { useTranslations } from 'next-intl';
 import { CalendarDays, Search } from 'lucide-react';
 import { extractBlogSnippet, formatBlogDate } from '@/lib/blog-content';
 
-const ITEMS_STEP = 3;
+const ITEMS_PER_PAGE = 6;
 
 export default function BlogListPage({ blogs = [], categories = [], locale = 'en', initialCategory = 'all' }) {
 	const t = useTranslations('BlogListPage');
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedCategoryId, setSelectedCategoryId] = useState(String(initialCategory || 'all'));
-	const [visibleCount, setVisibleCount] = useState(ITEMS_STEP);
+	const [currentPage, setCurrentPage] = useState(1);
 	const deferredSearch = useDeferredValue(searchTerm.trim().toLowerCase());
 
 	const orderedBlogs = useMemo(
@@ -71,7 +71,9 @@ export default function BlogListPage({ blogs = [], categories = [], locale = 'en
 		});
 	}, [deferredSearch, orderedBlogs, selectedCategoryId]);
 
-	const visibleBlogs = filteredBlogs.slice(0, visibleCount);
+	const totalPages = Math.max(1, Math.ceil(filteredBlogs.length / ITEMS_PER_PAGE));
+	const safePage = Math.min(currentPage, totalPages);
+	const visibleBlogs = filteredBlogs.slice((safePage - 1) * ITEMS_PER_PAGE, safePage * ITEMS_PER_PAGE);
 	const recentPosts = orderedBlogs.slice(0, 3);
 
 	return (
@@ -95,7 +97,7 @@ export default function BlogListPage({ blogs = [], categories = [], locale = 'en
 									value={searchTerm}
 									onChange={(event) => {
 										setSearchTerm(event.target.value);
-										setVisibleCount(ITEMS_STEP);
+										setCurrentPage(1);
 									}}
 									placeholder={t('searchPlaceholder')}
 									className="h-11 w-full rounded-full border border-sky-100 bg-[#f8fbff] pr-4 pl-10 text-sm font-semibold text-slate-700 transition outline-none focus:border-[var(--tl-primary)] focus:bg-white"
@@ -111,7 +113,7 @@ export default function BlogListPage({ blogs = [], categories = [], locale = 'en
 								type="button"
 								onClick={() => {
 									setSelectedCategoryId('all');
-									setVisibleCount(ITEMS_STEP);
+									setCurrentPage(1);
 								}}
 								className={`rounded-full px-4 py-2 text-xs font-bold tracking-wide uppercase transition ${
 									selectedCategoryId === 'all'
@@ -122,21 +124,13 @@ export default function BlogListPage({ blogs = [], categories = [], locale = 'en
 								{t('allCategories')}
 							</button>
 							{categoryOptions.map((category) => (
-								<button
+								<Link
 									key={category.id}
-									type="button"
-									onClick={() => {
-										setSelectedCategoryId(category.id);
-										setVisibleCount(ITEMS_STEP);
-									}}
-									className={`rounded-full px-4 py-2 text-xs font-bold tracking-wide uppercase transition ${
-										selectedCategoryId === category.id
-											? 'bg-[var(--tl-primary)] text-white'
-											: 'bg-sky-50 text-[var(--tl-primary-strong)] hover:bg-sky-100'
-									}`}
+									href={`/categories/${category.id}`}
+									className="rounded-full bg-sky-50 px-4 py-2 text-xs font-bold tracking-wide text-[var(--tl-primary-strong)] uppercase transition hover:bg-sky-100"
 								>
 									{category.name} ({category.count})
-								</button>
+								</Link>
 							))}
 						</div>
 					</div>
@@ -202,15 +196,34 @@ export default function BlogListPage({ blogs = [], categories = [], locale = 'en
 							</div>
 						) : null}
 
-						{visibleCount < filteredBlogs.length ? (
-							<div className="pt-2 text-center">
-								<button
-									type="button"
-									onClick={() => setVisibleCount((count) => count + ITEMS_STEP)}
-									className="rounded-full bg-[var(--tl-primary)] px-7 py-3 text-sm font-extrabold tracking-wide text-white uppercase transition hover:bg-[var(--tl-primary-strong)]"
+						{totalPages > 1 ? (
+							<div className="mt-8 flex flex-col items-center gap-3">
+								<nav
+									aria-label={t('paginationAria')}
+									className="flex items-center gap-2 rounded-full border border-sky-100 bg-white/90 p-2 shadow-sm"
 								>
-									{t('showMore')}
-								</button>
+									<button
+										type="button"
+										onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+										disabled={safePage === 1}
+										className="inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-40"
+									>
+										{t('previous')}
+									</button>
+
+									<span className="min-w-16 px-2 text-center text-sm font-semibold text-slate-700">
+										{safePage} / {totalPages}
+									</span>
+
+									<button
+										type="button"
+										onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+										disabled={safePage === totalPages}
+										className="inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-40"
+									>
+										{t('next')}
+									</button>
+								</nav>
 							</div>
 						) : null}
 					</div>
@@ -239,17 +252,13 @@ export default function BlogListPage({ blogs = [], categories = [], locale = 'en
 						<ul className="mt-4 space-y-2">
 							{categoryOptions.map((category) => (
 								<li key={`widget-${category.id}`}>
-									<button
-										type="button"
-										onClick={() => {
-											setSelectedCategoryId(category.id);
-											setVisibleCount(ITEMS_STEP);
-										}}
+									<Link
+										href={`/categories/${category.id}`}
 										className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-sky-50 hover:text-[var(--tl-primary)]"
 									>
 										<span>{category.name}</span>
 										<span className="text-xs text-slate-500">{category.count}</span>
-									</button>
+									</Link>
 								</li>
 							))}
 						</ul>

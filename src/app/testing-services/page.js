@@ -24,7 +24,7 @@ export default async function TestingServicesRoute() {
 	let products = [];
 
 	try {
-		products = await fetchProducts();
+		products = await fetchProducts(locale);
 	} catch {
 		products = [];
 	}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocale } from 'next-intl';
 import { fetchProducts } from '@/lib/api';
 import { getDisplayPrice } from './utils';
 
@@ -12,6 +13,7 @@ function toRecommendation(product) {
 }
 
 export default function useRecommendedProducts({ isOpen, step, selectedProductIds, fallbackTestName }) {
+	const locale = useLocale();
 	const [isLoadingProducts, setIsLoadingProducts] = useState(false);
 	const [recommendedProducts, setRecommendedProducts] = useState([]);
 
@@ -31,7 +33,7 @@ export default function useRecommendedProducts({ isOpen, step, selectedProductId
 			setIsLoadingProducts(true);
 
 			try {
-				const products = await fetchProducts();
+				const products = await fetchProducts(locale);
 				if (!isActive) {
 					return;
 				}
@@ -77,7 +79,7 @@ export default function useRecommendedProducts({ isOpen, step, selectedProductId
 		return () => {
 			isActive = false;
 		};
-	}, [fallbackTestName, isOpen, selectedProductIds, step]);
+	}, [fallbackTestName, isOpen, locale, selectedProductIds, step]);
 
 	const resetRecommendedProducts = () => {
 		setRecommendedProducts([]);

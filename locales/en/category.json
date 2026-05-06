@@ -1,0 +1,13 @@
+{
+	"CategoryDetailPage": {
+		"metadata": {
+			"title": "{name} | 24-7 Labs",
+			"description": "Explore our {name} category at 24-7 Labs - trusted health testing services."
+		},
+		"eyebrow": "Category",
+		"fallbackTitle": "Category Details",
+		"backToServices": "Back to Services",
+		"productsTitle": "Products in this Category",
+		"productsCount": "{count} products available"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"CategoryDetailPage": {
+		"metadata": {
+			"title": "{name} | 24-7 Labs",
+			"description": "Explora nuestra categoría {name} en 24-7 Labs - servicios de pruebas de salud de confianza."
+		},
+		"eyebrow": "Categoría",
+		"fallbackTitle": "Detalle de la categoría",
+		"backToServices": "Volver a Servicios",
+		"productsTitle": "Productos en esta Categoría",
+		"productsCount": "{count} productos disponibles"
+	}
+}

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
 	let productName = messages?.TestingServiceDetailsPage?.fallbackTitle || 'Service Details';
 
 	try {
-		const products = await fetchProducts();
+		const products = await fetchProducts(locale);
 		const match = products.find((product) => String(product.id) === String(id));
 		if (match?.name) {
 			productName = match.name;
@@ -43,14 +43,14 @@ export default async function TestingServiceDetailsRoute({ params }) {
 	let products = [];
 	let allCategories = [];
 	try {
-		products = await fetchProducts();
+		products = await fetchProducts(locale);
 	} catch (error) {
 		console.error('Failed to fetch products:', error);
 		products = [];
 	}
 
 	try {
-		allCategories = await fetchCategories();
+		allCategories = await fetchCategories(locale);
 	} catch (error) {
 		console.error('Failed to fetch categories:', error);
 		allCategories = [];

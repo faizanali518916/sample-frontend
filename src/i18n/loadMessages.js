@@ -8,6 +8,7 @@ const localeLoaders = {
 		() => import('../../locales/en/company.json').then((module) => module.default),
 		() => import('../../locales/en/forms.json').then((module) => module.default),
 		() => import('../../locales/en/blog.json').then((module) => module.default),
+		() => import('../../locales/en/category.json').then((module) => module.default),
 	],
 	es: [
 		() => import('../../locales/es/common.json').then((module) => module.default),
@@ -18,6 +19,7 @@ const localeLoaders = {
 		() => import('../../locales/es/company.json').then((module) => module.default),
 		() => import('../../locales/es/forms.json').then((module) => module.default),
 		() => import('../../locales/es/blog.json').then((module) => module.default),
+		() => import('../../locales/es/category.json').then((module) => module.default),
 	],
 };
 

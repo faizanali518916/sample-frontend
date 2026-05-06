@@ -27,13 +27,13 @@ export default async function BlogsRoute({ searchParams }) {
 	let categories = [];
 
 	try {
-		blogs = await fetchBlogs();
+		blogs = await fetchBlogs(locale);
 	} catch {
 		blogs = [];
 	}
 
 	try {
-		categories = await fetchCategories();
+		categories = await fetchCategories(locale);
 	} catch {
 		categories = [];
 	}

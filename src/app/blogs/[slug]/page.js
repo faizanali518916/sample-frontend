@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
 
 	let blogTitle = messages?.BlogDetailPage?.fallbackTitle;
 	try {
-		const blogs = await fetchBlogs();
+		const blogs = await fetchBlogs(locale);
 		const blog = blogs.find((entry) => entry.slug === slug);
 		if (blog?.title) {
 			blogTitle = blog.title;
@@ -42,19 +42,19 @@ export default async function BlogDetailsRoute({ params }) {
 	let products = [];
 
 	try {
-		blogs = await fetchBlogs();
+		blogs = await fetchBlogs(locale);
 	} catch {
 		blogs = [];
 	}
 
 	try {
-		categories = await fetchCategories();
+		categories = await fetchCategories(locale);
 	} catch {
 		categories = [];
 	}
 
 	try {
-		products = await fetchProducts();
+		products = await fetchProducts(locale);
 	} catch {
 		products = [];
 	}

@@ -131,7 +131,7 @@ export default function BlogDetailPage({
 							{categories.map((category) => (
 								<li key={`category-${category.id}`}>
 									<Link
-										href={`/blogs?category=${category.id}`}
+										href={`/categories/${category.id}`}
 										className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-50 hover:text-[var(--tl-primary)]"
 									>
 										<span>{category.name}</span>

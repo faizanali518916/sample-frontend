@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
+import { summarizeHtml } from '@/lib/htmlSanitizer';
 
 function parsePrice(value) {
 	const numericValue = Number(value);
@@ -82,6 +83,9 @@ export default React.memo(function TestingServiceCard({
 	const pricingModel = getPricingModel(product);
 	const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
 
+	// Use summarizeHtml to extract and truncate plain text from HTML descriptions
+	const descriptionSummary = useMemo(() => summarizeHtml(product.description, 145), [product.description]);
+
 	useEffect(() => {
 		if (!added) {
 			return undefined;
@@ -131,9 +135,7 @@ export default React.memo(function TestingServiceCard({
 						{productName}
 					</Link>
 				</h2>
-				<p className="mt-3 flex-1 text-sm leading-relaxed break-words text-slate-600">
-					{summarizeText(product.description, 145)}
-				</p>
+				<p className="mt-3 flex-1 text-sm leading-relaxed break-words text-slate-600">{descriptionSummary}</p>
 
 				<div className="mt-5 border-t border-slate-100 pt-4">
 					{pricingModel.type === 'sale' && (

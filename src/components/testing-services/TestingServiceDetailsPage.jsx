@@ -3,11 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { ArrowLeft, ArrowRight, PhoneCall, ChevronDown } from 'lucide-react';
 import React from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import RelatedProductsSection from '@/components/common/RelatedProductsSection';
-import { t as translate } from '@/lib/i18n-utils';
+import HtmlDescription from '@/components/common/HtmlDescription';
 import { resolveImageUrl } from '@/lib/api';
 import TestingServiceCard from './components/TestingServiceCard';
 
@@ -63,20 +64,12 @@ function buildPriceModel(product) {
 	};
 }
 
-function isLikelyHtml(value) {
-	return /<[a-z][\s\S]*>/i.test(value || '');
-}
-
 function renderDescription(description) {
 	if (!description) {
 		return null;
 	}
 
-	if (isLikelyHtml(description)) {
-		return <div className="prose prose-slate max-w-none" dangerouslySetInnerHTML={{ __html: description }} />;
-	}
-
-	return <p className="text-sm leading-relaxed whitespace-pre-line text-slate-600">{description}</p>;
+	return <HtmlDescription content={description} />;
 }
 
 function summarizeText(value, maxLength = 145) {
@@ -115,6 +108,16 @@ export default React.memo(function TestingServiceDetailsPage({
 	locale,
 }) {
 	const { addToCart } = useCart();
+
+	// Helper to get translated string and substitute parameters
+	const getMessage = (key, params = {}) => {
+		const message = t?.[key] || '';
+		if (!message || !Object.keys(params).length) return message;
+
+		return Object.entries(params).reduce((result, [paramKey, paramValue]) => {
+			return result.replace(new RegExp(`\\{${paramKey}\\}`, 'g'), paramValue);
+		}, message);
+	};
 	const sourceVariants = Array.isArray(product?.variants) ? product.variants : [];
 	const [selectedVariantId, setSelectedVariantId] = useState('');
 	const [selectedCategoryId, setSelectedCategoryId] = useState('all');
@@ -148,7 +151,7 @@ export default React.memo(function TestingServiceDetailsPage({
 	}, [selectedVariantId, variants]);
 
 	const activeProduct = selectedVariant || product;
-	const productName = activeProduct?.name ?? translate(t, 'fallbackProductName', { id: product?.id ?? '-' });
+	const productName = activeProduct?.name ?? getMessage('fallbackProductName', { id: product?.id ?? '-' });
 	const selectedCategory = useMemo(() => {
 		if (selectedCategoryId === 'all') {
 			return null;
@@ -162,7 +165,7 @@ export default React.memo(function TestingServiceDetailsPage({
 	}, [allCategories, productCategories, selectedCategoryId]);
 	const categoryName =
 		selectedCategory?.name ??
-		translate(t, 'fallbackProductName', { id: selectedCategory?.id ?? selectedCategoryId ?? '-' });
+		getMessage('fallbackProductName', { id: selectedCategory?.id ?? selectedCategoryId ?? '-' });
 	const categoryDescription = selectedCategory?.description || selectedCategory?.shortDescription || '';
 	const categoryImage = getCategoryImage(selectedCategory);
 	const pricing = buildPriceModel(activeProduct);
@@ -203,7 +206,7 @@ export default React.memo(function TestingServiceDetailsPage({
 
 	const formatPrice = (value, localeOverride = locale) => {
 		if (!Number.isFinite(value)) {
-			return translate(t, 'contactUs');
+			return getMessage('contactUs');
 		}
 
 		return new Intl.NumberFormat(localeOverride === 'es' ? 'es-US' : 'en-US', {
@@ -224,16 +227,16 @@ export default React.memo(function TestingServiceDetailsPage({
 		}
 
 		if (model.type === 'range') {
-			return translate(t, 'variantRange', {
+			return getMessage('variantRange', {
 				min: formatPrice(model.minimum),
 				max: formatPrice(model.maximum),
 			});
 		}
 
-		return translate(t, 'contactUs');
+		return getMessage('contactUs');
 	};
 
-	const cardT = (key, params) => translate(t, key, params);
+	const cardT = (key, params) => getMessage(key, params);
 
 	function handleAddToCart() {
 		const selectedItem = selectedVariant || product;
@@ -254,7 +257,7 @@ export default React.memo(function TestingServiceDetailsPage({
 						className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
 					>
 						<ArrowLeft className="h-4 w-4" />
-						{translate(t, 'backToServices')}
+						{getMessage('backToServices')}
 					</Link>
 				</div>
 
@@ -266,12 +269,12 @@ export default React.memo(function TestingServiceDetailsPage({
 							className="flex w-full items-center justify-between lg:hidden"
 						>
 							<h3 className="font-display text-lg font-black text-[var(--tl-metallic-black)]">
-								{translate(t, 'categoriesTitle') || 'Categories'}
+								{getMessage('categoriesTitle') || 'Categories'}
 							</h3>
 							<ChevronDown className={`h-5 w-5 transition-transform ${categoryDropdownOpen ? 'rotate-180' : ''}`} />
 						</button>
 						<h3 className="font-display hidden text-lg font-black text-[var(--tl-metallic-black)] lg:block">
-							{translate(t, 'categoriesTitle') || 'Categories'}
+							{getMessage('categoriesTitle') || 'Categories'}
 						</h3>
 						<div className={`mt-4 space-y-2 ${categoryDropdownOpen ? 'block' : 'hidden lg:block'}`}>
 							<button
@@ -285,7 +288,7 @@ export default React.memo(function TestingServiceDetailsPage({
 										: 'text-slate-700 hover:bg-sky-50 hover:text-[var(--tl-primary)]'
 								}`}
 							>
-								{translate(t, 'allCategories') || 'All Categories'}
+								{getMessage('allCategories') || 'All Categories'}
 							</button>
 							{allCategories.map((category) => (
 								<button
@@ -323,13 +326,13 @@ export default React.memo(function TestingServiceDetailsPage({
 										</div>
 										<div>
 											<p className="text-xs font-bold tracking-[0.14em] text-[var(--tl-primary)] uppercase">
-												{translate(t, 'categoriesTitle')}
+												{getMessage('categoriesTitle')}
 											</p>
 											<h1 className="font-display mt-2 text-2xl leading-tight font-black break-words text-[var(--tl-metallic-black)] sm:text-3xl lg:text-4xl">
 												{categoryName}
 											</h1>
 											<p className="mt-5 text-sm font-semibold text-slate-600">
-												{categoryProducts.length} {translate(t, 'relatedTitle').toLowerCase()}
+												{categoryProducts.length} {getMessage('relatedTitle').toLowerCase()}
 											</p>
 										</div>
 									</div>
@@ -337,7 +340,7 @@ export default React.memo(function TestingServiceDetailsPage({
 
 								<div className="mt-7 rounded-[1.5rem] border border-sky-100 bg-white p-5 shadow-[0_18px_50px_-42px_rgba(2,6,14,0.9)] md:p-6">
 									<h2 className="font-display text-xl font-black text-[var(--tl-metallic-black)]">
-										{translate(t, 'descriptionTitle')}
+										{getMessage('descriptionTitle')}
 									</h2>
 									<div className="mt-3">
 										{!categoryDescriptionExpanded && isCategoryDescriptionLong ? (
@@ -347,7 +350,7 @@ export default React.memo(function TestingServiceDetailsPage({
 													onClick={() => setCategoryDescriptionExpanded(true)}
 													className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
 												>
-													{translate(t, 'readMore') || 'Read More'}
+													{getMessage('readMore') || 'Read More'}
 												</button>
 											</>
 										) : (
@@ -358,7 +361,7 @@ export default React.memo(function TestingServiceDetailsPage({
 														onClick={() => setCategoryDescriptionExpanded(false)}
 														className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
 													>
-														{translate(t, 'readLess') || 'Read Less'}
+														{getMessage('readLess') || 'Read Less'}
 													</button>
 												)}
 											</>
@@ -400,7 +403,7 @@ export default React.memo(function TestingServiceDetailsPage({
 										<div className="flex flex-col justify-between">
 											<div>
 												<p className="text-xs font-bold tracking-[0.14em] text-[var(--tl-primary)] uppercase">
-													{translate(t, 'serviceDetails')}
+													{getMessage('serviceDetails')}
 												</p>
 												<h1 className="font-display mt-2 text-2xl leading-tight font-black break-words text-[var(--tl-metallic-black)] sm:text-3xl lg:text-4xl">
 													{productName}
@@ -426,7 +429,7 @@ export default React.memo(function TestingServiceDetailsPage({
 
 													{pricing.type === 'range' && (
 														<p className="font-display text-3xl font-black text-[var(--tl-metallic-black)]">
-															{translate(t, 'variantRange', {
+															{getMessage('variantRange', {
 																min: formatPrice(pricing.minimum),
 																max: formatPrice(pricing.maximum),
 															})}
@@ -435,14 +438,14 @@ export default React.memo(function TestingServiceDetailsPage({
 
 													{pricing.type === 'contact' && (
 														<p className="font-display text-3xl font-black text-[var(--tl-metallic-black)]">
-															{translate(t, 'contactUs')}
+															{getMessage('contactUs')}
 														</p>
 													)}
 												</div>
 
 												{productCategories.length > 0 && (
 													<p className="mt-6 text-sm text-slate-600">
-														<span className="font-semibold text-slate-800">{translate(t, 'categoryLabel')}: </span>
+														<span className="font-semibold text-slate-800">{getMessage('categoryLabel')}: </span>
 														{productCategories.map((category) => category.name).join(', ')}
 													</p>
 												)}
@@ -455,7 +458,7 @@ export default React.memo(function TestingServiceDetailsPage({
 															className="text-sm font-bold text-slate-800"
 															htmlFor="testing-service-variant-select"
 														>
-															{translate(t, 'variationLabel')}
+															{getMessage('variationLabel')}
 														</label>
 														<select
 															id="testing-service-variant-select"
@@ -463,20 +466,20 @@ export default React.memo(function TestingServiceDetailsPage({
 															value={selectedVariantId}
 															onChange={(event) => setSelectedVariantId(event.target.value)}
 														>
-															<option value="">{translate(t, 'selectVariationPlaceholder')}</option>
+															<option value="">{getMessage('selectVariationPlaceholder')}</option>
 															{variants.map((variant) => (
 																<option key={variant.id} value={variant.id}>
-																	{variant.name || translate(t, 'fallbackProductName', { id: variant.id })} -{' '}
+																	{variant.name || getMessage('fallbackProductName', { id: variant.id })} -{' '}
 																	{formatProductPrice(variant)}
 																</option>
 															))}
 														</select>
 
-														<p className="mt-3 text-sm font-bold text-slate-800">{translate(t, 'optionsAvailable')}</p>
+														<p className="mt-3 text-sm font-bold text-slate-800">{getMessage('optionsAvailable')}</p>
 														<ul className="mt-2 space-y-1">
 															{variants.slice(0, 8).map((variant) => (
 																<li key={variant.id} className="text-sm text-slate-600">
-																	{variant.name || translate(t, 'fallbackProductName', { id: variant.id })} -{' '}
+																	{variant.name || getMessage('fallbackProductName', { id: variant.id })} -{' '}
 																	{formatProductPrice(variant)}
 																</li>
 															))}
@@ -497,19 +500,13 @@ export default React.memo(function TestingServiceDetailsPage({
 																	: 'bg-[var(--tl-primary)] hover:bg-[var(--tl-primary-strong)]'
 														}`}
 													>
-														{added ? translate(t, 'addedToCart') : translate(t, 'addToCart')}
+														{added ? getMessage('addedToCart') : getMessage('addToCart')}
 													</button>
 													<Link
-														href="/checkout"
-														className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
-													>
-														{translate(t, 'goToCheckout')}
-													</Link>
-													<Link
-														href={`/contact?test=${encodeURIComponent(productName)}`}
+														href={`/contact?message=${encodeURIComponent(`I am interested in ${productName}.`)}`}
 														className="inline-flex items-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)]"
 													>
-														{translate(t, 'bookTest')}
+														{getMessage('bookTest')}
 														<ArrowRight className="h-4 w-4" />
 													</Link>
 													<a
@@ -517,7 +514,7 @@ export default React.memo(function TestingServiceDetailsPage({
 														className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-6 py-3 text-sm font-bold text-[var(--tl-primary-strong)] transition hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
 													>
 														<PhoneCall className="h-4 w-4" />
-														{translate(t, 'callNow')}
+														{getMessage('callNow')}
 													</a>
 												</div>
 											</div>
@@ -527,7 +524,7 @@ export default React.memo(function TestingServiceDetailsPage({
 
 								<div className="mt-7 rounded-[1.5rem] border border-sky-100 bg-white p-5 shadow-[0_18px_50px_-42px_rgba(2,6,14,0.9)] md:p-6">
 									<h2 className="font-display text-xl font-black text-[var(--tl-metallic-black)]">
-										{translate(t, 'descriptionTitle')}
+										{getMessage('descriptionTitle')}
 									</h2>
 									<div className="mt-3">
 										{!descriptionExpanded && isDescriptionLong ? (
@@ -537,7 +534,7 @@ export default React.memo(function TestingServiceDetailsPage({
 													onClick={() => setDescriptionExpanded(true)}
 													className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
 												>
-													{translate(t, 'readMore') || 'Read More'}
+													{getMessage('readMore') || 'Read More'}
 												</button>
 											</>
 										) : (
@@ -548,7 +545,7 @@ export default React.memo(function TestingServiceDetailsPage({
 														onClick={() => setDescriptionExpanded(false)}
 														className="mt-3 text-sm font-semibold text-[var(--tl-primary)] hover:text-[var(--tl-primary-strong)]"
 													>
-														{translate(t, 'readLess') || 'Read Less'}
+														{getMessage('readLess') || 'Read Less'}
 													</button>
 												)}
 											</>
@@ -557,7 +554,7 @@ export default React.memo(function TestingServiceDetailsPage({
 								</div>
 
 								<RelatedProductsSection
-									title={translate(t, 'relatedTitle')}
+									title={getMessage('relatedTitle')}
 									items={relatedProducts}
 									renderItem={(relatedProduct) => (
 										<TestingServiceCard

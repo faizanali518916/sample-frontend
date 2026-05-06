@@ -14,6 +14,9 @@ export async function generateMetadata() {
 	};
 }
 
-export default function ContactPage() {
-	return <GenericFormPage formKey="contact" />;
+export default async function ContactPage({ searchParams }) {
+	const resolvedSearchParams = (await searchParams) || {};
+	const prefilledMessage = typeof resolvedSearchParams.message === 'string' ? resolvedSearchParams.message.trim() : '';
+
+	return <GenericFormPage formKey="contact" initialValues={prefilledMessage ? { message: prefilledMessage } : {}} />;
 }

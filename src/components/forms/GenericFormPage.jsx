@@ -8,10 +8,13 @@ import { buildFormConfig, flattenVisibleFields, initialFieldValues } from '@/com
 import { useAppData } from '@/components/providers/DataProvider';
 import { isEmail, normalizePhone, safeT } from '@/components/forms/generic-form/utils';
 
-export default function GenericFormPage({ formKey }) {
+export default function GenericFormPage({ formKey, initialValues = {} }) {
 	const t = useTranslations('Forms');
 	const { states, locations, infections } = useAppData();
-	const [values, setValues] = useState(initialFieldValues(formKey));
+	const [values, setValues] = useState(() => ({
+		...initialFieldValues(formKey),
+		...initialValues,
+	}));
 	const [errors, setErrors] = useState({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitResult, setSubmitResult] = useState({ status: 'idle', message: '' });

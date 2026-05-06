@@ -46,6 +46,40 @@ function withFormSubmissionOptions(formType, payload) {
 	});
 }
 
+function resolveLocalizedText(value, locale = 'en') {
+	if (value === null || value === undefined) {
+		return '';
+	}
+
+	if (typeof value === 'object' && !Array.isArray(value)) {
+		return (
+			value[locale] || value.en || Object.values(value).find((entry) => typeof entry === 'string' && entry.trim()) || ''
+		);
+	}
+
+	if (typeof value === 'string') {
+		const trimmed = value.trim();
+		if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+			try {
+				const parsed = JSON.parse(trimmed);
+				return resolveLocalizedText(parsed, locale);
+			} catch {
+				return value;
+			}
+		}
+	}
+
+	return String(value);
+}
+
+function withLocaleQuery(endpoint, locale) {
+	const url = new URL(endpoint);
+	if (locale) {
+		url.searchParams.set('locale', locale);
+	}
+	return url.toString();
+}
+
 export function extractProducts(payload) {
 	if (Array.isArray(payload)) {
 		return payload;
@@ -86,7 +120,7 @@ export function resolveImageUrl(value) {
 	return `${API_ORIGIN}/${value}`;
 }
 
-export function normalizeProduct(product) {
+export function normalizeProduct(product, locale = 'en') {
 	if (!product?.id) {
 		return null;
 	}
@@ -97,13 +131,18 @@ export function normalizeProduct(product) {
 
 	return {
 		id: product.id,
-		name: product.name ?? null,
-		description: product.description ?? '',
+		name: resolveLocalizedText(product.name, locale) || null,
+		description: resolveLocalizedText(product.description, locale),
 		mainImage: resolveImageUrl(product.main_image),
 		image: resolveImageUrl(product.main_image),
-		categories: Array.isArray(product.categories) ? product.categories : [],
+		categories: Array.isArray(product.categories)
+			? product.categories.map((category) => ({
+					...category,
+					name: resolveLocalizedText(category?.name, locale) || null,
+				}))
+			: [],
 		variants: Array.isArray(product.variants)
-			? product.variants.map((variant) => normalizeProduct(variant)).filter(Boolean)
+			? product.variants.map((variant) => normalizeProduct(variant, locale)).filter(Boolean)
 			: [],
 		variantOf: product.variant_of ?? null,
 		rawRegularPrice: product.regular_price ?? null,
@@ -116,7 +155,7 @@ export function normalizeProduct(product) {
 	};
 }
 
-export function normalizeBlog(blog) {
+export function normalizeBlog(blog, locale = 'en') {
 	if (!blog?.id) {
 		return null;
 	}
@@ -132,14 +171,14 @@ export function normalizeBlog(blog) {
 		categories: Array.isArray(blog.categories)
 			? blog.categories.map((category) => ({
 					id: category?.id,
-					name: category?.name ?? null,
+					name: resolveLocalizedText(category?.name, locale) || null,
 				}))
 			: [],
 	};
 }
 
-export async function fetchProducts() {
-	const response = await fetch(ENDPOINTS.PRODUCTS, {
+export async function fetchProducts(locale = 'en') {
+	const response = await fetch(withLocaleQuery(ENDPOINTS.PRODUCTS, locale), {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -151,11 +190,13 @@ export async function fetchProducts() {
 	}
 
 	const payload = await response.json();
-	return extractProducts(payload).map(normalizeProduct).filter(Boolean);
+	return extractProducts(payload)
+		.map((product) => normalizeProduct(product, locale))
+		.filter(Boolean);
 }
 
-export async function fetchBlogs() {
-	const response = await fetch(ENDPOINTS.BLOGS, {
+export async function fetchBlogs(locale = 'en') {
+	const response = await fetch(withLocaleQuery(ENDPOINTS.BLOGS, locale), {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -175,11 +216,11 @@ export async function fetchBlogs() {
 				? payload.data
 				: [];
 
-	return blogs.map(normalizeBlog).filter(Boolean);
+	return blogs.map((blog) => normalizeBlog(blog, locale)).filter(Boolean);
 }
 
-export async function fetchCategories() {
-	const response = await fetch(ENDPOINTS.CATEGORIES, {
+export async function fetchCategories(locale = 'en') {
+	const response = await fetch(withLocaleQuery(ENDPOINTS.CATEGORIES, locale), {
 		cache: 'no-store',
 		headers: {
 			Accept: 'application/json',
@@ -192,24 +233,21 @@ export async function fetchCategories() {
 
 	const payload = await response.json();
 
-	// Extract categories from response
-	if (Array.isArray(payload)) {
-		return payload;
-	}
+	const categories = Array.isArray(payload)
+		? payload
+		: Array.isArray(payload?.categories)
+			? payload.categories
+			: Array.isArray(payload?.data)
+				? payload.data
+				: Array.isArray(payload?.data?.categories)
+					? payload.data.categories
+					: [];
 
-	if (Array.isArray(payload?.categories)) {
-		return payload.categories;
-	}
-
-	if (Array.isArray(payload?.data)) {
-		return payload.data;
-	}
-
-	if (Array.isArray(payload?.data?.categories)) {
-		return payload.data.categories;
-	}
-
-	return [];
+	return categories.map((category) => ({
+		...category,
+		name: resolveLocalizedText(category?.name, locale) || null,
+		description: resolveLocalizedText(category?.description, locale),
+	}));
 }
 
 export async function submitContactForm(payload) {
