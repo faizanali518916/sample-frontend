@@ -163,9 +163,9 @@ export function normalizeBlog(blog, locale = 'en') {
 	return {
 		id: blog.id,
 		slug: blog.slug ?? String(blog.id),
-		title: blog.title ?? null,
+		title: resolveLocalizedText(blog.title, locale) ?? null,
 		author: blog.author ?? null,
-		blogcontent: blog.blogcontent ?? '',
+		blogcontent: resolveLocalizedText(blog.blogcontent, locale) ?? '',
 		thumbnailimage: resolveImageUrl(blog.thumbnailimage),
 		created_at: blog.created_at ?? null,
 		categories: Array.isArray(blog.categories)
