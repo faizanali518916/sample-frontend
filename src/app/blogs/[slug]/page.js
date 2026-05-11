@@ -15,11 +15,16 @@ export async function generateMetadata({ params }) {
 	const slug = resolvedParams?.slug;
 
 	let blogTitle = messages?.BlogDetailPage?.fallbackTitle;
+	let blogDescription = messages?.BlogDetailPage?.metadata?.description;
 	try {
-		const blogs = await fetchBlogs(locale);
+		// Always fetch English blogs to get English title for metadata
+		const blogs = await fetchBlogs('en');
 		const blog = blogs.find((entry) => entry.slug === slug);
 		if (blog?.title) {
 			blogTitle = blog.title;
+		}
+		if (blog?.description) {
+			blogDescription = blog.description;
 		}
 	} catch {
 		blogTitle = messages?.BlogDetailPage?.fallbackTitle;
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }) {
 
 	return {
 		title: messages?.BlogDetailPage?.metadata?.title?.replace('{title}', blogTitle),
-		description: messages?.BlogDetailPage?.metadata?.description,
+		description: blogDescription || messages?.BlogDetailPage?.metadata?.description,
 	};
 }
 

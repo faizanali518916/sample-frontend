@@ -4,18 +4,9 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { Stethoscope, Briefcase, Scale, Star, ArrowRight } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { loadMessages } from '@/i18n/loadMessages';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.BusinessSolutionPage?.metadata?.title,
-		description: messages?.BusinessSolutionPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/business-solutions');
 
 export default async function BusinessSolutionPage() {
 	const cookieStore = await cookies();

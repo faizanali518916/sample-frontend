@@ -1,21 +1,12 @@
 import { cookies } from 'next/headers';
 import { fetchBlogs, fetchCategories } from '@/lib/api';
-import { loadMessages } from '@/i18n/loadMessages';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import BlogListPage from '@/components/blog/BlogListPage';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.BlogListPage?.metadata?.title,
-		description: messages?.BlogListPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/blogs');
 
 export default async function BlogsRoute({ searchParams }) {
 	const cookieStore = await cookies();

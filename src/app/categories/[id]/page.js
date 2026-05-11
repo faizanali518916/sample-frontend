@@ -9,7 +9,8 @@ export async function generateMetadata({ params }) {
 	const locale = getLocaleFromCookieStore(await cookies());
 	const messages = await loadMessages(locale);
 
-	const categories = await fetchCategories(locale);
+	// Always fetch English categories to get English name for metadata
+	const categories = await fetchCategories('en');
 	const category = categories.find((cat) => String(cat.id) === String(id));
 
 	const categoryName = category?.name || messages?.CategoryDetailPage?.fallbackTitle || 'Category Details';

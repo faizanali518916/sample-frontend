@@ -2,18 +2,9 @@ import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import Link from 'next/link';
-import { loadMessages } from '@/i18n/loadMessages';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.PrivacyPolicyPage?.metadata?.title,
-		description: messages?.PrivacyPolicyPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/privacy-policy');
 
 export default async function PrivacyPolicyPage() {
 	const cookieStore = await cookies();

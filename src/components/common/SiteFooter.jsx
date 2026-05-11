@@ -68,17 +68,6 @@ const footerTranslations = {
 			{ label: 'Privacy Policy', href: '/privacy-policy' },
 			{ label: 'Contact', href: '/contact' },
 		],
-		testingTitle: 'Testing Pages',
-		testing: [
-			{ label: 'Testing Services', href: '/testing-services' },
-			{ label: 'DNA Testing', href: '/dna-testing' },
-			{ label: 'STD Testing', href: '/std-testing' },
-			{ label: 'Drug Testing', href: '/drug-testing' },
-			{ label: 'Allergy Testing', href: '/allergy-testing' },
-			{ label: 'Heart Testing', href: '/heart-testing' },
-			{ label: 'Hormone Testing', href: '/hormone-testing' },
-			{ label: 'Routine Health Testing', href: '/routine-health-testing' },
-		],
 		contactTitle: 'Contact',
 		socialAria: {
 			facebook: 'Facebook',
@@ -127,17 +116,6 @@ const footerTranslations = {
 			{ label: 'Ubicaciones de pruebas', href: '/contact' },
 			{ label: 'Politica de privacidad', href: '/privacy-policy' },
 			{ label: 'Contacto', href: '/contact' },
-		],
-		testingTitle: 'Paginas de Pruebas',
-		testing: [
-			{ label: 'Servicios de Pruebas', href: '/testing-services' },
-			{ label: 'Pruebas de ADN', href: '/dna-testing' },
-			{ label: 'Pruebas de ETS', href: '/std-testing' },
-			{ label: 'Pruebas de Drogas', href: '/drug-testing' },
-			{ label: 'Pruebas de Alergias', href: '/allergy-testing' },
-			{ label: 'Pruebas Cardiacas', href: '/heart-testing' },
-			{ label: 'Pruebas Hormonales', href: '/hormone-testing' },
-			{ label: 'Pruebas de Salud General', href: '/routine-health-testing' },
 		],
 		contactTitle: 'Contacto',
 		socialAria: {
@@ -261,19 +239,6 @@ export default function SiteFooter({ locale = 'en' }) {
 					<ul className="mt-4 space-y-2 text-sm text-sky-100/90">
 						{copy.resources.map((item) => (
 							<li key={item.label}>
-								<Link href={item.href} className="transition hover:text-white">
-									{item.label}
-								</Link>
-							</li>
-						))}
-					</ul>
-				</div>
-
-				<div>
-					<h3 className="font-display text-lg font-bold text-white">{copy.testingTitle}</h3>
-					<ul className="mt-4 space-y-2 text-sm text-sky-100/90">
-						{copy.testing.map((item) => (
-							<li key={item.href}>
 								<Link href={item.href} className="transition hover:text-white">
 									{item.label}
 								</Link>

@@ -4,18 +4,9 @@ import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { ArrowRight, BadgeCheck, CheckCircle2, Clock3, FlaskConical, Mail, MapPin, PhoneCall } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { loadMessages } from '@/i18n/loadMessages';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.AboutPage?.metadata?.title,
-		description: messages?.AboutPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/about');
 
 export default async function AboutPage() {
 	const cookieStore = await cookies();

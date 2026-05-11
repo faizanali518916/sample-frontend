@@ -14,6 +14,7 @@ const primaryMenuItems = [
 	{ key: 'blogs', href: '/blogs' },
 	{ key: 'covid', href: '/covid-19' },
 	{ key: 'trust', href: '/trust-standards' },
+	{ key: 'testingServices', href: '/testing-services' },
 	{
 		key: 'homeKits',
 		href: 'https://247labkit.com/',
@@ -71,13 +72,9 @@ const tapeItems = [
 
 const isActiveRoute = (pathname, href) =>
 	pathname === href &&
-	[...primaryMenuItems, ...testingMenuItems, ...businessMenuItems, ...formsMenuItems].some(
-		(item) => item.href === href
-	);
+	[...primaryMenuItems, ...businessMenuItems, ...formsMenuItems].some((item) => item.href === href);
 
 const isFormsRoute = (pathname) => formsMenuItems.some((item) => isActiveRoute(pathname, item.href));
-
-const isTestingRoute = (pathname) => testingMenuItems.some((item) => isActiveRoute(pathname, item.href));
 
 const isBusinessRoute = (pathname) => businessMenuItems.some((item) => isActiveRoute(pathname, item.href));
 
@@ -142,7 +139,6 @@ export default function SiteNavbar() {
 	const tapeItemsExtended = [...tapeItems, ...tapeItems];
 	const pathname = usePathname();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-	const [mobileTestingOpen, setMobileTestingOpen] = useState(false);
 	const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
 	const [mobileFormsOpen, setMobileFormsOpen] = useState(false);
 	const [mobileLoginOpen, setMobileLoginOpen] = useState(false);
@@ -257,15 +253,6 @@ export default function SiteNavbar() {
 								pathname={pathname}
 								checkActive={isActiveRoute}
 								checkParentActive={isFormsRoute}
-								t={t}
-							/>
-
-							<NavDropdown
-								label={t('menu.testingServices')}
-								items={testingMenuItems}
-								pathname={pathname}
-								checkActive={isActiveRoute}
-								checkParentActive={isTestingRoute}
 								t={t}
 							/>
 
@@ -412,36 +399,6 @@ export default function SiteNavbar() {
 											>
 												{t(`menu.${item.key}`)}
 											</a>
-										</li>
-									))}
-								</ul>
-							) : null}
-						</li>
-
-						<li className="overflow-hidden rounded-xl border border-slate-200 bg-white/90">
-							<button
-								type="button"
-								onClick={() => setMobileTestingOpen((prev) => !prev)}
-								className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm font-semibold text-slate-700"
-							>
-								<span>{t('menu.testingServices')}</span>
-								<ChevronDown className={`h-4 w-4 transition-transform ${mobileTestingOpen ? 'rotate-180' : ''}`} />
-							</button>
-							{mobileTestingOpen ? (
-								<ul className="space-y-1 border-t border-slate-200 px-2 py-2">
-									{testingMenuItems.map((item) => (
-										<li key={`mobile-testing-${item.key}`}>
-											<Link
-												href={item.href}
-												onClick={() => setMobileMenuOpen(false)}
-												className={`block rounded-lg px-3 py-2 text-sm font-semibold transition ${
-													isActiveRoute(pathname, item.href)
-														? 'bg-sky-50 text-[var(--tl-primary-strong)]'
-														: 'text-slate-700 hover:bg-sky-50 hover:text-[var(--tl-primary-strong)]'
-												}`}
-											>
-												{t(`menu.${item.key}`)}
-											</Link>
 										</li>
 									))}
 								</ul>

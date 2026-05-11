@@ -5,18 +5,9 @@ import Link from 'next/link';
 import { CheckCircle, Users, TrendingUp, HeartHandshake } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import BusinessOpportunitiesFaq from './BusinessOpportunitiesFaq';
-import { loadMessages } from '@/i18n/loadMessages';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.BusinessOpportunitiesPage?.metadata?.title,
-		description: messages?.BusinessOpportunitiesPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/business-opportunities');
 
 export default async function BusinessOpportunitiesPage() {
 	const cookieStore = await cookies();

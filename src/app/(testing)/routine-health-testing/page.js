@@ -7,19 +7,10 @@ import {
 	TestingServiceItems,
 	TestingServiceFinalCta,
 } from '@/components/testing-services/TestingServiceTemplate';
-import { loadMessages } from '@/i18n/loadMessages';
 import { getLocaleFromCookieStore } from '@/lib/locale';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.RoutineHealthTestingPage?.metadata?.title,
-		description: messages?.RoutineHealthTestingPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/routine-health-testing');
 
 const pageKey = 'RoutineHealthTestingPage';
 

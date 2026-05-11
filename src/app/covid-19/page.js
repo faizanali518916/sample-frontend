@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
-import { loadMessages } from '@/i18n/loadMessages';
 import {
 	ArrowRight,
 	CalendarDays,
@@ -14,17 +13,9 @@ import {
 	ShieldCheck,
 } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
+import { getMetadataForPath } from '@/lib/metadata-config';
 
-export async function generateMetadata() {
-	const cookieStore = await cookies();
-	const locale = getLocaleFromCookieStore(cookieStore);
-	const messages = await loadMessages(locale);
-
-	return {
-		title: messages?.CovidPage?.metadata?.title,
-		description: messages?.CovidPage?.metadata?.description,
-	};
-}
+export const metadata = getMetadataForPath('/covid-19');
 
 export default async function CovidPage() {
 	const cookieStore = await cookies();
