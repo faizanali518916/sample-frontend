@@ -4,9 +4,9 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { Stethoscope, Briefcase, Scale, Star, ArrowRight } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/business-solutions');
+export const generateMetadata = generateMetadataFor('/business-solutions');
 
 export default async function BusinessSolutionPage() {
 	const cookieStore = await cookies();

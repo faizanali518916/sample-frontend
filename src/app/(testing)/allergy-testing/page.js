@@ -7,9 +7,9 @@ import {
 	TestingServiceFinalCta,
 } from '@/components/testing-services/TestingServiceTemplate';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/allergy-testing');
+export const generateMetadata = generateMetadataFor('/allergy-testing');
 
 const pageKey = 'AllergyTestingPage';
 

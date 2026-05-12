@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import GenericFormPage from '@/components/forms/GenericFormPage';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/contact');
+export const generateMetadata = generateMetadataFor('/contact');
 
 export default async function ContactPage({ searchParams }) {
 	const resolvedSearchParams = (await searchParams) || {};

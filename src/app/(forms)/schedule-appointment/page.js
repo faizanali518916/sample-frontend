@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import GenericFormPage from '@/components/forms/GenericFormPage';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/schedule-appointment');
+export const generateMetadata = generateMetadataFor('/schedule-appointment');
 
 export default function ScheduleAppointmentPage() {
 	return <GenericFormPage formKey="scheduleAppointment" />;

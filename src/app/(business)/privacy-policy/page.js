@@ -2,9 +2,9 @@ import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import Link from 'next/link';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/privacy-policy');
+export const generateMetadata = generateMetadataFor('/privacy-policy');
 
 export default async function PrivacyPolicyPage() {
 	const cookieStore = await cookies();

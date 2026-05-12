@@ -2,11 +2,11 @@ import { cookies } from 'next/headers';
 import { fetchBlogs, fetchCategories } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import BlogListPage from '@/components/blog/BlogListPage';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataForPath } from '@/lib/seo';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata = getMetadataForPath('/blogs');
+export const generateMetadata = generateMetadataForPath('/blogs');
 
 export default async function BlogsRoute({ searchParams }) {
 	const cookieStore = await cookies();

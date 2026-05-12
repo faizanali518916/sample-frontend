@@ -4,9 +4,9 @@ import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { ArrowRight, BadgeCheck, CheckCircle2, Clock3, FlaskConical, Mail, MapPin, PhoneCall } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/about');
+export const generateMetadata = generateMetadataFor('/about');
 
 export default async function AboutPage() {
 	const cookieStore = await cookies();

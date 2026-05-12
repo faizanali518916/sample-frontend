@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import GenericFormPage from '@/components/forms/GenericFormPage';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/prescription-consent-form');
+export const generateMetadata = generateMetadataFor('/prescription-consent-form');
 
 export default function PrescriptionConsentFormPage() {
 	return <GenericFormPage formKey="prescriptionConsent" />;

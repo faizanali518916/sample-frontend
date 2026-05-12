@@ -6,10 +6,10 @@ import {
 	TestingServiceFinalCta,
 } from '@/components/testing-services/TestingServiceTemplate';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 import HormonePackages from '@/components/testing-services/HormonePackages';
 
-export const metadata = getMetadataForPath('/hormone-testing');
+export const generateMetadata = generateMetadataFor('/hormone-testing');
 
 const pageKey = 'HormoneTestingPage';
 

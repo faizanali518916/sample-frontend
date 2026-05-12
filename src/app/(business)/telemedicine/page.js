@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/telemedicine');
+export const generateMetadata = generateMetadataFor('/telemedicine');
 
 export default async function TelemedicineServicePage() {
 	const cookieStore = await cookies();

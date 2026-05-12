@@ -2,9 +2,9 @@ import { cookies } from 'next/headers';
 import TestingServicesPage from '@/components/testing-services/TestingServicesPage';
 import { fetchProducts } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/testing-services');
+export const generateMetadata = generateMetadataFor('/testing-services');
 
 export const dynamic = 'force-dynamic';
 

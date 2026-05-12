@@ -13,9 +13,9 @@ import {
 	ShieldCheck,
 } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/covid-19');
+export const generateMetadata = generateMetadataFor('/covid-19');
 
 export default async function CovidPage() {
 	const cookieStore = await cookies();

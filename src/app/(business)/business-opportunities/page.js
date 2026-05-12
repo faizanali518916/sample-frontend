@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { CheckCircle, Users, TrendingUp, HeartHandshake } from 'lucide-react';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import BusinessOpportunitiesFaq from './BusinessOpportunitiesFaq';
-import { getMetadataForPath } from '@/lib/metadata-config';
+import { generateMetadataFor } from '@/lib/seo';
 
-export const metadata = getMetadataForPath('/business-opportunities');
+export const generateMetadata = generateMetadataFor('/business-opportunities');
 
 export default async function BusinessOpportunitiesPage() {
 	const cookieStore = await cookies();
