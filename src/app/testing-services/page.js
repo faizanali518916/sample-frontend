@@ -8,9 +8,11 @@ export const generateMetadata = generateMetadataFor('/testing-services');
 
 export const dynamic = 'force-dynamic';
 
-export default async function TestingServicesRoute() {
+export default async function TestingServicesRoute({ searchParams }) {
 	const cookieStore = await cookies();
 	const locale = getLocaleFromCookieStore(cookieStore);
+	const resolvedSearchParams = (await searchParams) || {};
+	const initialSearch = typeof resolvedSearchParams.search === 'string' ? resolvedSearchParams.search : '';
 
 	let products = [];
 
@@ -20,5 +22,5 @@ export default async function TestingServicesRoute() {
 		products = [];
 	}
 
-	return <TestingServicesPage products={products} locale={locale} />;
+	return <TestingServicesPage products={products} locale={locale} initialSearch={initialSearch} />;
 }

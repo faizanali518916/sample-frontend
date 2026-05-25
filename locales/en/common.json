@@ -56,6 +56,10 @@
 			"switchToEnglish": "Switch language to English",
 			"switchToSpanish": "Switch language to Spanish"
 		},
+		"search": {
+			"placeholder": "Search products",
+			"submit": "Search"
+		},
 		"contact": {
 			"phoneDisplay": "+1 (813) 932-3741"
 		}

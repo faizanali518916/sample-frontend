@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Fragment, useEffect, useState } from 'react';
 import { ChevronDown, Menu, Search, ShoppingCart, X } from 'lucide-react';
@@ -138,11 +138,14 @@ export default function SiteNavbar() {
 	const { cart } = useCart();
 	const tapeItemsExtended = [...tapeItems, ...tapeItems];
 	const pathname = usePathname();
+	const router = useRouter();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
 	const [mobileFormsOpen, setMobileFormsOpen] = useState(false);
 	const [mobileLoginOpen, setMobileLoginOpen] = useState(false);
 	const [cartOpen, setCartOpen] = useState(false);
+	const [searchOpen, setSearchOpen] = useState(false);
+	const [navSearch, setNavSearch] = useState('');
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -161,6 +164,17 @@ export default function SiteNavbar() {
 
 		return () => window.removeEventListener('scroll', onScroll);
 	}, []);
+
+	const handleSearchSubmit = (event) => {
+		event.preventDefault();
+
+		const query = navSearch.trim();
+		const nextUrl = query ? `/testing-services?search=${encodeURIComponent(query)}` : '/testing-services';
+
+		router.push(nextUrl);
+		setSearchOpen(false);
+		setMobileMenuOpen(false);
+	};
 
 	return (
 		<header
@@ -293,10 +307,12 @@ export default function SiteNavbar() {
 
 						<button
 							type="button"
-							className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)] sm:inline-flex"
+							className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-sm shadow-white/70 transition hover:scale-105 hover:border-[var(--tl-primary)] hover:text-[var(--tl-primary)]"
 							aria-label={t('aria.search')}
+							aria-expanded={searchOpen}
+							onClick={() => setSearchOpen((prev) => !prev)}
 						>
-							<Search className="h-4.5 w-4.5" />
+							{searchOpen ? <X className="h-4.5 w-4.5" /> : <Search className="h-4.5 w-4.5" />}
 						</button>
 
 						<a
@@ -315,6 +331,34 @@ export default function SiteNavbar() {
 							{mobileMenuOpen ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
 						</button>
 					</div>
+				</div>
+
+				<div
+					className={`overflow-hidden transition-all duration-300 ${
+						searchOpen ? 'max-h-24 pb-3 opacity-100' : 'max-h-0 opacity-0'
+					}`}
+				>
+					<form
+						onSubmit={handleSearchSubmit}
+						role="search"
+						className="ml-auto flex w-full max-w-xl items-center gap-2 rounded-2xl border border-white/80 bg-white/95 p-2 shadow-[0_18px_45px_-34px_rgba(2,6,14,0.85)]"
+					>
+						<div className="flex min-w-0 flex-1 items-center gap-2 rounded-xl bg-slate-50 px-3 py-2 focus-within:bg-white">
+							<Search className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+							<input
+								value={navSearch}
+								onChange={(event) => setNavSearch(event.target.value)}
+								placeholder={t('search.placeholder')}
+								className="min-w-0 flex-1 bg-transparent text-sm font-semibold text-slate-900 outline-none placeholder:text-slate-400"
+							/>
+						</div>
+						<button
+							type="submit"
+							className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl bg-[var(--tl-primary)] px-4 text-sm font-bold text-white transition hover:bg-[var(--tl-primary-strong)]"
+						>
+							{t('search.submit')}
+						</button>
+					</form>
 				</div>
 
 				<div
