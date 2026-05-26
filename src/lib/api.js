@@ -1,5 +1,15 @@
-const API_ORIGIN =
-	process.env.NEXT_PUBLIC_MODE === 'dev' ? 'http://localhost:3000/api' : 'https://247labstage.spctek.com:9000/api';
+function resolveApiOrigin() {
+	const configured =
+		process.env.BE_URL ||
+		process.env.NEXT_PUBLIC_BE_URL ||
+		process.env.NEXT_PUBLIC_API_URL ||
+		(process.env.NEXT_PUBLIC_MODE === 'dev' ? 'http://localhost:3000' : 'https://247labstage.spctek.com:9000');
+
+	const base = configured.replace(/\/$/, '');
+	return base.endsWith('/api') ? base : `${base}/api`;
+}
+
+const API_ORIGIN = resolveApiOrigin();
 
 const PATH_MAP = {
 	BLOGS: 'blogs',
@@ -14,6 +24,7 @@ const PATH_MAP = {
 	COUPONS: 'coupons',
 	ORDERS: 'orders',
 	PAYMENT: 'payment',
+	SEO: 'seo',
 };
 
 export const ENDPOINTS = new Proxy(PATH_MAP, {

@@ -4,6 +4,7 @@ import TestingServiceDetailsPage from '@/components/testing-services/TestingServ
 import { fetchProducts, fetchCategories } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import { loadMessages } from '@/i18n/loadMessages';
+import { resolveMetadata } from '@/lib/seo';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,10 +27,10 @@ export async function generateMetadata({ params }) {
 		// Use fallback title when API is unavailable.
 	}
 
-	return {
+	return resolveMetadata(`/testing-services/${id}`, {
 		title: messages?.TestingServiceDetailsPage?.metadata?.title?.replace('{name}', productName),
 		description: messages?.TestingServiceDetailsPage?.metadata?.description,
-	};
+	});
 }
 
 export default async function TestingServiceDetailsRoute({ params }) {

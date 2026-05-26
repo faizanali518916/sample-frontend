@@ -4,6 +4,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig = {
 	allowedDevOrigins: ['**.*', 'localhost', '*.localhost', '[::1]'],
+	htmlLimitedBots: /.*/,
 	images: {
 		unoptimized: true,
 		remotePatterns: [

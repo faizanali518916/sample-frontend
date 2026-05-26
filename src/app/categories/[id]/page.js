@@ -3,6 +3,7 @@ import { getLocaleFromCookieStore } from '@/lib/locale';
 import { loadMessages } from '@/i18n/loadMessages';
 import { fetchCategories, fetchProducts } from '@/lib/api';
 import CategoryDetailPage from '@/components/categories/CategoryDetailPage';
+import { resolveMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }) {
 	const { id } = await params;
@@ -15,10 +16,10 @@ export async function generateMetadata({ params }) {
 
 	const categoryName = category?.name || messages?.CategoryDetailPage?.fallbackTitle || 'Category Details';
 
-	return {
+	return resolveMetadata(`/categories/${id}`, {
 		title: messages?.CategoryDetailPage?.metadata?.title?.replace('{name}', categoryName),
 		description: messages?.CategoryDetailPage?.metadata?.description,
-	};
+	});
 }
 
 export default async function CategoryRoute({ params }) {

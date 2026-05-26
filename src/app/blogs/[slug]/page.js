@@ -4,6 +4,7 @@ import BlogDetailPage from '@/components/blog/BlogDetailPage';
 import { fetchBlogs, fetchCategories, fetchProducts } from '@/lib/api';
 import { getLocaleFromCookieStore } from '@/lib/locale';
 import { loadMessages } from '@/i18n/loadMessages';
+import { resolveMetadata } from '@/lib/seo';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,10 +31,10 @@ export async function generateMetadata({ params }) {
 		blogTitle = messages?.BlogDetailPage?.fallbackTitle;
 	}
 
-	return {
+	return resolveMetadata(`/blogs/${slug}`, {
 		title: messages?.BlogDetailPage?.metadata?.title?.replace('{title}', blogTitle),
 		description: blogDescription || messages?.BlogDetailPage?.metadata?.description,
-	};
+	});
 }
 
 export default async function BlogDetailsRoute({ params }) {
