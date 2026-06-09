@@ -26,7 +26,7 @@ export default function FloatingLocaleSwitcher() {
 	};
 
 	return (
-		<div className="fixed right-6 bottom-6 z-[80]">
+		<div className="floating-locale-switcher fixed right-6 bottom-6 z-[80]">
 			<div className="inline-flex items-center gap-1.5 rounded-full border border-slate-300/70 bg-white/90 p-1.5 shadow-[0_16px_40px_-26px_rgba(5,7,13,0.85)] backdrop-blur">
 				<button
 					type="button"

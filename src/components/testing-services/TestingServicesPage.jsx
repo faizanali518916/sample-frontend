@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { CalendarDays, PhoneCall } from 'lucide-react';
-import { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import TestingServiceCard from './components/TestingServiceCard';
 import TestingServicesEmptyState from './components/TestingServicesEmptyState';
 import TestingServicesFilters from './components/TestingServicesFilters';
@@ -74,11 +74,6 @@ export default function TestingServicesPage({ products = [], locale = 'en', init
 	const [selectedCategoryId, setSelectedCategoryId] = useState('all');
 	const [currentPage, setCurrentPage] = useState(1);
 	const deferredSearch = useDeferredValue(search.trim().toLowerCase());
-
-	useEffect(() => {
-		setSearch(initialSearch);
-		setCurrentPage(1);
-	}, [initialSearch]);
 
 	const categoryOptions = useMemo(() => buildCategoryOptions(products, locale, t), [locale, products, t]);
 

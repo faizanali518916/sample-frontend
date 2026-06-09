@@ -97,10 +97,12 @@ export default function AITestFinderModal({ isOpen, onClose, locale = 'en' }) {
 		};
 
 		document.body.style.overflow = 'hidden';
+		document.body.classList.add('ai-test-finder-modal-open');
 		window.addEventListener('keydown', onKeyDown);
 
 		return () => {
 			document.body.style.overflow = '';
+			document.body.classList.remove('ai-test-finder-modal-open');
 			window.removeEventListener('keydown', onKeyDown);
 		};
 	}, [isOpen, onClose]);
@@ -346,7 +348,7 @@ export default function AITestFinderModal({ isOpen, onClose, locale = 'en' }) {
 
 	return (
 		<div
-			className="fixed inset-0 z-[220] flex items-start justify-center bg-slate-900/45 px-4 pt-24 pb-4 sm:px-6 sm:pt-24 sm:pb-6"
+			className="fixed inset-0 z-[500] flex items-start justify-center overflow-hidden bg-slate-900/45 px-3 pt-[100px] pb-3 sm:items-center sm:pt-24"
 			role="dialog"
 			aria-modal="true"
 			aria-label={copy.ariaLabel}
@@ -357,17 +359,19 @@ export default function AITestFinderModal({ isOpen, onClose, locale = 'en' }) {
 			}}
 		>
 			<div
-				className="flex max-h-[72dvh] w-[calc(100%-3.25rem)] max-w-3xl flex-col overflow-hidden rounded-[24px] border border-white/60 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_100%)] p-4 shadow-[0_30px_80px_-35px_rgba(3,86,197,0.55)] sm:max-h-[calc(100dvh-7rem)] sm:w-full sm:p-6"
+				className="flex max-h-[calc(100dvh-7.25rem)] w-full max-w-3xl flex-col overflow-hidden rounded-[20px] border border-white/60 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_100%)] p-3 shadow-[0_30px_80px_-35px_rgba(3,86,197,0.55)] sm:max-h-[calc(100dvh-3rem)] sm:rounded-[24px] sm:p-6"
 				onPointerDown={(event) => event.stopPropagation()}
 			>
-				<div className="flex items-start justify-end gap-3 sm:justify-between">
-					<div className="hidden sm:block">
+				<div className="flex items-start justify-between gap-3">
+					<div className="min-w-0">
 						<p className="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-[var(--tl-primary)] uppercase">
 							<Sparkles className="h-3.5 w-3.5" />
 							{copy.badgeTitle}
 						</p>
-						<h3 className="font-display mt-2 text-xl font-black text-slate-900 sm:mt-3 sm:text-2xl">{copy.title}</h3>
-						<p className="mt-1 text-sm text-slate-600">{copy.subtitle}</p>
+						<h3 className="font-display mt-2 text-lg leading-tight font-black text-slate-900 sm:mt-3 sm:text-2xl">
+							{copy.title}
+						</h3>
+						<p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">{copy.subtitle}</p>
 					</div>
 					<button
 						type="button"

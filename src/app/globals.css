@@ -586,3 +586,9 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
 	display: none;
 }
+
+@media (max-width: 767px) {
+	body.ai-test-finder-modal-open .floating-locale-switcher {
+		display: none;
+	}
+}

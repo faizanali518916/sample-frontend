@@ -22,5 +22,12 @@ export default async function TestingServicesRoute({ searchParams }) {
 		products = [];
 	}
 
-	return <TestingServicesPage products={products} locale={locale} initialSearch={initialSearch} />;
+	return (
+		<TestingServicesPage
+			key={`${locale}:${initialSearch}`}
+			products={products}
+			locale={locale}
+			initialSearch={initialSearch}
+		/>
+	);
 }

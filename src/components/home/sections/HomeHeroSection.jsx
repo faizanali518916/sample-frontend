@@ -50,6 +50,17 @@ export default function HomeHeroSection({ t, heroSlides, activeSlide, setActiveS
 					<p className="max-w-lg text-sm font-semibold text-slate-700 md:text-base">{t('Hero.subText')}</p>
 
 					<div className="flex flex-wrap gap-3">
+						<button
+							type="button"
+							onClick={() => setIsAiFinderOpen(true)}
+							className="group relative inline-flex w-full items-center justify-center rounded-full p-[1px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] sm:w-auto lg:hidden"
+						>
+							<div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-60 blur transition duration-300 group-hover:opacity-90" />
+							<div className="relative inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-indigo-100 sm:w-auto">
+								{t('Hero.aiFinderButton')}
+								<Wand2 className="h-4 w-4 shrink-0 text-purple-600" />
+							</div>
+						</button>
 						<Link
 							href="#appointment"
 							className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--tl-primary)] px-6 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:bg-[var(--tl-primary-strong)] sm:w-auto"
